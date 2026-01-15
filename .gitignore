@@ -1,0 +1,18 @@
+# Dependencies
+node_modules/
+
+# Storybook
+storybook-static/
+
+# Logs
+debug-storybook.log
+*.log
+
+# OS
+.DS_Store
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
