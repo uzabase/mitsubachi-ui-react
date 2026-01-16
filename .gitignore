@@ -1,18 +1,28 @@
 # Dependencies
-node_modules/
+node_modules
+
+# Build outputs
+# cjs - CommonJS出力（ビルド時に使用）
+# es - ESModules出力（ビルド時に使用）
+# types - 型定義出力（ビルド時に使用）
 
 # Storybook
-storybook-static/
+storybook-static
+build-storybook.log
 
-# Logs
-debug-storybook.log
-*.log
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Cache
+.eslintcache
 
 # OS
 .DS_Store
 
 # IDE
-.idea/
-.vscode/
+.idea
+.vscode
 *.swp
 *.swo
