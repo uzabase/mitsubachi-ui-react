@@ -1,5 +1,4 @@
 import { expect } from 'vitest';
-import '@testing-library/react';
 
 // Shadow DOM 内の要素を検証するカスタムマッチャー
 expect.extend({
