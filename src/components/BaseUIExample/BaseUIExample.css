@@ -1,0 +1,29 @@
+.base-ui-example {
+  padding: 16px;
+}
+
+.base-ui-example-button {
+  padding-block: 12px;
+  padding-inline: 24px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #ffffff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.base-ui-example-button:hover {
+  background-color: #0056b3;
+}
+
+.base-ui-example-button:focus-visible {
+  outline: 2px solid #007bff;
+  outline-offset: 2px;
+}
+
+.base-ui-example-button:active {
+  background-color: #004494;
+}
