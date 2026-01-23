@@ -46,8 +46,8 @@
 
   /* 影 */
   box-shadow:
-    0px 1px 2px 0px var(--neutralneutral-50-alpha, rgba(0, 0, 0, 0.15)),
-    0px 5px 9px 2px var(--neutralneutral-30-alpha, rgba(0, 0, 0, 0.1));
+    0px 1px 2px 0px var(--neutral-neutral-50-alpha, rgba(0, 0, 0, 0.29)),
+    0px 5px 9px 2px var(--neutral-neutral-30-alpha, rgba(0, 0, 0, 0.13));
 
   /* その他 */
   opacity: 1;
