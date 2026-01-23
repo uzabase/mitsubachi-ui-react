@@ -12,7 +12,7 @@ const meta = {
   argTypes: {
     side: {
       control: 'select',
-      options: ['top', 'bottom', 'start', 'end'],
+      options: ['top', 'bottom', 'inline-start', 'inline-end'],
       description: '表示方向',
     },
     align: {
@@ -40,7 +40,7 @@ type Story = StoryObj<typeof meta>;
  */
 export const Normal: Story = {
   args: {
-    content: 'ツールチップの内容',
+    label: 'ツールチップの内容',
     children: <button type="button">ホバーしてください</button>,
   },
 };

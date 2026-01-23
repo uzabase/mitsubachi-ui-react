@@ -11,7 +11,7 @@ const meta = {
   argTypes: {
     side: {
       control: 'select',
-      options: ['top', 'bottom', 'start', 'end'],
+      options: ['top', 'bottom', 'inline-start', 'inline-end'],
     },
     align: {
       control: 'select',
@@ -28,7 +28,7 @@ type Story = StoryObj<typeof meta>;
  */
 export const LongText: Story = {
   args: {
-    content:
+    label:
       'これは非常に長いツールチップのテキストです。max-width: 200pxを超える場合、テキストは自動的に折り返されます。',
     children: <button type="button">長いテキスト</button>,
   },
@@ -39,7 +39,7 @@ export const LongText: Story = {
  */
 export const IconButton: Story = {
   args: {
-    content: '設定を開く',
+    label: '設定を開く',
     children: (
       <button
         type="button"
@@ -67,7 +67,7 @@ export const IconButton: Story = {
  */
 export const FocusableElement: Story = {
   args: {
-    content: 'Tabキーでフォーカスすると表示されます',
+    label: 'Tabキーでフォーカスすると表示されます',
     children: (
       <button
         type="button"

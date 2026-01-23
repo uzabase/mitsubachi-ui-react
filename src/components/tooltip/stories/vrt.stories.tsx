@@ -18,7 +18,7 @@ const meta = {
   argTypes: {
     side: {
       control: 'select',
-      options: ['top', 'bottom', 'start', 'end'],
+      options: ['top', 'bottom', 'inline-start', 'inline-end'],
     },
     align: {
       control: 'select',
@@ -35,7 +35,7 @@ type Story = StoryObj<typeof meta>;
  */
 export const Top: Story = {
   args: {
-    content: sampleContent,
+    label: sampleContent,
     side: 'top',
     children: <button type="button">Top</button>,
   },
@@ -46,7 +46,7 @@ export const Top: Story = {
  */
 export const Bottom: Story = {
   args: {
-    content: sampleContent,
+    label: sampleContent,
     side: 'bottom',
     children: <button type="button">Bottom</button>,
   },
@@ -55,22 +55,22 @@ export const Bottom: Story = {
 /**
  * 開始側に表示
  */
-export const Start: Story = {
+export const InlineStart: Story = {
   args: {
-    content: sampleContent,
-    side: 'start',
-    children: <button type="button">Start</button>,
+    label: sampleContent,
+    side: 'inline-start',
+    children: <button type="button">Inline Start</button>,
   },
 };
 
 /**
  * 終了側に表示
  */
-export const End: Story = {
+export const InlineEnd: Story = {
   args: {
-    content: sampleContent,
-    side: 'end',
-    children: <button type="button">End</button>,
+    label: sampleContent,
+    side: 'inline-end',
+    children: <button type="button">Inline End</button>,
   },
 };
 
@@ -79,10 +79,22 @@ export const End: Story = {
  */
 export const AlignStart: Story = {
   args: {
-    content: sampleContent,
+    label: sampleContent,
     side: 'top',
     align: 'start',
     children: <button type="button">Align Start</button>,
+  },
+};
+
+/**
+ * 配置調整: 中央
+ */
+export const AlignCenter: Story = {
+  args: {
+    label: sampleContent,
+    side: 'top',
+    align: 'center',
+    children: <button type="button">Align Center</button>,
   },
 };
 
@@ -91,7 +103,7 @@ export const AlignStart: Story = {
  */
 export const AlignEnd: Story = {
   args: {
-    content: sampleContent,
+    label: sampleContent,
     side: 'top',
     align: 'end',
     children: <button type="button">Align End</button>,
@@ -103,7 +115,7 @@ export const AlignEnd: Story = {
  */
 export const AllPlacements: Story = {
   args: {
-    content: '',
+    label: '',
     children: <button type="button">placeholder</button>,
   },
   render: () => (
@@ -119,13 +131,13 @@ export const AllPlacements: Story = {
       <div>
         <h3 style={{ marginBottom: '20px', color: '#666' }}>side: top</h3>
         <div style={{ display: 'flex', gap: '40px' }}>
-          <Tooltip {...Top.args} content={sampleLongContent} align="start">
+          <Tooltip {...Top.args} label={sampleLongContent} align="start">
             <button type="button">align: start</button>
           </Tooltip>
-          <Tooltip {...Top.args} content={sampleLongContent} align="center">
+          <Tooltip {...Top.args} label={sampleLongContent} align="center">
             <button type="button">align: center</button>
           </Tooltip>
-          <Tooltip {...Top.args} content={sampleLongContent} align="end">
+          <Tooltip {...Top.args} label={sampleLongContent} align="end">
             <button type="button">align: end</button>
           </Tooltip>
         </div>
@@ -135,45 +147,57 @@ export const AllPlacements: Story = {
       <div>
         <h3 style={{ marginBottom: '20px', color: '#666' }}>side: bottom</h3>
         <div style={{ display: 'flex', gap: '40px' }}>
-          <Tooltip {...Bottom.args} content={sampleLongContent} align="start">
+          <Tooltip {...Bottom.args} label={sampleLongContent} align="start">
             <button type="button">align: start</button>
           </Tooltip>
-          <Tooltip {...Bottom.args} content={sampleLongContent} align="center">
+          <Tooltip {...Bottom.args} label={sampleLongContent} align="center">
             <button type="button">align: center</button>
           </Tooltip>
-          <Tooltip {...Bottom.args} content={sampleLongContent} align="end">
+          <Tooltip {...Bottom.args} label={sampleLongContent} align="end">
             <button type="button">align: end</button>
           </Tooltip>
         </div>
       </div>
 
-      {/* Side: Start */}
+      {/* Side: Inline Start */}
       <div>
-        <h3 style={{ marginBottom: '20px', color: '#666' }}>side: start</h3>
+        <h3 style={{ marginBottom: '20px', color: '#666' }}>
+          side: inline-start
+        </h3>
         <div style={{ display: 'flex', gap: '40px' }}>
-          <Tooltip {...Start.args} content={sampleLongContent} align="start">
+          <Tooltip
+            {...InlineStart.args}
+            label={sampleLongContent}
+            align="start"
+          >
             <button type="button">align: start</button>
           </Tooltip>
-          <Tooltip {...Start.args} content={sampleLongContent} align="center">
+          <Tooltip
+            {...InlineStart.args}
+            label={sampleLongContent}
+            align="center"
+          >
             <button type="button">align: center</button>
           </Tooltip>
-          <Tooltip {...Start.args} content={sampleLongContent} align="end">
+          <Tooltip {...InlineStart.args} label={sampleLongContent} align="end">
             <button type="button">align: end</button>
           </Tooltip>
         </div>
       </div>
 
-      {/* Side: End */}
+      {/* Side: Inline End */}
       <div>
-        <h3 style={{ marginBottom: '20px', color: '#666' }}>side: end</h3>
+        <h3 style={{ marginBottom: '20px', color: '#666' }}>
+          side: inline-end
+        </h3>
         <div style={{ display: 'flex', gap: '40px' }}>
-          <Tooltip {...End.args} content={sampleLongContent} align="start">
+          <Tooltip {...InlineEnd.args} label={sampleLongContent} align="start">
             <button type="button">align: start</button>
           </Tooltip>
-          <Tooltip {...End.args} content={sampleLongContent} align="center">
+          <Tooltip {...InlineEnd.args} label={sampleLongContent} align="center">
             <button type="button">align: center</button>
           </Tooltip>
-          <Tooltip {...End.args} content={sampleLongContent} align="end">
+          <Tooltip {...InlineEnd.args} label={sampleLongContent} align="end">
             <button type="button">align: end</button>
           </Tooltip>
         </div>
