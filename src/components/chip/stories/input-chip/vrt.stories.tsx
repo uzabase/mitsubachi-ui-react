@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import { InputChip } from '../../input-chip';
+import { Normal } from './Normal.stories';
 
 const meta = {
   title: 'Components/Chip/InputChip/vrt',
@@ -24,26 +25,60 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 /**
- * デスクトップサイズ
+ * Default状態
  */
-export const Desktop: Story = {
+export const Default: Story = {
+  args: Normal.args,
+};
+
+/**
+ * Hover状態
+ */
+export const Hover: Story = {
   args: {
-    children: 'Text',
-    size: 'desktop',
-    state: 'default',
-    onDelete: () => {},
+    ...Normal.args,
+    state: 'hover',
   },
 };
 
 /**
- * フォンサイズ
+ * Active状態
  */
-export const Phone: Story = {
+export const Active: Story = {
   args: {
-    children: 'Text',
-    size: 'phone',
-    state: 'default',
-    onDelete: () => {},
+    ...Normal.args,
+    state: 'active',
+  },
+};
+
+/**
+ * Focus状態
+ */
+export const Focus: Story = {
+  args: {
+    ...Normal.args,
+    state: 'focus',
+  },
+};
+
+/**
+ * Loading状態
+ */
+export const Loading: Story = {
+  args: {
+    ...Normal.args,
+    state: 'loading',
+  },
+};
+
+/**
+ * Disabled状態
+ */
+export const Disabled: Story = {
+  args: {
+    ...Normal.args,
+    state: 'disabled',
+    disabled: true,
   },
 };
 
@@ -69,22 +104,22 @@ export const AllStates: Story = {
       <div>
         <h3 style={{ marginBottom: '12px', color: '#666' }}>Desktop (12px)</h3>
         <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-          <InputChip size="desktop" state="default" onDelete={() => {}}>
+          <InputChip {...Default.args} size="desktop">
             Default
           </InputChip>
-          <InputChip size="desktop" state="hover" onDelete={() => {}}>
+          <InputChip {...Hover.args} size="desktop">
             Hover
           </InputChip>
-          <InputChip size="desktop" state="active" onDelete={() => {}}>
+          <InputChip {...Active.args} size="desktop">
             Active
           </InputChip>
-          <InputChip size="desktop" state="focus" onDelete={() => {}}>
+          <InputChip {...Focus.args} size="desktop">
             Focus
           </InputChip>
-          <InputChip size="desktop" state="loading">
+          <InputChip {...Loading.args} size="desktop">
             Loading
           </InputChip>
-          <InputChip size="desktop" state="disabled">
+          <InputChip {...Disabled.args} size="desktop">
             Disabled
           </InputChip>
         </div>
@@ -92,22 +127,22 @@ export const AllStates: Story = {
       <div>
         <h3 style={{ marginBottom: '12px', color: '#666' }}>Phone (14px)</h3>
         <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-          <InputChip size="phone" state="default" onDelete={() => {}}>
+          <InputChip {...Default.args} size="phone">
             Default
           </InputChip>
-          <InputChip size="phone" state="hover" onDelete={() => {}}>
+          <InputChip {...Hover.args} size="phone">
             Hover
           </InputChip>
-          <InputChip size="phone" state="active" onDelete={() => {}}>
+          <InputChip {...Active.args} size="phone">
             Active
           </InputChip>
-          <InputChip size="phone" state="focus" onDelete={() => {}}>
+          <InputChip {...Focus.args} size="phone">
             Focus
           </InputChip>
-          <InputChip size="phone" state="loading">
+          <InputChip {...Loading.args} size="phone">
             Loading
           </InputChip>
-          <InputChip size="phone" state="disabled">
+          <InputChip {...Disabled.args} size="phone">
             Disabled
           </InputChip>
         </div>

@@ -1,5 +1,7 @@
 import React from 'react';
 import styles from './input-chip.module.css';
+import CrossSmallIcon from './icons/cross-small.svg';
+import SpinnerIcon from './icons/spinner.svg';
 
 /** チップのサイズ */
 export type ChipSize = 'desktop' | 'phone';
@@ -53,21 +55,22 @@ export const InputChip = ({
   disabled = false,
   className,
 }: InputChipProps) => {
-  const handleDelete = (e: React.MouseEvent) => {
-    e.stopPropagation();
+  const handleDelete = () => {
     if (!disabled && onDelete) {
       onDelete();
     }
   };
 
-  const handleDeleteKeyDown = (e: React.KeyboardEvent) => {
+  const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === 'Enter' || e.key === ' ') {
       e.preventDefault();
-      e.stopPropagation();
-      if (!disabled && onDelete) {
-        onDelete();
-      }
+      handleDelete();
     }
+  };
+
+  const handleDeleteClick = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    handleDelete();
   };
 
   return (
@@ -75,24 +78,28 @@ export const InputChip = ({
       className={`${styles.inputChip} ${styles[`inputChip--${size}`]} ${
         styles[`inputChip--${state}`]
       } ${disabled ? styles['inputChip--disabled'] : ''} ${className || ''}`}
-      role="group"
+      role="button"
+      tabIndex={disabled ? -1 : 0}
       aria-label={`${children}を削除`}
+      onKeyDown={onDelete && !disabled ? handleKeyDown : undefined}
+      aria-disabled={disabled}
     >
       <span className={styles.inputChipText}>{children}</span>
-      {onDelete && !disabled && state !== 'loading' && (
+      {onDelete && state !== 'loading' && (
         <button
           type="button"
           className={styles.inputChipDelete}
-          onClick={handleDelete}
-          onKeyDown={handleDeleteKeyDown}
-          aria-label={`${children}を削除`}
+          onClick={handleDeleteClick}
+          tabIndex={-1}
+          aria-hidden="true"
+          disabled={disabled}
         >
-          ×
+          <img src={CrossSmallIcon} alt="" />
         </button>
       )}
       {state === 'loading' && (
         <span className={styles.inputChipLoading} aria-hidden="true">
-          ...
+          <img src={SpinnerIcon} alt="" />
         </span>
       )}
     </div>
