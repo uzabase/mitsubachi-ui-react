@@ -41,6 +41,9 @@
   transition:
     background-color 150ms ease-out,
     color 150ms ease-out;
+
+  /* クリックイベントを無効化（削除ボタンのみ有効） */
+  pointer-events: none;
 }
 
 /* サイズ: desktop (12px) */
@@ -69,12 +72,6 @@
 .inputChip--focus .inputChipDelete {
   outline: 2px solid var(--text-primary, #1a1a1a);
   outline-offset: 1px;
-}
-
-/* 状態: focus（実際のフォーカス時） */
-.inputChip:focus-visible:not(.inputChip--disabled),
-.inputChip:focus:not(.inputChip--disabled) {
-  outline: none; /* chip全体のアウトラインは非表示 */
 }
 
 /* 状態: loading */
@@ -127,6 +124,9 @@
   transition:
     background-color 150ms ease-out,
     color 150ms ease-out;
+
+  /* 削除ボタンのみクリック有効化 */
+  pointer-events: auto;
 }
 
 .inputChipDelete img {
@@ -151,11 +151,25 @@
   opacity: 0.35;
 }
 
-/* chipにフォーカスがある時、削除ボタンにアウトラインを表示 */
-.inputChip:focus-visible .inputChipDelete,
-.inputChip:focus .inputChipDelete {
-  outline: 2px solid var(--text-primary, #1a1a1a);
-  outline-offset: 1px;
+/* 削除ボタンのフォーカス状態 */
+.inputChipDelete:focus-visible {
+  outline: 2px solid var(--focus-ring, #0066cc);
+  outline-offset: 2px;
+}
+
+/* 実際のインタラクションスタイル（:has()セレクタを使用） */
+/* 削除ボタンへのホバー時にChip全体の背景を変える */
+.inputChip:has(.inputChipDelete:hover):not(.inputChip--disabled) {
+  background: var(--surface-subtle-hover, #e8e8e8);
+}
+
+.inputChip:has(.inputChipDelete:active):not(.inputChip--disabled) {
+  background: var(--surface-subtle-active, #d8d8d8);
+}
+
+.inputChip:has(.inputChipDelete:focus-visible):not(.inputChip--disabled) {
+  outline: 2px solid var(--focus-ring, #0066cc);
+  outline-offset: 2px;
 }
 
 /* ローディング表示 */
@@ -173,16 +187,6 @@
   width: 15px;
   height: 15px;
   display: block;
-}
-
-.inputChip--desktop .inputChipLoading {
-  width: 24px;
-  height: 24px;
-}
-
-.inputChip--desktop .inputChipLoading img {
-  width: 15px;
-  height: 15px;
 }
 
 @keyframes spin {

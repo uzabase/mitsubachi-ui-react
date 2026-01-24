@@ -8,49 +8,35 @@ const meta = {
   parameters: {
     layout: 'centered',
   },
-  argTypes: {
-    size: {
-      control: 'select',
-      options: ['desktop', 'phone'],
-    },
-    state: {
-      control: 'select',
-      options: ['default', 'hover', 'active', 'focus', 'loading', 'disabled'],
-    },
-  },
 } satisfies Meta<typeof InputChip>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
 /**
- * InputChip - デスクトップサイズ（12px）
+ * InputChip - Desktop
  */
 export const Desktop: Story = {
   render: () => (
     <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-      <InputChip size="desktop" state="default" onDelete={() => {}}>
-        Text
-      </InputChip>
+      <InputChip label="Text" viewport="desktop" onDelete={() => {}} />
     </div>
   ),
   args: {
-    children: 'Text',
+    label: 'Text',
   },
 };
 
 /**
- * InputChip - フォンサイズ（14px）
+ * InputChip - Phone
  */
 export const Phone: Story = {
   render: () => (
     <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-      <InputChip size="phone" state="default" onDelete={() => {}}>
-        Text
-      </InputChip>
+      <InputChip label="Text" viewport="phone" onDelete={() => {}} />
     </div>
   ),
   args: {
-    children: 'Text',
+    label: 'Text',
   },
 };

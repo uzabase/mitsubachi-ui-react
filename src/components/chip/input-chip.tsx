@@ -2,9 +2,7 @@ import React from 'react';
 import styles from './input-chip.module.css';
 import CrossSmallIcon from './icons/cross-small.svg';
 import SpinnerIcon from './icons/spinner.svg';
-
-/** チップのサイズ */
-export type ChipSize = 'desktop' | 'phone';
+import type { ChipViewport } from './types';
 
 /** InputChipの状態 */
 export type InputChipState =
@@ -18,23 +16,17 @@ export type InputChipState =
 /** InputChipのProps */
 export interface InputChipProps {
   /** チップに表示するテキスト */
-  children: React.ReactNode;
-  /** チップのサイズ */
-  size?: ChipSize;
+  label: React.ReactNode;
+  /** ビューポート（デスクトップ/モバイル） */
+  viewport?: ChipViewport;
   /** チップの状態 */
   state?: InputChipState;
+  /** チップの値（InputChipGroupで使用） */
+  value?: string;
   /** 削除ボタンクリック時のハンドラ */
   onDelete?: () => void;
   /** 無効化 */
   disabled?: boolean;
-  /** 追加のクラス名 */
-  className?: string;
-}
-
-/** InputChipGroupのProps */
-export interface InputChipGroupProps {
-  /** グループ内のInputChip要素 */
-  children: React.ReactNode;
   /** 追加のクラス名 */
   className?: string;
 }
@@ -48,50 +40,33 @@ export interface InputChipGroupProps {
  * @see https://www.w3.org/WAI/ARIA/apg/patterns/button/
  */
 export const InputChip = ({
-  children,
-  size = 'desktop',
+  label,
+  viewport = 'desktop',
   state = 'default',
   onDelete,
   disabled = false,
   className,
 }: InputChipProps) => {
-  const handleDelete = () => {
+  const handleDeleteClick = (e: React.MouseEvent) => {
+    e.stopPropagation();
     if (!disabled && onDelete) {
       onDelete();
     }
   };
 
-  const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (e.key === 'Enter' || e.key === ' ') {
-      e.preventDefault();
-      handleDelete();
-    }
-  };
-
-  const handleDeleteClick = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    handleDelete();
-  };
-
   return (
     <div
-      className={`${styles.inputChip} ${styles[`inputChip--${size}`]} ${
+      className={`${styles.inputChip} ${styles[`inputChip--${viewport}`]} ${
         styles[`inputChip--${state}`]
       } ${disabled ? styles['inputChip--disabled'] : ''} ${className || ''}`}
-      role="button"
-      tabIndex={disabled ? -1 : 0}
-      aria-label={`${children}を削除`}
-      onKeyDown={onDelete && !disabled ? handleKeyDown : undefined}
-      aria-disabled={disabled}
     >
-      <span className={styles.inputChipText}>{children}</span>
+      <span className={styles.inputChipText}>{label}</span>
       {onDelete && state !== 'loading' && (
         <button
           type="button"
           className={styles.inputChipDelete}
           onClick={handleDeleteClick}
-          tabIndex={-1}
-          aria-hidden="true"
+          aria-label="削除"
           disabled={disabled}
         >
           <img src={CrossSmallIcon} alt="" />
@@ -106,23 +81,4 @@ export const InputChip = ({
   );
 };
 
-/**
- * InputChipGroupコンポーネント
- *
- * InputChipをグループ化します。
- * 折り返しあり、水平スクロールを禁止します。
- */
-export const InputChipGroup = ({
-  children,
-  className,
-}: InputChipGroupProps) => {
-  return (
-    <div
-      className={`${styles.inputChipGroup} ${className || ''}`}
-      role="group"
-      aria-label="入力チップグループ"
-    >
-      {children}
-    </div>
-  );
-};
+InputChip.displayName = 'InputChip';

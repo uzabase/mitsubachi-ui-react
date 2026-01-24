@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useState } from 'react';
 
-import { InputChip, InputChipGroup } from '../../input-chip';
+import { InputChip } from '../../input-chip';
 
 const meta = {
   title: 'Components/Chip/InputChip',
@@ -11,15 +11,15 @@ const meta = {
   },
   tags: ['autodocs'],
   argTypes: {
-    size: {
-      control: 'select',
+    viewport: {
+      control: 'radio',
       options: ['desktop', 'phone'],
-      description: 'チップのサイズ',
+      description: 'ビューポート（デスクトップ/モバイル）',
     },
     state: {
-      control: 'select',
+      control: 'radio',
       options: ['default', 'hover', 'active', 'focus', 'loading', 'disabled'],
-      description: 'チップの状態',
+      description: 'チップの状態（Storybook表示用）',
     },
     disabled: {
       control: 'boolean',
@@ -43,55 +43,15 @@ export const Normal: Story = {
     }
 
     return (
-      <InputChip {...args} onDelete={() => setVisible(false)}>
-        {args.children}
-      </InputChip>
+      <InputChip
+        {...args}
+        onDelete={() => setVisible(false)}
+        label={args.label}
+      />
     );
   },
   args: {
-    children: 'Text',
-    size: 'desktop',
-    state: 'default',
+    label: 'Text',
     onDelete: () => {},
   },
-};
-
-/**
- * InputChipGroup - 複数のチップ削除
- * InputChipGroupは折り返しあり、水平スクロールを禁止します
- */
-export const InputChipGroupStory: Story = {
-  render: function Render(args) {
-    const [chips, setChips] = useState([
-      { id: 1, label: 'Text' },
-      { id: 2, label: 'Text' },
-      { id: 3, label: 'Text' },
-      { id: 4, label: 'Text' },
-      { id: 5, label: 'Text' },
-      { id: 6, label: 'Text' },
-      { id: 7, label: 'Text' },
-      { id: 8, label: 'Text' },
-    ]);
-
-    const handleDelete = (id: number) => {
-      setChips((prev) => prev.filter((chip) => chip.id !== id));
-    };
-
-    return (
-      <div style={{ maxWidth: '400px' }}>
-        <InputChipGroup>
-          {chips.map((chip) => (
-            <InputChip
-              key={chip.id}
-              {...args}
-              onDelete={() => handleDelete(chip.id)}
-            >
-              {chip.label}
-            </InputChip>
-          ))}
-        </InputChipGroup>
-      </div>
-    );
-  },
-  args: Normal.args,
 };

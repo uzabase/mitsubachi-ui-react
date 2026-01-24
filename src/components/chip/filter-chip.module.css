@@ -63,11 +63,6 @@
   border: 1px solid var(--border-subtle-default, #e0e0e0);
 }
 
-/* 状態: default */
-.filterChip--default {
-  /* デフォルトスタイルは既に上で定義 */
-}
-
 /* 状態: hover */
 .filterChip:hover:not(.filterChip--disabled) {
   background: var(--surface-subtle-hover, #e8e8e8);

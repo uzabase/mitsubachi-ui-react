@@ -1,23 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import { InputChip } from '../../input-chip';
-import { Normal } from './Normal.stories';
 
 const meta = {
   title: 'Components/Chip/InputChip/vrt',
   component: InputChip,
   parameters: {
     layout: 'centered',
-  },
-  argTypes: {
-    size: {
-      control: 'select',
-      options: ['desktop', 'phone'],
-    },
-    state: {
-      control: 'select',
-      options: ['default', 'hover', 'active', 'focus', 'loading', 'disabled'],
-    },
   },
 } satisfies Meta<typeof InputChip>;
 
@@ -28,7 +17,12 @@ type Story = StoryObj<typeof meta>;
  * Default状態
  */
 export const Default: Story = {
-  args: Normal.args,
+  args: {
+    label: 'Text',
+    viewport: 'desktop',
+    state: 'default',
+    onDelete: () => {},
+  },
 };
 
 /**
@@ -36,7 +30,7 @@ export const Default: Story = {
  */
 export const Hover: Story = {
   args: {
-    ...Normal.args,
+    ...Default.args,
     state: 'hover',
   },
 };
@@ -46,7 +40,7 @@ export const Hover: Story = {
  */
 export const Active: Story = {
   args: {
-    ...Normal.args,
+    ...Default.args,
     state: 'active',
   },
 };
@@ -56,7 +50,7 @@ export const Active: Story = {
  */
 export const Focus: Story = {
   args: {
-    ...Normal.args,
+    ...Default.args,
     state: 'focus',
   },
 };
@@ -66,7 +60,7 @@ export const Focus: Story = {
  */
 export const Loading: Story = {
   args: {
-    ...Normal.args,
+    ...Default.args,
     state: 'loading',
   },
 };
@@ -76,20 +70,20 @@ export const Loading: Story = {
  */
 export const Disabled: Story = {
   args: {
-    ...Normal.args,
-    state: 'disabled',
+    ...Default.args,
     disabled: true,
   },
 };
 
 /**
  * 全状態の一覧表示
+ *
+ * Note: state prop は Storybook でのビジュアル確認用です。
+ * 実際のインタラクションは CSS の擬似クラスで自動的に処理されます。
  */
 export const AllStates: Story = {
   args: {
-    children: 'Text',
-    size: 'desktop',
-    state: 'default',
+    label: 'Text',
     onDelete: () => {},
   },
   render: () => (
@@ -102,49 +96,75 @@ export const AllStates: Story = {
       }}
     >
       <div>
-        <h3 style={{ marginBottom: '12px', color: '#666' }}>Desktop (12px)</h3>
+        <h3 style={{ marginBottom: '12px', color: '#666' }}>Desktop</h3>
         <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-          <InputChip {...Default.args} size="desktop">
-            Default
-          </InputChip>
-          <InputChip {...Hover.args} size="desktop">
-            Hover
-          </InputChip>
-          <InputChip {...Active.args} size="desktop">
-            Active
-          </InputChip>
-          <InputChip {...Focus.args} size="desktop">
-            Focus
-          </InputChip>
-          <InputChip {...Loading.args} size="desktop">
-            Loading
-          </InputChip>
-          <InputChip {...Disabled.args} size="desktop">
-            Disabled
-          </InputChip>
+          <InputChip viewport="desktop" label="Default" onDelete={() => {}} />
+          <InputChip
+            viewport="desktop"
+            state="hover"
+            label="Hover"
+            onDelete={() => {}}
+          />
+          <InputChip
+            viewport="desktop"
+            state="active"
+            label="Active"
+            onDelete={() => {}}
+          />
+          <InputChip
+            viewport="desktop"
+            state="focus"
+            label="Focus"
+            onDelete={() => {}}
+          />
+          <InputChip
+            viewport="desktop"
+            state="loading"
+            label="Loading"
+            onDelete={() => {}}
+          />
+          <InputChip
+            viewport="desktop"
+            label="Disabled"
+            disabled
+            onDelete={() => {}}
+          />
         </div>
       </div>
       <div>
-        <h3 style={{ marginBottom: '12px', color: '#666' }}>Phone (14px)</h3>
+        <h3 style={{ marginBottom: '12px', color: '#666' }}>Phone</h3>
         <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-          <InputChip {...Default.args} size="phone">
-            Default
-          </InputChip>
-          <InputChip {...Hover.args} size="phone">
-            Hover
-          </InputChip>
-          <InputChip {...Active.args} size="phone">
-            Active
-          </InputChip>
-          <InputChip {...Focus.args} size="phone">
-            Focus
-          </InputChip>
-          <InputChip {...Loading.args} size="phone">
-            Loading
-          </InputChip>
-          <InputChip {...Disabled.args} size="phone">
-            Disabled
-          </InputChip>
+          <InputChip viewport="phone" label="Default" onDelete={() => {}} />
+          <InputChip
+            viewport="phone"
+            state="hover"
+            label="Hover"
+            onDelete={() => {}}
+          />
+          <InputChip
+            viewport="phone"
+            state="active"
+            label="Active"
+            onDelete={() => {}}
+          />
+          <InputChip
+            viewport="phone"
+            state="focus"
+            label="Focus"
+            onDelete={() => {}}
+          />
+          <InputChip
+            viewport="phone"
+            state="loading"
+            label="Loading"
+            onDelete={() => {}}
+          />
+          <InputChip
+            viewport="phone"
+            label="Disabled"
+            disabled
+            onDelete={() => {}}
+          />
         </div>
       </div>
     </div>
