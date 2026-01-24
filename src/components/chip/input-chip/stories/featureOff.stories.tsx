@@ -1,25 +1,24 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-
-import { FilterChip } from '../../filter-chip';
+import { InputChip } from '../input-chip';
 
 const meta = {
-  title: 'Components/Chip/FilterChip/featureOff',
-  component: FilterChip,
+  title: 'Components/Chip/InputChip/featureOff',
+  component: InputChip,
   parameters: {
     layout: 'centered',
   },
-} satisfies Meta<typeof FilterChip>;
+} satisfies Meta<typeof InputChip>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
 /**
- * FilterChip - Desktop
+ * InputChip - Desktop
  */
 export const Desktop: Story = {
   render: () => (
     <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-      <FilterChip label="Text" viewport="desktop" />
+      <InputChip label="Text" viewport="desktop" onDelete={() => {}} />
     </div>
   ),
   args: {
@@ -28,12 +27,12 @@ export const Desktop: Story = {
 };
 
 /**
- * FilterChip - Phone
+ * InputChip - Phone
  */
 export const Phone: Story = {
   render: () => (
     <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-      <FilterChip label="Text" viewport="phone" />
+      <InputChip label="Text" viewport="phone" onDelete={() => {}} />
     </div>
   ),
   args: {

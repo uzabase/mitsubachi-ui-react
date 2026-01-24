@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './input-chip.module.css';
+import styles from './input-chip-group.module.css';
 
 /** InputChipGroupのProps */
 export interface InputChipGroupProps {

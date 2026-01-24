@@ -1,8 +1,8 @@
 import React from 'react';
 import styles from './input-chip.module.css';
-import CrossSmallIcon from './icons/cross-small.svg';
-import SpinnerIcon from './icons/spinner.svg';
-import type { ChipViewport } from './types';
+import CrossSmallIcon from '../icons/cross-small.svg';
+import SpinnerIcon from '../icons/spinner.svg';
+import type { ChipViewport } from '../types';
 
 /** InputChipの状態 */
 export type InputChipState =

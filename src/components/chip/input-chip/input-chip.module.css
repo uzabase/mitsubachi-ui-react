@@ -197,16 +197,3 @@
     transform: rotate(360deg);
   }
 }
-
-/* ============================================
-   InputChipGroup
-   ============================================ */
-
-.inputChipGroup {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 4px 4px;
-  align-items: flex-start;
-  align-content: flex-start;
-  overflow-x: hidden; /* 水平スクロールを禁止 */
-}

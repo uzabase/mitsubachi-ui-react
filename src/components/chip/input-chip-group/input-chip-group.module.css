@@ -1,0 +1,15 @@
+/**
+ * InputChipGroup コンポーネントスタイル
+ *
+ * CSS変数が未定義の場合のフォールバック値を設定しています。
+ * プロジェクトでデザイントークンが定義されている場合は、そちらが優先されます。
+ */
+
+.inputChipGroup {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 4px;
+  align-items: flex-start;
+  align-content: flex-start;
+  overflow-x: hidden; /* 水平スクロールを禁止 */
+}

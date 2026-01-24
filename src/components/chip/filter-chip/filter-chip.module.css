@@ -149,14 +149,3 @@
   display: inline-block;
   white-space: nowrap;
 }
-
-/* ============================================
-   FilterChipGroup
-   ============================================ */
-
-.filterChipGroup {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  align-items: flex-start;
-}

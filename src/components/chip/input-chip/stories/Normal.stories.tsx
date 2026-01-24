@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useState } from 'react';
 
-import { InputChip } from '../../input-chip';
+import { InputChip } from '../input-chip';
 
 const meta = {
   title: 'Components/Chip/InputChip',

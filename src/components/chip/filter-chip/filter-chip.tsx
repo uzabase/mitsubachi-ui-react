@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './filter-chip.module.css';
-import type { ChipViewport } from './types';
+import type { ChipViewport } from '../types';
 
 /** FilterChipの状態 */
 export type FilterChipState =

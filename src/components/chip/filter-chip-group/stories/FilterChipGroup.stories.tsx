@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useState } from 'react';
 
-import { FilterChip } from '../../filter-chip';
-import { FilterChipGroup } from '../../filter-chip-group';
+import { FilterChip } from '../../filter-chip/filter-chip';
+import { FilterChipGroup } from '../filter-chip-group';
 
 const meta = {
   title: 'Components/Chip/FilterChipGroup',

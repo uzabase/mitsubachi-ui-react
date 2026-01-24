@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import type { FilterChipProps } from './filter-chip';
-import styles from './filter-chip.module.css';
+import type { FilterChipProps } from '../filter-chip/filter-chip';
+import styles from './filter-chip-group.module.css';
 
 /** FilterChipGroupの共通Props */
 type FilterChipGroupPropsBase = {
