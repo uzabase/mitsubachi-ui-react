@@ -1,0 +1,332 @@
+/**
+ * Chip コンポーネントスタイル
+ *
+ * CSS変数が未定義の場合のフォールバック値を設定しています。
+ * プロジェクトでデザイントークンが定義されている場合は、そちらが優先されます。
+ */
+
+/* ============================================
+   FilterChip
+   ============================================ */
+
+.filterChip {
+  /* レイアウト */
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+
+  /* サイズ */
+  padding-block-start: 4px;
+  padding-inline-end: 8px;
+  padding-block-end: 4px;
+  padding-inline-start: 8px;
+
+  /* ボーダー */
+  border: none;
+  border-radius: 16px;
+
+  /* 背景とテキスト */
+  background: var(--surface-subtle-default, #f5f5f5);
+  color: var(--text-primary, #1a1a1a);
+
+  /* タイポグラフィ */
+  font-family: var(--typography-font-family, sans-serif);
+  font-weight: 400;
+  font-style: normal;
+  line-height: 130%;
+  letter-spacing: 0.02em;
+  text-align: center;
+
+  /* カーソル */
+  cursor: pointer;
+
+  /* その他 */
+  outline: none;
+  transition:
+    background-color 150ms ease-out,
+    color 150ms ease-out,
+    border-color 150ms ease-out,
+    border-width 150ms ease-out;
+}
+
+/* サイズ: desktop (12px) */
+.filterChip--desktop {
+  font-size: 12px;
+  min-height: 24px;
+}
+
+/* サイズ: phone (14px) */
+.filterChip--phone {
+  font-size: 14px;
+  min-height: 28px;
+  border: 1px solid var(--border-subtle-default, #e0e0e0);
+}
+
+/* 状態: hover */
+.filterChip:hover:not(.filterChip--disabled) {
+  background: var(--surface-subtle-hover, #e8e8e8);
+}
+
+.filterChip--phone:hover:not(.filterChip--disabled) {
+  background: var(--surface-subtle-hover, #e8e8e8);
+  border-color: var(--border-subtle-hover, #d0d0d0);
+}
+
+/* 状態: active */
+.filterChip:active:not(.filterChip--disabled) {
+  background: var(--surface-subtle-active, #d8d8d8);
+}
+
+.filterChip--phone:active:not(.filterChip--disabled) {
+  background: var(--surface-subtle-active, #d8d8d8);
+  border-color: var(--border-subtle-active, #c0c0c0);
+}
+
+/* 状態: focus */
+.filterChip:focus-visible:not(.filterChip--disabled) {
+  outline: 2px solid var(--focus-ring, #0066cc);
+  outline-offset: 2px;
+}
+
+.filterChip--phone:focus-visible:not(.filterChip--disabled) {
+  border-width: 2px;
+  border-color: var(--border-strong-focus, #000000);
+}
+
+/* 選択状態 */
+.filterChip--selected {
+  background: var(--surface-brand-default, #e3f2fd);
+  color: var(--text-primary, #1a1a1a);
+}
+
+.filterChip--selected:hover:not(.filterChip--disabled) {
+  background: var(--surface-brand-hover, #bbdefb);
+}
+
+.filterChip--selected:active:not(.filterChip--disabled) {
+  background: var(--surface-brand-active, #90caf9);
+}
+
+.filterChip--phone.filterChip--selected {
+  border-color: var(--border-subtle-default, #e0e0e0);
+}
+
+.filterChip--phone.filterChip--selected:focus-visible:not(
+    .filterChip--disabled
+  ) {
+  border-width: 2px;
+  border-color: var(--border-strong-focus, #000000);
+}
+
+/* 状態: disabled */
+.filterChip--disabled {
+  background: var(--surface-subtle-disabled, #f0f0f0);
+  color: var(--text-disabled, #b0b0b0);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.filterChip--phone.filterChip--disabled {
+  border-color: var(--border-subtle-disabled, #e8e8e8);
+}
+
+/* アイコン */
+.filterChipIcon {
+  display: inline-flex;
+  align-items: center;
+  font-size: 12px;
+  line-height: 1;
+  color: inherit;
+}
+
+.filterChip--phone .filterChipIcon {
+  font-size: 14px;
+}
+
+/* テキスト */
+.filterChipText {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+/* ============================================
+   FilterChipGroup
+   ============================================ */
+
+.filterChipGroup {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: flex-start;
+}
+
+/* ============================================
+   InputChip
+   ============================================ */
+
+.inputChip {
+  /* レイアウト */
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+
+  /* サイズ */
+  padding-block-start: 4px;
+  padding-inline-end: 4px;
+  padding-block-end: 4px;
+  padding-inline-start: 8px;
+
+  /* ボーダー */
+  border: none;
+  border-radius: 16px;
+
+  /* 背景とテキスト */
+  background: var(--surface-subtle-default, #f5f5f5);
+  color: var(--text-primary, #1a1a1a);
+
+  /* タイポグラフィ */
+  font-family: var(--typography-font-family, sans-serif);
+  font-weight: 400;
+  font-style: normal;
+  line-height: 130%;
+  letter-spacing: 0.02em;
+
+  /* その他 */
+  transition:
+    background-color 150ms ease-out,
+    color 150ms ease-out;
+}
+
+/* サイズ: desktop (12px) */
+.inputChip--desktop {
+  font-size: 12px;
+  min-height: 24px;
+}
+
+/* サイズ: phone (14px) */
+.inputChip--phone {
+  font-size: 14px;
+  min-height: 28px;
+}
+
+/* 状態: hover */
+.inputChip:hover:not(.inputChip--disabled) {
+  background: var(--surface-subtle-hover, #e8e8e8);
+}
+
+/* 状態: active */
+.inputChip:active:not(.inputChip--disabled) {
+  background: var(--surface-subtle-active, #d8d8d8);
+}
+
+/* 状態: focus */
+.inputChip:focus-within:not(.inputChip--disabled) {
+  outline: 2px solid var(--focus-ring, #0066cc);
+  outline-offset: 2px;
+}
+
+/* 状態: loading */
+.inputChip--loading {
+  /* loading状態のスタイル */
+  opacity: 0.8;
+}
+
+/* 状態: disabled */
+.inputChip--disabled {
+  background: var(--surface-subtle-disabled, #f0f0f0);
+  color: var(--text-disabled, #b0b0b0);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* テキスト */
+.inputChipText {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+/* 削除ボタン */
+.inputChipDelete {
+  /* レイアウト */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  /* サイズ */
+  width: 16px;
+  height: 16px;
+  padding: 0;
+  margin: 0;
+
+  /* ボーダー */
+  border: none;
+  border-radius: 50%;
+
+  /* 背景 */
+  background: transparent;
+
+  /* テキスト */
+  color: var(--text-primary, #1a1a1a);
+  font-size: 16px;
+  line-height: 1;
+  font-weight: 400;
+
+  /* カーソル */
+  cursor: pointer;
+
+  /* その他 */
+  outline: none;
+  transition:
+    background-color 150ms ease-out,
+    color 150ms ease-out;
+}
+
+.inputChip--desktop .inputChipDelete {
+  width: 14px;
+  height: 14px;
+  font-size: 14px;
+}
+
+.inputChipDelete:hover {
+  background: var(--surface-strong-hover, rgba(0, 0, 0, 0.1));
+}
+
+.inputChipDelete:active {
+  background: var(--surface-strong-active, rgba(0, 0, 0, 0.15));
+}
+
+.inputChipDelete:focus-visible {
+  outline: 2px solid var(--focus-ring, #0066cc);
+  outline-offset: 1px;
+}
+
+/* ローディング表示 */
+.inputChipLoading {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  font-size: 12px;
+  color: var(--text-secondary, #666666);
+}
+
+.inputChip--desktop .inputChipLoading {
+  width: 14px;
+  height: 14px;
+  font-size: 10px;
+}
+
+/* ============================================
+   InputChipGroup
+   ============================================ */
+
+.inputChipGroup {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: flex-start;
+  overflow-x: hidden; /* 水平スクロールを禁止 */
+}
