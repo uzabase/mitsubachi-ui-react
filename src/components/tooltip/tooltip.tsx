@@ -26,12 +26,6 @@ export interface TooltipProps {
    * @default 'center'
    */
   align?: TooltipAlign;
-  /** トリガーからの距離（px） */
-  sideOffset?: number;
-  /** ホバーから表示までの遅延時間（ms） */
-  delay?: number;
-  /** ホバー解除から非表示までの遅延時間（ms） */
-  closeDelay?: number;
 }
 
 /**
@@ -47,19 +41,21 @@ export const Tooltip = ({
   children,
   side = 'top',
   align = 'center',
-  sideOffset = 4,
-  delay = 200,
-  closeDelay = 0,
 }: TooltipProps) => {
+  // 固定値: sideOffset 8px, delay 200ms, closeDelay 0ms
+  const SIDE_OFFSET = 8;
+  const DELAY = 200;
+  const CLOSE_DELAY = 0;
+
   return (
-    <BaseTooltip.Provider delay={delay} closeDelay={closeDelay}>
+    <BaseTooltip.Provider delay={DELAY} closeDelay={CLOSE_DELAY}>
       <BaseTooltip.Root>
         <BaseTooltip.Trigger render={children} />
         <BaseTooltip.Portal>
           <BaseTooltip.Positioner
             side={side}
             align={align}
-            sideOffset={sideOffset}
+            sideOffset={SIDE_OFFSET}
             className={styles.positioner}
           >
             <BaseTooltip.Popup className={styles.popup}>
