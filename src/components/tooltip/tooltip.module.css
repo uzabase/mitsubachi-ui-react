@@ -1,0 +1,66 @@
+/**
+ * Tooltip コンポーネントスタイル
+ * 
+ * CSS変数が未定義の場合のフォールバック値を設定しています。
+ * プロジェクトでデザイントークンが定義されている場合は、そちらが優先されます。
+ */
+
+/* ポジショナーのスタイル - z-indexを最上位に設定 */
+.positioner {
+  z-index: 2147483647; /* 最大値：すべての要素の中で一番上に表示 */
+}
+
+/* ツールチップのポップアップ本体 */
+.popup {
+  /* サイズ */
+  inline-size: fit-content;
+  block-size: fit-content;
+  max-inline-size: 200px;
+
+  /* パディング */
+  padding-block-start: 4px; /* spacing-small */
+  padding-inline-end: 8px; /* spacing-medium */
+  padding-block-end: 4px; /* spacing-small */
+  padding-inline-start: 8px; /* spacing-medium */
+
+  /* ボーダー */
+  border-radius: 4px; /* border-radius-small */
+
+  /* 色 */
+  background: var(--surface-strong-default, #282828);
+  color: var(--text-inverse, #ffffff);
+
+  /* タイポグラフィ */
+  font-family: var(--typography-font-family, sans-serif);
+  font-weight: 400;
+  font-style: normal;
+  font-size: var(--typography-font-size-font-scale-30, 12px);
+  line-height: 130%;
+  letter-spacing: 0.02em; /* 2% */
+  vertical-align: middle;
+
+  /* テキスト折り返し（max-inline-sizeを超える場合） */
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
+
+  /* 影 */
+  box-shadow:
+    0px 1px 2px 0px var(--neutral-neutral-50-alpha, rgba(0, 0, 0, 0.29)),
+    0px 5px 9px 2px var(--neutral-neutral-30-alpha, rgba(0, 0, 0, 0.13));
+
+  /* その他 */
+  opacity: 1;
+
+  /* アニメーション */
+  transform-origin: var(--transform-origin);
+  transition:
+    opacity 150ms ease-out,
+    transform 150ms ease-out;
+}
+
+.popup[data-starting-style],
+.popup[data-ending-style] {
+  opacity: 0;
+  transform: scale(0.95);
+}
