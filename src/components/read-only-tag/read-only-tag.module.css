@@ -1,0 +1,73 @@
+/**
+ * ReadOnlyTag コンポーネントスタイル
+ *
+ * 情報の分類や属性を示すための表示専用タグ
+ */
+
+/* タグの基本スタイル */
+.tag {
+  /* レイアウト */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+
+  /* パディング */
+  padding-block-start: 2px;
+  padding-block-end: 2px;
+  padding-inline-start: 4px;
+  padding-inline-end: 4px;
+
+  /* ボーダー */
+  border-radius: 4px;
+
+  /* タイポグラフィ */
+  font-family: var(--typography-font-family, Arial, sans-serif);
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.3;
+  letter-spacing: 0.02em; /* 2% = 0.24px at 12px */
+
+  /* その他 */
+  inline-size: fit-content;
+  overflow: clip;
+}
+
+/* テキストスタイル */
+.text {
+  flex-shrink: 0;
+}
+
+/* アイコンスタイル */
+.icon {
+  flex-shrink: 0;
+  inline-size: 12px;
+  block-size: 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* パターン: neutral（グレー） */
+.neutral {
+  background-color: var(--surface-semi-strong-default, #ededed);
+  color: var(--text-regular-default, rgba(0, 0, 0, 0.84));
+}
+
+/* パターン: information（青） */
+.information {
+  background-color: var(--surface-information, #edf1ff);
+  color: var(--text-information, #315ce8);
+}
+
+/* パターン: positive（緑） */
+.positive {
+  background-color: var(--surface-positive, #dff5ea);
+  color: var(--text-positive, #00783c);
+}
+
+/* パターン: negative（赤） */
+.negative {
+  background-color: var(--surface-negative, #ffedeb);
+  color: var(--text-negative, #c92812);
+}
