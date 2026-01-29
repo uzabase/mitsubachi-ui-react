@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
-import { LinkTag } from '../../src/components/link-tag';
+import { LinkTag } from '../../../src/components/tag/link-tag';
 
 const meta = {
-  title: 'Components/LinkTag',
+  title: 'Components/Tag/LinkTag',
   component: LinkTag,
   parameters: {
     layout: 'centered',
@@ -84,7 +84,7 @@ export const Medium: Story = {
 /**
  * Default状態
  */
-export const StateDefault: Story = {
+export const Default: Story = {
   args: {
     ...Medium.args,
     text: 'Default',
@@ -95,7 +95,7 @@ export const StateDefault: Story = {
 /**
  * Hover状態
  */
-export const StateHover: Story = {
+export const Hover: Story = {
   args: {
     ...Medium.args,
     text: 'Hover',
@@ -106,7 +106,7 @@ export const StateHover: Story = {
 /**
  * Active状態
  */
-export const StateActive: Story = {
+export const Active: Story = {
   args: {
     ...Medium.args,
     text: 'Active',
@@ -117,7 +117,7 @@ export const StateActive: Story = {
 /**
  * Focus状態
  */
-export const StateFocus: Story = {
+export const Focus: Story = {
   args: {
     ...Medium.args,
     text: 'Focus',
@@ -126,9 +126,9 @@ export const StateFocus: Story = {
 };
 
 /**
- * すべての状態を一覧表示
+ * すべてのパターンを一覧表示
  */
-export const AllStates: Story = {
+export const AllPatterns: Story = {
   render: () => (
     <div
       style={{
@@ -138,16 +138,28 @@ export const AllStates: Story = {
         padding: '40px',
       }}
     >
+      {/* サイズ別 */}
+      <div>
+        <h3 style={{ marginBottom: '16px', color: '#666', fontSize: '14px' }}>
+          サイズ別
+        </h3>
+        <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
+          <LinkTag {...XSmall.args} />
+          <LinkTag {...Small.args} />
+          <LinkTag {...Medium.args} />
+        </div>
+      </div>
+
       {/* 状態別 */}
       <div>
         <h3 style={{ marginBottom: '16px', color: '#666', fontSize: '14px' }}>
           状態別
         </h3>
         <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
-          <LinkTag {...StateDefault.args} />
-          <LinkTag {...StateHover.args} />
-          <LinkTag {...StateActive.args} />
-          <LinkTag {...StateFocus.args} />
+          <LinkTag {...Default.args} />
+          <LinkTag {...Hover.args} />
+          <LinkTag {...Active.args} />
+          <LinkTag {...Focus.args} />
         </div>
       </div>
 
@@ -191,105 +203,6 @@ export const AllStates: Story = {
             <LinkTag {...Medium.args} state="active" />
             <LinkTag {...Medium.args} state="focus" />
           </div>
-        </div>
-      </div>
-    </div>
-  ),
-};
-
-/**
- * すべてのサイズを一覧表示
- */
-export const AllSizes: Story = {
-  render: () => (
-    <div
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        gap: '32px',
-        padding: '40px',
-      }}
-    >
-      {/* サイズ使用ガイドライン */}
-      <div>
-        <h3 style={{ marginBottom: '16px', color: '#666', fontSize: '14px' }}>
-          サイズ使用ガイドライン
-        </h3>
-        <ul
-          style={{
-            marginBottom: '16px',
-            color: '#666',
-            fontSize: '12px',
-            lineHeight: '1.6',
-          }}
-        >
-          <li>
-            <strong>x-small</strong>: 文中や文末に置くときは、x-smallを使用。
-          </li>
-          <li>
-            <strong>small</strong>:
-            原則はmediumだが、12pxの文字列と並べて配置するときは、smallサイズでもOK
-          </li>
-          <li>
-            <strong>medium</strong>: 原則、mediumを使用。
-          </li>
-        </ul>
-      </div>
-
-      {/* サイズ別 */}
-      <div>
-        <h3 style={{ marginBottom: '16px', color: '#666', fontSize: '14px' }}>
-          サイズ別
-        </h3>
-        <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
-          <LinkTag {...XSmall.args} />
-          <LinkTag {...Small.args} />
-          <LinkTag {...Medium.args} />
-        </div>
-      </div>
-
-      {/* 状態別 */}
-      <div>
-        <h3 style={{ marginBottom: '16px', color: '#666', fontSize: '14px' }}>
-          状態別
-        </h3>
-        <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
-          <LinkTag {...StateDefault.args} />
-          <LinkTag {...StateHover.args} />
-          <LinkTag {...StateActive.args} />
-          <LinkTag {...StateFocus.args} />
-        </div>
-      </div>
-
-      {/* 実際の使用例 */}
-      <div>
-        <h3 style={{ marginBottom: '16px', color: '#666', fontSize: '14px' }}>
-          実際の使用例
-        </h3>
-        <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
-          <LinkTag {...Medium.args} text="カテゴリA" />
-          <LinkTag {...Medium.args} text="カテゴリB" />
-          <LinkTag {...Medium.args} text="タグ1" />
-          <LinkTag {...Small.args} text="タグ2" />
-          <LinkTag {...Small.args} text="タグ3" />
-          <LinkTag {...XSmall.args} text="小タグ" />
-        </div>
-      </div>
-
-      {/* インタラクション状態の説明 */}
-      <div>
-        <h3 style={{ marginBottom: '16px', color: '#666', fontSize: '14px' }}>
-          インタラクション状態
-        </h3>
-        <p style={{ marginBottom: '12px', color: '#666', fontSize: '12px' }}>
-          通常はCSS疑似クラス（:hover, :active,
-          :focus）で自動的に状態が適用されますが、
-          stateプロパティを使用することで状態を固定表示できます。
-        </p>
-        <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
-          <LinkTag {...Medium.args} text="マウスを乗せてみてください" />
-          <LinkTag {...Medium.args} text="クリックしてみてください" />
-          <LinkTag {...Medium.args} text="Tabでフォーカス" />
         </div>
       </div>
     </div>

@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
-import { ReadOnlyTag } from '../../src/components/read-only-tag';
+import { ReadOnlyTag } from '../../../src/components/tag/read-only-tag';
 
 /** サンプルアイコン（上矢印） */
 const ArrowUpIcon = () => (
@@ -41,7 +41,7 @@ const ArrowDownIcon = () => (
 );
 
 const meta = {
-  title: 'Components/ReadOnlyTag',
+  title: 'Components/Tag/ReadOnlyTag',
   component: ReadOnlyTag,
   parameters: {
     layout: 'centered',
