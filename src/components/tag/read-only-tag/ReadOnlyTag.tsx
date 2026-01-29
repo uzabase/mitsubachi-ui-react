@@ -33,6 +33,8 @@ export interface ReadOnlyTagProps {
    * @default 'neutral'
    */
   pattern?: ReadOnlyTagPattern;
+  'aria-label'?: string;
+  role?: 'status' | 'alert' | 'note';
 }
 
 /**
@@ -47,9 +49,15 @@ export const ReadOnlyTag = ({
   showIcon = false,
   icon,
   pattern = 'neutral',
+  'aria-label': ariaLabel,
+  role = 'status',
 }: ReadOnlyTagProps) => {
   return (
-    <span className={`${styles.tag} ${styles[pattern]}`}>
+    <span
+      className={`${styles.tag} ${styles[pattern]}`}
+      role={role}
+      aria-label={ariaLabel}
+    >
       {showIcon && icon && <span className={styles.icon}>{icon}</span>}
       <span className={styles.text}>{text}</span>
     </span>

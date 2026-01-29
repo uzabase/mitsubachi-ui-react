@@ -36,6 +36,7 @@ interface LinkTagAsLinkProps extends React.AnchorHTMLAttributes<HTMLAnchorElemen
    * hrefを指定するとa要素として動作します
    */
   href: string;
+  'aria-label'?: string;
 }
 
 /** button要素としてのProps */
@@ -66,6 +67,7 @@ interface LinkTagAsButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElem
    * hrefを指定しない場合はbutton要素として動作します
    */
   href?: never;
+  'aria-label'?: string;
 }
 
 export type LinkTagProps = LinkTagAsLinkProps | LinkTagAsButtonProps;

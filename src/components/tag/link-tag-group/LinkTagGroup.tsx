@@ -6,15 +6,16 @@ export interface LinkTagGroupProps {
   /**
    * 表示するタグの配列
    */
-  tags: Array<LinkTagProps>;
+  tags: Array<LinkTagProps & { id?: string }>;
 }
 
 export const LinkTagGroup = ({ tags }: LinkTagGroupProps) => {
   return (
     <div className={styles.container}>
-      {tags.map((tag, index) => (
-        <LinkTag key={index} {...tag} />
-      ))}
+      {tags.map((tag, index) => {
+        const key = tag.id ?? `${tag.text}-${index}`;
+        return <LinkTag key={key} {...tag} />;
+      })}
     </div>
   );
 };
