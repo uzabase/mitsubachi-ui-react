@@ -104,26 +104,3 @@
 .x-small .text {
   line-height: 1.5;
 }
-
-/* 状態: default */
-.default {
-  background-color: var(--surface-semi-strong-default, #ededed);
-}
-
-/* 状態: hover */
-.hover {
-  background-color: var(--surface-semi-strong-hover, #e5e5e5);
-}
-
-/* 状態: active */
-.active {
-  background-color: var(--surface-semi-strong-active, #dfdfdf);
-}
-
-/* 状態: focus（スタイルは後でFigmaデザインに基づき更新予定） */
-.focus {
-  outline: none;
-  box-shadow:
-    0 0 0 2px var(--surface-regular-default, #ffffff),
-    0 0 0 4px var(--focus-ring-default, #191919);
-}

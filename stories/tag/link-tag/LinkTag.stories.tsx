@@ -29,11 +29,6 @@ const meta = {
       options: ['x-small', 'small', 'medium'],
       description: 'タグのサイズ',
     },
-    state: {
-      control: 'select',
-      options: ['default', 'hover', 'active', 'focus'],
-      description: 'タグの状態',
-    },
     href: {
       control: 'text',
       description: 'リンク先のURL（指定するとa要素として動作）',
@@ -82,13 +77,33 @@ export const Medium: Story = {
 };
 
 /**
- * Default状態
+ * すべてのサイズを一覧表示
  */
-export const Default: Story = {
+export const AllSizes: Story = {
+  render: () => (
+    <div
+      style={{
+        display: 'flex',
+        gap: '12px',
+        padding: '40px',
+        flexWrap: 'wrap',
+      }}
+    >
+      <LinkTag text="x-small" size="x-small" href="#" />
+      <LinkTag text="small" size="small" href="#" />
+      <LinkTag text="medium" size="medium" href="#" />
+    </div>
+  ),
+};
+
+/**
+ * Normal状態（デフォルト）
+ */
+export const Normal: Story = {
   args: {
-    ...Medium.args,
-    text: 'Default',
-    state: 'default',
+    text: 'Normal',
+    size: 'medium',
+    href: '#',
   },
 };
 
@@ -97,9 +112,14 @@ export const Default: Story = {
  */
 export const Hover: Story = {
   args: {
-    ...Medium.args,
     text: 'Hover',
-    state: 'hover',
+    size: 'medium',
+    href: '#',
+  },
+  parameters: {
+    pseudo: {
+      hover: true,
+    },
   },
 };
 
@@ -108,9 +128,14 @@ export const Hover: Story = {
  */
 export const Active: Story = {
   args: {
-    ...Medium.args,
     text: 'Active',
-    state: 'active',
+    size: 'medium',
+    href: '#',
+  },
+  parameters: {
+    pseudo: {
+      active: true,
+    },
   },
 };
 
@@ -119,92 +144,13 @@ export const Active: Story = {
  */
 export const Focus: Story = {
   args: {
-    ...Medium.args,
     text: 'Focus',
-    state: 'focus',
+    size: 'medium',
+    href: '#',
   },
-};
-
-/**
- * すべてのパターンを一覧表示
- */
-export const AllPatterns: Story = {
-  render: () => (
-    <div
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        gap: '32px',
-        padding: '40px',
-      }}
-    >
-      {/* サイズ別 */}
-      <div>
-        <h3 style={{ marginBottom: '16px', color: '#666', fontSize: '14px' }}>
-          サイズ別
-        </h3>
-        <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
-          <LinkTag {...XSmall.args} />
-          <LinkTag {...Small.args} />
-          <LinkTag {...Medium.args} />
-        </div>
-      </div>
-
-      {/* 状態別 */}
-      <div>
-        <h3 style={{ marginBottom: '16px', color: '#666', fontSize: '14px' }}>
-          状態別
-        </h3>
-        <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
-          <LinkTag {...Default.args} />
-          <LinkTag {...Hover.args} />
-          <LinkTag {...Active.args} />
-          <LinkTag {...Focus.args} />
-        </div>
-      </div>
-
-      {/* サイズ × 状態の組み合わせ */}
-      <div>
-        <h3 style={{ marginBottom: '16px', color: '#666', fontSize: '14px' }}>
-          サイズ × 状態の組み合わせ
-        </h3>
-
-        <div style={{ marginBottom: '24px' }}>
-          <h4 style={{ marginBottom: '8px', color: '#888', fontSize: '12px' }}>
-            x-small
-          </h4>
-          <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-            <LinkTag {...XSmall.args} state="default" />
-            <LinkTag {...XSmall.args} state="hover" />
-            <LinkTag {...XSmall.args} state="active" />
-            <LinkTag {...XSmall.args} state="focus" />
-          </div>
-        </div>
-
-        <div style={{ marginBottom: '24px' }}>
-          <h4 style={{ marginBottom: '8px', color: '#888', fontSize: '12px' }}>
-            small
-          </h4>
-          <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-            <LinkTag {...Small.args} state="default" />
-            <LinkTag {...Small.args} state="hover" />
-            <LinkTag {...Small.args} state="active" />
-            <LinkTag {...Small.args} state="focus" />
-          </div>
-        </div>
-
-        <div>
-          <h4 style={{ marginBottom: '8px', color: '#888', fontSize: '12px' }}>
-            medium
-          </h4>
-          <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-            <LinkTag {...Medium.args} state="default" />
-            <LinkTag {...Medium.args} state="hover" />
-            <LinkTag {...Medium.args} state="active" />
-            <LinkTag {...Medium.args} state="focus" />
-          </div>
-        </div>
-      </div>
-    </div>
-  ),
+  parameters: {
+    pseudo: {
+      focus: true,
+    },
+  },
 };

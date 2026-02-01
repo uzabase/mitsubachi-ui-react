@@ -4,9 +4,6 @@ import styles from './link-tag.module.css';
 /** Link Tagのサイズ */
 export type LinkTagSize = 'x-small' | 'small' | 'medium';
 
-/** Link Tagの状態 */
-export type LinkTagState = 'default' | 'hover' | 'active' | 'focus';
-
 /** a要素としてのProps */
 interface LinkTagAsLinkProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
   /**
@@ -22,15 +19,6 @@ interface LinkTagAsLinkProps extends React.AnchorHTMLAttributes<HTMLAnchorElemen
    * @default 'medium'
    */
   size?: LinkTagSize;
-  /**
-   * タグの状態
-   * - default: デフォルト状態
-   * - hover: ホバー状態
-   * - active: アクティブ状態
-   * - focus: フォーカス状態
-   * @default 'default'
-   */
-  state?: LinkTagState;
   /**
    * リンク先のURL
    * hrefを指定するとa要素として動作します
@@ -54,15 +42,6 @@ interface LinkTagAsButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElem
    * @default 'medium'
    */
   size?: LinkTagSize;
-  /**
-   * タグの状態
-   * - default: デフォルト状態
-   * - hover: ホバー状態
-   * - active: アクティブ状態
-   * - focus: フォーカス状態
-   * @default 'default'
-   */
-  state?: LinkTagState;
   /**
    * hrefを指定しない場合はbutton要素として動作します
    */
@@ -89,11 +68,10 @@ export type LinkTagProps = LinkTagAsLinkProps | LinkTagAsButtonProps;
 export const LinkTag = ({
   text = 'Text',
   size = 'medium',
-  state = 'default',
   className,
   ...props
 }: LinkTagProps) => {
-  const classes = `${styles.tag} ${styles[size]} ${styles[state]} ${className || ''}`;
+  const classes = `${styles.tag} ${styles[size]} ${className || ''}`;
 
   if ('href' in props && props.href) {
     const { href, ...anchorProps } = props;

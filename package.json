@@ -59,6 +59,7 @@
     "playwright": "^1.57.0",
     "prettier": "^3.8.0",
     "storybook": "^10.1.11",
+    "storybook-addon-pseudo-states": "^10.2.3",
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.53.0",
     "vitest": "^4.0.17"
