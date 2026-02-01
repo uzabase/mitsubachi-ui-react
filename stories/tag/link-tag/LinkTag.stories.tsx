@@ -33,6 +33,10 @@ const meta = {
       control: 'text',
       description: 'リンク先のURL（指定するとa要素として動作）',
     },
+    'aria-label': {
+      control: 'text',
+      description: 'アクセシビリティラベル',
+    },
   },
 } satisfies Meta<typeof LinkTag>;
 
