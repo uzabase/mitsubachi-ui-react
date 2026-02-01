@@ -2,8 +2,8 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import { ReadOnlyTag } from '../../../src/components/tag/read-only-tag';
 
-/** サンプルアイコン（上矢印） */
-const ArrowUpIcon = () => (
+/** arrow-up-small アイコン */
+const ArrowUpSmallIcon = () => (
   <svg
     width="12"
     height="12"
@@ -21,8 +21,8 @@ const ArrowUpIcon = () => (
   </svg>
 );
 
-/** サンプルアイコン（下矢印） */
-const ArrowDownIcon = () => (
+/** arrow-down-small アイコン */
+const ArrowDownSmallIcon = () => (
   <svg
     width="12"
     height="12"
@@ -39,6 +39,12 @@ const ArrowDownIcon = () => (
     />
   </svg>
 );
+
+/** アイコンマップ */
+const icons = {
+  'arrow-up-small': <ArrowUpSmallIcon />,
+  'arrow-down-small': <ArrowDownSmallIcon />,
+};
 
 const meta = {
   title: 'Components/Tag/ReadOnlyTag',
@@ -60,6 +66,12 @@ const meta = {
     showIcon: {
       control: 'boolean',
       description: 'アイコンを表示するかどうか',
+    },
+    icon: {
+      control: 'select',
+      options: ['arrow-up-small', 'arrow-down-small'],
+      mapping: icons,
+      description: 'アイコンの種類',
     },
   },
 } satisfies Meta<typeof ReadOnlyTag>;
@@ -119,7 +131,7 @@ export const PositiveWithIcon: Story = {
     ...Positive.args,
     text: '黒字化',
     showIcon: true,
-    icon: <ArrowUpIcon />,
+    icon: 'arrow-up-small',
   },
 };
 
@@ -131,7 +143,7 @@ export const NegativeWithIcon: Story = {
     ...Negative.args,
     text: '赤字化',
     showIcon: true,
-    icon: <ArrowDownIcon />,
+    icon: 'arrow-down-small',
   },
 };
 
@@ -167,8 +179,18 @@ export const AllPatterns: Story = {
           アイコン付き
         </h3>
         <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
-          <ReadOnlyTag {...PositiveWithIcon.args} />
-          <ReadOnlyTag {...NegativeWithIcon.args} />
+          <ReadOnlyTag
+            pattern="positive"
+            text="黒字化"
+            showIcon
+            icon={<ArrowUpSmallIcon />}
+          />
+          <ReadOnlyTag
+            pattern="negative"
+            text="赤字化"
+            showIcon
+            icon={<ArrowDownSmallIcon />}
+          />
         </div>
       </div>
 
@@ -178,12 +200,22 @@ export const AllPatterns: Story = {
           実際の使用例
         </h3>
         <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
-          <ReadOnlyTag {...Neutral.args} text="タグ" />
-          <ReadOnlyTag {...Information.args} text="現任" />
-          <ReadOnlyTag {...Positive.args} text="推奨" />
-          <ReadOnlyTag {...Negative.args} text="ロック中" />
-          <ReadOnlyTag {...PositiveWithIcon.args} text="増加" />
-          <ReadOnlyTag {...NegativeWithIcon.args} text="減少" />
+          <ReadOnlyTag pattern="neutral" text="タグ" />
+          <ReadOnlyTag pattern="information" text="現任" />
+          <ReadOnlyTag pattern="positive" text="推奨" />
+          <ReadOnlyTag pattern="negative" text="ロック中" />
+          <ReadOnlyTag
+            pattern="positive"
+            text="増加"
+            showIcon
+            icon={<ArrowUpSmallIcon />}
+          />
+          <ReadOnlyTag
+            pattern="negative"
+            text="減少"
+            showIcon
+            icon={<ArrowDownSmallIcon />}
+          />
         </div>
       </div>
     </div>
