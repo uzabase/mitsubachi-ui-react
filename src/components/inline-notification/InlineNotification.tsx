@@ -24,8 +24,6 @@ export interface InlineNotificationProps {
   status: InlineNotificationStatus;
   /** 通知のバリアント（表示スタイル） */
   variant: InlineNotificationVariant;
-  /** 追加のCSSクラス名 */
-  className?: string;
 }
 
 /** ステータスごとのデフォルトアイコン */
@@ -44,16 +42,11 @@ const defaultIcons: Record<InlineNotificationStatus, React.ReactNode> = {
  *
  */
 export const InlineNotification = (props: InlineNotificationProps) => {
-  const { text, status, variant, className } = props;
+  const { text, status, variant } = props;
 
   const displayIcon = defaultIcons[status];
 
-  const containerClassName = [
-    styles.container,
-    styles[status],
-    styles[variant],
-    className,
-  ]
+  const containerClassName = [styles.container, styles[status], styles[variant]]
     .filter(Boolean)
     .join(' ');
 
