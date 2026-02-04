@@ -1,0 +1,163 @@
+/**
+ * InlineNotification コンポーネントスタイル
+ *
+ * ユーザーの操作に対して即座に理解すべきエラーや時間的制約のある情報を、
+ * 画面の文脈の中で提示するための通知コンポーネント
+ */
+
+/* コンテナの基本スタイル */
+.container {
+  /* レイアウト */
+  display: flex;
+  align-items: flex-start;
+  inline-size: 100%;
+  min-inline-size: 256px;
+  box-sizing: border-box;
+
+  /* ボーダー */
+  border-radius: var(--border-radius-medium, 6px);
+
+  /* タイポグラフィ */
+  font-family: var(--typography-font-family, Arial, sans-serif);
+  font-weight: 400;
+}
+
+/* テキストスタイル */
+.text {
+  flex: 1 0 0;
+  min-inline-size: 0;
+  align-self: center;
+}
+
+/* アイコンスタイル */
+.icon {
+  flex-shrink: 0;
+  inline-size: 24px;
+  block-size: 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ==============================
+   バリアント: primary
+   ============================== */
+
+/* Desktop primary (721px以上) */
+.container.primary {
+  gap: var(--spacing-small, 8px);
+  padding: var(--spacing-x-large, 16px);
+}
+
+.container.primary .text {
+  font-size: var(--font-scale-40, 14px);
+  line-height: 150%;
+  letter-spacing: 0.02em;
+}
+
+/* Phone primary (0-720px) */
+@media (max-width: 720px) {
+  .container.primary {
+    gap: var(--spacing-x-small, 4px);
+    padding: var(--spacing-large, 12px);
+  }
+
+  .container.primary .text {
+    font-size: var(--font-scale-40, 14px);
+    line-height: 150%;
+    letter-spacing: 0.02em;
+  }
+}
+
+/* ==============================
+   バリアント: secondary
+   ============================== */
+
+/* Desktop secondary (721px以上) */
+.container.secondary {
+  gap: var(--spacing-x-small, 4px);
+  padding: var(--spacing-small, 8px);
+}
+
+.container.secondary .text {
+  font-size: var(--font-scale-30, 12px);
+  line-height: 130%;
+  letter-spacing: 0.02em;
+  color: var(--text-weak-default, rgba(0, 0, 0, 0.54));
+  padding-block-start: 1px;
+  padding-block-end: 1px;
+}
+
+/* Phone secondary (0-720px) */
+@media (max-width: 720px) {
+  .container.secondary {
+    gap: var(--spacing-x-small, 4px);
+    padding-block: var(--spacing-x-small, 4px);
+    padding-inline: var(--spacing-small, 8px);
+  }
+
+  .container.secondary .text {
+    font-size: var(--font-scale-40, 14px);
+    line-height: 130%;
+    letter-spacing: 0.02em;
+    color: var(--text-weak-default, rgba(0, 0, 0, 0.54));
+    padding-block-start: 1px;
+    padding-block-end: 1px;
+  }
+}
+
+/* ==============================
+   ステータス: information（青）
+   ============================== */
+
+.container.information.primary {
+  background-color: var(--surface-information, #edf1ff);
+}
+
+.container.information.primary .text {
+  color: var(--text-regular-default, rgba(0, 0, 0, 0.84));
+}
+
+.container.information.secondary {
+  background-color: var(--surface-semi-strong-default, #ededed);
+}
+
+/* ==============================
+   ステータス: success（緑）
+   ============================== */
+
+.container.success.primary {
+  background-color: var(--surface-success, #dff5ea);
+}
+
+.container.success.primary .text {
+  color: var(--text-regular-default, rgba(0, 0, 0, 0.84));
+}
+
+/* ==============================
+   ステータス: warning（黄）
+   ============================== */
+
+.container.warning.primary {
+  background-color: var(--surface-warning, #fcf6d4);
+}
+
+.container.warning.primary .text {
+  color: var(--text-regular-default, rgba(0, 0, 0, 0.84));
+}
+
+.container.warning.secondary {
+  background-color: var(--surface-semi-strong-default, #ededed);
+}
+
+/* ==============================
+   ステータス: error（赤）
+   ============================== */
+
+.container.error.primary {
+  background-color: var(--surface-error-default, #ffedeb);
+}
+
+.container.error.primary .text {
+  color: var(--text-regular-default, rgba(0, 0, 0, 0.84));
+}
