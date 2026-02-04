@@ -1,20 +1,17 @@
 /** warning-fill アイコン */
 export const WarningIcon = () => (
   <svg
-    width="24"
-    height="24"
-    viewBox="0 0 24 24"
+    width="20"
+    height="18"
+    viewBox="0 0 20 18"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
   >
     <path
-      d="M12 9V13M12 17H12.01M4.93 19H19.07C20.44 19 21.38 17.56 20.73 16.36L13.66 4.12C12.99 2.88 11.01 2.88 10.34 4.12L3.27 16.36C2.62 17.56 3.56 19 4.93 19Z"
-      fill="#DABA00"
-      stroke="#DABA00"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
+      d="M19.5979 16.3208L11.8812 2.95417C11.6562 2.57083 11.0229 2.57083 10.7979 2.95417L3.08125 16.3208C2.97292 16.5125 2.97292 16.7542 3.08125 16.9458C3.18958 17.1375 3.39792 17.2625 3.62292 17.2625H19.0562C19.2812 17.2625 19.4896 17.1458 19.5979 16.9458C19.7062 16.7542 19.7062 16.5125 19.5979 16.3208Z"
+      fill="var(--object-warning, #F0C800)"
     />
-    <path d="M12 9V13M12 17H12.01" stroke="white" strokeWidth="2" />
+    <path d="M10.7062 7.40417H11.9562V12.4042H10.7062V7.40417Z" fill="black" />
+    <path d="M12.0229 15.0708H10.6396V13.6375H12.0229V15.0708Z" fill="black" />
   </svg>
 );
