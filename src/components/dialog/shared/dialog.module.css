@@ -1,0 +1,194 @@
+/**
+ * Dialog 共通スタイル
+ *
+ * Figma デザイントークン（Base Component Speeda）を参照。
+ * ブレイクポイント: 720px（CLAUDE.md に準拠）
+ */
+
+/* ========== Backdrop ========== */
+.backdrop {
+  position: fixed;
+  inset: 0;
+  background: var(--neutral-neutral-50-alpha, rgba(0, 0, 0, 0.29));
+  z-index: 2147483646;
+}
+
+/* ========== Viewport ========== */
+.viewport {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-2x-large, 24px);
+  z-index: 2147483647;
+  box-sizing: border-box;
+}
+
+/* ========== Popup (共通) ========== */
+.popup {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  background: var(--zabuton-regular, #ffffff);
+  color: var(--text-regular-default, rgba(0, 0, 0, 0.84));
+  border: 1px solid var(--border-regular-default, rgba(0, 0, 0, 0.1));
+  border-radius: var(--border-radius-x-large, 12px);
+  box-shadow:
+    0px 1px 2px 0px var(--neutral-neutral-50-alpha, rgba(0, 0, 0, 0.29)),
+    0px 8px 12px 3px var(--neutral-neutral-30-alpha, rgba(0, 0, 0, 0.13));
+  max-block-size: calc(100dvh - 48px);
+  overflow: hidden;
+}
+
+/* ========== Size: small (560px) ========== */
+.popup.sizeSmall {
+  inline-size: 100%;
+  max-inline-size: var(--dialog-size-small, 560px);
+}
+
+/* ========== Size: medium ========== */
+.popup.sizeMedium {
+  inline-size: 100%;
+  max-inline-size: 720px;
+}
+
+/* ========== Size: large ========== */
+.popup.sizeLarge {
+  inline-size: 100%;
+  max-inline-size: 960px;
+}
+
+/* ========== Header ========== */
+.header {
+  flex-shrink: 0;
+  padding-block-start: var(--spacing-2x-large, 24px);
+  padding-block-end: var(--spacing-medium, 8px);
+  padding-inline: var(--spacing-3x-large, 32px);
+  border-block-end: 1px solid var(--border-regular-default, rgba(0, 0, 0, 0.1));
+}
+
+.title {
+  margin: 0;
+  font-family: var(--typography-font-family, Arial, sans-serif);
+  font-weight: var(--typography-font-weight-regular, 400);
+  font-size: var(--typography-font-size-font-scale-60, 18px);
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+  color: var(--text-regular-default, rgba(0, 0, 0, 0.84));
+}
+
+/* ========== Body ========== */
+.body {
+  flex: 1 1 auto;
+  min-block-size: 0;
+  overflow: auto;
+  padding-block: var(--spacing-2x-large, 24px);
+  padding-inline: var(--spacing-3x-large, 32px);
+  font-family: var(--typography-font-family, Arial, sans-serif);
+  font-size: var(--typography-font-size-font-scale-40, 14px);
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+  color: var(--text-regular-default, rgba(0, 0, 0, 0.84));
+}
+
+/* ========== Footer ========== */
+.footer {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--spacing-medium, 8px);
+  padding-block: var(--spacing-2x-large, 24px);
+  padding-inline: var(--spacing-3x-large, 32px);
+  border-block-start: 1px solid
+    var(--border-regular-default, rgba(0, 0, 0, 0.1));
+}
+
+/* Footer: キャンセル・閉じるボタン（セカンダリ） */
+.footerCancel {
+  padding-block: var(--spacing-medium, 8px);
+  padding-inline: var(--spacing-x-large, 16px);
+  font-family: var(--typography-font-family, Arial, sans-serif);
+  font-size: var(--typography-font-size-font-scale-40, 14px);
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--text-regular-default, rgba(0, 0, 0, 0.84));
+  background: transparent;
+  border: 1px solid var(--border-regular-default, rgba(0, 0, 0, 0.1));
+  border-radius: var(--border-radius-x-large, 12px);
+  cursor: pointer;
+}
+
+.footerCancel:hover {
+  background: var(--neutral-neutral-30-alpha, rgba(0, 0, 0, 0.13));
+}
+
+.footerCancel:focus-visible {
+  outline: 2px solid var(--purple-purple-100, #a442e8);
+  outline-offset: 2px;
+}
+
+/* Footer: アクションボタン（プライマリ・黒） */
+.footerAction {
+  padding-block: var(--spacing-medium, 8px);
+  padding-inline: var(--spacing-x-large, 16px);
+  font-family: var(--typography-font-family, Arial, sans-serif);
+  font-size: var(--typography-font-size-font-scale-40, 14px);
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--text-inverse, #ffffff);
+  background: var(--surface-strong-default, #282828);
+  border: none;
+  border-radius: var(--border-radius-x-large, 12px);
+  cursor: pointer;
+}
+
+.footerAction:hover {
+  background: #3d3d3d;
+}
+
+.footerAction:focus-visible {
+  outline: 2px solid var(--purple-purple-100, #a442e8);
+  outline-offset: 2px;
+}
+
+/* Footer: 破壊的アクションボタン（赤） */
+.footerActionDestructive {
+  color: var(--text-inverse, #ffffff);
+  background: var(--surface-error-default, #d93020);
+}
+
+.footerActionDestructive:hover {
+  background: #b3281a;
+}
+
+/* ========== Variant: action — Phone で横余白・高さは広がらない ========== */
+@media (max-width: 720px) {
+  .viewport.variantAction {
+    padding-inline: var(--spacing-x-large, 16px);
+  }
+
+  .popup.variantAction {
+    max-block-size: min(80dvh, 560px);
+  }
+}
+
+/* ========== Variant: information / form — Phone で画面端まで・高さも広がる ========== */
+@media (max-width: 720px) {
+  .viewport.variantInformation,
+  .viewport.variantForm {
+    padding: 0;
+    align-items: stretch;
+  }
+
+  .popup.variantInformation,
+  .popup.variantForm {
+    max-inline-size: none;
+    max-block-size: none;
+    inline-size: 100%;
+    block-size: 100%;
+    border-radius: 0;
+    border-width: 0;
+  }
+}
