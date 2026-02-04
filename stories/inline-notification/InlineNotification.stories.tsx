@@ -17,10 +17,6 @@ const meta = {
   ],
   tags: ['autodocs'],
   argTypes: {
-    text: {
-      control: 'text',
-      description: '通知メッセージのテキスト（必須）',
-    },
     status: {
       control: 'select',
       options: ['information', 'success', 'warning', 'error'],
@@ -30,6 +26,11 @@ const meta = {
       control: 'radio',
       options: ['primary', 'secondary'],
       description: '通知のバリアント（表示スタイル）',
+    },
+    children: {
+      control: 'text',
+      description:
+        '通知メッセージのコンテンツ（テキスト、太字、リンク、改行などを含む）',
     },
   },
 } satisfies Meta<typeof InlineNotification>;
@@ -45,7 +46,7 @@ export const PrimaryInformation: Story = {
   args: {
     status: 'information',
     variant: 'primary',
-    text: 'Message',
+    children: 'Message',
   },
 };
 
@@ -57,7 +58,7 @@ export const PrimarySuccess: Story = {
   args: {
     status: 'success',
     variant: 'primary',
-    text: 'Message',
+    children: 'Message',
   },
 };
 
@@ -69,7 +70,7 @@ export const PrimaryWarning: Story = {
   args: {
     status: 'warning',
     variant: 'primary',
-    text: 'Message',
+    children: 'Message',
   },
 };
 
@@ -81,7 +82,7 @@ export const PrimaryError: Story = {
   args: {
     status: 'error',
     variant: 'primary',
-    text: 'Message',
+    children: 'Message',
   },
 };
 
@@ -92,7 +93,7 @@ export const SecondaryInformation: Story = {
   args: {
     status: 'information',
     variant: 'secondary',
-    text: 'Message',
+    children: 'Message',
   },
 };
 
@@ -103,7 +104,7 @@ export const SecondaryWarning: Story = {
   args: {
     status: 'warning',
     variant: 'secondary',
-    text: 'Message',
+    children: 'Message',
   },
 };
 
@@ -115,7 +116,8 @@ export const LongText: Story = {
   args: {
     status: 'information',
     variant: 'primary',
-    text: 'メッセージが入りますメッセージが入りますメッセージが入りますメッセージが入りますメッセージが入りますメッセージが入りますメッセージが入ります',
+    children:
+      'メッセージが入りますメッセージが入りますメッセージが入りますメッセージが入りますメッセージが入りますメッセージが入りますメッセージが入ります',
   },
 };
 
@@ -126,7 +128,7 @@ export const AllPatterns: Story = {
   args: {
     status: 'information',
     variant: 'primary',
-    text: 'Message',
+    children: 'Message',
   },
   render: () => (
     <div
@@ -143,26 +145,18 @@ export const AllPatterns: Story = {
           Primary
         </h3>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-          <InlineNotification
-            status="information"
-            variant="primary"
-            text="Information message"
-          />
-          <InlineNotification
-            status="success"
-            variant="primary"
-            text="Success message"
-          />
-          <InlineNotification
-            status="warning"
-            variant="primary"
-            text="Warning message"
-          />
-          <InlineNotification
-            status="error"
-            variant="primary"
-            text="Error message"
-          />
+          <InlineNotification status="information" variant="primary">
+            Information message
+          </InlineNotification>
+          <InlineNotification status="success" variant="primary">
+            Success message
+          </InlineNotification>
+          <InlineNotification status="warning" variant="primary">
+            Warning message
+          </InlineNotification>
+          <InlineNotification status="error" variant="primary">
+            Error message
+          </InlineNotification>
         </div>
       </div>
 
@@ -172,16 +166,12 @@ export const AllPatterns: Story = {
           Secondary
         </h3>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-          <InlineNotification
-            status="information"
-            variant="secondary"
-            text="Information"
-          />
-          <InlineNotification
-            status="warning"
-            variant="secondary"
-            text="Warning"
-          />
+          <InlineNotification status="information" variant="secondary">
+            Information
+          </InlineNotification>
+          <InlineNotification status="warning" variant="secondary">
+            Warning
+          </InlineNotification>
         </div>
       </div>
     </div>
@@ -196,7 +186,7 @@ export const Responsive: Story = {
   args: {
     status: 'information',
     variant: 'primary',
-    text: 'Message',
+    children: 'Message',
   },
   parameters: {
     layout: 'fullscreen',
@@ -217,16 +207,12 @@ export const Responsive: Story = {
         </p>
       </div>
       <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-        <InlineNotification
-          status="information"
-          variant="primary"
-          text="この通知はレスポンシブ対応しています"
-        />
-        <InlineNotification
-          status="warning"
-          variant="secondary"
-          text="画面幅に応じてスタイルが変わります"
-        />
+        <InlineNotification status="information" variant="primary">
+          この通知はレスポンシブ対応しています
+        </InlineNotification>
+        <InlineNotification status="warning" variant="secondary">
+          画面幅に応じてスタイルが変わります
+        </InlineNotification>
       </div>
     </div>
   ),

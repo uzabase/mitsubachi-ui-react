@@ -18,12 +18,12 @@ export type InlineNotificationStatus =
 export type InlineNotificationVariant = 'primary' | 'secondary';
 
 export interface InlineNotificationProps {
-  /** 通知メッセージのテキスト */
-  text: string;
   /** 通知のステータス（色・アイコンの種類） */
   status: InlineNotificationStatus;
   /** 通知のバリアント（表示スタイル） */
   variant: InlineNotificationVariant;
+  /** 通知メッセージのコンテンツ（テキスト、太字、リンク、改行などを含む） */
+  children: React.ReactNode;
 }
 
 /** ステータスごとのデフォルトアイコン */
@@ -42,7 +42,7 @@ const defaultIcons: Record<InlineNotificationStatus, React.ReactNode> = {
  *
  */
 export const InlineNotification = (props: InlineNotificationProps) => {
-  const { text, status, variant } = props;
+  const { status, variant, children } = props;
 
   const displayIcon = defaultIcons[status];
 
@@ -56,7 +56,7 @@ export const InlineNotification = (props: InlineNotificationProps) => {
       aria-live={status === 'error' ? 'assertive' : 'polite'}
     >
       <span className={styles.icon}>{displayIcon}</span>
-      <span className={styles.text}>{text}</span>
+      <span className={styles.text}>{children}</span>
     </div>
   );
 };
