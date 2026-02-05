@@ -5,9 +5,8 @@ import {
   DialogHeader,
   DialogBody,
   DialogFooter,
-  type DialogSize,
-  type DialogFooterActionVariant,
 } from '../shared';
+import styles from './information-dialog.module.css';
 
 /** Information Dialog のサイズ（Desktop 時） */
 export type InformationDialogSize = 'small' | 'medium' | 'large';
@@ -45,8 +44,6 @@ export interface InformationDialogFooterProps {
   actionLabel: string;
   /** アクションボタンクリック時のコールバック */
   onAction?: () => void;
-  /** アクションボタンの種類（破壊的変更の場合は 'destructive'） */
-  actionVariant?: DialogFooterActionVariant;
 }
 
 function InformationDialogRoot({
@@ -56,13 +53,13 @@ function InformationDialogRoot({
   size = 'medium',
   children,
 }: InformationDialogRootProps) {
-  const sizeValue: DialogSize = size;
   return (
-    <DialogContext.Provider value={{ size: sizeValue, variant: 'information' }}>
+    <DialogContext.Provider value={{ size, variant: 'information' }}>
       <DialogPrimitiveRoot
         open={open}
         defaultOpen={defaultOpen}
         onOpenChange={onOpenChange}
+        variantClassName={styles}
       >
         {children}
       </DialogPrimitiveRoot>

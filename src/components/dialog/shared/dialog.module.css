@@ -50,22 +50,28 @@
 /* ========== Size: medium ========== */
 .popup.sizeMedium {
   inline-size: 100%;
-  max-inline-size: 720px;
+  max-inline-size: 800px;
 }
 
 /* ========== Size: large ========== */
 .popup.sizeLarge {
   inline-size: 100%;
-  max-inline-size: 960px;
+  max-inline-size: 1280px;
 }
 
 /* ========== Header ========== */
 .header {
   flex-shrink: 0;
-  padding-block-start: var(--spacing-2x-large, 24px);
+  padding-block-start: var(--spacing-x-large, 16px);
   padding-block-end: var(--spacing-medium, 8px);
-  padding-inline: var(--spacing-3x-large, 32px);
-  border-block-end: 1px solid var(--border-regular-default, rgba(0, 0, 0, 0.1));
+  padding-inline: var(--spacing-2x-large, 24px);
+  border-block-end: 1px solid transparent;
+  transition: border-block-end-color 0s ease;
+}
+
+/* Body の上部が隠れているときに仕切り線を表示 */
+.header:has(+ .body[data-scrolled-from-top='true']) {
+  border-block-end-color: var(--border-regular-default, rgba(0, 0, 0, 0.1));
 }
 
 .title {
@@ -83,8 +89,8 @@
   flex: 1 1 auto;
   min-block-size: 0;
   overflow: auto;
-  padding-block: var(--spacing-2x-large, 24px);
-  padding-inline: var(--spacing-3x-large, 32px);
+  padding-block: var(--spacing-x-large, 16px);
+  padding-inline: var(--spacing-2x-large, 24px);
   font-family: var(--typography-font-family, Arial, sans-serif);
   font-size: var(--typography-font-size-font-scale-40, 14px);
   line-height: 1.5;
@@ -99,15 +105,23 @@
   align-items: center;
   justify-content: flex-end;
   gap: var(--spacing-medium, 8px);
-  padding-block: var(--spacing-2x-large, 24px);
-  padding-inline: var(--spacing-3x-large, 32px);
-  border-block-start: 1px solid
-    var(--border-regular-default, rgba(0, 0, 0, 0.1));
+  padding-block-start: var(--spacing-x-large, 16px);
+  padding-block-end: var(--spacing-x-large, 16px);
+  padding-inline-start: var(--spacing-x-large, 16px);
+  padding-inline-end: var(--spacing-2x-large, 24px);
+  border-block-start: 1px solid transparent;
+  transition: border-block-start-color 0s ease;
+}
+
+/* Body の下部が隠れているときに仕切り線を表示 */
+.body[data-scrolled-from-bottom='true'] + .footer {
+  border-block-start-color: var(--border-regular-default, rgba(0, 0, 0, 0.1));
 }
 
 /* Footer: キャンセル・閉じるボタン（セカンダリ） */
 .footerCancel {
-  padding-block: var(--spacing-medium, 8px);
+  min-block-size: 40px;
+  padding-block: 2px;
   padding-inline: var(--spacing-x-large, 16px);
   font-family: var(--typography-font-family, Arial, sans-serif);
   font-size: var(--typography-font-size-font-scale-40, 14px);
@@ -116,7 +130,7 @@
   color: var(--text-regular-default, rgba(0, 0, 0, 0.84));
   background: transparent;
   border: 1px solid var(--border-regular-default, rgba(0, 0, 0, 0.1));
-  border-radius: var(--border-radius-x-large, 12px);
+  border-radius: var(--border-radius-full, 9999px);
   cursor: pointer;
 }
 
@@ -125,13 +139,14 @@
 }
 
 .footerCancel:focus-visible {
-  outline: 2px solid var(--purple-purple-100, #a442e8);
+  outline: 2px solid var(--focus-ring-default, #191919);
   outline-offset: 2px;
 }
 
 /* Footer: アクションボタン（プライマリ・黒） */
 .footerAction {
-  padding-block: var(--spacing-medium, 8px);
+  min-block-size: 40px;
+  padding-block: 2px;
   padding-inline: var(--spacing-x-large, 16px);
   font-family: var(--typography-font-family, Arial, sans-serif);
   font-size: var(--typography-font-size-font-scale-40, 14px);
@@ -140,7 +155,7 @@
   color: var(--text-inverse, #ffffff);
   background: var(--surface-strong-default, #282828);
   border: none;
-  border-radius: var(--border-radius-x-large, 12px);
+  border-radius: var(--border-radius-full, 9999px);
   cursor: pointer;
 }
 
@@ -149,46 +164,6 @@
 }
 
 .footerAction:focus-visible {
-  outline: 2px solid var(--purple-purple-100, #a442e8);
+  outline: 2px solid var(--focus-ring-default, #191919);
   outline-offset: 2px;
-}
-
-/* Footer: 破壊的アクションボタン（赤） */
-.footerActionDestructive {
-  color: var(--text-inverse, #ffffff);
-  background: var(--surface-error-default, #d93020);
-}
-
-.footerActionDestructive:hover {
-  background: #b3281a;
-}
-
-/* ========== Variant: action — Phone で横余白・高さは広がらない ========== */
-@media (max-width: 720px) {
-  .viewport.variantAction {
-    padding-inline: var(--spacing-x-large, 16px);
-  }
-
-  .popup.variantAction {
-    max-block-size: min(80dvh, 560px);
-  }
-}
-
-/* ========== Variant: information / form — Phone で画面端まで・高さも広がる ========== */
-@media (max-width: 720px) {
-  .viewport.variantInformation,
-  .viewport.variantForm {
-    padding: 0;
-    align-items: stretch;
-  }
-
-  .popup.variantInformation,
-  .popup.variantForm {
-    max-inline-size: none;
-    max-block-size: none;
-    inline-size: 100%;
-    block-size: 100%;
-    border-radius: 0;
-    border-width: 0;
-  }
 }

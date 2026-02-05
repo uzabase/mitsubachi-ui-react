@@ -5,9 +5,8 @@ import {
   DialogHeader,
   DialogBody,
   DialogFooter,
-  type DialogSize,
-  type DialogFooterActionVariant,
 } from '../shared';
+import styles from './action-dialog.module.css';
 
 /** Action Dialog のサイズ（Desktop 時は small のみ） */
 export type ActionDialogSize = 'small';
@@ -45,8 +44,6 @@ export interface ActionDialogFooterProps {
   actionLabel: string;
   /** アクションボタンクリック時のコールバック */
   onAction?: () => void;
-  /** アクションボタンの種類（破壊的変更の場合は 'destructive'） */
-  actionVariant?: DialogFooterActionVariant;
 }
 
 function ActionDialogRoot({
@@ -56,13 +53,13 @@ function ActionDialogRoot({
   size = 'small',
   children,
 }: ActionDialogRootProps) {
-  const sizeValue: DialogSize = size;
   return (
-    <DialogContext.Provider value={{ size: sizeValue, variant: 'action' }}>
+    <DialogContext.Provider value={{ size, variant: 'action' }}>
       <DialogPrimitiveRoot
         open={open}
         defaultOpen={defaultOpen}
         onOpenChange={onOpenChange}
+        variantClassName={styles}
       >
         {children}
       </DialogPrimitiveRoot>

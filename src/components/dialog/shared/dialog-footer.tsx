@@ -1,9 +1,6 @@
-import React from 'react';
+import { useCallback } from 'react';
 import { Dialog as BaseDialog } from '@base-ui/react';
 import styles from './dialog.module.css';
-
-/** アクションボタンの種類（通常・破壊的） */
-export type DialogFooterActionVariant = 'default' | 'destructive';
 
 export interface DialogFooterProps {
   /** キャンセル・閉じるボタンのラベル。省略時はキャンセルボタンを表示しない */
@@ -14,8 +11,6 @@ export interface DialogFooterProps {
   actionLabel: string;
   /** アクションボタンクリック時のコールバック（ダイアログは Base UI により閉じる） */
   onAction?: () => void;
-  /** アクションボタンの種類（破壊的変更の場合は 'destructive'） */
-  actionVariant?: DialogFooterActionVariant;
 }
 
 /**
@@ -27,12 +22,10 @@ export function DialogFooter({
   onCancel,
   actionLabel,
   onAction,
-  actionVariant = 'default',
 }: DialogFooterProps) {
-  const actionClassName =
-    actionVariant === 'destructive'
-      ? `${styles.footerAction} ${styles.footerActionDestructive}`
-      : styles.footerAction;
+  const handleActionClick = useCallback(() => {
+    onAction?.();
+  }, [onAction]);
 
   return (
     <div className={styles.footer}>
@@ -46,25 +39,12 @@ export function DialogFooter({
         </BaseDialog.Close>
       )}
       <BaseDialog.Close
-        className={actionClassName}
-        render={(props) => {
-          const baseOnClick = props.onClick as
-            | ((e: React.MouseEvent<HTMLButtonElement>) => void)
-            | undefined;
-          return (
-            <button
-              {...props}
-              type="button"
-              onClick={(e) => {
-                onAction?.();
-                baseOnClick?.(e);
-              }}
-            >
-              {actionLabel}
-            </button>
-          );
-        }}
-      />
+        className={styles.footerAction}
+        onClick={handleActionClick}
+        render={<button type="button" />}
+      >
+        {actionLabel}
+      </BaseDialog.Close>
     </div>
   );
 }

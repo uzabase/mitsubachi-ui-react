@@ -28,6 +28,9 @@ const meta = {
       description: 'ダイアログのサイズ（Desktop 時）',
     },
   },
+  args: {
+    defaultOpen: true,
+  },
 } satisfies Meta<typeof FormDialog>;
 
 export default meta;
@@ -147,162 +150,6 @@ export const MultipleFields: Story = {
   args: {
     children: undefined,
     size: 'medium',
-  },
-};
-
-/**
- * ホバー状態のダイアログ（アクションボタンにマウスをホバー）。
- */
-export const Hover: Story = {
-  render: function Render(args) {
-    const [open, setOpen] = useState(true);
-    return (
-      <FormDialog {...args} open={open} onOpenChange={setOpen}>
-        <FormDialog.Header text="新規作成" />
-        <FormDialog.Body>
-          <form
-            id="form-dialog-form"
-            onSubmit={(e) => e.preventDefault()}
-            style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}
-          >
-            <label htmlFor="name">
-              名前
-              <input
-                id="name"
-                type="text"
-                placeholder="名前を入力"
-                style={{ marginInlineStart: '8px' }}
-              />
-            </label>
-            <label htmlFor="description">
-              説明
-              <input
-                id="description"
-                type="text"
-                placeholder="説明を入力"
-                style={{ marginInlineStart: '8px' }}
-              />
-            </label>
-          </form>
-        </FormDialog.Body>
-        <FormDialog.Footer
-          cancelLabel="キャンセル"
-          actionLabel="作成する"
-          onAction={() => console.log('submit')}
-        />
-      </FormDialog>
-    );
-  },
-  args: {
-    children: undefined,
-    size: 'medium',
-  },
-  parameters: {
-    pseudo: { hover: true },
-  },
-};
-
-/**
- * フォーカス状態のダイアログ（アクションボタンにキーボードフォーカス）。
- */
-export const Focus: Story = {
-  render: function Render(args) {
-    const [open, setOpen] = useState(true);
-    return (
-      <FormDialog {...args} open={open} onOpenChange={setOpen}>
-        <FormDialog.Header text="新規作成" />
-        <FormDialog.Body>
-          <form
-            id="form-dialog-form"
-            onSubmit={(e) => e.preventDefault()}
-            style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}
-          >
-            <label htmlFor="name">
-              名前
-              <input
-                id="name"
-                type="text"
-                placeholder="名前を入力"
-                style={{ marginInlineStart: '8px' }}
-              />
-            </label>
-            <label htmlFor="description">
-              説明
-              <input
-                id="description"
-                type="text"
-                placeholder="説明を入力"
-                style={{ marginInlineStart: '8px' }}
-              />
-            </label>
-          </form>
-        </FormDialog.Body>
-        <FormDialog.Footer
-          cancelLabel="キャンセル"
-          actionLabel="作成する"
-          onAction={() => console.log('submit')}
-        />
-      </FormDialog>
-    );
-  },
-  args: {
-    children: undefined,
-    size: 'medium',
-  },
-  parameters: {
-    pseudo: { focusVisible: true },
-  },
-};
-
-/**
- * アクティブ状態のダイアログ（アクションボタンを押下中）。
- */
-export const Active: Story = {
-  render: function Render(args) {
-    const [open, setOpen] = useState(true);
-    return (
-      <FormDialog {...args} open={open} onOpenChange={setOpen}>
-        <FormDialog.Header text="新規作成" />
-        <FormDialog.Body>
-          <form
-            id="form-dialog-form"
-            onSubmit={(e) => e.preventDefault()}
-            style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}
-          >
-            <label htmlFor="name">
-              名前
-              <input
-                id="name"
-                type="text"
-                placeholder="名前を入力"
-                style={{ marginInlineStart: '8px' }}
-              />
-            </label>
-            <label htmlFor="description">
-              説明
-              <input
-                id="description"
-                type="text"
-                placeholder="説明を入力"
-                style={{ marginInlineStart: '8px' }}
-              />
-            </label>
-          </form>
-        </FormDialog.Body>
-        <FormDialog.Footer
-          cancelLabel="キャンセル"
-          actionLabel="作成する"
-          onAction={() => console.log('submit')}
-        />
-      </FormDialog>
-    );
-  },
-  args: {
-    children: undefined,
-    size: 'medium',
-  },
-  parameters: {
-    pseudo: { active: true },
   },
 };
 
@@ -506,5 +353,236 @@ export const LongForm: Story = {
   args: {
     children: undefined,
     size: 'medium',
+  },
+};
+
+/**
+ * Phone表示でのフォームダイアログ。
+ * 横余白なし・画面端まで表示され、高さも広がる（フルスクリーン）。
+ */
+export const PhoneDefault: Story = {
+  render: function Render(args) {
+    const [open, setOpen] = useState(false);
+    return (
+      <>
+        <button type="button" onClick={() => setOpen(true)}>
+          新規作成
+        </button>
+        <FormDialog {...args} open={open} onOpenChange={setOpen}>
+          <FormDialog.Header text="新規作成" />
+          <FormDialog.Body>
+            <form
+              id="form-dialog-form"
+              onSubmit={(e) => e.preventDefault()}
+              style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}
+            >
+              <label htmlFor="name">
+                名前
+                <input
+                  id="name"
+                  type="text"
+                  placeholder="名前を入力"
+                  style={{ marginInlineStart: '8px' }}
+                />
+              </label>
+              <label htmlFor="description">
+                説明
+                <input
+                  id="description"
+                  type="text"
+                  placeholder="説明を入力"
+                  style={{ marginInlineStart: '8px' }}
+                />
+              </label>
+            </form>
+          </FormDialog.Body>
+          <FormDialog.Footer
+            cancelLabel="キャンセル"
+            actionLabel="作成する"
+            onAction={() => console.log('submit')}
+          />
+        </FormDialog>
+      </>
+    );
+  },
+  args: {
+    children: undefined,
+    size: 'medium',
+  },
+  globals: {
+    viewport: { value: 'mobile2' },
+  },
+};
+
+/**
+ * Phone表示での長いフォーム。
+ * フルスクリーン表示で、Body のみスクロール可能。
+ */
+export const PhoneLongForm: Story = {
+  render: function Render(args) {
+    const [open, setOpen] = useState(false);
+    return (
+      <>
+        <button type="button" onClick={() => setOpen(true)}>
+          詳細な登録フォームを開く
+        </button>
+        <FormDialog {...args} open={open} onOpenChange={setOpen}>
+          <FormDialog.Header text="ユーザー登録" />
+          <FormDialog.Body>
+            <form
+              id="long-form"
+              onSubmit={(e) => e.preventDefault()}
+              style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}
+            >
+              <fieldset style={{ border: 'none', padding: 0, margin: 0 }}>
+                <legend style={{ fontWeight: 'bold', marginBlockEnd: '8px' }}>
+                  基本情報
+                </legend>
+                <div
+                  style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '12px',
+                  }}
+                >
+                  <label htmlFor="lastName">
+                    姓
+                    <input
+                      id="lastName"
+                      type="text"
+                      placeholder="山田"
+                      style={{ marginInlineStart: '8px', width: '200px' }}
+                    />
+                  </label>
+                  <label htmlFor="firstName">
+                    名
+                    <input
+                      id="firstName"
+                      type="text"
+                      placeholder="太郎"
+                      style={{ marginInlineStart: '8px', width: '200px' }}
+                    />
+                  </label>
+                  <label htmlFor="email">
+                    メールアドレス
+                    <input
+                      id="email"
+                      type="email"
+                      placeholder="email@example.com"
+                      style={{
+                        marginInlineStart: '8px',
+                        width: '100%',
+                        maxWidth: '300px',
+                      }}
+                    />
+                  </label>
+                  <label htmlFor="phone">
+                    電話番号
+                    <input
+                      id="phone"
+                      type="tel"
+                      placeholder="090-1234-5678"
+                      style={{ marginInlineStart: '8px', width: '200px' }}
+                    />
+                  </label>
+                </div>
+              </fieldset>
+
+              <fieldset style={{ border: 'none', padding: 0, margin: 0 }}>
+                <legend style={{ fontWeight: 'bold', marginBlockEnd: '8px' }}>
+                  住所
+                </legend>
+                <div
+                  style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '12px',
+                  }}
+                >
+                  <label htmlFor="postalCode">
+                    郵便番号
+                    <input
+                      id="postalCode"
+                      type="text"
+                      placeholder="123-4567"
+                      style={{ marginInlineStart: '8px', width: '150px' }}
+                    />
+                  </label>
+                  <label htmlFor="prefecture">
+                    都道府県
+                    <input
+                      id="prefecture"
+                      type="text"
+                      placeholder="東京都"
+                      style={{ marginInlineStart: '8px', width: '200px' }}
+                    />
+                  </label>
+                  <label htmlFor="city">
+                    市区町村
+                    <input
+                      id="city"
+                      type="text"
+                      placeholder="渋谷区"
+                      style={{ marginInlineStart: '8px', width: '200px' }}
+                    />
+                  </label>
+                  <label htmlFor="address">
+                    番地・建物名
+                    <input
+                      id="address"
+                      type="text"
+                      placeholder="〇〇1-2-3"
+                      style={{
+                        marginInlineStart: '8px',
+                        width: '100%',
+                        maxWidth: '300px',
+                      }}
+                    />
+                  </label>
+                </div>
+              </fieldset>
+
+              <fieldset style={{ border: 'none', padding: 0, margin: 0 }}>
+                <legend style={{ fontWeight: 'bold', marginBlockEnd: '8px' }}>
+                  その他
+                </legend>
+                <div
+                  style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '12px',
+                  }}
+                >
+                  <label htmlFor="notes">
+                    備考
+                    <textarea
+                      id="notes"
+                      placeholder="自由記入欄"
+                      style={{
+                        marginInlineStart: '8px',
+                        width: '100%',
+                        minHeight: '100px',
+                      }}
+                    />
+                  </label>
+                </div>
+              </fieldset>
+            </form>
+          </FormDialog.Body>
+          <FormDialog.Footer
+            cancelLabel="キャンセル"
+            actionLabel="登録する"
+            onAction={() => console.log('register')}
+          />
+        </FormDialog>
+      </>
+    );
+  },
+  args: {
+    children: undefined,
+    size: 'medium',
+  },
+  globals: {
+    viewport: { value: 'mobile2' },
   },
 };

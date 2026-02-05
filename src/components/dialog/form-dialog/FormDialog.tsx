@@ -5,9 +5,8 @@ import {
   DialogHeader,
   DialogBody,
   DialogFooter,
-  type DialogSize,
-  type DialogFooterActionVariant,
 } from '../shared';
+import styles from './form-dialog.module.css';
 
 /** Form Dialog のサイズ（Desktop 時は medium のみ） */
 export type FormDialogSize = 'medium';
@@ -45,8 +44,6 @@ export interface FormDialogFooterProps {
   actionLabel: string;
   /** アクションボタンクリック時のコールバック */
   onAction?: () => void;
-  /** アクションボタンの種類（破壊的変更の場合は 'destructive'） */
-  actionVariant?: DialogFooterActionVariant;
 }
 
 function FormDialogRoot({
@@ -56,13 +53,13 @@ function FormDialogRoot({
   size = 'medium',
   children,
 }: FormDialogRootProps) {
-  const sizeValue: DialogSize = size;
   return (
-    <DialogContext.Provider value={{ size: sizeValue, variant: 'form' }}>
+    <DialogContext.Provider value={{ size, variant: 'form' }}>
       <DialogPrimitiveRoot
         open={open}
         defaultOpen={defaultOpen}
         onOpenChange={onOpenChange}
+        variantClassName={styles}
       >
         {children}
       </DialogPrimitiveRoot>

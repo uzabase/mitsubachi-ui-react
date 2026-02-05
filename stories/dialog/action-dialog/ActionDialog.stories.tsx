@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useState } from 'react';
+import { Dialog as BaseDialog } from '@base-ui/react';
 import { ActionDialog } from '../../../src/components/dialog';
 
 const meta = {
@@ -27,6 +28,9 @@ const meta = {
       options: ['small'],
       description: 'ダイアログのサイズ（Desktop 時）',
     },
+  },
+  args: {
+    defaultOpen: true,
   },
 } satisfies Meta<typeof ActionDialog>;
 
@@ -67,27 +71,101 @@ export const Default: Story = {
 
 /**
  * 削除確認などの破壊的アクションを行うダイアログ。
- * actionVariant="destructive" で赤いボタンになる。
+ * 破壊的アクションボタンのスタイルは、Story内でカスタムスタイルとして定義。
+ * 将来的にButtonコンポーネントができたら、そちらの責務に移行予定。
  */
 export const Destructive: Story = {
   render: function Render(args) {
     const [open, setOpen] = useState(false);
+    const destructiveButtonStyle = {
+      minBlockSize: '40px',
+      paddingBlock: '2px',
+      paddingInline: 'var(--spacing-x-large, 16px)',
+      fontFamily: 'var(--typography-font-family, Arial, sans-serif)',
+      fontSize: 'var(--typography-font-size-font-scale-40, 14px)',
+      fontWeight: 400,
+      lineHeight: 1.5,
+      color: 'var(--text-inverse, #ffffff)',
+      background: 'var(--surface-error-default, #d93020)',
+      border: 'none',
+      borderRadius: 'var(--border-radius-full, 9999px)',
+      cursor: 'pointer',
+    } as const;
     return (
       <>
+        <style>{`
+          .destructive-action-button:hover {
+            background: #b3281a;
+          }
+          .destructive-action-button:focus-visible {
+            outline: 2px solid var(--focus-ring-default, #191919);
+            outline-offset: 2px;
+          }
+          .footer-container {
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: var(--spacing-medium, 8px);
+            padding-block-start: var(--spacing-x-large, 16px);
+            padding-block-end: var(--spacing-x-large, 16px);
+            padding-inline-start: var(--spacing-x-large, 16px);
+            padding-inline-end: var(--spacing-2x-large, 24px);
+            border-block-start: 1px solid transparent;
+            transition: border-block-start-color 0s ease;
+          }
+          /* Body の下部が隠れているときに仕切り線を表示 */
+          [data-scrolled-from-bottom='true'] + .footer-container {
+            border-block-start-color: var(--border-regular-default, rgba(0, 0, 0, 0.1));
+          }
+          .footer-cancel {
+            min-block-size: 40px;
+            padding-block: 2px;
+            padding-inline: var(--spacing-x-large, 16px);
+            font-family: var(--typography-font-family, Arial, sans-serif);
+            font-size: var(--typography-font-size-font-scale-40, 14px);
+            font-weight: 400;
+            line-height: 1.5;
+            color: var(--text-regular-default, rgba(0, 0, 0, 0.84));
+            background: transparent;
+            border: 1px solid var(--border-regular-default, rgba(0, 0, 0, 0.1));
+            border-radius: var(--border-radius-full, 9999px);
+            cursor: pointer;
+          }
+          .footer-cancel:hover {
+            background: var(--neutral-neutral-30-alpha, rgba(0, 0, 0, 0.13));
+          }
+          .footer-cancel:focus-visible {
+            outline: 2px solid var(--focus-ring-default, #191919);
+            outline-offset: 2px;
+          }
+        `}</style>
         <button type="button" onClick={() => setOpen(true)}>
           削除
         </button>
         <ActionDialog {...args} open={open} onOpenChange={setOpen}>
-          <ActionDialog.Header text="削除の確認" />
+          <ActionDialog.Header text="ステータスの削除" />
           <ActionDialog.Body>
-            この項目を削除すると元に戻せません。削除しますか？
+            <strong>{'{ステータス名}'}を削除しますか？</strong>
+            <br />
+            削除したステータスは元に戻せません。
           </ActionDialog.Body>
-          <ActionDialog.Footer
-            cancelLabel="キャンセル"
-            actionLabel="削除する"
-            actionVariant="destructive"
-            onAction={() => console.log('delete')}
-          />
+          <div className="footer-container">
+            <BaseDialog.Close
+              className="footer-cancel"
+              render={<button type="button" />}
+            >
+              キャンセル
+            </BaseDialog.Close>
+            <BaseDialog.Close
+              className="destructive-action-button"
+              style={destructiveButtonStyle}
+              onClick={() => console.log('delete')}
+              render={<button type="button" />}
+            >
+              削除する
+            </BaseDialog.Close>
+          </div>
         </ActionDialog>
       </>
     );
@@ -128,93 +206,6 @@ export const CloseOnly: Story = {
 };
 
 /**
- * ホバー状態のダイアログ（アクションボタンにマウスをホバー）。
- */
-export const Hover: Story = {
-  render: function Render(args) {
-    const [open, setOpen] = useState(true);
-    return (
-      <ActionDialog {...args} open={open} onOpenChange={setOpen}>
-        <ActionDialog.Header text="操作の確認" />
-        <ActionDialog.Body>
-          この操作を実行してもよろしいですか？
-        </ActionDialog.Body>
-        <ActionDialog.Footer
-          cancelLabel="キャンセル"
-          actionLabel="実行する"
-          onAction={() => console.log('action')}
-        />
-      </ActionDialog>
-    );
-  },
-  args: {
-    size: 'small',
-    children: undefined,
-  },
-  parameters: {
-    pseudo: { hover: true },
-  },
-};
-
-/**
- * フォーカス状態のダイアログ（アクションボタンにキーボードフォーカス）。
- */
-export const Focus: Story = {
-  render: function Render(args) {
-    const [open, setOpen] = useState(true);
-    return (
-      <ActionDialog {...args} open={open} onOpenChange={setOpen}>
-        <ActionDialog.Header text="操作の確認" />
-        <ActionDialog.Body>
-          この操作を実行してもよろしいですか？
-        </ActionDialog.Body>
-        <ActionDialog.Footer
-          cancelLabel="キャンセル"
-          actionLabel="実行する"
-          onAction={() => console.log('action')}
-        />
-      </ActionDialog>
-    );
-  },
-  args: {
-    size: 'small',
-    children: undefined,
-  },
-  parameters: {
-    pseudo: { focusVisible: true },
-  },
-};
-
-/**
- * アクティブ状態のダイアログ（アクションボタンを押下中）。
- */
-export const Active: Story = {
-  render: function Render(args) {
-    const [open, setOpen] = useState(true);
-    return (
-      <ActionDialog {...args} open={open} onOpenChange={setOpen}>
-        <ActionDialog.Header text="操作の確認" />
-        <ActionDialog.Body>
-          この操作を実行してもよろしいですか？
-        </ActionDialog.Body>
-        <ActionDialog.Footer
-          cancelLabel="キャンセル"
-          actionLabel="実行する"
-          onAction={() => console.log('action')}
-        />
-      </ActionDialog>
-    );
-  },
-  args: {
-    size: 'small',
-    children: undefined,
-  },
-  parameters: {
-    pseudo: { active: true },
-  },
-};
-
-/**
  * 長いコンテンツを含むダイアログ。
  * Header と Footer は固定され、Body のみスクロール可能。
  */
@@ -227,64 +218,74 @@ export const LongContent: Story = {
           長いコンテンツを開く
         </button>
         <ActionDialog {...args} open={open} onOpenChange={setOpen}>
-          <ActionDialog.Header text="利用規約の確認" />
+          <ActionDialog.Header text="管理者権限付与の確認" />
           <ActionDialog.Body>
-            <h3>第1条 総則</h3>
-            <p>
-              本規約は、当サービスの利用に関する条件を定めるものです。
-              ユーザーは、本規約に同意の上、当サービスを利用するものとします。
+            <p style={{ marginTop: 0 }}>
+              管理者権限を付与すると、スピーダの利用に関する権限設定やユーザーの各種設定変更を行うことができます。
+              <br />
+              このユーザーに管理者権限を付与してもよろしいですか？
             </p>
-            <h3>第2条 定義</h3>
-            <p>本規約において使用する用語の定義は、以下の通りとします。</p>
-            <ul>
-              <li>「当社」とは、本サービスを提供する事業者を指します。</li>
+            <p>
+              <strong>名前</strong>
+              <br />
+              山田 太郎
+            </p>
+            <p>
+              <strong>ログインID</strong>
+              <br />
+              yamada.taro@example.com
+            </p>
+            <p>
+              <strong>所属部署</strong>
+              <br />
+              営業本部 第一営業部 企画グループ
+            </p>
+            <p>
+              <strong>現在の権限</strong>
+              <br />
+              一般ユーザー
+            </p>
+            <p>
+              <strong>付与される権限の詳細</strong>
+            </p>
+            <ul style={{ marginTop: 0 }}>
               <li>
-                「ユーザー」とは、本サービスを利用する個人または法人を指します。
+                ユーザー管理：新規ユーザーの追加、既存ユーザーの編集・削除が可能
               </li>
+              <li>権限管理：各ユーザーの権限設定、グループ権限の変更が可能</li>
+              <li>組織管理：部署・グループの作成、編集、削除が可能</li>
+              <li>システム設定：全体設定の変更、機能の有効化・無効化が可能</li>
               <li>
-                「本サービス」とは、当社が提供するすべてのサービスを指します。
+                データ管理：全ユーザーのデータへのアクセス、エクスポートが可能
+              </li>
+              <li>ログ閲覧：システムログ、操作ログの閲覧が可能</li>
+              <li>
+                セキュリティ設定：パスワードポリシー、アクセス制限の設定が可能
               </li>
             </ul>
-            <h3>第3条 アカウント登録</h3>
             <p>
-              ユーザーは、本サービスの利用にあたり、当社所定の方法によりアカウント登録を行うものとします。
-              登録情報は正確かつ最新の内容を保つ義務があります。
+              <strong>注意事項</strong>
             </p>
-            <h3>第4条 禁止事項</h3>
-            <p>
-              ユーザーは、本サービスの利用にあたり、以下の行為を行ってはなりません。
-            </p>
-            <ol>
-              <li>法令または公序良俗に違反する行為</li>
-              <li>犯罪行為に関連する行為</li>
+            <ul style={{ marginTop: 0 }}>
               <li>
-                当社、本サービスの他のユーザー、または第三者の知的財産権を侵害する行為
+                管理者権限を付与すると、機密情報を含むすべてのデータにアクセスできるようになります
               </li>
               <li>
-                当社のサーバーまたはネットワークの機能を破壊したり、妨害したりする行為
+                管理者による操作はすべて監査ログに記録され、定期的に確認されます
               </li>
-              <li>不正アクセスをし、またはこれを試みる行為</li>
-            </ol>
-            <h3>第5条 サービスの停止</h3>
-            <p>
-              当社は、以下のいずれかに該当する場合、ユーザーに事前に通知することなく、
-              本サービスの全部または一部の提供を停止することができるものとします。
-            </p>
-            <h3>第6条 免責事項</h3>
-            <p>
-              当社は、本サービスに関して、ユーザーと他のユーザーまたは第三者との間において生じた
-              取引、連絡または紛争等について一切責任を負いません。
-            </p>
-            <h3>第7条 損害賠償</h3>
-            <p>
-              ユーザーが本規約に違反したことにより当社に損害を与えた場合、
-              当社はユーザーに対して損害賠償を請求することができるものとします。
-            </p>
+              <li>
+                不適切な権限使用が確認された場合、権限の剥奪および懲戒処分の対象となる場合があります
+              </li>
+              <li>管理者権限の付与には、上位管理者による承認が必要です</li>
+              <li>
+                管理者権限は定期的に見直しが行われ、必要に応じて変更または取り消される場合があります
+              </li>
+            </ul>
           </ActionDialog.Body>
           <ActionDialog.Footer
             cancelLabel="キャンセル"
-            actionLabel="同意する"
-            onAction={() => console.log('agree')}
+            actionLabel="付与する"
+            onAction={() => console.log('grant admin')}
           />
         </ActionDialog>
       </>
@@ -293,5 +294,135 @@ export const LongContent: Story = {
   args: {
     size: 'small',
     children: undefined,
+  },
+};
+
+/**
+ * Phone表示での基本的なダイアログ。
+ * 横に余白を持ち、高さは広がらない（max-height: min(80dvh, 560px)）。
+ */
+export const PhoneDefault: Story = {
+  render: function Render(args) {
+    const [open, setOpen] = useState(false);
+    return (
+      <>
+        <button type="button" onClick={() => setOpen(true)}>
+          開く
+        </button>
+        <ActionDialog {...args} open={open} onOpenChange={setOpen}>
+          <ActionDialog.Header text="操作の確認" />
+          <ActionDialog.Body>
+            この操作を実行してもよろしいですか？
+          </ActionDialog.Body>
+          <ActionDialog.Footer
+            cancelLabel="キャンセル"
+            actionLabel="実行する"
+            onAction={() => console.log('action')}
+          />
+        </ActionDialog>
+      </>
+    );
+  },
+  args: {
+    size: 'small',
+    children: undefined,
+  },
+  globals: {
+    viewport: { value: 'mobile2' },
+  },
+};
+
+/**
+ * Phone表示での長いコンテンツを含むダイアログ。
+ * 横に余白があり、高さは制限される（スクロール可能）。
+ */
+export const PhoneLongContent: Story = {
+  render: function Render(args) {
+    const [open, setOpen] = useState(false);
+    return (
+      <>
+        <button type="button" onClick={() => setOpen(true)}>
+          長いコンテンツを開く
+        </button>
+        <ActionDialog {...args} open={open} onOpenChange={setOpen}>
+          <ActionDialog.Header text="管理者権限付与の確認" />
+          <ActionDialog.Body>
+            <p style={{ marginTop: 0 }}>
+              管理者権限を付与すると、スピーダの利用に関する権限設定やユーザーの各種設定変更を行うことができます。
+              <br />
+              このユーザーに管理者権限を付与してもよろしいですか？
+            </p>
+            <p>
+              <strong>名前</strong>
+              <br />
+              山田 太郎
+            </p>
+            <p>
+              <strong>ログインID</strong>
+              <br />
+              yamada.taro@example.com
+            </p>
+            <p>
+              <strong>所属部署</strong>
+              <br />
+              営業本部 第一営業部 企画グループ
+            </p>
+            <p>
+              <strong>現在の権限</strong>
+              <br />
+              一般ユーザー
+            </p>
+            <p>
+              <strong>付与される権限の詳細</strong>
+            </p>
+            <ul style={{ marginTop: 0 }}>
+              <li>
+                ユーザー管理：新規ユーザーの追加、既存ユーザーの編集・削除が可能
+              </li>
+              <li>権限管理：各ユーザーの権限設定、グループ権限の変更が可能</li>
+              <li>組織管理：部署・グループの作成、編集、削除が可能</li>
+              <li>システム設定：全体設定の変更、機能の有効化・無効化が可能</li>
+              <li>
+                データ管理：全ユーザーのデータへのアクセス、エクスポートが可能
+              </li>
+              <li>ログ閲覧：システムログ、操作ログの閲覧が可能</li>
+              <li>
+                セキュリティ設定：パスワードポリシー、アクセス制限の設定が可能
+              </li>
+            </ul>
+            <p>
+              <strong>注意事項</strong>
+            </p>
+            <ul style={{ marginTop: 0 }}>
+              <li>
+                管理者権限を付与すると、機密情報を含むすべてのデータにアクセスできるようになります
+              </li>
+              <li>
+                管理者による操作はすべて監査ログに記録され、定期的に確認されます
+              </li>
+              <li>
+                不適切な権限使用が確認された場合、権限の剥奪および懲戒処分の対象となる場合があります
+              </li>
+              <li>管理者権限の付与には、上位管理者による承認が必要です</li>
+              <li>
+                管理者権限は定期的に見直しが行われ、必要に応じて変更または取り消される場合があります
+              </li>
+            </ul>
+          </ActionDialog.Body>
+          <ActionDialog.Footer
+            cancelLabel="キャンセル"
+            actionLabel="付与する"
+            onAction={() => console.log('grant admin')}
+          />
+        </ActionDialog>
+      </>
+    );
+  },
+  args: {
+    size: 'small',
+    children: undefined,
+  },
+  globals: {
+    viewport: { value: 'mobile2' },
   },
 };

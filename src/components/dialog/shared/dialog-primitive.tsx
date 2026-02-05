@@ -20,6 +20,8 @@ export interface DialogPrimitiveRootProps {
   defaultOpen?: boolean;
   onOpenChange?: (open: boolean) => void;
   children: React.ReactNode;
+  /** Variant固有のCSSモジュール */
+  variantClassName?: Record<string, string>;
 }
 
 /**
@@ -31,16 +33,22 @@ export function DialogPrimitiveRoot({
   defaultOpen,
   onOpenChange,
   children,
+  variantClassName,
 }: DialogPrimitiveRootProps) {
   const { size, variant } = useDialogContext();
   const popupClassName = [
     styles.popup,
     sizeClassMap[size],
     variantClassMap[variant],
+    variantClassName?.popup,
   ]
     .filter(Boolean)
     .join(' ');
-  const viewportClassName = [styles.viewport, variantClassMap[variant]]
+  const viewportClassName = [
+    styles.viewport,
+    variantClassMap[variant],
+    variantClassName?.viewport,
+  ]
     .filter(Boolean)
     .join(' ');
 
