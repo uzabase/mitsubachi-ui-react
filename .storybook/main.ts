@@ -15,5 +15,11 @@ const config: StorybookConfig = {
     'storybook-addon-pseudo-states',
   ],
   framework: '@storybook/react-vite',
+  viteFinal: async (config) => {
+    config.base = process.env.REPOSITORY_NAME
+      ? `/${process.env.REPOSITORY_NAME}/`
+      : '/';
+    return config;
+  },
 };
 export default config;
