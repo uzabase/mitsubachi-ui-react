@@ -11,25 +11,28 @@ const meta = {
   tags: ['autodocs'],
   argTypes: {
     open: {
-      control: 'boolean',
-      description: '開閉状態（制御用）',
+      control: false,
+      table: { disable: true },
+      description: '開閉状態（制御用）。Storyでは内部で管理します',
     },
     defaultOpen: {
-      control: 'boolean',
-      description: '初期の開閉状態（非制御用）',
+      control: false,
+      table: { disable: true },
+      description: '初期の開閉状態（非制御用）。Storyでは内部で管理します',
     },
     onOpenChange: {
       action: 'openChanged',
       description: '開閉状態が変わったときのコールバック',
+    },
+    children: {
+      control: false,
+      table: { disable: true },
     },
     size: {
       control: 'radio',
       options: ['small', 'medium', 'large'],
       description: 'ダイアログのサイズ（Desktop 時）',
     },
-  },
-  args: {
-    defaultOpen: true,
   },
 } satisfies Meta<typeof InformationDialog>;
 
@@ -66,8 +69,8 @@ export const Default: Story = {
     );
   },
   args: {
-    children: undefined,
     size: 'medium',
+    children: undefined,
   },
 };
 
@@ -97,8 +100,8 @@ export const Small: Story = {
     );
   },
   args: {
-    children: undefined,
     size: 'small',
+    children: undefined,
   },
 };
 
@@ -130,8 +133,8 @@ export const Medium: Story = {
     );
   },
   args: {
-    children: undefined,
     size: 'medium',
+    children: undefined,
   },
 };
 
@@ -169,8 +172,8 @@ export const Large: Story = {
     );
   },
   args: {
-    children: undefined,
     size: 'large',
+    children: undefined,
   },
 };
 
@@ -313,8 +316,8 @@ export const LongContent: Story = {
     );
   },
   args: {
-    children: undefined,
     size: 'large',
+    children: undefined,
   },
 };
 
@@ -347,8 +350,8 @@ export const PhoneDefault: Story = {
     );
   },
   args: {
-    children: undefined,
     size: 'medium',
+    children: undefined,
   },
   globals: {
     viewport: { value: 'mobile2' },
@@ -493,8 +496,8 @@ export const PhoneLongContent: Story = {
     );
   },
   args: {
-    children: undefined,
     size: 'large',
+    children: undefined,
   },
   globals: {
     viewport: { value: 'mobile2' },

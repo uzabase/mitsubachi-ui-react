@@ -12,25 +12,29 @@ const meta = {
   tags: ['autodocs'],
   argTypes: {
     open: {
-      control: 'boolean',
-      description: '開閉状態（制御用）',
+      control: false,
+      table: { disable: true },
+      description: '開閉状態（制御用）。Storyでは内部で管理します',
     },
     defaultOpen: {
-      control: 'boolean',
-      description: '初期の開閉状態（非制御用）',
+      control: false,
+      table: { disable: true },
+      description: '初期の開閉状態（非制御用）。Storyでは内部で管理します',
     },
     onOpenChange: {
       action: 'openChanged',
       description: '開閉状態が変わったときのコールバック',
+    },
+    children: {
+      control: false,
+      table: { disable: true },
+      description: 'ダイアログのコンテンツ。Storyでは内部で管理します',
     },
     size: {
       control: 'radio',
       options: ['small'],
       description: 'ダイアログのサイズ（Desktop 時）',
     },
-  },
-  args: {
-    defaultOpen: true,
   },
 } satisfies Meta<typeof ActionDialog>;
 

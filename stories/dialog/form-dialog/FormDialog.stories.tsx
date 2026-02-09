@@ -11,25 +11,29 @@ const meta = {
   tags: ['autodocs'],
   argTypes: {
     open: {
-      control: 'boolean',
-      description: '開閉状態（制御用）',
+      control: false,
+      table: { disable: true },
+      description: '開閉状態（制御用）。Storyでは内部で管理します',
     },
     defaultOpen: {
-      control: 'boolean',
-      description: '初期の開閉状態（非制御用）',
+      control: false,
+      table: { disable: true },
+      description: '初期の開閉状態（非制御用）。Storyでは内部で管理します',
     },
     onOpenChange: {
       action: 'openChanged',
       description: '開閉状態が変わったときのコールバック',
+    },
+    children: {
+      control: false,
+      table: { disable: true },
+      description: 'ダイアログのコンテンツ。Storyでは内部で管理します',
     },
     size: {
       control: 'radio',
       options: ['medium'],
       description: 'ダイアログのサイズ（Desktop 時）',
     },
-  },
-  args: {
-    defaultOpen: true,
   },
 } satisfies Meta<typeof FormDialog>;
 
@@ -86,8 +90,8 @@ export const Default: Story = {
     );
   },
   args: {
-    children: undefined,
     size: 'medium',
+    children: undefined,
   },
 };
 
@@ -148,8 +152,8 @@ export const MultipleFields: Story = {
     );
   },
   args: {
-    children: undefined,
     size: 'medium',
+    children: undefined,
   },
 };
 
@@ -351,8 +355,8 @@ export const LongForm: Story = {
     );
   },
   args: {
-    children: undefined,
     size: 'medium',
+    children: undefined,
   },
 };
 
@@ -406,8 +410,8 @@ export const PhoneDefault: Story = {
     );
   },
   args: {
-    children: undefined,
     size: 'medium',
+    children: undefined,
   },
   globals: {
     viewport: { value: 'mobile2' },
@@ -579,8 +583,8 @@ export const PhoneLongForm: Story = {
     );
   },
   args: {
-    children: undefined,
     size: 'medium',
+    children: undefined,
   },
   globals: {
     viewport: { value: 'mobile2' },
