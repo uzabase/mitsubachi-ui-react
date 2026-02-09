@@ -57,6 +57,7 @@ export function DialogPrimitiveRoot({
       open={open}
       defaultOpen={defaultOpen}
       onOpenChange={onOpenChange}
+      disablePointerDismissal={true}
     >
       <BaseDialog.Portal>
         <BaseDialog.Backdrop className={styles.backdrop} />
