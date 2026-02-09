@@ -32,7 +32,7 @@ export interface InformationDialogHeaderProps {
 }
 
 export interface InformationDialogBodyProps {
-  children?: React.ReactNode;
+  children: React.ReactNode;
 }
 
 export interface InformationDialogFooterProps {

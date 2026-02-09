@@ -32,7 +32,7 @@ export interface ActionDialogHeaderProps {
 }
 
 export interface ActionDialogBodyProps {
-  children?: React.ReactNode;
+  children: React.ReactNode;
 }
 
 export interface ActionDialogFooterProps {

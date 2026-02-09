@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import styles from './dialog.module.css';
 
 export interface DialogBodyProps {
-  children?: React.ReactNode;
+  children: React.ReactNode;
 }
 
 /**
@@ -45,7 +45,7 @@ export function DialogBody({ children }: DialogBodyProps) {
       element.removeEventListener('scroll', checkScroll);
       resizeObserver.disconnect();
     };
-  }, [children]);
+  }, []);
 
   return (
     <div

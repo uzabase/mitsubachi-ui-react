@@ -32,7 +32,7 @@ export interface FormDialogHeaderProps {
 }
 
 export interface FormDialogBodyProps {
-  children?: React.ReactNode;
+  children: React.ReactNode;
 }
 
 export interface FormDialogFooterProps {

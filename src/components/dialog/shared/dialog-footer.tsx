@@ -1,4 +1,3 @@
-import { useCallback } from 'react';
 import { Dialog as BaseDialog } from '@base-ui/react';
 import styles from './dialog.module.css';
 
@@ -23,10 +22,6 @@ export function DialogFooter({
   actionLabel,
   onAction,
 }: DialogFooterProps) {
-  const handleActionClick = useCallback(() => {
-    onAction?.();
-  }, [onAction]);
-
   return (
     <div className={styles.footer}>
       {cancelLabel != null && (
@@ -40,7 +35,7 @@ export function DialogFooter({
       )}
       <BaseDialog.Close
         className={styles.footerAction}
-        onClick={handleActionClick}
+        onClick={onAction}
         render={<button type="button" />}
       >
         {actionLabel}
