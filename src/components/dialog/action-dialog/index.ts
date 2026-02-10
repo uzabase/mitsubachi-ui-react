@@ -1,0 +1,8 @@
+export {
+  ActionDialog,
+  type ActionDialogSize,
+  type ActionDialogRootProps,
+  type ActionDialogHeaderProps,
+  type ActionDialogBodyProps,
+  type ActionDialogFooterProps,
+} from './ActionDialog';

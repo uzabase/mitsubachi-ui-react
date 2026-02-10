@@ -1,0 +1,179 @@
+/**
+ * Dialog 共通スタイル
+ *
+ * Figma デザイントークン（Base Component Speeda）を参照。
+ * ブレイクポイント: 720px（CLAUDE.md に準拠）
+ */
+
+/* ========== Backdrop ========== */
+.backdrop {
+  position: fixed;
+  inset: 0;
+  background: var(--neutral-neutral-50-alpha, rgba(0, 0, 0, 0.29));
+  z-index: 2147483646;
+}
+
+/* ========== Viewport ========== */
+.viewport {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-2x-large, 24px);
+  z-index: 2147483647;
+  box-sizing: border-box;
+}
+
+/* ========== Popup (共通) ========== */
+.popup {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  background: var(--zabuton-regular, #ffffff);
+  color: var(--text-regular-default, rgba(0, 0, 0, 0.84));
+  border: 1px solid var(--border-regular-default, rgba(0, 0, 0, 0.1));
+  border-radius: var(--border-radius-x-large, 12px);
+  box-shadow:
+    0px 1px 2px 0px var(--neutral-neutral-50-alpha, rgba(0, 0, 0, 0.29)),
+    0px 8px 12px 3px var(--neutral-neutral-30-alpha, rgba(0, 0, 0, 0.13));
+  max-block-size: calc(100dvh - 48px);
+  overflow: hidden;
+}
+
+/* ========== Size: small (560px) ========== */
+.popup.sizeSmall {
+  inline-size: 100%;
+  max-inline-size: var(--dialog-size-small, 560px);
+}
+
+/* ========== Size: medium ========== */
+.popup.sizeMedium {
+  inline-size: 100%;
+  max-inline-size: 800px;
+}
+
+/* ========== Size: large ========== */
+.popup.sizeLarge {
+  inline-size: 100%;
+  max-inline-size: 1280px;
+}
+
+/* ========== Header ========== */
+.header {
+  flex-shrink: 0;
+  padding-block-start: var(--spacing-x-large, 16px);
+  padding-block-end: var(--spacing-medium, 8px);
+  padding-inline: var(--spacing-2x-large, 24px);
+  border-block-end: 1px solid transparent;
+  transition: border-block-end-color 0s ease;
+}
+
+/* Body の上部が隠れているときに仕切り線を表示 */
+.header:has(+ .body[data-scrolled-from-top='true']) {
+  border-block-end-color: var(--border-regular-default, rgba(0, 0, 0, 0.1));
+}
+
+.title {
+  margin: 0;
+  font-family: var(--typography-font-family, Arial, sans-serif);
+  font-weight: var(--typography-font-weight-regular, 400);
+  font-size: var(--typography-font-size-font-scale-60, 18px);
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+  color: var(--text-regular-default, rgba(0, 0, 0, 0.84));
+}
+
+/* ========== Body ========== */
+.body {
+  flex: 1 1 auto;
+  min-block-size: 0;
+  overflow: auto;
+  padding-block: var(--spacing-x-large, 16px);
+  padding-inline: var(--spacing-2x-large, 24px);
+  font-family: var(--typography-font-family, Arial, sans-serif);
+  font-size: var(--typography-font-size-font-scale-40, 14px);
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+  color: var(--text-regular-default, rgba(0, 0, 0, 0.84));
+}
+
+/* ========== Footer ========== */
+.footer {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--spacing-medium, 8px);
+  padding-block-start: var(--spacing-x-large, 16px);
+  padding-block-end: var(--spacing-x-large, 16px);
+  padding-inline-start: var(--spacing-x-large, 16px);
+  padding-inline-end: var(--spacing-2x-large, 24px);
+  border-block-start: 1px solid transparent;
+  transition: border-block-start-color 0s ease;
+}
+
+/* Body の下部が隠れているときに仕切り線を表示 */
+.body[data-scrolled-from-bottom='true'] + .footer {
+  border-block-start-color: var(--border-regular-default, rgba(0, 0, 0, 0.1));
+}
+
+/**
+ * Footer: キャンセル・閉じるボタン（セカンダリ）
+ *
+ * TODO: Buttonコンポーネント実装後、このスタイルは削除し、Buttonコンポーネントに置き換える
+ * 現在はButtonコンポーネントが存在しないため、暫定的にDialog内で定義している
+ */
+.footerCancel {
+  min-block-size: 40px;
+  padding-block: 2px;
+  padding-inline: var(--spacing-x-large, 16px);
+  font-family: var(--typography-font-family, Arial, sans-serif);
+  font-size: var(--typography-font-size-font-scale-40, 14px);
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--text-regular-default, rgba(0, 0, 0, 0.84));
+  background: transparent;
+  border: none;
+  border-radius: var(--border-radius-full, 9999px);
+  cursor: pointer;
+}
+
+.footerCancel:hover {
+  background: var(--neutral-neutral-30-alpha, rgba(0, 0, 0, 0.13));
+}
+
+.footerCancel:focus-visible {
+  outline: 2px solid var(--focus-ring-default, #191919);
+  outline-offset: 2px;
+}
+
+/**
+ * Footer: アクションボタン（プライマリ・黒）
+ *
+ * TODO: Buttonコンポーネント実装後、このスタイルは削除し、Buttonコンポーネントに置き換える
+ * 現在はButtonコンポーネントが存在しないため、暫定的にDialog内で定義している
+ */
+.footerAction {
+  min-block-size: 40px;
+  padding-block: 2px;
+  padding-inline: var(--spacing-x-large, 16px);
+  font-family: var(--typography-font-family, Arial, sans-serif);
+  font-size: var(--typography-font-size-font-scale-40, 14px);
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--text-inverse, #ffffff);
+  background: var(--surface-strong-default, #282828);
+  border: none;
+  border-radius: var(--border-radius-full, 9999px);
+  cursor: pointer;
+}
+
+.footerAction:hover {
+  background: #3d3d3d;
+}
+
+.footerAction:focus-visible {
+  outline: 2px solid var(--focus-ring-default, #191919);
+  outline-offset: 2px;
+}
