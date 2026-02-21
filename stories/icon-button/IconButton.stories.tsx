@@ -1,3 +1,4 @@
+import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { IconButton } from '../../src/components/icon-button';
 import { DummyIcon } from '../../src/icons';
@@ -32,6 +33,10 @@ const meta = {
       control: 'boolean',
       description: '無効化状態',
     },
+    tooltip: {
+      control: 'boolean',
+      description: 'ツールチップの表示/非表示',
+    },
   },
 } satisfies Meta<typeof IconButton>;
 
@@ -59,6 +64,7 @@ export const Hover: Story = {
     variant: 'primary',
     size: 'medium',
     'aria-label': 'アクション',
+    tooltip: false,
     children: <DummyIcon size={20} />,
   },
   parameters: {
@@ -75,6 +81,7 @@ export const Active: Story = {
     variant: 'primary',
     size: 'medium',
     'aria-label': 'アクション',
+    tooltip: false,
     children: <DummyIcon size={20} />,
   },
   parameters: {
@@ -91,6 +98,7 @@ export const Focus: Story = {
     variant: 'primary',
     size: 'medium',
     'aria-label': 'アクション',
+    tooltip: false,
     children: <DummyIcon size={20} />,
   },
   parameters: {
@@ -284,6 +292,19 @@ export const Ghost: Story = {
 };
 
 /**
+ * ツールチップなし（title属性にフォールバック）
+ */
+export const WithoutTooltip: Story = {
+  args: {
+    variant: 'primary',
+    size: 'medium',
+    'aria-label': 'アクション',
+    tooltip: false,
+    children: <DummyIcon size={20} />,
+  },
+};
+
+/**
  * すべてのバリアントとサイズを一覧表示
  */
 export const AllVariants: Story = {
@@ -346,13 +367,14 @@ export const AllVariants: Story = {
                 }}
               >
                 {rows.map((row) => (
-                  <>
+                  <React.Fragment key={`${row.variant}-${row.selected}`}>
                     {/* Default */}
                     <IconButton
                       key={`${row.variant}-${row.selected}-default`}
                       variant={row.variant}
                       size={size}
                       selected={row.selected}
+                      tooltip={false}
                       aria-label="Default"
                     >
                       <DummyIcon size={iconSizes[size]} />
@@ -364,6 +386,7 @@ export const AllVariants: Story = {
                         variant={row.variant}
                         size={size}
                         selected={row.selected}
+                        tooltip={false}
                         aria-label="Hover"
                       >
                         <DummyIcon size={iconSizes[size]} />
@@ -376,6 +399,7 @@ export const AllVariants: Story = {
                         variant={row.variant}
                         size={size}
                         selected={row.selected}
+                        tooltip={false}
                         aria-label="Active"
                       >
                         <DummyIcon size={iconSizes[size]} />
@@ -388,6 +412,7 @@ export const AllVariants: Story = {
                         variant={row.variant}
                         size={size}
                         selected={row.selected}
+                        tooltip={false}
                         aria-label="Focus"
                       >
                         <DummyIcon size={iconSizes[size]} />
@@ -401,6 +426,7 @@ export const AllVariants: Story = {
                       size={size}
                       selected={row.selected}
                       loading
+                      tooltip={false}
                       aria-label="Loading"
                     >
                       <DummyIcon size={iconSizes[size]} />
@@ -413,11 +439,12 @@ export const AllVariants: Story = {
                       size={size}
                       selected={row.selected}
                       disabled
+                      tooltip={false}
                       aria-label="Disabled"
                     >
                       <DummyIcon size={iconSizes[size]} />
                     </IconButton>
-                  </>
+                  </React.Fragment>
                 ))}
               </div>
             </div>
