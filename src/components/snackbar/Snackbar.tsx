@@ -24,6 +24,11 @@ export interface SnackbarShowOptions {
  * Snackbar を表示・管理するためのhook。
  * Snackbar.Provider の内部で使用する。
  *
+ * **用途: 成功フィードバック専用**
+ * - Snackbar は成功時の短いフィードバックにのみ使用する
+ * - 短時間で自動消去されるため、見逃してほしくない重要な情報には使わない
+ * - 失敗・警告・エラーなどは InlineNotification 等の別コンポーネントで伝えること
+ *
  * @example
  * ```tsx
  * const snackbar = useSnackbar();
@@ -126,6 +131,8 @@ export interface SnackbarRootProps {
 /**
  * 個別の Snackbar コンポーネント。
  * 成功ステータスのアイコン・テキスト・閉じるボタンを表示する。
+ *
+ * **成功フィードバック専用** — 失敗・警告には InlineNotification 等を使用すること。
  */
 function SnackbarRoot({ toast, size = 'small' }: SnackbarRootProps) {
   const rootClassName = [styles.root, styles[size]].join(' ');
