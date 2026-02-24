@@ -211,7 +211,7 @@ export const WithCount: Story = {
 /**
  * 文字数カウント超過（エラー状態）
  */
-export const CountOver: Story = {
+export const WithCountOver: Story = {
   args: {
     defaultValue:
       'TextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTex',
@@ -224,7 +224,7 @@ export const CountOver: Story = {
 /**
  * 文字数カウント + Disabled状態
  */
-export const CountDisabled: Story = {
+export const WithCountDisabled: Story = {
   args: {
     placeholder: 'Placeholder',
     maxCount: 100,
@@ -235,7 +235,7 @@ export const CountDisabled: Story = {
 /**
  * 文字数カウント + Disabled状態（テキスト入力済み）
  */
-export const CountDisabledWithText: Story = {
+export const WithCountDisabledWithText: Story = {
   args: {
     defaultValue: 'Text',
     maxCount: 100,

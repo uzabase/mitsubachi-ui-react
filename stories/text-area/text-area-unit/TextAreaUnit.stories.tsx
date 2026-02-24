@@ -230,7 +230,7 @@ export const WithCount: Story = {
 /**
  * 文字数カウント超過（エラー状態）
  */
-export const CountOver: Story = {
+export const WithCountOver: Story = {
   args: {
     label: 'Label',
     defaultValue:
@@ -244,7 +244,7 @@ export const CountOver: Story = {
 /**
  * 文字数カウント + Disabled状態
  */
-export const CountDisabled: Story = {
+export const WithCountDisabled: Story = {
   args: {
     label: 'Label',
     placeholder: 'Placeholder',
@@ -256,7 +256,7 @@ export const CountDisabled: Story = {
 /**
  * 文字数カウント + Disabled状態（テキスト入力済み）
  */
-export const CountDisabledWithText: Story = {
+export const WithCountDisabledWithText: Story = {
   args: {
     label: 'Label',
     defaultValue: 'Text',
