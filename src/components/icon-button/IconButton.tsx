@@ -33,8 +33,6 @@ export interface IconButtonProps {
    * @default true
    */
   tooltip?: boolean;
-  /** 追加のクラス名 */
-  className?: string;
 }
 
 /**
@@ -70,7 +68,6 @@ export const IconButton = React.forwardRef<HTMLButtonElement, IconButtonProps>(
       'aria-label': ariaLabel,
       type = 'button',
       tooltip = true,
-      className,
       ...rest
     } = props;
 
@@ -90,7 +87,6 @@ export const IconButton = React.forwardRef<HTMLButtonElement, IconButtonProps>(
       styles[size],
       isSelected && styles.selected,
       loading && styles.loading,
-      className,
     ]
       .filter(Boolean)
       .join(' ');
