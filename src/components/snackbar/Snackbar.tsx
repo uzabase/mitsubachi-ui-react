@@ -1,4 +1,4 @@
-import React from 'react';
+import type { ReactNode } from 'react';
 import { Toast } from '@base-ui/react';
 import { SuccessIcon, CloseIcon } from '../../icons';
 import styles from './snackbar.module.css';
@@ -56,7 +56,7 @@ export function useSnackbar() {
    ============================== */
 
 export interface SnackbarProviderProps {
-  children: React.ReactNode;
+  children: ReactNode;
   /**
    * 自動消去までの時間（ミリ秒）
    * @default 5000
@@ -115,10 +115,10 @@ function SnackbarList() {
 }
 
 /* ==============================
-   Snackbar.Root
+   SnackbarRoot（内部コンポーネント）
    ============================== */
 
-export interface SnackbarRootProps {
+interface SnackbarRootProps {
   /** Base UI Toast オブジェクト */
   toast: Toast.Root.ToastObject;
   /**
@@ -161,6 +161,5 @@ export const Snackbar = Object.assign(
   {
     Provider: SnackbarProvider,
     Viewport: SnackbarViewport,
-    Root: SnackbarRoot,
   }
 );
