@@ -1,0 +1,346 @@
+/**
+ * IconButton コンポーネントスタイル
+ *
+ * テキストを持たず、アイコンのみで操作を表現するコンパクトなボタンコンポーネント
+ * CSS擬似クラスで各状態（hover、focus、active等）を実装
+ */
+
+/* ========================================
+   ボタンの基本スタイル
+   ======================================== */
+
+.button {
+  /* リセット */
+  all: unset;
+  box-sizing: border-box;
+
+  /* レイアウト */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+
+  /* ボーダー */
+  border-radius: var(--border-radius-full, 9999px);
+
+  /* カーソル */
+  cursor: pointer;
+
+  /* トランジション */
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+
+  /* フォーカス時のアウトライン無効化（:focus-visibleで制御） */
+  outline: none;
+}
+
+.button:disabled {
+  cursor: not-allowed;
+}
+
+/* アイコンラッパー */
+.iconWrapper {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* ローディングスピナー */
+.loadingSpinner {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.spinner {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ========================================
+   サイズバリアント
+   ======================================== */
+
+/* Small: 24px */
+.button.small {
+  inline-size: 24px;
+  block-size: 24px;
+  padding: 2px;
+}
+
+.button.small .iconWrapper {
+  inline-size: 18px;
+  block-size: 18px;
+}
+
+.button.small .loadingSpinner {
+  inline-size: 18px;
+  block-size: 18px;
+}
+
+.button.small .spinner {
+  inline-size: 18px;
+  block-size: 18px;
+}
+
+/* Medium: 32px */
+.button.medium {
+  inline-size: 32px;
+  block-size: 32px;
+  padding: 4px;
+}
+
+.button.medium .iconWrapper {
+  inline-size: 20px;
+  block-size: 20px;
+}
+
+.button.medium .loadingSpinner {
+  inline-size: 20px;
+  block-size: 20px;
+}
+
+.button.medium .spinner {
+  inline-size: 20px;
+  block-size: 20px;
+}
+
+/* Large: 40px */
+.button.large {
+  inline-size: 40px;
+  block-size: 40px;
+  padding: 4px;
+}
+
+.button.large .iconWrapper {
+  inline-size: 24px;
+  block-size: 24px;
+}
+
+.button.large .loadingSpinner {
+  inline-size: 22px;
+  block-size: 22px;
+}
+
+.button.large .spinner {
+  inline-size: 22px;
+  block-size: 22px;
+}
+
+/* ========================================
+   Primary バリアント
+   ======================================== */
+
+.button.primary {
+  background-color: var(--surface-strong-default, #282828);
+  color: var(--icon-on-strong, white);
+}
+
+.button.primary:hover:not(:disabled) {
+  background-color: var(--surface-strong-hover, #191919);
+}
+
+.button.primary:active:not(:disabled) {
+  background-color: var(--surface-strong-active, black);
+}
+
+.button.primary:focus-visible {
+  box-shadow:
+    0 0 0 2px var(--surface-regular-default, white),
+    0 0 0 4px var(--focus-ring-default, #191919);
+}
+
+.button.primary:disabled,
+.button.primary.loading {
+  background-color: var(--surface-semi-strong-disabled, rgba(0, 0, 0, 0.07));
+  color: var(--icon-disabled, rgba(0, 0, 0, 0.25));
+}
+
+/* ========================================
+   Secondary バリアント
+   ======================================== */
+
+.button.secondary {
+  background-color: transparent;
+  border: 1px solid var(--border-strong-default, rgba(0, 0, 0, 0.84));
+  color: var(--icon-regular-default, rgba(0, 0, 0, 0.84));
+}
+
+.button.secondary:hover:not(:disabled) {
+  background-color: var(--surface-overlay-hover, rgba(0, 0, 0, 0.07));
+}
+
+.button.secondary:active:not(:disabled) {
+  background-color: var(--surface-overlay-active, rgba(0, 0, 0, 0.1));
+}
+
+.button.secondary:focus-visible {
+  background-color: var(--surface-regular-focus, rgba(255, 255, 255, 0));
+  box-shadow:
+    0 0 0 2px var(--surface-regular-default, white),
+    0 0 0 4px var(--focus-ring-default, #191919);
+}
+
+.button.secondary:disabled,
+.button.secondary.loading {
+  background-color: transparent;
+  border-color: var(--border-disabled, rgba(0, 0, 0, 0.07));
+  color: var(--icon-disabled, rgba(0, 0, 0, 0.25));
+}
+
+/* Secondary - Selected状態 */
+.button.secondary.selected {
+  background-color: var(--surface-selected-default, #e8edff);
+  border-color: var(--border-selected, #3f69f2);
+  color: var(--icon-selected, #3f69f2);
+}
+
+.button.secondary.selected:hover:not(:disabled) {
+  background-color: var(--surface-selected-hover, #dbe4ff);
+}
+
+.button.secondary.selected:active:not(:disabled) {
+  background-color: var(--surface-selected-active, #d5dfff);
+}
+
+.button.secondary.selected:focus-visible {
+  box-shadow:
+    0 0 0 2px var(--surface-regular-default, white),
+    0 0 0 4px var(--focus-ring-default, #191919);
+}
+
+.button.secondary.selected:disabled,
+.button.secondary.selected.loading {
+  background-color: var(--surface-semi-strong-disabled, rgba(0, 0, 0, 0.07));
+  border-color: var(--border-disabled, rgba(0, 0, 0, 0.07));
+  color: var(--icon-disabled, rgba(0, 0, 0, 0.25));
+}
+
+/* ========================================
+   Tertiary バリアント
+   ======================================== */
+
+.button.tertiary {
+  background-color: transparent;
+  border: 1px solid var(--border-semi-strong-default, rgba(0, 0, 0, 0.2));
+  color: var(--icon-regular-default, rgba(0, 0, 0, 0.84));
+}
+
+.button.tertiary:hover:not(:disabled) {
+  background-color: var(--surface-overlay-hover, rgba(0, 0, 0, 0.07));
+}
+
+.button.tertiary:active:not(:disabled) {
+  background-color: var(--surface-overlay-active, rgba(0, 0, 0, 0.1));
+}
+
+.button.tertiary:focus-visible {
+  background-color: var(--surface-regular-focus, rgba(255, 255, 255, 0));
+  box-shadow:
+    0 0 0 2px var(--surface-regular-default, white),
+    0 0 0 4px var(--focus-ring-default, #191919);
+}
+
+.button.tertiary:disabled,
+.button.tertiary.loading {
+  background-color: transparent;
+  border-color: var(--border-disabled, rgba(0, 0, 0, 0.07));
+  color: var(--icon-disabled, rgba(0, 0, 0, 0.25));
+}
+
+/* Tertiary - Selected状態 */
+.button.tertiary.selected {
+  background-color: var(--surface-selected-default, #e8edff);
+  border-color: var(--border-regular-default, rgba(0, 0, 0, 0.1));
+  color: var(--icon-selected, #3f69f2);
+}
+
+.button.tertiary.selected:hover:not(:disabled) {
+  background-color: var(--surface-selected-hover, #dbe4ff);
+}
+
+.button.tertiary.selected:active:not(:disabled) {
+  background-color: var(--surface-selected-active, #d5dfff);
+}
+
+.button.tertiary.selected:focus-visible {
+  box-shadow:
+    0 0 0 2px var(--surface-regular-default, white),
+    0 0 0 4px var(--focus-ring-default, #191919);
+}
+
+.button.tertiary.selected:disabled,
+.button.tertiary.selected.loading {
+  background-color: var(--surface-semi-strong-disabled, rgba(0, 0, 0, 0.07));
+  border-color: var(--border-disabled, rgba(0, 0, 0, 0.07));
+  color: var(--icon-disabled, rgba(0, 0, 0, 0.25));
+}
+
+/* ========================================
+   Ghost バリアント
+   ======================================== */
+
+.button.ghost {
+  background-color: transparent;
+  border: none;
+  color: var(--icon-regular-default, rgba(0, 0, 0, 0.84));
+}
+
+.button.ghost:hover:not(:disabled) {
+  background-color: var(--surface-overlay-hover, rgba(0, 0, 0, 0.07));
+}
+
+.button.ghost:active:not(:disabled) {
+  background-color: var(--surface-overlay-active, rgba(0, 0, 0, 0.1));
+}
+
+.button.ghost:focus-visible {
+  background-color: var(--surface-regular-focus, rgba(255, 255, 255, 0));
+  box-shadow:
+    0 0 0 2px var(--surface-regular-default, white),
+    0 0 0 4px var(--focus-ring-default, #191919);
+}
+
+.button.ghost:disabled,
+.button.ghost.loading {
+  background-color: transparent;
+  color: var(--icon-disabled, rgba(0, 0, 0, 0.25));
+}
+
+/* Ghost - Selected状態 */
+.button.ghost.selected {
+  background-color: var(--surface-selected-default, #e8edff);
+  color: var(--icon-selected, #3f69f2);
+}
+
+.button.ghost.selected:hover:not(:disabled) {
+  background-color: var(--surface-selected-hover, #dbe4ff);
+}
+
+.button.ghost.selected:active:not(:disabled) {
+  background-color: var(--surface-selected-active, #d5dfff);
+}
+
+.button.ghost.selected:focus-visible {
+  box-shadow:
+    0 0 0 2px var(--surface-regular-default, white),
+    0 0 0 4px var(--focus-ring-default, #191919);
+}
+
+.button.ghost.selected:disabled,
+.button.ghost.selected.loading {
+  background-color: var(--surface-semi-strong-disabled, rgba(0, 0, 0, 0.07));
+  color: var(--icon-disabled, rgba(0, 0, 0, 0.25));
+}
