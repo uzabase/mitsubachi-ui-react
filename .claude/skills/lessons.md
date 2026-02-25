@@ -71,3 +71,11 @@
 - **状況**: `.textarea.medium` で `padding: 8px`（物理ショートハンド）を使用し、`.textarea.large` では `padding-block / padding-inline` を使用しており不統一だった
 - **学び**: 全辺が同じ値でも `padding` ショートハンドは物理プロパティ。CLAUDE.md が論理プロパティを「強く推奨」している以上、一貫して `padding-block` + `padding-inline` を使うべき
 - **ルール**: `padding`, `margin` 等のショートハンドは使わず、常に `padding-block` / `padding-inline`（または `margin-block` / `margin-inline`）の論理プロパティで書く。全辺同値でも例外なし
+
+---
+
+### 2026-02-24: [コンポーネント設計] classNameプロパティを安易に追加しない
+
+- **状況**: IconButtonコンポーネントに `className?: string` を追加したが、プロジェクト方針として外部からの任意className受け付けを行わないで統一する方針を立てた。
+- **学び**: このプロジェクトではコンポーネントのスタイルはCSS Modulesで完結させ、外部からclassNameを注入するAPIは提供しない方針。既存コンポーネント（Button等）もclassNameを受け付けていない
+- **ルール**: 新規コンポーネント作成時、`className` プロパティを追加しない。既存コンポーネントのprops設計を確認し、プロジェクト方針と一貫させる
