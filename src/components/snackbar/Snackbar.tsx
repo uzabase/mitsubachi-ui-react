@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react';
 import { Toast } from '@base-ui/react';
 import { SuccessIcon, CloseIcon } from '../../icons';
+import { IconButton } from '../icon-button';
 import styles from './snackbar.module.css';
 
 /** Snackbarのサイズ */
@@ -145,7 +146,17 @@ function SnackbarRoot({ toast, size = 'small' }: SnackbarRootProps) {
         </span>
         <Toast.Description className={styles.text} />
       </div>
-      <Toast.Close className={styles.closeButton} aria-label="閉じる">
+      <Toast.Close
+        render={
+          <IconButton
+            variant="ghost"
+            size={size}
+            aria-label="閉じる"
+            tooltip={false}
+            style={{ flexShrink: 0 }}
+          />
+        }
+      >
         <CloseIcon />
       </Toast.Close>
     </Toast.Root>

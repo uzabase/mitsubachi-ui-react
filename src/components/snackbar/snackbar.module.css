@@ -107,12 +107,6 @@
   white-space: nowrap;
 }
 
-.small .closeButton {
-  inline-size: 24px;
-  block-size: 24px;
-  padding: 2px;
-}
-
 /* ==============================
    サイズ: medium
    ============================== */
@@ -130,12 +124,6 @@
   font-size: var(--font-scale-40, 14px);
   line-height: 150%;
   letter-spacing: 0.02em;
-}
-
-.medium .closeButton {
-  inline-size: 32px;
-  block-size: 32px;
-  padding: var(--spacing-x-small, 4px);
 }
 
 /* ==============================
@@ -172,33 +160,4 @@
   line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
-}
-
-/* ==============================
-   閉じるボタン
-   ============================== */
-
-.closeButton {
-  flex-shrink: 0;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border: none;
-  background: transparent;
-  border-radius: var(--border-radius-full, 9999px);
-  cursor: pointer;
-  color: var(--object-regular-default, rgba(0, 0, 0, 0.84));
-}
-
-.closeButton:hover {
-  background-color: var(--surface-semi-strong-default, rgba(0, 0, 0, 0.06));
-}
-
-.closeButton:active {
-  background-color: var(--surface-strong-default, rgba(0, 0, 0, 0.1));
-}
-
-.closeButton:focus-visible {
-  outline: 2px solid var(--border-focus, #0b6ffa);
-  outline-offset: -2px;
 }
