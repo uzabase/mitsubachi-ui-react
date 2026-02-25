@@ -31,7 +31,7 @@
   /* タイポグラフィ */
   font-family: var(--typography-font-family, Arial, sans-serif);
   font-weight: var(--typography-font-weight-regular, 400);
-  font-size: var(--font-scale-40, 14px);
+  font-size: var(--font-scale-50, 16px);
   line-height: 1.5;
   letter-spacing: 0.02em;
   color: var(--text-regular-default, rgba(0, 0, 0, 0.84));
@@ -50,6 +50,7 @@
   min-block-size: 58px;
   padding-block: var(--spacing-small, 8px);
   padding-inline: var(--spacing-small, 8px);
+  font-size: var(--font-scale-40, 14px);
 }
 
 /* large（デスクトップ） */
@@ -64,6 +65,7 @@
   min-block-size: 64px;
   padding-block: var(--spacing-small, 8px);
   padding-inline: var(--spacing-large, 12px);
+  font-size: var(--font-scale-50, 16px);
 }
 
 /* ==============================
@@ -175,14 +177,15 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  inline-size: 24px;
-  block-size: 24px;
+  inline-size: 20px;
+  block-size: 20px;
 }
 
 .errorText {
   flex: 1 0 0;
   min-inline-size: 1px;
   min-block-size: 20px;
+  padding-block-start: 2px;
 
   font-family: var(--typography-font-family, Arial, sans-serif);
   font-weight: var(--typography-font-weight-regular, 400);
@@ -220,7 +223,7 @@
   /* textarea と同一のタイポグラフィ */
   font-family: var(--typography-font-family, Arial, sans-serif);
   font-weight: var(--typography-font-weight-regular, 400);
-  font-size: var(--font-scale-40, 14px);
+  font-size: var(--font-scale-50, 16px);
   line-height: 1.5;
   letter-spacing: 0.02em;
   color: var(--text-regular-default, rgba(0, 0, 0, 0.84));
@@ -230,10 +233,11 @@
   overflow-wrap: break-word;
 }
 
-/* medium パディング（.textarea.medium に対応） */
+/* medium パディング・フォントサイズ（.textarea.medium に対応） */
 .highlightMedium {
   padding-block: var(--spacing-small, 8px);
   padding-inline: var(--spacing-small, 8px);
+  font-size: var(--font-scale-40, 14px);
 }
 
 /* large パディング（.textarea.large に対応） */
@@ -242,10 +246,11 @@
   padding-inline: var(--spacing-large, 12px);
 }
 
-/* phone: medium → large パディング昇格 */
+/* phone: medium → large パディング・フォントサイズ昇格 */
 .phone .highlightMedium {
   padding-block: var(--spacing-small, 8px);
   padding-inline: var(--spacing-large, 12px);
+  font-size: var(--font-scale-50, 16px);
 }
 
 /* 超過テキスト */
