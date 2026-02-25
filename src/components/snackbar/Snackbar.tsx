@@ -147,18 +147,18 @@ function SnackbarRoot({ toast, size = 'small' }: SnackbarRootProps) {
         <Toast.Description className={styles.text} />
       </div>
       <Toast.Close
+        className={styles.close}
         render={
           <IconButton
             variant="ghost"
             size={size}
             aria-label="閉じる"
             tooltip={false}
-            style={{ flexShrink: 0 }}
-          />
+          >
+            <CloseIcon />
+          </IconButton>
         }
-      >
-        <CloseIcon />
-      </Toast.Close>
+      />
     </Toast.Root>
   );
 }
