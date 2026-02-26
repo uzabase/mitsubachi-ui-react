@@ -1,0 +1,264 @@
+/* ==============================
+   TextArea コンポーネントスタイル
+   ============================== */
+
+/* コンテナ */
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-x-small, 4px);
+  align-items: stretch;
+  inline-size: 100%;
+}
+
+/* ==============================
+   テキストエリア
+   ============================== */
+
+.textarea {
+  position: relative;
+  display: block;
+  inline-size: 100%;
+  box-sizing: border-box;
+  min-inline-size: 1px;
+  resize: vertical;
+
+  /* 背景・ボーダー */
+  background-color: var(--surface-regular-default, #ffffff);
+  border: 1px solid var(--border-semi-strong-default, rgba(0, 0, 0, 0.2));
+  border-radius: var(--radius-medium, 6px);
+
+  /* タイポグラフィ */
+  font-family: var(--typography-font-family, Arial, sans-serif);
+  font-weight: var(--typography-font-weight-regular, 400);
+  font-size: var(--font-scale-50, 16px);
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+  color: var(--text-regular-default, rgba(0, 0, 0, 0.84));
+}
+
+.textarea::placeholder {
+  color: var(--text-weak-default, rgba(0, 0, 0, 0.54));
+}
+
+/* ==============================
+   サイズバリアント
+   ============================== */
+
+/* medium（デスクトップ） */
+.textarea.medium {
+  min-block-size: 58px;
+  padding-block: var(--spacing-small, 8px);
+  padding-inline: var(--spacing-small, 8px);
+  font-size: var(--font-scale-40, 14px);
+}
+
+/* large（デスクトップ） */
+.textarea.large {
+  min-block-size: 64px;
+  padding-block: var(--spacing-small, 8px);
+  padding-inline: var(--spacing-large, 12px);
+}
+
+/* phone: medium → large に昇格 */
+.phone .textarea.medium {
+  min-block-size: 64px;
+  padding-block: var(--spacing-small, 8px);
+  padding-inline: var(--spacing-large, 12px);
+  font-size: var(--font-scale-50, 16px);
+}
+
+/* ==============================
+   インタラクション状態（CSS疑似クラス）
+   ============================== */
+
+/* hover */
+.textarea:hover:not(:disabled):not(:focus-visible) {
+  border-color: var(--border-semi-strong-hover, rgba(0, 0, 0, 0.35));
+}
+
+/* focus-visible */
+.textarea:focus-visible {
+  outline: none;
+  border-color: var(--border-semi-strong-default, rgba(0, 0, 0, 0.2));
+  box-shadow:
+    0 0 0 2px var(--surface-regular-default, #ffffff),
+    0 0 0 4px var(--focus-ring-default, #191919);
+}
+
+/* disabled */
+.textarea:disabled {
+  background-color: var(--surface-regular-disabled, rgba(0, 0, 0, 0.03));
+  border-color: var(--border-disabled, rgba(0, 0, 0, 0.07));
+  color: var(--text-disabled, rgba(0, 0, 0, 0.35));
+  cursor: not-allowed;
+  resize: none;
+}
+
+.textarea:disabled::placeholder {
+  color: var(--text-disabled, rgba(0, 0, 0, 0.35));
+}
+
+/* ==============================
+   エラー状態
+   ============================== */
+
+.textarea.error {
+  border-color: var(--border-error-default, #db351f);
+}
+
+.textarea.error:hover:not(:disabled):not(:focus-visible) {
+  border-color: var(--border-error-hover, #b02412);
+}
+
+.textarea.error:focus-visible {
+  border-color: var(--border-error-default, #db351f);
+  box-shadow:
+    0 0 0 2px var(--surface-regular-default, #ffffff),
+    0 0 0 4px var(--focus-ring-default, #191919);
+}
+
+/* ==============================
+   文字数カウント
+   ============================== */
+
+.count {
+  display: flex;
+  gap: 2px;
+  align-items: center;
+  justify-content: flex-start;
+
+  font-family: var(--typography-font-family, Arial, sans-serif);
+  font-weight: var(--typography-font-weight-regular, 400);
+  font-size: var(--font-scale-30, 12px);
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+  color: var(--text-regular-default, rgba(0, 0, 0, 0.84));
+}
+
+.countCurrent {
+  font-weight: var(--typography-font-weight-regular, 400);
+  color: var(--text-regular-default, rgba(0, 0, 0, 0.84));
+}
+
+/* カウント超過 */
+.countOver .countCurrent {
+  font-weight: var(--typography-font-weight-bold, 700);
+  color: var(--text-error, #c92812);
+}
+
+/* disabled */
+.countDisabled {
+  color: var(--text-disabled, rgba(0, 0, 0, 0.35));
+}
+
+.countDisabled .countCurrent {
+  color: var(--text-disabled, rgba(0, 0, 0, 0.35));
+}
+
+/* ==============================
+   エラーメッセージ
+   ============================== */
+
+.errorList {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.errorItem {
+  display: flex;
+  gap: 2px;
+  align-items: flex-start;
+}
+
+.errorIcon {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  inline-size: 20px;
+  block-size: 20px;
+}
+
+.errorText {
+  flex: 1 0 0;
+  min-inline-size: 1px;
+  min-block-size: 20px;
+  font-family: var(--typography-font-family, Arial, sans-serif);
+  font-weight: var(--typography-font-weight-regular, 400);
+  font-size: var(--font-scale-40, 14px);
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+  color: var(--text-error, #c92812);
+  white-space: pre-wrap;
+}
+
+/* ==============================
+   テキストエリアラッパー（ハイライトオーバーレイ用）
+   ============================== */
+
+.textareaWrapper {
+  position: relative;
+}
+
+/* ==============================
+   文字数超過ハイライト
+   ============================== */
+
+.highlight {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+
+  /* textarea と同一のボックスモデル */
+  box-sizing: border-box;
+  border: 1px solid transparent;
+  border-radius: var(--radius-medium, 6px);
+  background-color: var(--surface-regular-default, #ffffff);
+
+  /* textarea と同一のタイポグラフィ */
+  font-family: var(--typography-font-family, Arial, sans-serif);
+  font-weight: var(--typography-font-weight-regular, 400);
+  font-size: var(--font-scale-50, 16px);
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+  color: var(--text-regular-default, rgba(0, 0, 0, 0.84));
+
+  /* テキスト折り返し（textarea に合わせる） */
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+}
+
+/* medium パディング・フォントサイズ（.textarea.medium に対応） */
+.highlightMedium {
+  padding-block: var(--spacing-small, 8px);
+  padding-inline: var(--spacing-small, 8px);
+  font-size: var(--font-scale-40, 14px);
+}
+
+/* large パディング（.textarea.large に対応） */
+.highlightLarge {
+  padding-block: var(--spacing-small, 8px);
+  padding-inline: var(--spacing-large, 12px);
+}
+
+/* phone: medium → large パディング・フォントサイズ昇格 */
+.phone .highlightMedium {
+  padding-block: var(--spacing-small, 8px);
+  padding-inline: var(--spacing-large, 12px);
+  font-size: var(--font-scale-50, 16px);
+}
+
+/* 超過テキスト */
+.overflowText {
+  color: var(--text-error, #c92812);
+}
+
+/* テキスト透過（ハイライト表示時） */
+.textTransparent {
+  color: transparent;
+  caret-color: var(--text-regular-default, rgba(0, 0, 0, 0.84));
+  background-color: transparent;
+}
