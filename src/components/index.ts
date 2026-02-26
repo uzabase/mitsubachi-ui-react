@@ -1,3 +1,4 @@
+export * from './chip';
 export * from './dialog';
 export * from './icon-button';
 export * from './inline-notification';

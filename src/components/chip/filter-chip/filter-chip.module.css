@@ -1,0 +1,75 @@
+/* ========================================
+   FilterChip スタイル
+   ======================================== */
+
+.filterChip {
+  cursor: pointer;
+}
+
+.filterChip:disabled {
+  cursor: not-allowed;
+}
+
+/* ========================================
+   チェックアイコン
+   ======================================== */
+
+.checkIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--object-regular-default, rgba(0, 0, 0, 0.84));
+}
+
+.desktop .checkIcon {
+  inline-size: var(--icon-size-small, 18px);
+  block-size: var(--icon-size-small, 18px);
+}
+
+.phone .checkIcon {
+  inline-size: var(--icon-size-medium, 20px);
+  block-size: var(--icon-size-medium, 20px);
+}
+
+.filterChip:disabled .checkIcon {
+  color: var(--object-regular-disabled, rgba(0, 0, 0, 0.35));
+}
+
+/* ========================================
+   Desktop - 未選択
+   ======================================== */
+
+.desktop.unselected {
+  min-block-size: 24px;
+  padding-inline: var(--spacing-small, 8px);
+}
+
+/* ========================================
+   Desktop - 選択
+   ======================================== */
+
+.desktop.selected {
+  min-block-size: 24px;
+  padding-inline-start: var(--spacing-4, 4px);
+  padding-inline-end: var(--spacing-small, 8px);
+}
+
+/* ========================================
+   Phone - 未選択
+   ======================================== */
+
+.phone.unselected {
+  min-block-size: 28px;
+  padding-inline: var(--spacing-large, 12px);
+}
+
+/* ========================================
+   Phone - 選択
+   ======================================== */
+
+.phone.selected {
+  min-block-size: 28px;
+  padding-inline-start: var(--spacing-4, 4px);
+  padding-inline-end: var(--spacing-large, 12px);
+}

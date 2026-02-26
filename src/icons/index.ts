@@ -1,5 +1,6 @@
 export { ArrowDownSmallIcon } from './ArrowDownSmallIcon';
 export { ArrowUpSmallIcon } from './ArrowUpSmallIcon';
+export { CheckIcon } from './CheckIcon';
 export { CloseIcon } from './CloseIcon';
 export { DummyIcon } from './DummyIcon';
 export { ErrorIcon } from './ErrorIcon';

@@ -1,0 +1,30 @@
+/* ========================================
+   InputChip スタイル
+   ======================================== */
+
+.inputChip {
+  gap: 2px;
+  padding-inline-start: var(--spacing-large, 12px);
+  padding-inline-end: var(--spacing-4, 4px);
+}
+
+/* ========================================
+   ビューポート別サイズ
+   ======================================== */
+
+.desktop {
+  min-block-size: 28px;
+}
+
+.phone {
+  min-block-size: 32px;
+}
+
+/* ========================================
+   無効化状態
+   ======================================== */
+
+/* IconButtonの--icon-disabledをobject/regular-disabledで上書き */
+.disabled {
+  --icon-disabled: var(--object-regular-disabled, rgba(0, 0, 0, 0.35));
+}
