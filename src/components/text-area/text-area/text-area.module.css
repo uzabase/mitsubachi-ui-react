@@ -185,8 +185,6 @@
   flex: 1 0 0;
   min-inline-size: 1px;
   min-block-size: 20px;
-  padding-block-start: 2px;
-
   font-family: var(--typography-font-family, Arial, sans-serif);
   font-weight: var(--typography-font-weight-regular, 400);
   font-size: var(--font-scale-40, 14px);
