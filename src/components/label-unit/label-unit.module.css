@@ -1,0 +1,65 @@
+/* ==============================
+   LabelUnit コンポーネントスタイル
+   ============================== */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4, 4px);
+  align-items: flex-start;
+}
+
+.labelRow {
+  display: flex;
+  gap: var(--spacing-small, 8px);
+  align-items: center;
+}
+
+.label {
+  font-family: var(--typography-font-family, Arial, sans-serif);
+  font-weight: var(--typography-font-weight-bold, 700);
+  font-size: var(--font-scale-40, 14px);
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+  color: var(--text-regular-default, rgba(0, 0, 0, 0.84));
+}
+
+.required {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding-block: 2px;
+  padding-inline: 6px;
+  border-radius: var(--radius-small, 4px);
+  background-color: var(--surface-required, #ffedeb);
+
+  font-family: var(--typography-font-family, Arial, sans-serif);
+  font-weight: var(--typography-font-weight-regular, 400);
+  font-size: var(--font-scale-20, 11px);
+  line-height: 1.3;
+  letter-spacing: 0.02em;
+  color: var(--text-required, #c92812);
+}
+
+.supportText {
+  font-family: var(--typography-font-family, Arial, sans-serif);
+  font-weight: var(--typography-font-weight-regular, 400);
+  font-size: var(--font-scale-30, 12px);
+  line-height: 1.3;
+  letter-spacing: 0.02em;
+  color: var(--text-weak-default, rgba(0, 0, 0, 0.54));
+  margin: 0;
+  white-space: pre-wrap;
+}
+
+/* ==============================
+   disabled 状態
+   ============================== */
+
+.disabled .label {
+  color: var(--text-disabled, rgba(0, 0, 0, 0.35));
+}
+
+.disabled .supportText {
+  color: var(--text-disabled, rgba(0, 0, 0, 0.35));
+}
