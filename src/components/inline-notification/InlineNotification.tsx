@@ -40,6 +40,9 @@ const defaultIcons: Record<InlineNotificationStatus, React.ReactNode> = {
  * Overlay ではなく、UI の一部として自然に表示されるため、
  * ユーザーは操作を継続しながらメッセージを読み取ることができます。
  *
+ * **用途: 失敗・警告・エラーなど、見逃してほしくない重要な情報の通知**
+ * - UIの一部として常に表示されるため、ユーザーが見逃すことがない
+ * - 成功時の短いフィードバックには Snackbar を使用すること
  */
 export const InlineNotification = (props: InlineNotificationProps) => {
   const { status, variant, children } = props;
