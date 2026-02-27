@@ -127,3 +127,10 @@
 - **状況**: `CheckSmallIcon` という名前でアイコンを定義していたが、サイズはCSS側で制御するものであり、アイコン名に「Small」を含める必要はなかった
 - **学び**: アイコンコンポーネントのサイズは使用箇所のCSSで決まる。アイコン名にサイズ（Small / Medium / Large等）を含めると、特定サイズ専用という誤解を招き、別サイズで使いたいときに名前と実態が乖離する
 - **ルール**: アイコンコンポーネント名にはサイズ情報を含めない。`CheckSmallIcon` → `CheckIcon` のように、アイコンの意味（役割）のみで命名する。サイズ制御はCSS側の責務とする
+
+### 2026-02-27: [TypeScript] ポリモーフィックコンポーネントのref型キャストでスーパータイプを使わない
+
+- **状況**: レビューで `ref={ref as React.Ref<HTMLButtonElement & HTMLSpanElement>}` を `ref={ref as React.Ref<HTMLElement>}` に変更するよう提案したが、TSエラー `Type 'Ref<HTMLElement>' is not assignable to type 'Ref<HTMLButtonElement>'` が発生した
+- **原因**: 「HTMLElementは両方の共通基底型だから安全」と安易に判断した。Ref<T>のTは共変ではなく、スーパータイプ（HTMLElement）からサブタイプ（HTMLButtonElement）への代入は型安全でないためTSが拒否する
+- **学び**: `Ref<スーパータイプ>` は `Ref<サブタイプ>` に代入できない。ポリモーフィックコンポーネント（`as` propで要素タイプが変わる）では、intersection型（`HTMLButtonElement & HTMLSpanElement`）へのキャストが正しい。intersection型は両方のサブタイプとして扱われるため、どちらの要素型にも代入可能
+- **ルール**: ポリモーフィックコンポーネントのrefキャストでは `Ref<HTMLElement>` ではなく `Ref<ElementA & ElementB>` のintersection型を使う。型の方向（スーパータイプ vs サブタイプ）を必ず確認してからレビュー指摘する
