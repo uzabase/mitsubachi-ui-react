@@ -16,7 +16,7 @@
 - 言語: TypeScript
 - ビルドツール: Vite
 - UIドキュメント: Storybook 10
-- テスト: Vitest + Testing Library + Playwright
+- テスト: Vitest + Playwright + Testing Library
 - リント: ESLint + eslint-plugin-jsx-a11y
 - フォーマット: Prettier
 - Gitフック: Husky + lint-staged
@@ -25,45 +25,57 @@
 
 ```
 src/
-├── components/       # UIコンポーネント
-│   ├── Button/
-│   │   ├── Button.tsx
-│   │   ├── Button.css
-│   │   ├── index.ts
-│   │   └── stories/
-│   │       └── Button.stories.tsx
+├── components/             # UIコンポーネント
+│   ├── icon-button/        # kebab-case ディレクトリ
+│   │   ├── IconButton.tsx  # PascalCase コンポーネントファイル
+│   │   ├── icon-button.module.css  # CSS Modules
+│   │   └── index.ts        # エクスポート
 │   └── ...
-├── test-utils/       # テストユーティリティ
-└── index.ts          # エントリーポイント
+├── icons/                  # SVGアイコンコンポーネント
+├── test-utils/             # テストユーティリティ
+└── index.ts                # エントリーポイント
+stories/                    # Storybook（src外のルートに配置）
+├── icon-button/
+│   └── IconButton.stories.tsx
+└── ...
 ```
 
 ## 開発コマンド
 
 ```bash
 # Storybook起動
-npm run storybook
+pnpm storybook
 
 # テスト実行
-npm run test              # 全テスト
-npm run test:unit         # ユニットテストのみ
-npm run test:storybook    # Storybookテストのみ
-npm run test:coverage     # カバレッジ付き
+pnpm test              # 全テスト
+pnpm test:unit         # ユニットテストのみ
+pnpm test:storybook    # Storybookテストのみ
+pnpm test:coverage     # カバレッジ付き
 
 # リント・フォーマット
-npm run lint              # ESLintチェック
-npm run lint:fix          # ESLint自動修正
-npm run format            # Prettier適用
-npm run format:check      # フォーマットチェック
+pnpm lint              # ESLintチェック
+pnpm lint:fix          # ESLint自動修正
+pnpm format            # Prettier適用
+pnpm format:check      # フォーマットチェック
 ```
 
 ## コーディング規約
 
+> 詳細な実装ガイドは [ai-guide/](./ai-guide/index.md) を必ず参照。
+
 ### コンポーネント作成ルール
 
-1. 各コンポーネントは独自のディレクトリを持つ
+1. 各コンポーネントは `src/components/<kebab-case>/` に独自のディレクトリを持つ
 2. `index.ts` でエクスポートを管理
-3. Storybookのストーリーは `stories/` サブディレクトリに配置
-4. CSSは同一ディレクトリにコンポーネント名で配置
+3. Storybookのストーリーはルートの `stories/<kebab-case>/` に配置
+4. CSSは同一ディレクトリに `<kebab-case>.module.css` で配置
+
+### Storybook運用
+
+YOU MUST: 各コンポーネントの状態は、Storybook Pseudo Statesを使って各storyを用意する。
+
+- hover、focus、active等の擬似状態をStorybookで可視化
+- 各状態のビジュアルテストを可能にする
 
 ### アクセシビリティ
 
@@ -98,101 +110,19 @@ npm run format:check      # フォーマットチェック
 
 ## CSS設計方針
 
-### 推奨事項
+> 詳細は [ai-guide/styling.md](./ai-guide/styling.md) を参照。
 
-#### class名セレクタを使用する
+### 必須ルール
 
-YOU MUST: CSSセレクタは、class名セレクタに統一する。
-（ID名セレクタ、タグ名セレクタは詳細度を複雑にするので、`!important` の濫用を未然に防ぐため）
-参考: https://developer.mozilla.org/ja/docs/Web/CSS/Specificity
-
-#### 論理プロパティを使用する
-
-物理プロパティではなく、論理プロパティを強く推奨する。
-
-```css
-/* ❌ 物理プロパティ（非推奨） */
-margin-left: 8px;
-margin-right: 8px;
-padding-top: 16px;
-
-/* ✅ 論理プロパティ（推奨） */
-margin-inline-start: 8px;
-margin-inline-end: 8px;
-padding-block-start: 16px;
-```
-
-右から左に書く言語（RTL）にも対応するため、アクセシブルさを保つ。
-参考: https://developer.mozilla.org/ja/docs/Web/CSS/CSS_logical_properties_and_values
-
-#### シンプルなclass名
-
-CSSはコンポーネント単位でカプセル化されるため、シンプルなclass名で運用する。
-
-```css
-/* ✅ シンプル（推奨） */
-.container { }
-.title { }
-.button { }
-```
-
-#### CSS擬似スタイルを使用する
-
-YOU MUST: コンポーネントの各状態（hover、focus、active等）は、CSS擬似クラスで実装する。
-
-```css
-/* ✅ CSS擬似クラス（推奨） */
-.button:hover { }
-.button:focus-visible { }
-.button:active { }
-.button:disabled { }
-```
-
-**フォーカス状態について**
-
-YOU MUST: フォーカススタイルには`:focus-visible`を使用する（`:focus`は使用しない）。
-
-- `:focus` = マウスクリックでもフォーカスリングが表示される（❌ 避けるべき）
-- `:focus-visible` = キーボード操作時のみ表示される（✅ 推奨）
-
-```css
-/* ❌ 非推奨 */
-.button:focus {
-  outline: 2px solid blue;
-}
-
-/* ✅ 推奨 */
-.button:focus-visible {
-  outline: 2px solid blue;
-}
-```
-
-### Storybook運用
-
-#### Pseudo Statesでの状態管理
-
-YOU MUST: 各コンポーネントの状態は、Storybook Pseudo Statesを使って各storyを用意する。
-
-- hover、focus、active等の擬似状態をStorybookで可視化
-- 各状態のビジュアルテストを可能にする
+- YOU MUST: CSSセレクタは**class名セレクタに統一**する（ID名・タグ名セレクタは使用しない）
+- YOU MUST: **論理プロパティ**を使用する（`margin-inline-start` 等。物理プロパティは非推奨）
+- YOU MUST: コンポーネントの状態は**CSS擬似クラス**で実装する（`:hover`, `:active`, `:disabled`）
+- YOU MUST: フォーカススタイルには**`:focus-visible`**を使用する（`:focus` は使用しない）
+- CSS Modules でスコープ化するため、**シンプルなclass名**を使う（BEM・接頭辞は不要）
 
 ### 非推奨事項
 
-以下は、非推奨（禁止ではないが、避けるべき）：
-
-- ID名セレクタ - 詳細度が高すぎる
-- タグ名セレクタ - 詳細度の管理が複雑になる
-- 物理プロパティ - RTL対応ができない
-- BEM - スコープが制御できる環境では不要
-- class名への接頭辞 - 例: `l-hoge`, `c-fuga` など
-
-```css
-/* ❌ 非推奨 */
-#header { }           /* ID名セレクタ */
-div { }               /* タグ名セレクタ */
-.l-container { }      /* 接頭辞付き */
-.block__element--modifier { }  /* BEM */
-```
+ID名セレクタ、タグ名セレクタ、物理プロパティ、BEM、class名への接頭辞（`l-hoge` 等）
 
 ## コミットルール
 
@@ -215,14 +145,14 @@ YOU MUST: コミットメッセージの`<概要>`部分は以下のルールに
 
 ```bash
 # ✅ 良い例
-refactor(Button): フォーカススタイルを:focus-visibleに変更
+refactor(IconButton): フォーカススタイルを:focus-visibleに変更
 feat(Tag): LinkTagコンポーネントを追加
-fix(Header): ホバー時の背景色が正しく表示されない問題を修正
+fix(TextArea): ホバー時のボーダー色が正しく表示されない問題を修正
 
 # ❌ 悪い例
-refactor(Button): 修正  # 何を修正したか不明
+refactor(IconButton): 修正  # 何を修正したか不明
 feat(Tag): 追加  # 何を追加したか不明
-fix(Header): バグ修正  # どんなバグか不明
+fix(TextArea): バグ修正  # どんなバグか不明
 ```
 
 ### type（タイプ）
@@ -237,9 +167,9 @@ fix(Header): バグ修正  # どんなバグか不明
 ### 例
 
 ```
-refactor(Button): Buttonコンポーネントのデザイントークンを更新
-feat(components): Cardコンポーネントを追加
-fix(Header): ホバー状態の色を修正
+refactor(IconButton): デザイントークンをCSS変数に置き換え
+feat(Snackbar): Snackbarコンポーネントを追加
+fix(Tooltip): ホバー時の表示位置ずれを修正
 ```
 
 ## pre-commitフック
