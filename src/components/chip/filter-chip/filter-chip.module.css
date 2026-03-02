@@ -51,7 +51,7 @@
 
 .unselected {
   min-block-size: 24px;
-  padding-inline: var(--spacing-small, 8px);
+  padding-inline: var(--spacing-medium, 8px);
 }
 
 @media (max-width: 720px) {
@@ -67,8 +67,8 @@
 
 .selected {
   min-block-size: 24px;
-  padding-inline-start: var(--spacing-4, 4px);
-  padding-inline-end: var(--spacing-small, 8px);
+  padding-inline-start: var(--spacing-small, 4px);
+  padding-inline-end: var(--spacing-medium, 8px);
 }
 
 @media (max-width: 720px) {

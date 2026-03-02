@@ -290,7 +290,7 @@ inset-inline-end: 16px;
 /* CSS: 親の .phone クラスで子要素を上書き */
 .phone .textarea.medium {
   min-block-size: 64px;
-  padding-block: var(--spacing-small, 8px);
+  padding-block: var(--spacing-medium, 8px);
   padding-inline: var(--spacing-large, 12px);
   font-size: var(--font-scale-50, 16px);
 }
