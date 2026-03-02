@@ -1,4 +1,3 @@
-import type { ChipViewport } from '../chip';
 import { InputChip } from '../input-chip';
 import styles from './input-chip-group.module.css';
 
@@ -12,8 +11,6 @@ export interface InputChipItem {
 export interface InputChipGroupProps {
   /** 表示するチップの配列 */
   items: InputChipItem[];
-  /** ビューポート */
-  viewport?: ChipViewport;
   /** チップ削除時のコールバック */
   onRemove: (id: string) => void;
   /** 無効化状態 */
@@ -27,7 +24,6 @@ export interface InputChipGroupProps {
  */
 export const InputChipGroup = ({
   items,
-  viewport = 'desktop',
   onRemove,
   disabled = false,
   'aria-label': ariaLabel,
@@ -35,10 +31,9 @@ export const InputChipGroup = ({
   return (
     <div className={styles.container} role="list" aria-label={ariaLabel}>
       {items.map((item) => (
-        <div key={item.id} role="listitem">
+        <div key={item.id} role="listitem" className={styles.item}>
           <InputChip
             label={item.label}
-            viewport={viewport}
             onRemove={() => onRemove(item.id)}
             disabled={disabled}
           />

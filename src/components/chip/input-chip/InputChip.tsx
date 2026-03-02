@@ -1,14 +1,11 @@
 import { CloseIcon } from '../../../icons';
 import { IconButton } from '../../icon-button';
-import type { ChipViewport } from '../chip';
 import { Chip } from '../chip';
 import styles from './input-chip.module.css';
 
 export interface InputChipProps {
   /** 表示するラベルテキスト */
   label: string;
-  /** ビューポート */
-  viewport?: ChipViewport;
   /** 削除ボタンクリック時のコールバック */
   onRemove: () => void;
   /** 無効化状態 */
@@ -21,24 +18,19 @@ export interface InputChipProps {
  */
 export const InputChip = ({
   label,
-  viewport = 'desktop',
   onRemove,
   disabled = false,
 }: InputChipProps) => {
-  const chipClassName = [
-    styles.inputChip,
-    viewport === 'phone' ? styles.phone : styles.desktop,
-    disabled && styles.disabled,
-  ]
+  const chipClassName = [styles.inputChip, disabled && styles.disabled]
     .filter(Boolean)
     .join(' ');
 
   return (
     <Chip
       label={label}
-      viewport={viewport}
       disabled={disabled}
       className={chipClassName}
+      labelClassName={styles.label}
       endContent={
         <IconButton
           variant="ghost"

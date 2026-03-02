@@ -1,6 +1,5 @@
 import React from 'react';
 import { CheckIcon } from '../../../icons';
-import type { ChipViewport } from '../chip';
 import { Chip } from '../chip';
 import styles from './filter-chip.module.css';
 
@@ -17,8 +16,6 @@ export interface FilterChipOption {
 export interface FilterChipProps {
   /** 表示するラベルテキスト */
   label: string;
-  /** ビューポート */
-  viewport?: ChipViewport;
   /** 選択状態 */
   selected?: boolean;
   /** クリック時のコールバック */
@@ -43,7 +40,6 @@ export const FilterChip = React.forwardRef<HTMLButtonElement, FilterChipProps>(
   (
     {
       label,
-      viewport = 'desktop',
       selected = false,
       onClick,
       disabled = false,
@@ -56,7 +52,6 @@ export const FilterChip = React.forwardRef<HTMLButtonElement, FilterChipProps>(
   ) => {
     const chipClassName = [
       styles.filterChip,
-      viewport === 'phone' ? styles.phone : styles.desktop,
       selected ? styles.selected : styles.unselected,
     ]
       .filter(Boolean)
@@ -68,7 +63,6 @@ export const FilterChip = React.forwardRef<HTMLButtonElement, FilterChipProps>(
         as="button"
         type="button"
         label={label}
-        viewport={viewport}
         selected={selected}
         disabled={disabled}
         className={chipClassName}

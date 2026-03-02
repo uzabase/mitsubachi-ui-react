@@ -6,18 +6,23 @@
   gap: 2px;
   padding-inline-start: var(--spacing-large, 12px);
   padding-inline-end: var(--spacing-4, 4px);
-}
-
-/* ========================================
-   ビューポート別サイズ
-   ======================================== */
-
-.desktop {
   min-block-size: 28px;
 }
 
-.phone {
-  min-block-size: 32px;
+@media (max-width: 720px) {
+  .inputChip {
+    min-block-size: 32px;
+    /* flex: 0 1 auto;   */
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  .label {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    min-width: 0;
+  }
 }
 
 /* ========================================

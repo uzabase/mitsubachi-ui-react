@@ -32,20 +32,14 @@
   font-family: var(--typography-font-family, Arial, sans-serif);
   font-weight: var(--typography-font-weight-regular, 400);
   line-height: 1.5;
-}
-
-/* ========================================
-   ビューポート別タイポグラフィ
-   ======================================== */
-
-.desktop .label {
   font-size: var(--font-scale-30, 12px);
   letter-spacing: 0.02em;
 }
 
-.phone .label {
-  font-size: var(--font-scale-40, 14px);
-  letter-spacing: 0.02em;
+@media (max-width: 720px) {
+  .label {
+    font-size: var(--font-scale-40, 14px);
+  }
 }
 
 /* ========================================
@@ -80,16 +74,6 @@
 
 .chip.selected:active:not(:disabled):not(.disabled) {
   background-color: var(--surface-selected-active, #d5dfff);
-}
-
-/* ========================================
-   フォーカス状態
-   ======================================== */
-
-.chip:focus-visible {
-  box-shadow:
-    0 0 0 2px var(--surface-regular-default, white),
-    0 0 0 4px var(--focus-ring-default, #191919);
 }
 
 /* ========================================

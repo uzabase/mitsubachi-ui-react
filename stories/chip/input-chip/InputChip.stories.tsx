@@ -23,11 +23,6 @@ const meta = {
       control: 'text',
       description: '表示するラベルテキスト',
     },
-    viewport: {
-      control: 'radio',
-      options: ['desktop', 'phone'],
-      description: 'ビューポート',
-    },
     disabled: {
       control: 'boolean',
       description: '無効化状態',
@@ -39,23 +34,12 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 /**
- * デフォルト状態（Desktop）
+ * デフォルト状態
  */
 export const Default: Story = {
   args: {
     label: 'Text',
-    viewport: 'desktop',
     onRemove: () => {},
-  },
-};
-
-/**
- * Phone表示
- */
-export const Phone: Story = {
-  args: {
-    ...Default.args,
-    viewport: 'phone',
   },
 };
 
@@ -95,33 +79,4 @@ export const Active: Story = {
       active: true,
     },
   },
-};
-
-/**
- * Focus状態
- */
-export const FocusVisible: Story = {
-  args: {
-    ...Default.args,
-  },
-  parameters: {
-    pseudo: {
-      focusVisible: true,
-    },
-  },
-};
-
-/**
- * すべてのビューポートを一覧表示
- */
-export const AllViewports: Story = {
-  args: {
-    ...Default.args,
-  },
-  render: () => (
-    <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
-      <InputChip label="Desktop" viewport="desktop" onRemove={() => {}} />
-      <InputChip label="Phone" viewport="phone" onRemove={() => {}} />
-    </div>
-  ),
 };

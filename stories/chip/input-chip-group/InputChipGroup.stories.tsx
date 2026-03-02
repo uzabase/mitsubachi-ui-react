@@ -37,11 +37,6 @@ const meta = {
   },
   tags: ['autodocs'],
   argTypes: {
-    viewport: {
-      control: 'radio',
-      options: ['desktop', 'phone'],
-      description: 'ビューポート',
-    },
     disabled: {
       control: 'boolean',
       description: '無効化状態',
@@ -66,19 +61,8 @@ const sampleItems: InputChipItem[] = [
 export const Default: Story = {
   args: {
     items: sampleItems,
-    viewport: 'desktop',
     onRemove: () => {},
     'aria-label': 'フルーツ一覧',
-  },
-};
-
-/**
- * Phone表示
- */
-export const Phone: Story = {
-  args: {
-    ...Default.args,
-    viewport: 'phone',
   },
 };
 
@@ -103,11 +87,38 @@ export const Wrap: Story = {
     <div style={{ maxInlineSize: '300px' }}>
       <InputChipGroup
         items={sampleItems}
-        viewport="desktop"
         onRemove={() => {}}
         aria-label="フルーツ一覧"
       />
     </div>
+  ),
+};
+
+/**
+ * Phone - 長いテキストが三点リーダーで省略される
+ */
+export const PhoneLongText: Story = {
+  args: {
+    ...Default.args,
+  },
+  parameters: {
+    viewport: { value: 'mobile1' },
+  },
+  render: () => (
+    <InputChipGroup
+      items={[
+        { id: '1', label: 'シャープ株式会社' },
+        {
+          id: '2',
+          label:
+            'パナソニックホールディングス株式会社パナソニックホールディングス株式会社',
+        },
+        { id: '3', label: '三菱電機株式会社' },
+        { id: '4', label: '富士通株式会社' },
+      ]}
+      onRemove={() => {}}
+      aria-label="競合企業"
+    />
   ),
 };
 
@@ -128,7 +139,6 @@ export const Interactive: Story = {
     return (
       <InputChipGroup
         items={items}
-        viewport="desktop"
         onRemove={handleRemove}
         aria-label="フルーツ一覧"
       />

@@ -1,5 +1,4 @@
 import { useState, useCallback, useRef, useMemo } from 'react';
-import type { ChipViewport } from '../chip';
 import type { FilterChipOption } from '../filter-chip';
 import { FilterChip } from '../filter-chip';
 import styles from './filter-chip-single-select-group.module.css';
@@ -7,8 +6,6 @@ import styles from './filter-chip-single-select-group.module.css';
 export interface FilterChipSingleSelectGroupProps {
   /** 選択肢の配列 */
   options: FilterChipOption[];
-  /** ビューポート */
-  viewport?: ChipViewport;
   /** 選択中の値（制御モード） */
   value?: string;
   /** 初期選択値（非制御モード） */
@@ -27,7 +24,6 @@ export interface FilterChipSingleSelectGroupProps {
  */
 export const FilterChipSingleSelectGroup = ({
   options,
-  viewport = 'desktop',
   value,
   defaultValue = '',
   onChange,
@@ -136,7 +132,6 @@ export const FilterChipSingleSelectGroup = ({
               chipRefs.current[index] = el;
             }}
             label={option.label}
-            viewport={viewport}
             selected={currentValue === option.value}
             disabled={isDisabled}
             onClick={() => handleSelect(option.value)}

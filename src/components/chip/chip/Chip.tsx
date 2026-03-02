@@ -1,14 +1,9 @@
 import React from 'react';
 import styles from './chip.module.css';
 
-/** ビューポート */
-export type ChipViewport = 'desktop' | 'phone';
-
 export interface ChipProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   /** 表示するラベルテキスト */
   label: string;
-  /** ビューポート */
-  viewport?: ChipViewport;
   /** レンダリングする要素タイプ */
   as?: 'span' | 'button';
   /** 選択状態 */
@@ -21,6 +16,8 @@ export interface ChipProps extends React.ButtonHTMLAttributes<HTMLButtonElement>
   endContent?: React.ReactNode;
   /** カスタムクラス名（内部コンポジション用） */
   className?: string;
+  /** ラベル要素に追加するクラス名（内部コンポジション用） */
+  labelClassName?: string;
 }
 
 /**
@@ -33,20 +30,19 @@ export const Chip = React.forwardRef<HTMLElement, ChipProps>(
   (
     {
       label,
-      viewport = 'desktop',
       as: Component = 'span',
       selected = false,
       disabled = false,
       startContent,
       endContent,
       className,
+      labelClassName,
       ...rest
     },
     ref
   ) => {
     const chipClassName = [
       styles.chip,
-      viewport === 'phone' ? styles.phone : styles.desktop,
       selected ? styles.selected : styles.unselected,
       disabled && styles.disabled,
       className,
@@ -62,7 +58,11 @@ export const Chip = React.forwardRef<HTMLElement, ChipProps>(
         {...rest}
       >
         {startContent}
-        <span className={styles.label}>{label}</span>
+        <span
+          className={[styles.label, labelClassName].filter(Boolean).join(' ')}
+        >
+          {label}
+        </span>
         {endContent}
       </Component>
     );

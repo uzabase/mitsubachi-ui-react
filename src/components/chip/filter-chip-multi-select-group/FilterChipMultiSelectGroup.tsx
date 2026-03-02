@@ -1,5 +1,4 @@
 import { useState, useCallback } from 'react';
-import type { ChipViewport } from '../chip';
 import type { FilterChipOption } from '../filter-chip';
 import { FilterChip } from '../filter-chip';
 import styles from './filter-chip-multi-select-group.module.css';
@@ -7,8 +6,6 @@ import styles from './filter-chip-multi-select-group.module.css';
 export interface FilterChipMultiSelectGroupProps {
   /** 選択肢の配列 */
   options: FilterChipOption[];
-  /** ビューポート */
-  viewport?: ChipViewport;
   /** 選択中の値の配列（制御モード） */
   value?: string[];
   /** 初期選択値の配列（非制御モード） */
@@ -27,7 +24,6 @@ export interface FilterChipMultiSelectGroupProps {
  */
 export const FilterChipMultiSelectGroup = ({
   options,
-  viewport = 'desktop',
   value,
   defaultValue = [],
   onChange,
@@ -62,7 +58,6 @@ export const FilterChipMultiSelectGroup = ({
           <FilterChip
             key={option.value}
             label={option.label}
-            viewport={viewport}
             selected={isSelected}
             disabled={isDisabled}
             onClick={() => handleToggle(option.value)}

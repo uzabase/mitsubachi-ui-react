@@ -39,11 +39,6 @@ const meta = {
   },
   tags: ['autodocs'],
   argTypes: {
-    viewport: {
-      control: 'radio',
-      options: ['desktop', 'phone'],
-      description: 'ビューポート',
-    },
     disabled: {
       control: 'boolean',
       description: 'グループ全体の無効化',
@@ -69,18 +64,7 @@ export const Default: Story = {
   args: {
     options: sampleOptions,
     defaultValue: ['tech', 'finance'],
-    viewport: 'desktop',
     'aria-label': '業種フィルター',
-  },
-};
-
-/**
- * Phone表示
- */
-export const Phone: Story = {
-  args: {
-    ...Default.args,
-    viewport: 'phone',
   },
 };
 
@@ -106,7 +90,6 @@ export const Wrap: Story = {
       <FilterChipMultiSelectGroup
         options={sampleOptions}
         defaultValue={['tech', 'finance']}
-        viewport="desktop"
         aria-label="業種フィルター"
       />
     </div>

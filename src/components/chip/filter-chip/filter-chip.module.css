@@ -11,6 +11,16 @@
 }
 
 /* ========================================
+   フォーカス状態
+   ======================================== */
+
+.filterChip:focus-visible {
+  box-shadow:
+    0 0 0 2px var(--surface-regular-default, white),
+    0 0 0 4px var(--focus-ring-default, #191919);
+}
+
+/* ========================================
    チェックアイコン
    ======================================== */
 
@@ -20,16 +30,15 @@
   justify-content: center;
   flex-shrink: 0;
   color: var(--object-regular-default, rgba(0, 0, 0, 0.84));
-}
-
-.desktop .checkIcon {
   inline-size: var(--icon-size-small, 18px);
   block-size: var(--icon-size-small, 18px);
 }
 
-.phone .checkIcon {
-  inline-size: var(--icon-size-medium, 20px);
-  block-size: var(--icon-size-medium, 20px);
+@media (max-width: 720px) {
+  .checkIcon {
+    inline-size: var(--icon-size-medium, 20px);
+    block-size: var(--icon-size-medium, 20px);
+  }
 }
 
 .filterChip:disabled .checkIcon {
@@ -37,39 +46,34 @@
 }
 
 /* ========================================
-   Desktop - 未選択
+   未選択
    ======================================== */
 
-.desktop.unselected {
+.unselected {
   min-block-size: 24px;
   padding-inline: var(--spacing-small, 8px);
 }
 
+@media (max-width: 720px) {
+  .unselected {
+    min-block-size: 28px;
+    padding-inline: var(--spacing-large, 12px);
+  }
+}
+
 /* ========================================
-   Desktop - 選択
+   選択
    ======================================== */
 
-.desktop.selected {
+.selected {
   min-block-size: 24px;
   padding-inline-start: var(--spacing-4, 4px);
   padding-inline-end: var(--spacing-small, 8px);
 }
 
-/* ========================================
-   Phone - 未選択
-   ======================================== */
-
-.phone.unselected {
-  min-block-size: 28px;
-  padding-inline: var(--spacing-large, 12px);
-}
-
-/* ========================================
-   Phone - 選択
-   ======================================== */
-
-.phone.selected {
-  min-block-size: 28px;
-  padding-inline-start: var(--spacing-4, 4px);
-  padding-inline-end: var(--spacing-large, 12px);
+@media (max-width: 720px) {
+  .selected {
+    min-block-size: 28px;
+    padding-inline-end: var(--spacing-large, 12px);
+  }
 }

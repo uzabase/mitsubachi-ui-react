@@ -8,4 +8,11 @@
   gap: var(--spacing-small, 4px);
   align-items: flex-start;
   align-content: flex-start;
+  /* min-width: 0 */
+}
+
+.item {
+  flex: 0 1 auto;
+  max-width: 100%;
+  min-width: 0;
 }

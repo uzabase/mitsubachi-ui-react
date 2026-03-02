@@ -24,11 +24,6 @@ const meta = {
       control: 'text',
       description: '表示するラベルテキスト',
     },
-    viewport: {
-      control: 'radio',
-      options: ['desktop', 'phone'],
-      description: 'ビューポート',
-    },
     selected: {
       control: 'boolean',
       description: '選択状態',
@@ -49,7 +44,6 @@ type Story = StoryObj<typeof meta>;
 export const UnselectedDefault: Story = {
   args: {
     label: 'Text',
-    viewport: 'desktop',
     selected: false,
   },
 };
@@ -169,22 +163,6 @@ export const SelectedDisabled: Story = {
 };
 
 /**
- * Phone表示
- */
-export const Phone: Story = {
-  args: {
-    ...UnselectedDefault.args,
-    viewport: 'phone',
-  },
-  render: () => (
-    <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
-      <FilterChip label="未選択" viewport="phone" selected={false} />
-      <FilterChip label="選択" viewport="phone" selected={true} />
-    </div>
-  ),
-};
-
-/**
  * すべての状態を一覧表示
  */
 export const AllStates: Story = {
@@ -192,49 +170,11 @@ export const AllStates: Story = {
     ...UnselectedDefault.args,
   },
   render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-      <div>
-        <p style={{ marginBlockEnd: '8px', fontSize: '12px', color: '#666' }}>
-          Desktop
-        </p>
-        <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-          <FilterChip label="未選択" viewport="desktop" selected={false} />
-          <FilterChip label="選択" viewport="desktop" selected={true} />
-          <FilterChip
-            label="無効(未選択)"
-            viewport="desktop"
-            selected={false}
-            disabled={true}
-          />
-          <FilterChip
-            label="無効(選択)"
-            viewport="desktop"
-            selected={true}
-            disabled={true}
-          />
-        </div>
-      </div>
-      <div>
-        <p style={{ marginBlockEnd: '8px', fontSize: '12px', color: '#666' }}>
-          Phone
-        </p>
-        <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-          <FilterChip label="未選択" viewport="phone" selected={false} />
-          <FilterChip label="選択" viewport="phone" selected={true} />
-          <FilterChip
-            label="無効(未選択)"
-            viewport="phone"
-            selected={false}
-            disabled={true}
-          />
-          <FilterChip
-            label="無効(選択)"
-            viewport="phone"
-            selected={true}
-            disabled={true}
-          />
-        </div>
-      </div>
+    <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+      <FilterChip label="未選択" selected={false} />
+      <FilterChip label="選択" selected={true} />
+      <FilterChip label="無効(未選択)" selected={false} disabled={true} />
+      <FilterChip label="無効(選択)" selected={true} disabled={true} />
     </div>
   ),
 };
