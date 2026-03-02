@@ -6,7 +6,7 @@
 .container {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-x-small, 4px);
+  gap: var(--spacing-small, 4px);
   align-items: stretch;
   inline-size: 100%;
 }
@@ -48,22 +48,22 @@
 /* medium（デスクトップ） */
 .textarea.medium {
   min-block-size: 58px;
-  padding-block: var(--spacing-small, 8px);
-  padding-inline: var(--spacing-small, 8px);
+  padding-block: var(--spacing-medium, 8px);
+  padding-inline: var(--spacing-medium, 8px);
   font-size: var(--font-scale-40, 14px);
 }
 
 /* large（デスクトップ） */
 .textarea.large {
   min-block-size: 64px;
-  padding-block: var(--spacing-small, 8px);
+  padding-block: var(--spacing-medium, 8px);
   padding-inline: var(--spacing-large, 12px);
 }
 
 /* phone: medium → large に昇格 */
 .phone .textarea.medium {
   min-block-size: 64px;
-  padding-block: var(--spacing-small, 8px);
+  padding-block: var(--spacing-medium, 8px);
   padding-inline: var(--spacing-large, 12px);
   font-size: var(--font-scale-50, 16px);
 }
@@ -233,20 +233,20 @@
 
 /* medium パディング・フォントサイズ（.textarea.medium に対応） */
 .highlightMedium {
-  padding-block: var(--spacing-small, 8px);
-  padding-inline: var(--spacing-small, 8px);
+  padding-block: var(--spacing-medium, 8px);
+  padding-inline: var(--spacing-medium, 8px);
   font-size: var(--font-scale-40, 14px);
 }
 
 /* large パディング（.textarea.large に対応） */
 .highlightLarge {
-  padding-block: var(--spacing-small, 8px);
+  padding-block: var(--spacing-medium, 8px);
   padding-inline: var(--spacing-large, 12px);
 }
 
 /* phone: medium → large パディング・フォントサイズ昇格 */
 .phone .highlightMedium {
-  padding-block: var(--spacing-small, 8px);
+  padding-block: var(--spacing-medium, 8px);
   padding-inline: var(--spacing-large, 12px);
   font-size: var(--font-scale-50, 16px);
 }

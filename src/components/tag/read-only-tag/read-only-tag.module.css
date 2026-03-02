@@ -10,21 +10,21 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 4px;
+  gap: var(--spacing-small, 4px);
 
   /* パディング */
   padding-block-start: 2px;
   padding-block-end: 2px;
-  padding-inline-start: 4px;
-  padding-inline-end: 4px;
+  padding-inline-start: var(--spacing-small, 4px);
+  padding-inline-end: var(--spacing-small, 4px);
 
   /* ボーダー */
-  border-radius: 4px;
+  border-radius: var(--border-radius-small, 4px);
 
   /* タイポグラフィ */
   font-family: var(--typography-font-family, Arial, sans-serif);
   font-weight: 400;
-  font-size: 12px;
+  font-size: var(--font-scale-30, 12px);
   line-height: 1.3;
   letter-spacing: 0.02em; /* 2% = 0.24px at 12px */
 
@@ -41,8 +41,8 @@
 /* アイコンスタイル */
 .icon {
   flex-shrink: 0;
-  inline-size: 12px;
-  block-size: 12px;
+  inline-size: var(--icon-size-small, 18px);
+  block-size: var(--icon-size-small, 18px);
   display: inline-flex;
   align-items: center;
   justify-content: center;

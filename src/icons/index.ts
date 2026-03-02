@@ -1,5 +1,5 @@
-export { ArrowDownSmallIcon } from './ArrowDownSmallIcon';
-export { ArrowUpSmallIcon } from './ArrowUpSmallIcon';
+export { ArrowDownIcon } from './ArrowDownIcon';
+export { ArrowUpIcon } from './ArrowUpIcon';
 export { CloseIcon } from './CloseIcon';
 export { DummyIcon } from './DummyIcon';
 export { ErrorIcon } from './ErrorIcon';

@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import { ReadOnlyTag } from '../../../src/components/tag/read-only-tag';
-import { ArrowDownSmallIcon, ArrowUpSmallIcon } from '../../../src/icons';
+import { ArrowDownIcon, ArrowUpIcon } from '../../../src/icons';
 
 const icons = {
-  'arrow-up-small': <ArrowUpSmallIcon />,
-  'arrow-down-small': <ArrowDownSmallIcon />,
+  'arrow-up': <ArrowUpIcon />,
+  'arrow-down': <ArrowDownIcon />,
 };
 
 const meta = {
@@ -31,7 +31,7 @@ const meta = {
     },
     icon: {
       control: 'select',
-      options: ['arrow-up-small', 'arrow-down-small'],
+      options: ['arrow-up', 'arrow-down'],
       mapping: icons,
       description: 'アイコンの種類',
     },
@@ -93,7 +93,7 @@ export const PositiveWithIcon: Story = {
     ...Positive.args,
     text: '黒字化',
     showIcon: true,
-    icon: 'arrow-up-small',
+    icon: 'arrow-up',
   },
 };
 
@@ -105,7 +105,7 @@ export const NegativeWithIcon: Story = {
     ...Negative.args,
     text: '赤字化',
     showIcon: true,
-    icon: 'arrow-down-small',
+    icon: 'arrow-down',
   },
 };
 
@@ -145,13 +145,13 @@ export const AllPatterns: Story = {
             pattern="positive"
             text="黒字化"
             showIcon
-            icon={<ArrowUpSmallIcon />}
+            icon={<ArrowUpIcon />}
           />
           <ReadOnlyTag
             pattern="negative"
             text="赤字化"
             showIcon
-            icon={<ArrowDownSmallIcon />}
+            icon={<ArrowDownIcon />}
           />
         </div>
       </div>
@@ -170,13 +170,13 @@ export const AllPatterns: Story = {
             pattern="positive"
             text="増加"
             showIcon
-            icon={<ArrowUpSmallIcon />}
+            icon={<ArrowUpIcon />}
           />
           <ReadOnlyTag
             pattern="negative"
             text="減少"
             showIcon
-            icon={<ArrowDownSmallIcon />}
+            icon={<ArrowDownIcon />}
           />
         </div>
       </div>

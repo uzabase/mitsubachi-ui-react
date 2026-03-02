@@ -65,9 +65,9 @@
   min-block-size: 24px;
   padding-block-start: 2px;
   padding-block-end: 2px;
-  padding-inline-start: 12px;
-  padding-inline-end: 12px;
-  font-size: 12px;
+  padding-inline-start: var(--spacing-large, 12px);
+  padding-inline-end: var(--spacing-large, 12px);
+  font-size: var(--font-scale-30, 12px);
   letter-spacing: 0.02em; /* 2% = 0.24px */
 }
 
@@ -80,9 +80,9 @@
   min-block-size: 22px;
   padding-block-start: 2px;
   padding-block-end: 2px;
-  padding-inline-start: 12px;
-  padding-inline-end: 12px;
-  font-size: 11px;
+  padding-inline-start: var(--spacing-large, 12px);
+  padding-inline-end: var(--spacing-large, 12px);
+  font-size: var(--font-scale-20, 11px);
   letter-spacing: 0.02em; /* 2% = 0.22px */
 }
 
@@ -97,7 +97,7 @@
   padding-block-end: 1px;
   padding-inline-start: 6px;
   padding-inline-end: 6px;
-  font-size: 10px;
+  font-size: var(--font-scale-10, 10px);
   letter-spacing: 0.02em; /* 2% = 0.2px */
 }
 
