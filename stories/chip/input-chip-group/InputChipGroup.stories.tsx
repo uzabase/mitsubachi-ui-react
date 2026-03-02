@@ -103,6 +103,7 @@ export const PhoneLongText: Story = {
   },
   parameters: {
     viewport: { value: 'mobile1' },
+    layout: 'padded',
   },
   render: () => (
     <InputChipGroup
