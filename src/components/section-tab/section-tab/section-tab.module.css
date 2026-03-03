@@ -1,0 +1,145 @@
+/**
+ * SectionTab コンポーネントスタイル
+ *
+ * ページ内セクションの切り替えに使用するピル型タブ。
+ * Base UI Tabs.Tab をベースに使用。
+ *
+ * 状態管理: Base UI が付与する data 属性を利用
+ * - [data-active]: 選択状態
+ * - [data-disabled]: 無効化状態
+ */
+
+/* ==============================
+   タブの基本スタイル（Desktop）
+   ============================== */
+
+.tab {
+  /* リセット */
+  all: unset;
+  box-sizing: border-box;
+
+  /* レイアウト */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-small, 4px);
+
+  /* サイズ */
+  min-block-size: 32px;
+  padding-block: var(--spacing-small, 4px);
+  padding-inline: var(--spacing-large, 12px);
+
+  /* ボーダー（選択時のレイアウトシフト防止） */
+  border-radius: var(--border-radius-medium, 6px);
+  border: 1px solid transparent;
+
+  /* 色 */
+  background-color: var(--surface-semi-strong-default, #ededed);
+  color: var(--text-regular-default, rgba(0, 0, 0, 0.84));
+
+  /* タイポグラフィ */
+  font-family: var(--typography-font-family, Arial, sans-serif);
+  font-weight: var(--typography-font-weight-regular, 400);
+  font-size: var(--font-scale-30, 12px);
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  text-align: center;
+
+  /* インタラクション */
+  cursor: pointer;
+
+  /* トランジション */
+  transition:
+    background-color 150ms ease-out,
+    border-color 150ms ease-out,
+    box-shadow 150ms ease-out;
+}
+
+/* ==============================
+   未選択のインタラクション
+   ============================== */
+
+.tab:hover:not([data-active]):not([data-disabled]) {
+  background-color: var(--surface-semi-strong-hover, #e5e5e5);
+}
+
+.tab:active:not([data-active]):not([data-disabled]) {
+  background-color: var(--surface-semi-strong-active, #dfdfdf);
+}
+
+/* ==============================
+   選択状態（hover / active なし）
+   ============================== */
+
+.tab[data-active] {
+  background-color: var(--surface-selected-default, #e8edff);
+  border-color: var(--border-selected, #3f69f2);
+  color: var(--text-selected, #315ce8);
+  font-weight: var(--typography-font-weight-bold, 700);
+}
+
+/* ==============================
+   フォーカス（全状態共通）
+   ============================== */
+
+.tab:focus-visible {
+  z-index: 1;
+  box-shadow:
+    0 0 0 2px var(--surface-regular-default, #ffffff),
+    0 0 0 4px var(--focus-ring-default, #191919);
+}
+
+/* ==============================
+   無効化状態
+   ============================== */
+
+.tab[data-disabled] {
+  background-color: var(--surface-regular-disabled, rgba(0, 0, 0, 0.03));
+  color: var(--text-disabled, rgba(0, 0, 0, 0.35));
+  cursor: not-allowed;
+}
+
+.tab[data-active][data-disabled] {
+  background-color: var(--surface-regular-disabled, rgba(0, 0, 0, 0.03));
+  border-color: var(--border-disabled, rgba(0, 0, 0, 0.07));
+  color: var(--text-disabled, rgba(0, 0, 0, 0.35));
+  font-weight: var(--typography-font-weight-bold, 700);
+}
+
+/* ==============================
+   国旗アイコン
+   ============================== */
+
+.flag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  inline-size: 18px;
+  block-size: 11px;
+}
+
+.tab[data-disabled] .flag {
+  opacity: 0.5;
+}
+
+/* ==============================
+   ラベル
+   ============================== */
+
+.label {
+  display: inline-flex;
+  align-items: center;
+}
+
+/* ==============================
+   スマホ対応
+   ============================== */
+
+@media (max-width: 720px) {
+  .tab {
+    min-block-size: 40px;
+    font-size: var(--font-scale-40, 14px);
+  }
+}
