@@ -1,5 +1,5 @@
 export * from './dialog';
-export * from './icon-button';
+export * from './button';
 export * from './inline-notification';
 export * from './label-unit';
 export * from './snackbar';

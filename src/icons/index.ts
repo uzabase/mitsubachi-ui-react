@@ -1,8 +1,10 @@
 export { ArrowDownIcon } from './ArrowDownIcon';
 export { ArrowUpIcon } from './ArrowUpIcon';
+export { ChevronDownIcon } from './ChevronDownIcon';
 export { CloseIcon } from './CloseIcon';
 export { DummyIcon } from './DummyIcon';
 export { ErrorIcon } from './ErrorIcon';
+export { SpinnerIcon } from './SpinnerIcon';
 export { InformationIcon } from './InformationIcon';
 export { SuccessIcon } from './SuccessIcon';
 export { WarningIcon } from './WarningIcon';

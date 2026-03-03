@@ -1,0 +1,257 @@
+/* ========================================
+   基本スタイル
+   ======================================== */
+
+.button {
+  all: unset;
+  box-sizing: border-box;
+  display: inline-flex;
+  inline-size: fit-content;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--border-radius-full, 9999px);
+  overflow: clip;
+  cursor: pointer;
+  outline: none;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.button:disabled {
+  cursor: not-allowed;
+}
+
+/* ========================================
+   サイズ: medium (32px)
+   ======================================== */
+
+.medium {
+  block-size: 32px;
+  gap: var(--spacing-x-small, 2px);
+  padding-block: var(--spacing-x-small, 2px);
+  padding-inline-start: var(--spacing-large, 12px);
+  padding-inline-end: var(--spacing-medium, 8px);
+  font-size: var(--font-scale-30, 12px);
+  letter-spacing: 0.02em;
+}
+
+.medium .iconWrapper {
+  inline-size: 18px;
+  block-size: 18px;
+}
+
+.medium .chevron {
+  inline-size: 18px;
+  block-size: 18px;
+}
+
+.medium .loadingSpinner {
+  inline-size: 18px;
+  block-size: 18px;
+}
+
+/* ========================================
+   サイズ: large (40px)
+   ======================================== */
+
+.large {
+  block-size: 40px;
+  gap: var(--spacing-small, 4px);
+  padding-block: var(--spacing-x-small, 2px);
+  padding-inline-start: var(--spacing-x-large, 16px);
+  padding-inline-end: var(--spacing-medium, 8px);
+  font-size: var(--font-scale-40, 14px);
+  letter-spacing: 0.02em;
+}
+
+.large .iconWrapper {
+  inline-size: 20px;
+  block-size: 20px;
+}
+
+.large .chevron {
+  inline-size: 20px;
+  block-size: 20px;
+}
+
+.large .loadingSpinner {
+  inline-size: 20px;
+  block-size: 20px;
+}
+
+/* ========================================
+   サイズ: x-large (48px)
+   ======================================== */
+
+.xLarge {
+  block-size: 48px;
+  gap: var(--spacing-small, 4px);
+  padding-block: var(--spacing-x-small, 2px);
+  padding-inline-start: var(--spacing-x-large, 16px);
+  padding-inline-end: var(--spacing-medium, 8px);
+  font-size: var(--font-scale-50, 16px);
+  letter-spacing: 0.02em;
+}
+
+.xLarge .iconWrapper {
+  inline-size: 22px;
+  block-size: 22px;
+}
+
+.xLarge .chevron {
+  inline-size: 22px;
+  block-size: 22px;
+}
+
+.xLarge .loadingSpinner {
+  inline-size: 22px;
+  block-size: 22px;
+}
+
+/* ========================================
+   共通パーツ
+   ======================================== */
+
+.label {
+  white-space: nowrap;
+  line-height: 1.5;
+}
+
+.iconWrapper {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.chevron {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.loadingSpinner {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ========================================
+   Primary バリアント
+   ======================================== */
+
+.button.primary {
+  background-color: var(--surface-strong-default, #282828);
+  color: var(--text-inverse, white);
+  font-weight: var(--typography-font-weight-bold, 700);
+}
+
+.button.primary:hover:not(:disabled) {
+  background-color: var(--surface-strong-hover, #191919);
+}
+
+.button.primary:active:not(:disabled) {
+  background-color: var(--surface-strong-active, black);
+}
+
+.button.primary:focus-visible {
+  box-shadow:
+    0 0 0 2px var(--surface-regular-default, white),
+    0 0 0 4px var(--focus-ring-default, #191919);
+}
+
+.button.primary:disabled {
+  background-color: var(--surface-semi-strong-disabled, rgba(0, 0, 0, 0.07));
+  color: var(--text-disabled, rgba(0, 0, 0, 0.35));
+}
+
+.button.primary.loading {
+  background-color: var(--surface-semi-strong-disabled, rgba(0, 0, 0, 0.07));
+  color: var(--text-regular-default, rgba(0, 0, 0, 0.84));
+}
+
+/* ========================================
+   Secondary バリアント
+   ======================================== */
+
+.button.secondary {
+  background-color: transparent;
+  border: 1px solid var(--border-strong-default, rgba(0, 0, 0, 0.84));
+  color: var(--text-regular-default, rgba(0, 0, 0, 0.84));
+  font-weight: var(--typography-font-weight-bold, 700);
+}
+
+.button.secondary:hover:not(:disabled) {
+  background-color: var(--surface-overlay-hover, rgba(0, 0, 0, 0.07));
+}
+
+.button.secondary:active:not(:disabled) {
+  background-color: var(--surface-overlay-active, rgba(0, 0, 0, 0.1));
+}
+
+.button.secondary:focus-visible {
+  box-shadow:
+    0 0 0 2px var(--surface-regular-default, white),
+    0 0 0 4px var(--focus-ring-default, #191919);
+}
+
+.button.secondary:disabled {
+  background-color: transparent;
+  border-color: var(--border-disabled, rgba(0, 0, 0, 0.07));
+  color: var(--text-disabled, rgba(0, 0, 0, 0.35));
+}
+
+.button.secondary.loading {
+  background-color: transparent;
+  border-color: var(--border-disabled, rgba(0, 0, 0, 0.07));
+  color: var(--text-regular-default, rgba(0, 0, 0, 0.84));
+}
+
+/* ========================================
+   Ghost バリアント
+   ======================================== */
+
+.button.ghost {
+  background-color: transparent;
+  color: var(--text-regular-default, rgba(0, 0, 0, 0.84));
+  font-weight: var(--typography-font-weight-regular, 400);
+}
+
+.button.ghost:hover:not(:disabled) {
+  background-color: var(--surface-overlay-hover, rgba(0, 0, 0, 0.07));
+}
+
+.button.ghost:active:not(:disabled) {
+  background-color: var(--surface-overlay-active, rgba(0, 0, 0, 0.1));
+}
+
+.button.ghost:focus-visible {
+  box-shadow:
+    0 0 0 2px var(--surface-regular-default, white),
+    0 0 0 4px var(--focus-ring-default, #191919);
+}
+
+.button.ghost:disabled {
+  background-color: transparent;
+  color: var(--text-disabled, rgba(0, 0, 0, 0.35));
+}
+
+.button.ghost.loading {
+  background-color: transparent;
+  color: var(--text-regular-default, rgba(0, 0, 0, 0.84));
+}

@@ -28,19 +28,74 @@ const handleChange = () => {};
 
 ### 型定義
 ```typescript
-// Props は interface で定義（JSDocコメントは日本語）
+// Props は interface で定義
 export interface IconButtonProps {
-  /** ボタンのバリアント @default 'primary' */
+  /** ボタンの表示スタイル @default 'primary' */
   variant?: IconButtonVariant;
   /** ボタンのサイズ @default 'medium' */
   size?: IconButtonSize;
-  /** 無効化状態 @default false */
-  disabled?: boolean;
 }
 
 // バリアント・サイズは type（string literal union）で定義
 export type IconButtonVariant = 'primary' | 'secondary' | 'tertiary' | 'ghost';
 export type IconButtonSize = 'small' | 'medium' | 'large';
+```
+
+### Props の JSDoc 記述ルール
+
+JSDoc は Storybook の Docs タブに表示されるため、**利用者がpropsの役割・挙動を理解できる** ように書く。
+
+#### 基本ルール
+
+- **日本語で記述する**
+- **句点なし**（体言止めまたは「〜する」「〜される」で終わる）
+- **「オプショナル」等の冗長な修飾を避ける**（`?` で自明）
+- **props名の繰り返しを避ける**（`loading` に「ローディング状態」だけでは不十分）
+- **挙動・副作用があれば明記する**（何が起きるかを書く）
+
+#### `@default` の書き方
+
+- 短い説明：1行にまとめる `/** 説明 @default 'value' */`
+- 長い説明：複数行にし `@default` は別の行
+
+```typescript
+// ✅ 短い説明（1行）
+/** ボタンのサイズ @default 'medium' */
+size?: MenuButtonSize;
+
+// ✅ 長い説明（複数行）
+/**
+ * ローディング状態。アイコンがスピナーに置き換わり、ボタンは無効化される
+ * @default false
+ */
+loading?: boolean;
+```
+
+#### 良い例・悪い例
+
+```typescript
+// ❌ props名の繰り返しだけで意味が伝わらない
+/** ローディング状態 */
+loading?: boolean;
+/** ref */
+ref?: React.Ref<HTMLButtonElement>;
+
+// ✅ 挙動や用途が伝わる
+/**
+ * ローディング状態。アイコンがスピナーに置き換わり、ボタンは無効化される
+ * @default false
+ */
+loading?: boolean;
+/** Menu コンポーネントとの連携用 ref。ドロップダウンの位置決めやフォーカス管理に使用 */
+ref?: React.Ref<HTMLButtonElement>;
+
+// ❌ 冗長な修飾
+/** 先頭に表示するオプショナルアイコン */
+icon?: React.ReactNode;
+
+// ✅ 簡潔に
+/** ラベルの先頭に表示するアイコン */
+icon?: React.ReactNode;
 ```
 
 ## React コンポーネント
@@ -117,7 +172,7 @@ export const IconButton = ({ ref, variant = 'primary', ...rest }: IconButtonProp
 };
 ```
 
-> **現状:** `IconButton` が `forwardRef` を使用中。新規コンポーネントでは ref-as-prop を使用し、既存コンポーネントも順次移行する。
+> **現状:** 全コンポーネントが ref-as-prop パターンに移行済み。
 
 ### Context は `<Context>` で直接レンダリングできる
 
