@@ -220,6 +220,21 @@ inset-inline-end: 16px;
 }
 ```
 
+### Base UI の data 属性による状態管理
+
+Base UI コンポーネントをラップする場合、状態は Base UI が付与する `data-*` 属性で管理する。`:disabled` 等の擬似クラスの代わりに `[data-disabled]` を使う。
+
+```css
+/* 選択状態 */
+.tab[data-active] { }
+
+/* hover（選択・無効以外） */
+.tab:hover:not([data-active]):not([data-disabled]) { }
+
+/* 無効化 + 選択の複合状態 */
+.tab[data-active][data-disabled] { }
+```
+
 ### ::placeholder
 
 ```css
@@ -231,6 +246,23 @@ inset-inline-end: 16px;
   color: var(--text-disabled, rgba(0, 0, 0, 0.35));
 }
 ```
+
+## `all: unset` リセットパターン
+
+ブラウザのデフォルトスタイルを完全にリセットする場合に `all: unset` を使用する。
+
+```css
+.tab {
+  all: unset;
+  box-sizing: border-box; /* all: unset で content-box に戻るため必須 */
+  display: inline-flex;   /* all: unset で inline に戻るため再指定 */
+}
+```
+
+**注意点:**
+- `all: unset` は `outline`, `box-sizing`, `display` 等すべてをリセットする
+- `outline: none` 等の個別リセットは冗長になるため書かない
+- `box-sizing: border-box` と `display` は必ず直後に再設定する
 
 ## セレクタの詳細度
 
@@ -293,6 +325,21 @@ inset-inline-end: 16px;
   padding-block: var(--spacing-medium, 8px);
   padding-inline: var(--spacing-large, 12px);
   font-size: var(--font-scale-50, 16px);
+}
+```
+
+### overflow 領域でのフォーカスリング確保
+
+`overflow: auto` のスクロールコンテナでは、フォーカスリング（box-shadow 4px）が切れる。padding + 負マージンで確保する。
+
+```css
+@media (max-width: 720px) {
+  .list {
+    overflow-x: auto;
+    /* フォーカスリング（4px spread）が切り取られないよう確保 */
+    padding: 4px;
+    margin: -4px;
+  }
 }
 ```
 

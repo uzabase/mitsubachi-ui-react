@@ -16,7 +16,7 @@ export const Component = ({ variant = 'primary' }: ComponentProps) => {
 };
 ```
 
-**該当:** IconButton, LinkTag, ReadOnlyTag, LabelUnit, InlineNotification, Tooltip
+**該当:** IconButton, LinkTag, ReadOnlyTag, LabelUnit, InlineNotification, Tooltip, SectionTab
 
 ### 複合コンポーネント (Compound Components)
 
@@ -46,7 +46,7 @@ export const Snackbar = Object.assign({}, {
 });
 ```
 
-**該当:** ActionDialog, FormDialog, InformationDialog, Snackbar
+**該当:** ActionDialog, FormDialog, InformationDialog, Snackbar, SectionTabGroup
 
 ### ユニットコンポーネント（Unit）
 
@@ -159,6 +159,8 @@ export interface ComponentProps {
 // ❌ defaultProps は使用禁止（分割代入のデフォルト値を使う）
 ```
 
+**`@default` の注意**: ラッパーコンポーネントで内部ライブラリのデフォルト値をそのまま `@default` に記載しない。ラッパー自身がデフォルト値を設定していない場合、`@default` は省略する。
+
 ### HTML属性を拡張する場合
 
 ```tsx
@@ -173,7 +175,25 @@ export interface ComponentProps extends Omit<
 
 ---
 
-## 5. className の組み立て
+## 5. Base UI の型を再利用する
+
+Base UI をラップする場合、Props の型は Base UI の namespace 型を直接参照する。独自に `string | number` 等を再定義しない。
+
+```tsx
+import type { TabsTab, TabsRoot } from '@base-ui/react/tabs';
+
+export interface SectionTabGroupRootProps {
+  value?: TabsTab.Value;
+  onValueChange?: (
+    value: TabsTab.Value,
+    eventDetails: TabsRoot.ChangeEventDetails,
+  ) => void;
+}
+```
+
+---
+
+## 6. className の組み立て
 
 > 詳細は [coding-rules.md §3.3](./coding-rules.md) を参照。
 
@@ -198,7 +218,7 @@ const className = `${styles.container} ${styles.active}`;
 
 ---
 
-## 6. CSS の基本ルール
+## 7. CSS の基本ルール
 
 > 詳細は [styling.md](./styling.md)、トークン一覧は [design-tokens.md](./design-tokens.md) を参照。
 
@@ -226,7 +246,7 @@ background-color: var(--surface-strong-default, #282828);
 
 ---
 
-## 7. エクスポート
+## 8. エクスポート
 
 > 詳細は [coding-rules.md §5](./coding-rules.md) を参照。
 
@@ -264,7 +284,7 @@ export * from './my-component';
 
 ---
 
-## 8. アクセシビリティ
+## 9. アクセシビリティ
 
 > 詳細は [coding-rules.md §8](./coding-rules.md) を参照。
 
@@ -308,7 +328,7 @@ aria-busy={loading ? 'true' : undefined}
 
 ---
 
-## 9. レスポンシブ対応
+## 10. レスポンシブ対応
 
 ### メディアクエリ（720px の1箇所のみ）
 
@@ -355,7 +375,7 @@ const containerClassName = [
 
 ---
 
-## 10. Storybook
+## 11. Storybook
 
 > 詳細は [coding-rules.md §7](./coding-rules.md) を参照。
 
@@ -374,6 +394,18 @@ const meta = {
 
 export default meta;
 type Story = StoryObj<typeof meta>;
+```
+
+### カスタムデコレータの型
+
+デコレータを変数に切り出す場合は Storybook の `Decorator` 型を使う。`React.ComponentType` は使わない。
+
+```tsx
+import type { Decorator } from '@storybook/react-vite';
+
+const selectedDecorator: Decorator = (Story) => (
+  <Wrapper><Story /></Wrapper>
+);
 ```
 
 ### 擬似状態ストーリー（必須）
@@ -415,7 +447,7 @@ export const Default: Story = {
 
 ---
 
-## 11. ベストプラクティス
+## 12. ベストプラクティス
 
 1. **Base UI を活用** — インタラクティブなコンポーネントはまず Base UI で実装を検討する
 2. **単一責任** — 1コンポーネント1責任
