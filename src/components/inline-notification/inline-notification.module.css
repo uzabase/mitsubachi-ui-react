@@ -48,7 +48,7 @@
 
 /* Desktop primary (721px以上) */
 .container.primary {
-  gap: var(--spacing-small, 8px);
+  gap: var(--spacing-medium, 8px);
   padding: var(--spacing-x-large, 16px);
 }
 
@@ -61,7 +61,7 @@
 /* Phone primary (0-720px) */
 @media (max-width: 720px) {
   .container.primary {
-    gap: var(--spacing-x-small, 4px);
+    gap: var(--spacing-small, 4px);
     padding: var(--spacing-large, 12px);
   }
 
@@ -78,8 +78,8 @@
 
 /* Desktop secondary (721px以上) */
 .container.secondary {
-  gap: var(--spacing-x-small, 4px);
-  padding: var(--spacing-small, 8px);
+  gap: var(--spacing-small, 4px);
+  padding: var(--spacing-medium, 8px);
 }
 
 .container.secondary .text {
@@ -94,9 +94,9 @@
 /* Phone secondary (0-720px) */
 @media (max-width: 720px) {
   .container.secondary {
-    gap: var(--spacing-x-small, 4px);
-    padding-block: var(--spacing-x-small, 4px);
-    padding-inline: var(--spacing-small, 8px);
+    gap: var(--spacing-small, 4px);
+    padding-block: var(--spacing-small, 4px);
+    padding-inline: var(--spacing-medium, 8px);
   }
 
   .container.secondary .text {

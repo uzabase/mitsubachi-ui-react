@@ -11,7 +11,7 @@
 
 .labelRow {
   display: flex;
-  gap: var(--spacing-small, 8px);
+  gap: var(--spacing-medium, 8px);
   align-items: center;
 }
 

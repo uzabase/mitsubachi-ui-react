@@ -80,63 +80,39 @@
   padding: 2px;
 }
 
-.button.small .iconWrapper {
-  inline-size: 18px;
-  block-size: 18px;
-}
-
-.button.small .loadingSpinner {
-  inline-size: 18px;
-  block-size: 18px;
-}
-
+.button.small .iconWrapper,
+.button.small .loadingSpinner,
 .button.small .spinner {
-  inline-size: 18px;
-  block-size: 18px;
+  inline-size: var(--icon-size-small, 18px);
+  block-size: var(--icon-size-small, 18px);
 }
 
 /* Medium: 32px */
 .button.medium {
   inline-size: 32px;
   block-size: 32px;
-  padding: 4px;
+  padding: var(--spacing-small, 4px);
 }
 
-.button.medium .iconWrapper {
-  inline-size: 20px;
-  block-size: 20px;
-}
-
-.button.medium .loadingSpinner {
-  inline-size: 20px;
-  block-size: 20px;
-}
-
+.button.medium .iconWrapper,
+.button.medium .loadingSpinner,
 .button.medium .spinner {
-  inline-size: 20px;
-  block-size: 20px;
+  inline-size: var(--icon-size-medium, 20px);
+  block-size: var(--icon-size-medium, 20px);
 }
 
 /* Large: 40px */
 .button.large {
   inline-size: 40px;
   block-size: 40px;
-  padding: 4px;
+  padding: var(--spacing-small, 4px);
 }
 
-.button.large .iconWrapper {
-  inline-size: 24px;
-  block-size: 24px;
-}
-
-.button.large .loadingSpinner {
-  inline-size: 22px;
-  block-size: 22px;
-}
-
+.button.large .iconWrapper,
+.button.large .loadingSpinner,
 .button.large .spinner {
-  inline-size: 22px;
-  block-size: 22px;
+  inline-size: var(--icon-size-large, 22px);
+  block-size: var(--icon-size-large, 22px);
 }
 
 /* ========================================

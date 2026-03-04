@@ -77,8 +77,8 @@
 
 | トークン | フォールバック | 用途 |
 |---------|-------------|------|
-| `--spacing-x-small` | `4px` | 小さいギャップ |
-| `--spacing-small` | `4px` | 小さなパディング・ギャップ |
+| `--spacing-x-small` | `2px` | 小さいギャップ |
+| `--spacing-small` | `4px` | 小さいパディング・ギャップ |
 | `--spacing-medium` | `8px` | 標準的なパディング・ギャップ |
 | `--spacing-large` | `12px` | Snackbar パディング |
 | `--spacing-x-large` | `16px` | Dialog セクションパディング |

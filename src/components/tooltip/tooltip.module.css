@@ -18,13 +18,11 @@
   max-inline-size: 200px;
 
   /* パディング */
-  padding-block-start: 4px; /* spacing-small */
-  padding-inline-end: 8px; /* spacing-medium */
-  padding-block-end: 4px; /* spacing-small */
-  padding-inline-start: 8px; /* spacing-medium */
+  padding-block: var(--spacing-small, 4px);
+  padding-inline: var(--spacing-medium, 8px);
 
   /* ボーダー */
-  border-radius: 4px; /* border-radius-small */
+  border-radius: var(--border-radius-small, 4px);
 
   /* 色 */
   background: var(--surface-strong-default, #282828);
