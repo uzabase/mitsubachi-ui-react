@@ -66,6 +66,7 @@ export const FilterChip = React.forwardRef<HTMLButtonElement, FilterChipProps>(
         selected={selected}
         disabled={disabled}
         className={chipClassName}
+        labelClassName={styles.label}
         onClick={onClick}
         role={role}
         aria-checked={ariaChecked}
