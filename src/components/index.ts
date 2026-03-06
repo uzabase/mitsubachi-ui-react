@@ -2,6 +2,7 @@ export * from './dialog';
 export * from './button';
 export * from './inline-notification';
 export * from './label-unit';
+export * from './section-tab';
 export * from './snackbar';
 export * from './tag';
 export * from './text-area';
