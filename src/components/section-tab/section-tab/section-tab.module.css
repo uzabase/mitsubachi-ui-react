@@ -48,12 +48,6 @@
 
   /* インタラクション */
   cursor: pointer;
-
-  /* トランジション */
-  transition:
-    background-color 150ms ease-out,
-    border-color 150ms ease-out,
-    box-shadow 150ms ease-out;
 }
 
 /* ==============================

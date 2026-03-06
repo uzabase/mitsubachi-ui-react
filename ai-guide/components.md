@@ -447,7 +447,25 @@ export const Default: Story = {
 
 ---
 
-## 12. ベストプラクティス
+## 12. className prop の禁止
+
+デザインシステムのコンポーネントは `className` prop を外部に公開しない。利用側がスタイルを上書きするとデザインの一貫性が崩れるため。
+
+```tsx
+// ❌ className を受け取らない
+export interface SectionTabProps {
+  className?: string;
+}
+
+// ✅ スタイルはコンポーネント内部で完結させる
+<Tabs.Tab className={styles.tab}>
+```
+
+内部でバリアントや状態に応じたクラスを組み立てるのは問題ない。禁止するのは外部から任意のクラス名を注入できる `className` prop の公開のみ。
+
+---
+
+## 13. ベストプラクティス
 
 1. **Base UI を活用** — インタラクティブなコンポーネントはまず Base UI で実装を検討する
 2. **単一責任** — 1コンポーネント1責任

@@ -19,8 +19,6 @@ export interface SectionTabProps {
    * @default false
    */
   disabled?: boolean;
-  /** 追加のクラス名 */
-  className?: string;
 }
 
 /**
@@ -37,12 +35,9 @@ export function SectionTab({
   children,
   flag,
   disabled = false,
-  className,
 }: SectionTabProps) {
-  const tabClassName = [styles.tab, className].filter(Boolean).join(' ');
-
   return (
-    <Tabs.Tab value={value} disabled={disabled} className={tabClassName}>
+    <Tabs.Tab value={value} disabled={disabled} className={styles.tab}>
       {flag && (
         <span className={styles.flag} aria-hidden="true">
           {flag}
