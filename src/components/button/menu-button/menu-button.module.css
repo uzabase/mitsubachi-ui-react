@@ -48,8 +48,8 @@
 }
 
 .medium .loadingSpinner {
-  inline-size: 18px;
-  block-size: 18px;
+  inline-size: 22px;
+  block-size: 22px;
 }
 
 /* ========================================
@@ -77,8 +77,8 @@
 }
 
 .large .loadingSpinner {
-  inline-size: 20px;
-  block-size: 20px;
+  inline-size: 22px;
+  block-size: 22px;
 }
 
 /* ========================================
@@ -138,17 +138,6 @@
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(360deg);
-  }
 }
 
 /* ========================================

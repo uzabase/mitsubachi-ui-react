@@ -19,6 +19,7 @@ export interface MenuButtonProps extends Omit<
   | 'formTarget'
   | 'name'
   | 'value'
+  | 'className'
 > {
   /**
    * ボタンの表示スタイル
@@ -57,7 +58,6 @@ export const MenuButton = ({
   children,
   icon,
   ref,
-  className,
   ...rest
 }: MenuButtonProps) => {
   const buttonClassName = [
@@ -65,7 +65,6 @@ export const MenuButton = ({
     styles[variant],
     sizeClassMap[size],
     loading && styles.loading,
-    className,
   ]
     .filter(Boolean)
     .join(' ');
@@ -85,7 +84,11 @@ export const MenuButton = ({
           <SpinnerIcon />
         </span>
       ) : (
-        icon && <span className={styles.iconWrapper}>{icon}</span>
+        icon && (
+          <span className={styles.iconWrapper} aria-hidden="true">
+            {icon}
+          </span>
+        )
       )}
       <span className={styles.label}>{children}</span>
       <span className={styles.chevron} aria-hidden="true">
