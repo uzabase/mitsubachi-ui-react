@@ -1,0 +1,10 @@
+/**
+ * SegmentedControl コンポーネントスタイル
+ *
+ * 排他的な単一選択のセグメントグループコンテナ。
+ * Base UI ToggleGroup をベースに使用。
+ */
+
+.container {
+  display: inline-flex;
+}
