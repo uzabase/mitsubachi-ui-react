@@ -1,0 +1,31 @@
+/**
+ * SectionTabGroup コンポーネントスタイル
+ *
+ * SectionTab を水平に並べるコンテナ。
+ * Desktop: 折り返し可、Phone: 横スクロール（折り返しなし）。
+ */
+
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-medium, 8px);
+  align-items: center;
+}
+
+/* スマホ: 折り返しなし・横スクロール */
+@media (max-width: 720px) {
+  .list {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none; /* Firefox */
+
+    /* フォーカスリング（4px spread）が overflow で切り取られないよう確保 */
+    padding: 4px;
+    margin: -4px;
+  }
+
+  .list::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Edge */
+  }
+}
