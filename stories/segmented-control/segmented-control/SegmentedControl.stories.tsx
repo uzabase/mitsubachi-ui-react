@@ -195,10 +195,10 @@ export const IconTwoItems: Story = {
     'aria-label': 'アイコン2項目',
     children: (
       <>
-        <Segment variant="icon" value="item1">
+        <Segment variant="icon" value="item1" aria-label="サンプル1">
           <DummyIcon size={18} />
         </Segment>
-        <Segment variant="icon" value="item2">
+        <Segment variant="icon" value="item2" aria-label="サンプル2">
           <DummyIcon size={18} />
         </Segment>
       </>
@@ -215,13 +215,13 @@ export const IconThreeItems: Story = {
     'aria-label': 'アイコン3項目',
     children: (
       <>
-        <Segment variant="icon" value="item1">
+        <Segment variant="icon" value="item1" aria-label="サンプル1">
           <DummyIcon size={18} />
         </Segment>
-        <Segment variant="icon" value="item2">
+        <Segment variant="icon" value="item2" aria-label="サンプル2">
           <DummyIcon size={18} />
         </Segment>
-        <Segment variant="icon" value="item3">
+        <Segment variant="icon" value="item3" aria-label="サンプル3">
           <DummyIcon size={18} />
         </Segment>
       </>
@@ -238,16 +238,16 @@ export const IconFourItems: Story = {
     'aria-label': 'アイコン4項目',
     children: (
       <>
-        <Segment variant="icon" value="item1">
+        <Segment variant="icon" value="item1" aria-label="サンプル1">
           <DummyIcon size={18} />
         </Segment>
-        <Segment variant="icon" value="item2">
+        <Segment variant="icon" value="item2" aria-label="サンプル2">
           <DummyIcon size={18} />
         </Segment>
-        <Segment variant="icon" value="item3">
+        <Segment variant="icon" value="item3" aria-label="サンプル3">
           <DummyIcon size={18} />
         </Segment>
-        <Segment variant="icon" value="item4">
+        <Segment variant="icon" value="item4" aria-label="サンプル4">
           <DummyIcon size={18} />
         </Segment>
       </>
@@ -264,19 +264,19 @@ export const IconFiveItems: Story = {
     'aria-label': 'アイコン5項目',
     children: (
       <>
-        <Segment variant="icon" value="item1">
+        <Segment variant="icon" value="item1" aria-label="サンプル1">
           <DummyIcon size={18} />
         </Segment>
-        <Segment variant="icon" value="item2">
+        <Segment variant="icon" value="item2" aria-label="サンプル2">
           <DummyIcon size={18} />
         </Segment>
-        <Segment variant="icon" value="item3">
+        <Segment variant="icon" value="item3" aria-label="サンプル3">
           <DummyIcon size={18} />
         </Segment>
-        <Segment variant="icon" value="item4">
+        <Segment variant="icon" value="item4" aria-label="サンプル4">
           <DummyIcon size={18} />
         </Segment>
-        <Segment variant="icon" value="item5">
+        <Segment variant="icon" value="item5" aria-label="サンプル5">
           <DummyIcon size={18} />
         </Segment>
       </>
@@ -293,13 +293,13 @@ export const IconWithDisabled: Story = {
     'aria-label': 'アイコン一部無効化',
     children: (
       <>
-        <Segment variant="icon" value="item1">
+        <Segment variant="icon" value="item1" aria-label="サンプル1">
           <DummyIcon size={18} />
         </Segment>
-        <Segment variant="icon" value="item2" disabled>
+        <Segment variant="icon" value="item2" aria-label="サンプル2" disabled>
           <DummyIcon size={18} />
         </Segment>
-        <Segment variant="icon" value="item3">
+        <Segment variant="icon" value="item3" aria-label="サンプル3">
           <DummyIcon size={18} />
         </Segment>
       </>

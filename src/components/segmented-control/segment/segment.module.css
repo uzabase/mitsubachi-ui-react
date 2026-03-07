@@ -34,6 +34,9 @@
 
   /* ボーダー */
   border: 1px solid var(--border-semi-strong-default, rgba(0, 0, 0, 0.2));
+  /* ボーダー重複を解消（全 Segment 同一マージンで Grid 幅を均一化）
+     SegmentedControl 側の padding-inline-start: 1px で最初の Segment のずれを補正 */
+  margin-inline-start: -1px;
 
   /* 色 */
   background-color: var(--surface-regular-default, #ffffff);
@@ -70,12 +73,6 @@
 .segment:last-child {
   border-start-end-radius: var(--border-radius-medium, 6px);
   border-end-end-radius: var(--border-radius-medium, 6px);
-}
-
-/* ボーダー重複を解消（全 Segment 同一マージンで Grid 幅を均一化）
-   SegmentedControl 側の padding-inline-start: 1px で最初の Segment のずれを補正 */
-.segment {
-  margin-inline-start: -1px;
 }
 
 /* ==============================

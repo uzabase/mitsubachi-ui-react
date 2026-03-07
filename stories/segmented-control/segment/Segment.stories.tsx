@@ -232,6 +232,7 @@ export const IconNormal: Story = {
     value: 'normal',
     variant: 'icon',
     children: <DummyIcon size={18} />,
+    'aria-label': 'サンプル',
   },
 };
 
@@ -243,6 +244,7 @@ export const IconHover: Story = {
     value: 'hover',
     variant: 'icon',
     children: <DummyIcon size={18} />,
+    'aria-label': 'サンプル',
   },
   parameters: {
     pseudo: {
@@ -259,6 +261,7 @@ export const IconActive: Story = {
     value: 'active',
     variant: 'icon',
     children: <DummyIcon size={18} />,
+    'aria-label': 'サンプル',
   },
   parameters: {
     pseudo: {
@@ -275,6 +278,7 @@ export const IconFocus: Story = {
     value: 'focus',
     variant: 'icon',
     children: <DummyIcon size={18} />,
+    'aria-label': 'サンプル',
   },
   parameters: {
     pseudo: {
@@ -291,6 +295,7 @@ export const IconDisabled: Story = {
     value: 'disabled',
     variant: 'icon',
     children: <DummyIcon size={18} />,
+    'aria-label': 'サンプル',
     disabled: true,
   },
 };
@@ -308,6 +313,7 @@ export const IconSelected: Story = {
     value: 'current',
     variant: 'icon',
     children: <DummyIcon size={18} />,
+    'aria-label': 'サンプル',
   },
 };
 
@@ -320,6 +326,7 @@ export const IconSelectedHover: Story = {
     value: 'current',
     variant: 'icon',
     children: <DummyIcon size={18} />,
+    'aria-label': 'サンプル',
   },
   parameters: {
     pseudo: {
@@ -337,6 +344,7 @@ export const IconSelectedActive: Story = {
     value: 'current',
     variant: 'icon',
     children: <DummyIcon size={18} />,
+    'aria-label': 'サンプル',
   },
   parameters: {
     pseudo: {
@@ -354,6 +362,7 @@ export const IconSelectedFocus: Story = {
     value: 'current',
     variant: 'icon',
     children: <DummyIcon size={18} />,
+    'aria-label': 'サンプル',
   },
   parameters: {
     pseudo: {
@@ -371,6 +380,7 @@ export const IconSelectedDisabled: Story = {
     value: 'current',
     variant: 'icon',
     children: <DummyIcon size={18} />,
+    'aria-label': 'サンプル',
     disabled: true,
   },
 };
@@ -417,10 +427,15 @@ export const AllStates: StoryObj = {
           アイコン: 未選択
         </p>
         <SegmentedControl>
-          <Segment variant="icon" value="default">
+          <Segment variant="icon" value="default" aria-label="サンプル1">
             <DummyIcon size={18} />
           </Segment>
-          <Segment variant="icon" value="disabled" disabled>
+          <Segment
+            variant="icon"
+            value="disabled"
+            aria-label="サンプル2"
+            disabled
+          >
             <DummyIcon size={18} />
           </Segment>
         </SegmentedControl>
@@ -430,10 +445,15 @@ export const AllStates: StoryObj = {
           アイコン: 選択
         </p>
         <SegmentedControl defaultValue="selected">
-          <Segment variant="icon" value="selected">
+          <Segment variant="icon" value="selected" aria-label="サンプル1">
             <DummyIcon size={18} />
           </Segment>
-          <Segment variant="icon" value="selected-disabled" disabled>
+          <Segment
+            variant="icon"
+            value="selected-disabled"
+            aria-label="サンプル2"
+            disabled
+          >
             <DummyIcon size={18} />
           </Segment>
         </SegmentedControl>
