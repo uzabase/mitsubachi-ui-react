@@ -1,6 +1,6 @@
 export { ArrowDownIcon } from './ArrowDownIcon';
-export { CheckIcon } from './CheckIcon';
 export { ArrowUpIcon } from './ArrowUpIcon';
+export { CheckIcon } from './CheckIcon';
 export { CloseIcon } from './CloseIcon';
 export { DummyIcon } from './DummyIcon';
 export { ErrorIcon } from './ErrorIcon';

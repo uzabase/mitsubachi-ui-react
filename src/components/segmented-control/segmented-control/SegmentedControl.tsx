@@ -41,9 +41,9 @@ export interface SegmentedControlProps {
  * @example
  * ```tsx
  * <SegmentedControl defaultValue="tab1" aria-label="表示切り替え">
- *   <Segment value="tab1">タブ1</Segment>
- *   <Segment value="tab2">タブ2</Segment>
- *   <Segment value="tab3">タブ3</Segment>
+ *   <Segment variant="text" value="tab1">タブ1</Segment>
+ *   <Segment variant="text" value="tab2">タブ2</Segment>
+ *   <Segment variant="text" value="tab3">タブ3</Segment>
  * </SegmentedControl>
  * ```
  */
@@ -70,6 +70,7 @@ export function SegmentedControl({
       value={groupValue}
       defaultValue={groupDefaultValue}
       onValueChange={handleValueChange}
+      toggleMultiple={false}
       disabled={disabled}
       className={styles.container}
       aria-label={ariaLabel}

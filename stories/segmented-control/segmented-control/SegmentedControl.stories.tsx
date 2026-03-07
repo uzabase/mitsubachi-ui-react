@@ -3,6 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import { Segment } from '../../../src/components/segmented-control/segment';
 import { SegmentedControl } from '../../../src/components/segmented-control/segmented-control';
+import { DummyIcon } from '../../../src/icons';
 
 const meta = {
   title: 'Components/SegmentedControl/SegmentedControl',
@@ -17,9 +18,9 @@ const meta = {
           '## 使用例\n\n' +
           '```tsx\n' +
           '<SegmentedControl defaultValue="tab1" aria-label="表示切り替え">\n' +
-          '  <Segment value="Item1">アイテム1</Segment>\n' +
-          '  <Segment value="Item2">アイテム2</Segment>\n' +
-          '  <Segment value="Item3">アイテム3</Segment>\n' +
+          '  <Segment variant="text" value="Item1">アイテム1</Segment>\n' +
+          '  <Segment variant="text" value="Item2">アイテム2</Segment>\n' +
+          '  <Segment variant="text" value="Item3">アイテム3</Segment>\n' +
           '</SegmentedControl>\n' +
           '```',
       },
@@ -32,105 +33,143 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 /**
- * セグメント2個
+ * テキスト: セグメント2個
  */
-export const TwoItems: Story = {
+export const TextTwoItems: Story = {
   args: {
     defaultValue: 'item1',
-    'aria-label': '2項目',
+    'aria-label': 'テキスト2項目',
     children: (
       <>
-        <Segment value="item1">Label</Segment>
-        <Segment value="item2">Label</Segment>
+        <Segment variant="text" value="item1">
+          Label
+        </Segment>
+        <Segment variant="text" value="item2">
+          Label
+        </Segment>
       </>
     ),
   },
 };
 
 /**
- * セグメント3個
+ * テキスト: セグメント3個
  */
-export const ThreeItems: Story = {
+export const TextThreeItems: Story = {
   args: {
     defaultValue: 'item1',
-    'aria-label': '3項目',
+    'aria-label': 'テキスト3項目',
     children: (
       <>
-        <Segment value="item1">Label</Segment>
-        <Segment value="item2">Label</Segment>
-        <Segment value="item3">Label</Segment>
+        <Segment variant="text" value="item1">
+          Label
+        </Segment>
+        <Segment variant="text" value="item2">
+          Label
+        </Segment>
+        <Segment variant="text" value="item3">
+          Label
+        </Segment>
       </>
     ),
   },
 };
 
 /**
- * セグメント4個
+ * テキスト: セグメント4個
  */
-export const FourItems: Story = {
+export const TextFourItems: Story = {
   args: {
     defaultValue: 'item1',
-    'aria-label': '4項目',
+    'aria-label': 'テキスト4項目',
     children: (
       <>
-        <Segment value="item1">Label</Segment>
-        <Segment value="item2">Label</Segment>
-        <Segment value="item3">Label</Segment>
-        <Segment value="item4">Label</Segment>
+        <Segment variant="text" value="item1">
+          Label
+        </Segment>
+        <Segment variant="text" value="item2">
+          Label
+        </Segment>
+        <Segment variant="text" value="item3">
+          Label
+        </Segment>
+        <Segment variant="text" value="item4">
+          Label
+        </Segment>
       </>
     ),
   },
 };
 
 /**
- * セグメント5個
+ * テキスト: セグメント5個
  */
-export const FiveItems: Story = {
+export const TextFiveItems: Story = {
   args: {
     defaultValue: 'item1',
-    'aria-label': '5項目',
+    'aria-label': 'テキスト5項目',
     children: (
       <>
-        <Segment value="item1">Label</Segment>
-        <Segment value="item2">Label</Segment>
-        <Segment value="item3">Label</Segment>
-        <Segment value="item4">Label</Segment>
-        <Segment value="item5">Label</Segment>
+        <Segment variant="text" value="item1">
+          Label
+        </Segment>
+        <Segment variant="text" value="item2">
+          Label
+        </Segment>
+        <Segment variant="text" value="item3">
+          Label
+        </Segment>
+        <Segment variant="text" value="item4">
+          Label
+        </Segment>
+        <Segment variant="text" value="item5">
+          Label
+        </Segment>
       </>
     ),
   },
 };
 
 /**
- * 一部セグメント無効化
+ * テキスト: 一部セグメント無効化
  */
-export const WithDisabled: Story = {
+export const TextWithDisabled: Story = {
   args: {
     defaultValue: 'item1',
-    'aria-label': '一部無効化',
+    'aria-label': 'テキスト一部無効化',
     children: (
       <>
-        <Segment value="item1">有効</Segment>
-        <Segment value="item2" disabled>
+        <Segment variant="text" value="item1">
+          有効
+        </Segment>
+        <Segment variant="text" value="item2" disabled>
           無効
         </Segment>
-        <Segment value="item3">有効</Segment>
+        <Segment variant="text" value="item3">
+          有効
+        </Segment>
       </>
     ),
   },
 };
 
 /**
- * 制御モード（Controlled）
+ * テキスト: 制御モード（Controlled）
  */
-export const Controlled: Story = {
+export const TextControlled: Story = {
   args: {
-    'aria-label': '制御モード',
+    'aria-label': 'テキスト制御モード',
     children: (
       <>
-        <Segment value="item1">タブ1</Segment>
-        <Segment value="item2">タブ2</Segment>
-        <Segment value="item3">タブ3</Segment>
+        <Segment variant="text" value="item1">
+          タブ1
+        </Segment>
+        <Segment variant="text" value="item2">
+          タブ2
+        </Segment>
+        <Segment variant="text" value="item3">
+          タブ3
+        </Segment>
       </>
     ),
   },
@@ -144,5 +183,126 @@ export const Controlled: Story = {
         </p>
       </div>
     );
+  },
+};
+
+/**
+ * アイコン: セグメント2個
+ */
+export const IconTwoItems: Story = {
+  args: {
+    defaultValue: 'item1',
+    'aria-label': 'アイコン2項目',
+    children: (
+      <>
+        <Segment variant="icon" value="item1">
+          <DummyIcon size={18} />
+        </Segment>
+        <Segment variant="icon" value="item2">
+          <DummyIcon size={18} />
+        </Segment>
+      </>
+    ),
+  },
+};
+
+/**
+ * アイコン: セグメント3個
+ */
+export const IconThreeItems: Story = {
+  args: {
+    defaultValue: 'item1',
+    'aria-label': 'アイコン3項目',
+    children: (
+      <>
+        <Segment variant="icon" value="item1">
+          <DummyIcon size={18} />
+        </Segment>
+        <Segment variant="icon" value="item2">
+          <DummyIcon size={18} />
+        </Segment>
+        <Segment variant="icon" value="item3">
+          <DummyIcon size={18} />
+        </Segment>
+      </>
+    ),
+  },
+};
+
+/**
+ * アイコン: セグメント4個
+ */
+export const IconFourItems: Story = {
+  args: {
+    defaultValue: 'item1',
+    'aria-label': 'アイコン4項目',
+    children: (
+      <>
+        <Segment variant="icon" value="item1">
+          <DummyIcon size={18} />
+        </Segment>
+        <Segment variant="icon" value="item2">
+          <DummyIcon size={18} />
+        </Segment>
+        <Segment variant="icon" value="item3">
+          <DummyIcon size={18} />
+        </Segment>
+        <Segment variant="icon" value="item4">
+          <DummyIcon size={18} />
+        </Segment>
+      </>
+    ),
+  },
+};
+
+/**
+ * アイコン: セグメント5個
+ */
+export const IconFiveItems: Story = {
+  args: {
+    defaultValue: 'item1',
+    'aria-label': 'アイコン5項目',
+    children: (
+      <>
+        <Segment variant="icon" value="item1">
+          <DummyIcon size={18} />
+        </Segment>
+        <Segment variant="icon" value="item2">
+          <DummyIcon size={18} />
+        </Segment>
+        <Segment variant="icon" value="item3">
+          <DummyIcon size={18} />
+        </Segment>
+        <Segment variant="icon" value="item4">
+          <DummyIcon size={18} />
+        </Segment>
+        <Segment variant="icon" value="item5">
+          <DummyIcon size={18} />
+        </Segment>
+      </>
+    ),
+  },
+};
+
+/**
+ * アイコン: 一部セグメント無効化
+ */
+export const IconWithDisabled: Story = {
+  args: {
+    defaultValue: 'item1',
+    'aria-label': 'アイコン一部無効化',
+    children: (
+      <>
+        <Segment variant="icon" value="item1">
+          <DummyIcon size={18} />
+        </Segment>
+        <Segment variant="icon" value="item2" disabled>
+          <DummyIcon size={18} />
+        </Segment>
+        <Segment variant="icon" value="item3">
+          <DummyIcon size={18} />
+        </Segment>
+      </>
+    ),
   },
 };
