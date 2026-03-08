@@ -1,0 +1,35 @@
+/* ========================================
+   InputChip スタイル
+   ======================================== */
+
+.inputChip {
+  gap: 2px;
+  padding-inline-start: var(--spacing-large, 12px);
+  padding-inline-end: var(--spacing-4, 4px);
+  min-block-size: 28px;
+}
+
+@media (max-width: 720px) {
+  .inputChip {
+    min-block-size: 32px;
+    /* flex: 0 1 auto;   */
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  .label {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    min-width: 0;
+  }
+}
+
+/* ========================================
+   無効化状態
+   ======================================== */
+
+/* IconButtonの--icon-disabledをobject/regular-disabledで上書き */
+.disabled {
+  --icon-disabled: var(--object-regular-disabled, rgba(0, 0, 0, 0.35));
+}
