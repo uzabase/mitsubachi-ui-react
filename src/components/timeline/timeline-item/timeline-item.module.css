@@ -1,0 +1,91 @@
+.item {
+  display: flex;
+  gap: var(--spacing-small, 4px);
+  align-items: stretch;
+}
+
+/* Flow column */
+.flow {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  inline-size: 24px;
+  flex-shrink: 0;
+}
+
+/* Top line */
+.topLine {
+  inline-size: 1px;
+  block-size: 7px;
+  flex-shrink: 0;
+  background-color: var(--border-semi-strong-default, rgba(0, 0, 0, 0.2));
+}
+
+/* Bottom line */
+.bottomLine {
+  inline-size: 1px;
+  flex-grow: 1;
+  min-block-size: 1px;
+  background-color: var(--border-semi-strong-default, rgba(0, 0, 0, 0.2));
+}
+
+/* Dot */
+.dot {
+  inline-size: 10px;
+  block-size: 10px;
+  border-radius: var(--border-radius-full, 9999px);
+  background-color: var(--border-semi-strong-default, rgba(0, 0, 0, 0.2));
+  flex-shrink: 0;
+}
+
+/* Emphasized dot */
+.emphasized .dot {
+  background-color: var(--border-selected, #3f69f2);
+}
+
+/* Contents */
+.contents {
+  flex: 1 0 0;
+  min-inline-size: 0;
+}
+
+/* --- First item: hide top line, add offset for dot alignment --- */
+
+.item:first-child .topLine {
+  display: none;
+}
+
+.item:first-child .flow {
+  /* テキストの1行目中央にドットを揃えるためのオフセット */
+  padding-block-start: 7px;
+}
+
+/* --- Last item: hide bottom line --- */
+
+.item:last-child .bottomLine {
+  display: none;
+}
+
+/* --- Only child: hide both lines --- */
+
+.item:only-child .topLine,
+.item:only-child .bottomLine {
+  display: none;
+}
+
+/* --- Spacing --- */
+
+/* Normal spacing */
+.normal .contents {
+  padding-block-end: var(--spacing-x-large, 16px);
+}
+
+/* Loose spacing */
+.loose .contents {
+  padding-block-end: var(--spacing-3x-large, 32px);
+}
+
+/* Last child: no padding-bottom */
+.item:last-child .contents {
+  padding-block-end: 0;
+}
