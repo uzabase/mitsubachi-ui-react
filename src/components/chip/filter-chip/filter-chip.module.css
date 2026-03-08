@@ -1,0 +1,88 @@
+/* ========================================
+   FilterChip スタイル
+   ======================================== */
+
+.filterChip {
+  cursor: pointer;
+}
+
+.filterChip:disabled {
+  cursor: not-allowed;
+}
+
+/* ========================================
+   ラベル（折り返し許可）
+   ======================================== */
+
+.label {
+  white-space: normal;
+  word-break: break-all;
+}
+
+/* ========================================
+   フォーカス状態
+   ======================================== */
+
+.filterChip:focus-visible {
+  box-shadow:
+    0 0 0 2px var(--surface-regular-default, white),
+    0 0 0 4px var(--focus-ring-default, #191919);
+}
+
+/* ========================================
+   チェックアイコン
+   ======================================== */
+
+.checkIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--object-regular-default, rgba(0, 0, 0, 0.84));
+  inline-size: var(--icon-size-small, 18px);
+  block-size: var(--icon-size-small, 18px);
+}
+
+@media (max-width: 720px) {
+  .checkIcon {
+    inline-size: var(--icon-size-medium, 20px);
+    block-size: var(--icon-size-medium, 20px);
+  }
+}
+
+.filterChip:disabled .checkIcon {
+  color: var(--object-regular-disabled, rgba(0, 0, 0, 0.35));
+}
+
+/* ========================================
+   未選択
+   ======================================== */
+
+.unselected {
+  min-block-size: 24px;
+  padding-inline: var(--spacing-medium, 8px);
+}
+
+@media (max-width: 720px) {
+  .unselected {
+    min-block-size: 28px;
+    padding-inline: var(--spacing-large, 12px);
+  }
+}
+
+/* ========================================
+   選択
+   ======================================== */
+
+.selected {
+  min-block-size: 24px;
+  padding-inline-start: var(--spacing-small, 4px);
+  padding-inline-end: var(--spacing-medium, 8px);
+}
+
+@media (max-width: 720px) {
+  .selected {
+    min-block-size: 28px;
+    padding-inline-end: var(--spacing-large, 12px);
+  }
+}
