@@ -296,7 +296,7 @@ export const MultipleFields: Story = {
           .form-label-wrapper {
             display: flex;
             flex-direction: column;
-            gap: var(--spacing-x-small, 4px);
+            gap: var(--spacing-small, 4px);
           }
 
           .support-text {
