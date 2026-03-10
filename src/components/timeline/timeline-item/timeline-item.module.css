@@ -40,7 +40,7 @@
 
 /* Emphasized dot */
 .emphasized .dot {
-  background-color: var(--border-selected, #3f69f2);
+  background-color: var(--object-emphasized, #315ce8);
 }
 
 /* Contents */
