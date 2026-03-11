@@ -131,6 +131,31 @@ export const TextFiveItems: Story = {
 };
 
 /**
+ * テキスト: 長いラベル（折り返し確認用）
+ *
+ * 親の幅を超える長いラベルが含まれる場合、省略せず折り返して表示する。
+ */
+export const TextLongLabel: Story = {
+  args: {
+    defaultValue: 'item1',
+    'aria-label': '長いラベル',
+    children: (
+      <>
+        <Segment variant="text" value="item1">
+          短い
+        </Segment>
+        <Segment variant="text" value="item2">
+          短い
+        </Segment>
+        <Segment variant="text" value="item3">
+          長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い
+        </Segment>
+      </>
+    ),
+  },
+};
+
+/**
  * テキスト: 一部セグメント無効化
  */
 export const TextWithDisabled: Story = {

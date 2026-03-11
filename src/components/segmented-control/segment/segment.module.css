@@ -48,7 +48,6 @@
   font-size: var(--font-scale-30, 12px);
   line-height: 1.5;
   letter-spacing: 0.02em;
-  white-space: nowrap;
   text-align: center;
 
   /* インタラクション */
@@ -93,7 +92,7 @@
 
 .segment[data-pressed] {
   background-color: var(--surface-selected-default, #e8edff);
-  border-color: var(--border-selected, #3f69f2);
+  border-color: var(--border-semi-strong-default, rgba(0, 0, 0, 0.2));
   z-index: 1;
 }
 
@@ -201,7 +200,12 @@
 
 @media (max-width: 720px) {
   .segment {
-    min-block-size: 40px;
+    min-block-size: 36px;
     font-size: var(--font-scale-40, 14px);
+  }
+
+  .checkIcon {
+    inline-size: 20px;
+    block-size: 20px;
   }
 }

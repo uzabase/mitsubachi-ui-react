@@ -54,12 +54,23 @@
 
 ### Icon（アイコン）
 
+#### カラー
+
 | トークン | フォールバック | 用途 |
 |---------|-------------|------|
 | `--icon-on-strong` | `white` | プライマリボタンアイコン |
 | `--icon-regular-default` | `rgba(0,0,0,0.84)` | 通常アイコン |
 | `--icon-disabled` | `rgba(0,0,0,0.25)` | disabled アイコン |
 | `--icon-selected` | `#3f69f2` | 選択状態アイコン |
+
+#### サイズ
+
+| サイズ名 | 値 |
+|---------|------|
+| small | `18px` |
+| medium | `20px` |
+| large | `22px` |
+| x-large | `24px` |
 
 ### Typography（タイポグラフィ）
 
@@ -83,6 +94,7 @@
 | `--spacing-large` | `12px` | Snackbar パディング |
 | `--spacing-x-large` | `16px` | Dialog セクションパディング |
 | `--spacing-2x-large` | `24px` | Dialog 外側パディング |
+| `--spacing-3x-large` | `32px` | Timeline loose スペーシング |
 
 ### Border Radius
 

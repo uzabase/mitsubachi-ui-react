@@ -56,7 +56,9 @@
   flex-shrink: 0;
 }
 
-.spinner {
+.loadingSpinner > svg {
+  inline-size: 15px;
+  block-size: 15px;
   animation: spin 1s linear infinite;
 }
 
@@ -81,8 +83,7 @@
 }
 
 .button.small .iconWrapper,
-.button.small .loadingSpinner,
-.button.small .spinner {
+.button.small .loadingSpinner {
   inline-size: var(--icon-size-small, 18px);
   block-size: var(--icon-size-small, 18px);
 }
@@ -95,8 +96,7 @@
 }
 
 .button.medium .iconWrapper,
-.button.medium .loadingSpinner,
-.button.medium .spinner {
+.button.medium .loadingSpinner {
   inline-size: var(--icon-size-medium, 20px);
   block-size: var(--icon-size-medium, 20px);
 }
@@ -109,8 +109,7 @@
 }
 
 .button.large .iconWrapper,
-.button.large .loadingSpinner,
-.button.large .spinner {
+.button.large .loadingSpinner {
   inline-size: var(--icon-size-large, 22px);
   block-size: var(--icon-size-large, 22px);
 }
