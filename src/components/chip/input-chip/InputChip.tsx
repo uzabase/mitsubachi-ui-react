@@ -1,5 +1,5 @@
 import { CloseIcon } from '../../../icons';
-import { IconButton } from '../../icon-button';
+import { IconButton } from '../../button';
 import { Chip } from '../chip';
 import styles from './input-chip.module.css';
 
