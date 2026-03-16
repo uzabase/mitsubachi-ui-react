@@ -1,0 +1,250 @@
+/* ==============================
+   ヘッダーセルの基本スタイル
+   ============================== */
+
+.headerCell {
+  box-sizing: border-box;
+  min-block-size: 40px;
+  padding-block: var(--spacing-medium, 8px);
+  padding-inline: var(--spacing-large, 12px);
+
+  /* タイポグラフィ */
+  font-family: var(--typography-font-family, Arial, sans-serif);
+  font-weight: var(--typography-font-weight-bold, 700);
+  font-size: var(--font-scale-30, 12px);
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+  text-align: start;
+
+  /* トランジション */
+  transition: background-color 0.2s ease;
+}
+
+/* ==============================
+   グリッドビュー
+   ============================== */
+
+.grid {
+  background-color: var(--surface-semi-strong-default, #ededed);
+  border-block-start: 1px solid
+    var(--border-semi-strong-default, rgba(0, 0, 0, 0.2));
+  border-block-end: 1px solid
+    var(--border-semi-strong-default, rgba(0, 0, 0, 0.2));
+  border-inline-start: 1px solid
+    var(--border-semi-strong-default, rgba(0, 0, 0, 0.2));
+  color: var(--text-regular-default, rgba(0, 0, 0, 0.84));
+}
+
+.grid:last-child {
+  border-inline-end: 1px solid
+    var(--border-semi-strong-default, rgba(0, 0, 0, 0.2));
+}
+
+/* ==============================
+   リストビュー
+   ============================== */
+
+.list {
+  background-color: var(--surface-regular-default, #ffffff);
+  border-block-start: 1px solid
+    var(--border-semi-strong-default, rgba(0, 0, 0, 0.2));
+  border-block-end: 1px solid
+    var(--border-semi-strong-default, rgba(0, 0, 0, 0.2));
+  color: var(--text-weak-default, rgba(0, 0, 0, 0.54));
+}
+
+/* ==============================
+   コンテンツタイプ: checkbox
+   ============================== */
+
+.checkbox {
+  inline-size: 40px;
+  padding-inline: var(--spacing-medium, 8px);
+  padding-block: var(--spacing-small, 4px);
+  text-align: center;
+}
+
+/* ==============================
+   コンテンツタイプ: icon-button
+   ============================== */
+
+.icon-button {
+  inline-size: 48px;
+  padding-inline: var(--spacing-large, 12px);
+}
+
+/* ==============================
+   ソート可能
+   ============================== */
+
+.sortable {
+  cursor: pointer;
+}
+
+.sortable.grid:hover {
+  background-color: var(--surface-semi-strong-hover, #e5e5e5);
+}
+
+.sortable.list:hover {
+  background-color: var(--surface-regular-hover, #f5f5f5);
+}
+
+/* ==============================
+   ソート済み
+   ============================== */
+
+.sorted {
+  color: var(--text-selected, #315ce8);
+}
+
+/* ==============================
+   ソートボタン
+   ============================== */
+
+.sortButton {
+  all: unset;
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  cursor: pointer;
+  color: inherit;
+  font: inherit;
+  letter-spacing: inherit;
+}
+
+.sortButton:focus-visible {
+  box-shadow:
+    0 0 0 2px var(--surface-regular-default, #ffffff),
+    0 0 0 4px var(--focus-ring-default, #191919);
+}
+
+/* ==============================
+   ソートアイコン
+   ============================== */
+
+.sortIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  inline-size: 18px;
+  block-size: 18px;
+  color: var(--object-weak-default, rgba(0, 0, 0, 0.54));
+}
+
+.sorted .sortIcon {
+  color: inherit;
+}
+
+/* ==============================
+   ソートラベル
+   ============================== */
+
+.sortLabel {
+  display: inline-flex;
+  align-items: center;
+}
+
+/* ==============================
+   セルコンテンツ（テキスト + メニューボタンのレイアウト）
+   ============================== */
+
+.cellContent {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-x-small, 2px);
+}
+
+.cellText {
+  flex: 1 1 0;
+  min-inline-size: 0;
+}
+
+/* ==============================
+   カラムアクションメニュー
+   ============================== */
+
+.menuWrapper {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.menuButton {
+  all: unset;
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  inline-size: 24px;
+  block-size: 24px;
+  border-radius: var(--border-radius-full, 9999px);
+  cursor: pointer;
+  color: var(--icon-regular-default, rgba(0, 0, 0, 0.84));
+  transition: background-color 0.2s ease;
+}
+
+.menuButton:hover {
+  background-color: var(--surface-overlay-hover, rgba(0, 0, 0, 0.07));
+}
+
+.menuButton:active {
+  background-color: var(--surface-overlay-active, rgba(0, 0, 0, 0.1));
+}
+
+.menuButton:focus-visible {
+  box-shadow:
+    0 0 0 2px var(--surface-regular-default, #ffffff),
+    0 0 0 4px var(--focus-ring-default, #191919);
+}
+
+/* ==============================
+   ドロップダウンメニュー
+   ============================== */
+
+.menuDropdown {
+  position: absolute;
+  inset-block-start: 100%;
+  inset-inline-end: 0;
+  z-index: 10;
+  min-inline-size: 160px;
+  padding-block: var(--spacing-small, 4px);
+  background-color: var(--surface-regular-default, #ffffff);
+  border: 1px solid var(--border-regular-default, rgba(0, 0, 0, 0.1));
+  border-radius: var(--border-radius-medium, 6px);
+  box-shadow:
+    0px 1px 2px 0px var(--neutral-neutral-50-alpha, rgba(0, 0, 0, 0.29)),
+    0px 5px 9px 2px var(--neutral-neutral-30-alpha, rgba(0, 0, 0, 0.13));
+}
+
+.menuItem {
+  all: unset;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  inline-size: 100%;
+  padding-block: var(--spacing-medium, 8px);
+  padding-inline: var(--spacing-large, 12px);
+  font-family: var(--typography-font-family, Arial, sans-serif);
+  font-weight: var(--typography-font-weight-regular, 400);
+  font-size: var(--font-scale-30, 12px);
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+  color: var(--text-regular-default, rgba(0, 0, 0, 0.84));
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.menuItem:hover {
+  background-color: var(--surface-overlay-hover, rgba(0, 0, 0, 0.07));
+}
+
+.menuItem:active {
+  background-color: var(--surface-overlay-active, rgba(0, 0, 0, 0.1));
+}
+
+.menuItem:focus-visible {
+  box-shadow:
+    0 0 0 2px var(--surface-regular-default, #ffffff),
+    0 0 0 4px var(--focus-ring-default, #191919);
+}

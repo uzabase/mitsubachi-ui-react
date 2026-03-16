@@ -1,0 +1,96 @@
+/* ==============================
+   ボディセルの基本スタイル
+   ============================== */
+
+.bodyCell {
+  box-sizing: border-box;
+  min-block-size: 40px;
+  padding-block: var(--spacing-medium, 8px);
+  padding-inline: var(--spacing-large, 12px);
+
+  /* タイポグラフィ */
+  font-family: var(--typography-font-family, Arial, sans-serif);
+  font-weight: var(--typography-font-weight-regular, 400);
+  font-size: var(--font-scale-30, 12px);
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+  text-align: start;
+
+  /* 色 */
+  color: var(--text-regular-default, rgba(0, 0, 0, 0.84));
+
+  /* トランジション */
+  transition: background-color 0.2s ease;
+}
+
+/* ==============================
+   グリッドビュー
+   ============================== */
+
+.grid {
+  background-color: var(--surface-regular-default, #ffffff);
+  border-block-end: 1px solid var(--border-regular-default, rgba(0, 0, 0, 0.1));
+  border-inline-start: 1px solid
+    var(--border-regular-default, rgba(0, 0, 0, 0.1));
+}
+
+.grid:last-child {
+  border-inline-end: 1px solid var(--border-regular-default, rgba(0, 0, 0, 0.1));
+}
+
+/* ==============================
+   リストビュー
+   ============================== */
+
+.list {
+  background-color: var(--surface-regular-default, #ffffff);
+  border-block-end: 1px solid var(--border-regular-default, rgba(0, 0, 0, 0.1));
+}
+
+/* ==============================
+   コンテンツタイプ: number
+   ============================== */
+
+.number {
+  text-align: end;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ==============================
+   コンテンツタイプ: date
+   ============================== */
+
+.date {
+  font-variant-numeric: tabular-nums;
+}
+
+/* ==============================
+   コンテンツタイプ: checkbox
+   ============================== */
+
+.checkbox {
+  inline-size: 40px;
+  padding-inline: var(--spacing-medium, 8px);
+  padding-block: var(--spacing-small, 4px);
+  text-align: center;
+}
+
+/* ==============================
+   null 値の表示
+   ============================== */
+
+.nullValue {
+  color: var(--text-weak-default, rgba(0, 0, 0, 0.54));
+}
+
+/* ==============================
+   行ホバー時のセル背景（透過で行背景を見せる）
+   ============================== */
+
+tr:hover > .bodyCell {
+  background-color: transparent;
+}
+
+tr[aria-selected='true'] > .bodyCell {
+  background-color: transparent;
+}

@@ -1,0 +1,11 @@
+.container {
+  overflow: auto;
+}
+
+.table {
+  border-collapse: collapse;
+  inline-size: 100%;
+  font-family: var(--typography-font-family, Arial, sans-serif);
+  word-break: break-word;
+  overflow-wrap: break-word;
+}

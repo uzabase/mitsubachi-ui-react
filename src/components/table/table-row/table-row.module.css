@@ -1,0 +1,27 @@
+/* ==============================
+   行の基本スタイル
+   ============================== */
+
+.row {
+  transition: background-color 0.2s ease;
+}
+
+/* ==============================
+   ホバー状態
+   ============================== */
+
+.row:hover:not(.selected) {
+  background-color: var(--surface-overlay-hover, rgba(0, 0, 0, 0.04));
+}
+
+/* ==============================
+   選択状態
+   ============================== */
+
+.selected {
+  background-color: var(--surface-selected-default, #e8edff);
+}
+
+.selected:hover {
+  background-color: var(--surface-selected-hover, #dbe4ff);
+}
