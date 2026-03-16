@@ -35,8 +35,10 @@ const meta = {
     docs: {
       description: {
         component:
-          'テーブルのヘッダーセルコンポーネント。\n\n' +
-          '> **注意:** Table, TableHead, TableRow 内で使用してください。\n\n' +
+          'テーブルのヘッダーセルを表示するコンポーネントです。\n' +
+          'ソート機能やカラムアクションメニューを提供します。\n\n' +
+          '> **⚠️注意:** このコンポーネントを単独で使用しないでください。\n' +
+          '> Table, TableHead, TableRow 内に配置して利用してください。\n\n' +
           '## 使用例\n\n' +
           '```tsx\n' +
           '<Table view="grid" aria-label="データ">\n' +

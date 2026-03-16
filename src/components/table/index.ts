@@ -19,5 +19,11 @@ export type {
   TableBodyCellContentType,
 } from './table-body-cell';
 export type { TableView } from './shared';
-export { useTableSort } from './shared';
+export { useTableSort, useTableColumns } from './shared';
 export type { UseTableSortOptions, UseTableSortReturn } from './shared';
+export type {
+  ColumnOption,
+  ColumnConfig,
+  ColumnState,
+  UseTableColumnsReturn,
+} from './shared';

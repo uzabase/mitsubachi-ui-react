@@ -4,6 +4,7 @@
 
 .headerCell {
   box-sizing: border-box;
+  position: relative;
   min-block-size: 40px;
   padding-block: var(--spacing-medium, 8px);
   padding-inline: var(--spacing-large, 12px);
@@ -153,6 +154,7 @@
 .cellContent {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: var(--spacing-x-small, 2px);
 }
 
@@ -222,6 +224,8 @@
   box-sizing: border-box;
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-medium, 8px);
   inline-size: 100%;
   padding-block: var(--spacing-medium, 8px);
   padding-inline: var(--spacing-large, 12px);
@@ -247,4 +251,38 @@
   box-shadow:
     0 0 0 2px var(--surface-regular-default, #ffffff),
     0 0 0 4px var(--focus-ring-default, #191919);
+}
+
+.menuItemLabel {
+  flex: 1 1 0;
+  min-inline-size: 0;
+}
+
+.menuItemCheck {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  inline-size: 16px;
+  block-size: 16px;
+  color: var(--icon-selected, #3f69f2);
+}
+
+/* ==============================
+   カラムリサイザー
+   ============================== */
+
+.resizer {
+  position: absolute;
+  inset-block-start: 0;
+  inset-inline-end: 0;
+  inline-size: 4px;
+  block-size: 100%;
+  cursor: col-resize;
+  background-color: transparent;
+  transition: background-color 0.2s ease;
+}
+
+.resizer:hover {
+  background-color: var(--border-selected, #3f69f2);
 }

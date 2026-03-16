@@ -35,8 +35,11 @@ const meta = {
     docs: {
       description: {
         component:
-          'テーブルのボディセルコンポーネント。\n\n' +
-          '> **注意:** Table, TableBody, TableRow 内で使用してください。\n\n' +
+          'テーブルのボディセルを表示するコンポーネントです。\n' +
+          'テキスト、数値、日付、チェックボックス、カスタムコンテンツなど、さまざまなコンテンツタイプに対応しています。\n' +
+          'children が空の場合はダッシュ（–）を自動表示します。\n\n' +
+          '> **⚠️注意:** このコンポーネントを単独で使用しないでください。\n' +
+          '> Table, TableBody, TableRow 内に配置して利用してください。\n\n' +
           '## 使用例\n\n' +
           '```tsx\n' +
           '<Table view="grid" aria-label="データ">\n' +

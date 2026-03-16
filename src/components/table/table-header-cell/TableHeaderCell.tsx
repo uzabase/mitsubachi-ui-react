@@ -1,5 +1,6 @@
 import React, { type ReactNode } from 'react';
 import {
+  CheckIcon,
   KebabMenuIcon,
   SortAscendingIcon,
   SortDefaultIcon,
@@ -34,6 +35,11 @@ export interface TableHeaderCellProps {
   onSortChange?: (state: TableSortState) => void;
   /** カラムアクションメニューの項目 */
   menuItems?: readonly TableHeaderMenuItem[];
+  /**
+   * カラム幅のリサイズを許可
+   * @default false
+   */
+  resizable?: boolean;
   /** セルのコンテンツ */
   children?: ReactNode;
 }
@@ -43,6 +49,11 @@ export interface TableHeaderMenuItem {
   label: string;
   /** クリック時のコールバック */
   onClick: () => void;
+  /**
+   * 選択状態（チェックアイコンを表示）
+   * @default false
+   */
+  selected?: boolean;
 }
 
 /** ソート状態の遷移マップ */
@@ -73,9 +84,11 @@ export function TableHeaderCell({
   sortState = 'default',
   onSortChange,
   menuItems,
+  resizable = false,
   children,
 }: TableHeaderCellProps) {
   const { view } = useTableContext();
+  const thRef = React.useRef<HTMLTableCellElement>(null);
 
   const isSorted = sortState !== 'default';
   const hasMenu = menuItems && menuItems.length > 0;
@@ -98,10 +111,16 @@ export function TableHeaderCell({
   const ariaSortValue = sort ? toAriaSortValue(sortState) : undefined;
 
   const menuButton = hasMenu ? <ColumnMenu menuItems={menuItems} /> : null;
+  const resizer = resizable ? <ColumnResizer thRef={thRef} /> : null;
 
   if (contentType === 'text' && sort) {
     return (
-      <th className={cellClassName} scope="col" aria-sort={ariaSortValue}>
+      <th
+        ref={thRef}
+        className={cellClassName}
+        scope="col"
+        aria-sort={ariaSortValue}
+      >
         <span className={styles.cellContent}>
           <button
             type="button"
@@ -113,16 +132,23 @@ export function TableHeaderCell({
           </button>
           {menuButton}
         </span>
+        {resizer}
       </th>
     );
   }
 
   return (
-    <th className={cellClassName} scope="col" aria-sort={ariaSortValue}>
+    <th
+      ref={thRef}
+      className={cellClassName}
+      scope="col"
+      aria-sort={ariaSortValue}
+    >
       <span className={styles.cellContent}>
         <span className={styles.cellText}>{children}</span>
         {menuButton}
       </span>
+      {resizer}
     </th>
   );
 }
@@ -186,18 +212,68 @@ function ColumnMenu({
               key={item.label}
               type="button"
               className={styles.menuItem}
-              role="menuitem"
+              role={item.selected !== undefined ? 'menuitemradio' : 'menuitem'}
+              aria-checked={
+                item.selected !== undefined ? item.selected : undefined
+              }
               onClick={() => {
                 item.onClick();
                 setOpen(false);
               }}
             >
-              {item.label}
+              <span className={styles.menuItemLabel}>{item.label}</span>
+              {item.selected && (
+                <span className={styles.menuItemCheck} aria-hidden="true">
+                  <CheckIcon />
+                </span>
+              )}
             </button>
           ))}
         </div>
       )}
     </span>
+  );
+}
+
+/** カラムリサイザー */
+function ColumnResizer({
+  thRef,
+}: {
+  thRef: React.RefObject<HTMLTableCellElement | null>;
+}) {
+  const handleMouseDown = React.useCallback(
+    (e: React.MouseEvent) => {
+      e.preventDefault();
+      const th = thRef.current;
+      if (!th) return;
+
+      const startX = e.clientX;
+      const startWidth = th.offsetWidth;
+
+      const handleMouseMove = (moveEvent: MouseEvent) => {
+        const delta = moveEvent.clientX - startX;
+        const newWidth = Math.max(40, startWidth + delta);
+        th.style.inlineSize = `${newWidth}px`;
+      };
+
+      const handleMouseUp = () => {
+        document.removeEventListener('mousemove', handleMouseMove);
+        document.removeEventListener('mouseup', handleMouseUp);
+        document.body.style.cursor = '';
+        document.body.style.userSelect = '';
+      };
+
+      document.body.style.cursor = 'col-resize';
+      document.body.style.userSelect = 'none';
+      document.addEventListener('mousemove', handleMouseMove);
+      document.addEventListener('mouseup', handleMouseUp);
+    },
+    [thRef]
+  );
+
+  return (
+    // eslint-disable-next-line jsx-a11y/no-static-element-interactions
+    <span className={styles.resizer} onMouseDown={handleMouseDown} />
   );
 }
 
