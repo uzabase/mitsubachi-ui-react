@@ -1,3 +1,4 @@
+export * from './checkbox';
 export * from './chip';
 export * from './dialog';
 export * from './button';
