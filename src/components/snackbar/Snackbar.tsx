@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
 import { Toast } from '@base-ui/react';
 import { SuccessIcon, CloseIcon } from '../../icons';
-import { IconButton } from '../icon-button';
+import { IconButton } from '../button/icon-button';
 import styles from './snackbar.module.css';
 
 /** Snackbarのサイズ */

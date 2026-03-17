@@ -1,0 +1,211 @@
+/**
+ * Segment コンポーネントスタイル
+ *
+ * SegmentedControl 内の個別セグメント。
+ * Base UI Toggle をベースに使用。
+ *
+ * 状態管理: Base UI が付与する data 属性を利用
+ * - [data-pressed]: 選択状態
+ * - [data-disabled]: 無効化状態
+ *
+ * ポジション: CSS 擬似クラスで自動判定
+ * - :first-child → 左側のみ角丸
+ * - :last-child → 右側のみ角丸
+ * - 中間 → 角丸なし
+ */
+
+/* ==============================
+   セグメントの基本スタイル（Desktop）
+   ============================== */
+
+.segment {
+  /* リセット */
+  all: unset;
+  box-sizing: border-box;
+
+  /* レイアウト */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  /* サイズ */
+  min-block-size: 32px;
+  padding-block: var(--spacing-small, 4px);
+
+  /* ボーダー */
+  border: 1px solid var(--border-semi-strong-default, rgba(0, 0, 0, 0.2));
+  /* ボーダー重複を解消（全 Segment 同一マージンで Grid 幅を均一化）
+     SegmentedControl 側の padding-inline-start: 1px で最初の Segment のずれを補正 */
+  margin-inline-start: -1px;
+
+  /* 色 */
+  background-color: var(--surface-regular-default, #ffffff);
+  color: var(--text-regular-default, rgba(0, 0, 0, 0.84));
+
+  /* タイポグラフィ */
+  font-family: var(--typography-font-family, Arial, sans-serif);
+  font-weight: var(--typography-font-weight-regular, 400);
+  font-size: var(--font-scale-30, 12px);
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+  text-align: center;
+
+  /* インタラクション */
+  cursor: pointer;
+
+  /* トランジション */
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+/* ==============================
+   ポジション（角丸）
+   ============================== */
+
+.segment:first-child {
+  border-start-start-radius: var(--border-radius-medium, 6px);
+  border-end-start-radius: var(--border-radius-medium, 6px);
+}
+
+.segment:last-child {
+  border-start-end-radius: var(--border-radius-medium, 6px);
+  border-end-end-radius: var(--border-radius-medium, 6px);
+}
+
+/* ==============================
+   未選択のインタラクション
+   ============================== */
+
+.segment:hover:not([data-pressed]):not([data-disabled]) {
+  background-color: var(--surface-overlay-hover, rgba(0, 0, 0, 0.04));
+}
+
+.segment:active:not([data-pressed]):not([data-disabled]) {
+  background-color: var(--surface-overlay-active, rgba(0, 0, 0, 0.07));
+}
+
+/* ==============================
+   選択状態
+   ============================== */
+
+.segment[data-pressed] {
+  background-color: var(--surface-selected-default, #e8edff);
+  border-color: var(--border-semi-strong-default, rgba(0, 0, 0, 0.2));
+  z-index: 1;
+}
+
+.segment[data-pressed]:hover:not([data-disabled]) {
+  background-color: var(--surface-selected-hover, #dce3ff);
+}
+
+.segment[data-pressed]:active:not([data-disabled]) {
+  background-color: var(--surface-selected-active, #d0d9ff);
+}
+
+/* ==============================
+   フォーカス（全状態共通）
+   ============================== */
+
+.segment:focus-visible {
+  z-index: 2;
+  box-shadow:
+    0 0 0 2px var(--surface-regular-default, #ffffff),
+    0 0 0 4px var(--focus-ring-default, #191919);
+}
+
+/* ==============================
+   無効化状態
+   ============================== */
+
+.segment[data-disabled] {
+  background-color: var(--surface-regular-disabled, rgba(0, 0, 0, 0.03));
+  color: var(--text-disabled, rgba(0, 0, 0, 0.35));
+  border-color: var(--border-disabled, rgba(0, 0, 0, 0.07));
+  cursor: not-allowed;
+}
+
+.segment[data-pressed][data-disabled] {
+  background-color: var(--surface-regular-disabled, rgba(0, 0, 0, 0.03));
+  border-color: var(--border-disabled, rgba(0, 0, 0, 0.07));
+  color: var(--text-disabled, rgba(0, 0, 0, 0.35));
+}
+
+/* ==============================
+   チェックマークアイコン
+   ============================== */
+
+.checkIcon {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  inline-size: 18px;
+  block-size: 18px;
+  color: var(--object-regular-default, rgba(0, 0, 0, 0.84));
+}
+
+.segment[data-pressed] .checkIcon {
+  display: inline-flex;
+}
+
+.segment[data-disabled] .checkIcon {
+  color: var(--object-regular-disabled, rgba(0, 0, 0, 0.35));
+}
+
+/* ==============================
+   バリアント: text
+   ============================== */
+
+.textVariant {
+  min-inline-size: 56px;
+  padding-inline: var(--spacing-large, 12px);
+}
+
+.textVariant[data-pressed] {
+  padding-inline-start: var(--spacing-medium, 8px);
+}
+
+/* ==============================
+   バリアント: icon
+   ============================== */
+
+.iconVariant {
+  min-inline-size: 48px;
+  padding-inline: var(--spacing-medium, 8px);
+}
+
+.iconVariant[data-pressed] {
+  padding-inline-start: var(--spacing-small, 4px);
+}
+
+/* ==============================
+   ラベル
+   ============================== */
+
+.label {
+  display: inline-flex;
+  align-items: center;
+}
+
+.iconVariant .label {
+  inline-size: 18px;
+  block-size: 18px;
+}
+
+/* ==============================
+   スマホ対応
+   ============================== */
+
+@media (max-width: 720px) {
+  .segment {
+    min-block-size: 36px;
+    font-size: var(--font-scale-40, 14px);
+  }
+
+  .checkIcon {
+    inline-size: 20px;
+    block-size: 20px;
+  }
+}

@@ -1,13 +1,22 @@
 import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { IconButton } from '../../src/components/icon-button';
-import { DummyIcon } from '../../src/icons';
+import { IconButton } from '../../../src/components/button/icon-button';
+import { DummyIcon } from '../../../src/icons';
 
 const meta = {
-  title: 'Components/IconButton',
+  title: 'Components/Button/IconButton',
   component: IconButton,
   parameters: {
     layout: 'centered',
+    docs: {
+      description: {
+        component:
+          'テキストを持たず、アイコンのみで操作を表現するコンパクトなボタンコンポーネントです。\n' +
+          '検索、閉じる、編集など、意味が広く共有されている操作に向いています。\n' +
+          '省スペースで配置できる一方、意味が伝わりにくいため、デフォルトでツールチップが表示されます。\n\n' +
+          '> **⚠️注意:** `aria-label` は必須です。ツールチップのテキストとしても使用されます。',
+      },
+    },
   },
   tags: ['autodocs'],
   argTypes: {
