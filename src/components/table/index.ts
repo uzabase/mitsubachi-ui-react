@@ -6,6 +6,8 @@ export { TableBody } from './table-body';
 export type { TableBodyProps } from './table-body';
 export { TableRow } from './table-row';
 export type { TableRowProps } from './table-row';
+export { TableCol } from './table-col';
+export type { TableColProps } from './table-col';
 export { TableHeaderCell } from './table-header-cell';
 export type {
   TableHeaderCellProps,

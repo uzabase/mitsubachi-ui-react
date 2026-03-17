@@ -153,6 +153,15 @@ export function TableHeaderCell({
   );
 }
 
+/** メニュー項目の要素を取得する */
+function getMenuItems(menuRef: React.RefObject<HTMLDivElement | null>) {
+  return Array.from(
+    menuRef.current?.querySelectorAll<HTMLButtonElement>(
+      '[role="menuitem"], [role="menuitemradio"]'
+    ) ?? []
+  );
+}
+
 /** カラムアクションメニュー */
 function ColumnMenu({
   menuItems,
@@ -162,6 +171,14 @@ function ColumnMenu({
   const [open, setOpen] = React.useState(false);
   const menuRef = React.useRef<HTMLDivElement>(null);
   const buttonRef = React.useRef<HTMLButtonElement>(null);
+
+  // メニュー展開時に最初の項目にフォーカス
+  React.useEffect(() => {
+    if (!open) return;
+
+    const items = getMenuItems(menuRef);
+    items[0]?.focus();
+  }, [open]);
 
   React.useEffect(() => {
     if (!open) return;
@@ -177,20 +194,45 @@ function ColumnMenu({
       }
     };
 
-    const handleEscape = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') {
-        setOpen(false);
-        buttonRef.current?.focus();
-      }
-    };
-
     document.addEventListener('mousedown', handleClickOutside);
-    document.addEventListener('keydown', handleEscape);
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
-      document.removeEventListener('keydown', handleEscape);
     };
   }, [open]);
+
+  const handleMenuKeyDown = (e: React.KeyboardEvent) => {
+    const items = getMenuItems(menuRef);
+    const currentIndex = items.indexOf(e.target as HTMLButtonElement);
+
+    switch (e.key) {
+      case 'ArrowDown': {
+        e.preventDefault();
+        const next = currentIndex + 1 < items.length ? currentIndex + 1 : 0;
+        items[next]?.focus();
+        break;
+      }
+      case 'ArrowUp': {
+        e.preventDefault();
+        const prev =
+          currentIndex - 1 >= 0 ? currentIndex - 1 : items.length - 1;
+        items[prev]?.focus();
+        break;
+      }
+      case 'Home':
+        e.preventDefault();
+        items[0]?.focus();
+        break;
+      case 'End':
+        e.preventDefault();
+        items[items.length - 1]?.focus();
+        break;
+      case 'Escape':
+        e.preventDefault();
+        setOpen(false);
+        buttonRef.current?.focus();
+        break;
+    }
+  };
 
   return (
     <span className={styles.menuWrapper}>
@@ -206,7 +248,13 @@ function ColumnMenu({
         <KebabMenuIcon />
       </button>
       {open && (
-        <div ref={menuRef} className={styles.menuDropdown} role="menu">
+        <div
+          ref={menuRef}
+          className={styles.menuDropdown}
+          role="menu"
+          tabIndex={-1}
+          onKeyDown={handleMenuKeyDown}
+        >
           {menuItems.map((item) => (
             <button
               key={item.label}
@@ -216,6 +264,7 @@ function ColumnMenu({
               aria-checked={
                 item.selected !== undefined ? item.selected : undefined
               }
+              tabIndex={-1}
               onClick={() => {
                 item.onClick();
                 setOpen(false);
@@ -250,10 +299,43 @@ function ColumnResizer({
       const startX = e.clientX;
       const startWidth = th.offsetWidth;
 
+      // 対応する <col> 要素を探す
+      const colIndex = th.cellIndex;
+      const table = th.closest('table');
+      const colgroup = table?.querySelector('colgroup');
+      const col = colgroup?.querySelector(
+        `col:nth-child(${colIndex + 1})`
+      ) as HTMLTableColElement | null;
+
+      // ドラッグ開始時に全 <col> のパーセンテージ幅をピクセル値に固定する
+      // これにより、1カラムの変更で他カラムの幅が再計算されるのを防ぐ
+      if (colgroup && table) {
+        const headerCells = table.querySelectorAll('thead th');
+        const cols = colgroup.querySelectorAll('col');
+        cols.forEach((c, i) => {
+          const headerCell = headerCells[i] as HTMLTableCellElement | undefined;
+          if (headerCell) {
+            (c as HTMLTableColElement).style.width =
+              `${headerCell.offsetWidth}px`;
+          }
+        });
+      }
+
+      // <col> の data-min-width から最小幅を取得（未指定時は 40px）
+      const DEFAULT_MIN_WIDTH = 40;
+      const minWidth = col
+        ? Number(col.dataset.minWidth) || DEFAULT_MIN_WIDTH
+        : DEFAULT_MIN_WIDTH;
+
       const handleMouseMove = (moveEvent: MouseEvent) => {
         const delta = moveEvent.clientX - startX;
-        const newWidth = Math.max(40, startWidth + delta);
-        th.style.inlineSize = `${newWidth}px`;
+        const newWidth = Math.max(minWidth, startWidth + delta);
+        const widthPx = `${newWidth}px`;
+        if (col) {
+          col.style.width = widthPx;
+        } else {
+          th.style.width = widthPx;
+        }
       };
 
       const handleMouseUp = () => {

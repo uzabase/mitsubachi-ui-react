@@ -2,7 +2,10 @@ import { Checkbox as BaseCheckbox } from '@base-ui/react/checkbox';
 import type { CheckboxRoot } from '@base-ui/react/checkbox';
 import styles from './checkbox.module.css';
 
-export interface CheckboxProps {
+export interface CheckboxProps extends Omit<
+  React.ComponentPropsWithoutRef<'span'>,
+  'checked' | 'defaultChecked' | 'children' | 'onChange'
+> {
   /** チェック状態（制御コンポーネント用） */
   checked?: boolean;
   /** 初期チェック状態（非制御コンポーネント用） @default false */
@@ -92,6 +95,7 @@ export const Checkbox = ({
   id,
   inputRef,
   ref,
+  ...rest
 }: CheckboxProps) => {
   return (
     <BaseCheckbox.Root
@@ -108,6 +112,7 @@ export const Checkbox = ({
       readOnly={readOnly}
       id={id}
       inputRef={inputRef}
+      {...rest}
     >
       <span className={styles.box}>
         <BaseCheckbox.Indicator className={styles.indicator} keepMounted>

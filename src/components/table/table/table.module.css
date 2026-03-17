@@ -3,9 +3,10 @@
 }
 
 .table {
+  table-layout: fixed;
   border-collapse: collapse;
   inline-size: 100%;
   font-family: var(--typography-font-family, Arial, sans-serif);
-  word-break: break-word;
+  word-break: normal;
   overflow-wrap: break-word;
 }

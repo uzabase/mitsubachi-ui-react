@@ -19,6 +19,10 @@
   /* 色 */
   color: var(--text-regular-default, rgba(0, 0, 0, 0.84));
 
+  /* table-layout: fixed 対応 */
+  min-inline-size: 0;
+  overflow: hidden;
+
   /* トランジション */
   transition: background-color 0.2s ease;
 }
@@ -69,7 +73,6 @@
    ============================== */
 
 .checkbox {
-  inline-size: 40px;
   padding-inline: var(--spacing-medium, 8px);
   padding-block: var(--spacing-small, 4px);
   text-align: center;

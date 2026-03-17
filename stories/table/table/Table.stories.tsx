@@ -11,6 +11,7 @@ import {
   useTableSort,
   useTableColumns,
 } from '../../../src/components/table/shared';
+import { TableCol } from '../../../src/components/table/table-col';
 import { DummyIcon } from '../../../src/icons';
 import { Checkbox } from '../../../src/components/checkbox';
 
@@ -31,6 +32,8 @@ const meta = {
           '## 使用例\n\n' +
           '```tsx\n' +
           '<Table view="grid" aria-label="財務データ">\n' +
+          '  <TableCol width="40%" />\n' +
+          '  <TableCol width="30%" />\n' +
           '  <TableHead>\n' +
           '    <TableRow>\n' +
           '      <TableHeaderCell>企業名</TableHeaderCell>\n' +
@@ -291,13 +294,22 @@ export const GridView: Story = {
 
     return (
       <Table {...args}>
+        <TableCol width="40px" minWidth={40} />
+        <TableCol width="15%" />
+        <TableCol width="10%" />
+        <TableCol width="15%" />
+        <TableCol width="10%" />
+        <TableCol width="12%" />
+        <TableCol />
+        <TableCol width="80px" />
         <TableHead>
           <TableRow>
-            <TableHeaderCell contentType="checkbox">
+            <TableHeaderCell contentType="checkbox" resizable>
               <Checkbox
                 checked={allSelected}
                 indeterminate={someSelected}
                 onCheckedChange={toggleAll}
+                aria-label="すべての行を選択"
               />
             </TableHeaderCell>
             <TableHeaderCell resizable>Title</TableHeaderCell>
@@ -344,6 +356,7 @@ export const GridView: Story = {
                 <Checkbox
                   checked={selectedIds.has(row.id)}
                   onCheckedChange={() => toggleRow(row.id)}
+                  aria-label={`${row.name}を選択`}
                 />
               </TableBodyCell>
               <TableBodyCell>
@@ -410,9 +423,16 @@ export const ListView: Story = {
 
     return (
       <Table {...args}>
+        <TableCol width="40px" minWidth={40} />
+        <TableCol width="20%" />
+        <TableCol width="10%" />
+        <TableCol width="15%" />
+        <TableCol width="10%" />
+        <TableCol width="12%" />
+        <TableCol />
         <TableHead>
           <TableRow>
-            <TableHeaderCell contentType="checkbox">
+            <TableHeaderCell contentType="checkbox" resizable>
               <Checkbox
                 checked={allSelected}
                 indeterminate={someSelected}
@@ -458,6 +478,7 @@ export const ListView: Story = {
                 <Checkbox
                   checked={selectedIds.has(row.id)}
                   onCheckedChange={() => toggleRow(row.id)}
+                  aria-label={`${row.name}を選択`}
                 />
               </TableBodyCell>
               <TableBodyCell>
