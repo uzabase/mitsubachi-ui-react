@@ -1,0 +1,33 @@
+{
+  "eval_id": 1,
+  "eval_name": "icon-button-review",
+  "configuration": "without_skill",
+  "expectations": [
+    {
+      "text": "ai-guide参照の明示: レビュー前にai-guideを参照したことが分かる",
+      "passed": false,
+      "evidence": "レビュー内で ai-guide への参照が一切ない。「プロジェクトの規約では」という表現は複数回あるが、ai-guide を具体的に参照した記述はない。CLAUDE.md の内容に基づく言及はあるが、ai-guide ディレクトリのドキュメントを参照したことを示す明示的な記述は見当たらない。"
+    },
+    {
+      "text": "アクセシビリティ: aria属性の一貫性について指摘している",
+      "passed": true,
+      "evidence": "「[中] iconWrapper に aria-hidden が未設定」で、loadingSpinner には aria-hidden=\"true\" が付与されているが iconWrapper には付与されていない不一致を指摘。さらに「[中] aria-pressed の型が 'true' | undefined」で、selected=false 時に aria-pressed が出力されない一貫性の問題も指摘している。"
+    },
+    {
+      "text": "CSS論理プロパティ: 物理プロパティの使用を見つけたら指摘している",
+      "passed": true,
+      "evidence": "「[中] padding プロパティが物理プロパティのまま」として指摘し、padding-block + padding-inline に分けるコード例を提示している。"
+    },
+    {
+      "text": "出力フォーマット準拠: ファイル名:行番号、観点、重要度が含まれている",
+      "passed": false,
+      "evidence": "重要度は [中] [低] の形式で含まれているが、ファイル名:行番号の形式が使われていない。指摘はカテゴリ別（コード品質、アクセシビリティ、CSS設計、Storybook、コンポーネント設計）に整理されており、コードブロック内にコメントで行を示す箇所はあるが、見出しに「ファイル名:行番号」を含む形式にはなっていない。観点もカテゴリとしては存在するが、各指摘に個別の「観点」フィールドはない。"
+    },
+    {
+      "text": "コード例付き改善提案: 改善案にコードサンプルが含まれている",
+      "passed": true,
+      "evidence": "多くの指摘にコードサンプルが含まれている。例: iconWrapper の aria-hidden 追加、aria-pressed の改善案、padding の論理プロパティ化、タグセレクタの改善案など。"
+    }
+  ],
+  "pass_rate": 0.6
+}

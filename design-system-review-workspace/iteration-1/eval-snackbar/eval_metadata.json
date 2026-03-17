@@ -1,0 +1,27 @@
+{
+  "eval_id": 0,
+  "eval_name": "snackbar-review",
+  "prompt": "Snackbarコンポーネントをレビューして。src/components/snackbar/ が対象。",
+  "assertions": [
+    {
+      "text": "ai-guide参照の明示: レビュー前にai-guideを参照したことが分かる",
+      "type": "qualitative"
+    },
+    {
+      "text": "className禁止ルール: className propの外部公開を指摘している",
+      "type": "check"
+    },
+    {
+      "text": "デザイントークン: ハードコード値を指摘している",
+      "type": "check"
+    },
+    {
+      "text": "出力フォーマット準拠: ファイル名:行番号、観点、重要度が含まれている",
+      "type": "format"
+    },
+    {
+      "text": "良い点の指摘: 問題点だけでなく良い点も指摘している",
+      "type": "check"
+    }
+  ]
+}
