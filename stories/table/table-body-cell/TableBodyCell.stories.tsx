@@ -4,6 +4,7 @@ import { TableBodyCell } from '../../../src/components/table/table-body-cell';
 import { Table } from '../../../src/components/table/table';
 import { TableBody } from '../../../src/components/table/table-body';
 import { TableRow } from '../../../src/components/table/table-row';
+import { Checkbox } from '../../../src/components/checkbox';
 
 /** Grid ビューでラップするデコレーター */
 const gridDecorator: Decorator = (Story) => (
@@ -137,7 +138,7 @@ export const GridNull: Story = {
 export const GridCheckboxUnchecked: Story = {
   args: {
     contentType: 'checkbox',
-    children: <input type="checkbox" aria-label="行を選択" />,
+    children: <Checkbox />,
   },
 };
 
@@ -147,7 +148,7 @@ export const GridCheckboxUnchecked: Story = {
 export const GridCheckboxChecked: Story = {
   args: {
     contentType: 'checkbox',
-    children: <input type="checkbox" checked readOnly aria-label="行を選択" />,
+    children: <Checkbox checked />,
   },
 };
 
