@@ -1,0 +1,15 @@
+/** ×（クロス）アイコン */
+export const CrossIcon = () => (
+  <svg
+    width="18"
+    height="18"
+    viewBox="0 0 18 18"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M12.75 6.045L11.955 5.25L9 8.205L6.045 5.25L5.25 6.045L8.205 9L5.25 11.955L6.045 12.75L9 9.795L11.955 12.75L12.75 11.955L9.795 9L12.75 6.045Z"
+      fill="currentColor"
+    />
+  </svg>
+);

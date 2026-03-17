@@ -1,0 +1,33 @@
+{
+  "eval_id": 2,
+  "eval_name": "textarea-review",
+  "configuration": "without_skill",
+  "expectations": [
+    {
+      "text": "ai-guide参照の明示: レビュー前にai-guideを参照したことが分かる",
+      "passed": false,
+      "evidence": "レビュー内で「components.md」「coding-rules.md」「styling.md」など個別ドキュメント名を参照しているが、ai-guideディレクトリを参照したことを明示的に示す記述はない。これらのファイルがai-guide/配下にあるかどうかも不明確。"
+    },
+    {
+      "text": "CSS物理プロパティ: paddingショートハンドやvertical-align等の物理プロパティを指摘している",
+      "passed": false,
+      "evidence": "セクション3-1で「論理プロパティの使用は適切」と述べ、論理プロパティが正しく使われていることを確認しているが、物理プロパティ（paddingショートハンドやvertical-align等）の具体的な違反を指摘していない。"
+    },
+    {
+      "text": "デザイントークン: ハードコード値(gap: 2pxなど)を指摘している",
+      "passed": true,
+      "evidence": "セクション3-4「`gap: 2px` がデザイントークンを使用していない（重要度: 低）」で`.count`と`.errorItem`の`gap: 2px`がハードコードされていることを指摘している。"
+    },
+    {
+      "text": "disabled状態の伝播: disabled時のスタイル伝播について確認/指摘している",
+      "passed": false,
+      "evidence": "disabled状態についてはStorybook（5-1でDisabledストーリーの存在確認）やCSS擬似クラス（3-2で`:disabled`の使用確認）に触れているが、disabled時のスタイル伝播（子要素やアイコンへの伝播）について明示的に確認・指摘していない。"
+    },
+    {
+      "text": "出力フォーマット準拠: ファイル名:行番号、観点、重要度が含まれている",
+      "passed": false,
+      "evidence": "重要度は「（重要度: 高）」のように各項目に含まれているが、見出しは「### 1-2. `className` prop を外部に公開している」のようなセクション番号形式であり、ファイル名:行番号の形式ではない。また「観点」というラベルが明示されておらず、セクション見出し（1. コード品質、2. アクセシビリティ等）で分類されている。"
+    }
+  ],
+  "pass_rate": 0.2
+}

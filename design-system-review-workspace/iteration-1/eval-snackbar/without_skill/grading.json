@@ -1,0 +1,33 @@
+{
+  "eval_id": 0,
+  "eval_name": "snackbar-review",
+  "configuration": "without_skill",
+  "expectations": [
+    {
+      "text": "ai-guide参照の明示: レビュー前にai-guideを参照したことが分かる",
+      "passed": true,
+      "evidence": "本文中で「ai-guide/components.md セクション12」「ai-guide/styling.md では line-height は 1.5（本文）または 1.3（小テキスト）とある」「ai-guide/styling.md で「論理プロパティが存在しない場合は許容」とある」など、ai-guideの具体的な箇所を複数回参照している。"
+    },
+    {
+      "text": "className禁止ルール: className propの外部公開を指摘している",
+      "passed": true,
+      "evidence": "「2-1. `SnackbarViewportProps` に `className` が公開されている（重要度: 高）」として、「プロジェクトの規約（ai-guide/components.md セクション12）では、デザインシステムコンポーネントは className prop を外部に公開しないことになっている」と明確に指摘している。"
+    },
+    {
+      "text": "デザイントークン: ハードコード値を指摘している",
+      "passed": true,
+      "evidence": "「3-1. z-index: 2147483647（重要度: 中）」としてz-indexのハードコードを指摘し、var(--z-index-snackbar, 2147483647) へのトークン化を提案している。"
+    },
+    {
+      "text": "出力フォーマット準拠: ファイル名:行番号、観点、重要度が含まれている",
+      "passed": false,
+      "evidence": "ファイル名と行番号は「Snackbar.tsx L144」「snackbar.module.css L17」のように記載されているが、「観点」フィールドが明示的に含まれていない。指摘はカテゴリ（アクセシビリティ、コンポーネント設計、CSS等）でグループ化されているが、各指摘に「観点:」というラベル付きのフィールドがない。"
+    },
+    {
+      "text": "良い点の指摘: 問題点だけでなく良い点も指摘している",
+      "passed": true,
+      "evidence": "総合評価セクションで「全体的に良い設計のコンポーネント」「複合コンポーネントパターンの採用、CSS論理プロパティの使用、デザイントークンの活用など、プロジェクトの規約に概ね沿った実装」と良い点を述べている。また各指摘内でも「問題なし」「現状で問題ない」と良い点を認めている（5-1, 5-2, 1-2等）。"
+    }
+  ],
+  "pass_rate": 0.8
+}

@@ -1,0 +1,33 @@
+{
+  "eval_id": 1,
+  "eval_name": "icon-button-review",
+  "configuration": "with_skill",
+  "expectations": [
+    {
+      "text": "ai-guide参照の明示: レビュー前にai-guideを参照したことが分かる",
+      "passed": true,
+      "evidence": "レビュー冒頭に「参照済みドキュメント: ai-guide/components.md, ai-guide/styling.md, ai-guide/coding-rules.md, ai-guide/design-tokens.md」と明記されており、各指摘でも「ai-guide/styling.md の〜と明記されている」等、具体的にガイド文書を引用している。末尾のチェックリストにも「ai-guide/ のドキュメントを参照したか」の項目がある。"
+    },
+    {
+      "text": "アクセシビリティ: aria属性の一貫性について指摘している",
+      "passed": true,
+      "evidence": "「IconButton.tsx:112 — iconWrapper に aria-hidden がない」で、loadingSpinner には aria-hidden=\"true\" が設定されているが iconWrapper には設定されていない不一致を指摘している。"
+    },
+    {
+      "text": "CSS論理プロパティ: 物理プロパティの使用を見つけたら指摘している",
+      "passed": true,
+      "evidence": "「icon-button.module.css:82-83 — padding ショートハンドの使用（物理プロパティ）」として重要度「高」で指摘。padding-block + padding-inline に分けるコード例も提示している。"
+    },
+    {
+      "text": "出力フォーマット準拠: ファイル名:行番号、観点、重要度が含まれている",
+      "passed": true,
+      "evidence": "各指摘が「icon-button.module.css:82-83」のようにファイル名:行番号形式の見出しを持ち、「観点: CSS設計」「重要度: 高」のように観点と重要度が明記されている。"
+    },
+    {
+      "text": "コード例付き改善提案: 改善案にコードサンプルが含まれている",
+      "passed": true,
+      "evidence": "ほぼ全ての指摘に「現在のコード」と「改善案」のコードブロックが含まれている。例: padding の論理プロパティ化、iconWrapper の aria-hidden 追加、JSDoc の改善案など。"
+    }
+  ],
+  "pass_rate": 1.0
+}

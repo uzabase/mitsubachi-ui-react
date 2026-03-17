@@ -1,0 +1,66 @@
+{
+  "skill_name": "design-system-review",
+  "iteration": 1,
+  "configurations": [
+    {
+      "name": "with_skill",
+      "label": "スキルあり",
+      "results": [
+        {
+          "eval_id": 0,
+          "eval_name": "snackbar-review",
+          "pass_rate": 1.0,
+          "passed": 5,
+          "total": 5
+        },
+        {
+          "eval_id": 1,
+          "eval_name": "icon-button-review",
+          "pass_rate": 1.0,
+          "passed": 5,
+          "total": 5
+        },
+        {
+          "eval_id": 2,
+          "eval_name": "textarea-review",
+          "pass_rate": 0.8,
+          "passed": 4,
+          "total": 5
+        }
+      ],
+      "aggregate": { "mean_pass_rate": 0.933, "stddev": 0.094 }
+    },
+    {
+      "name": "without_skill",
+      "label": "スキルなし",
+      "results": [
+        {
+          "eval_id": 0,
+          "eval_name": "snackbar-review",
+          "pass_rate": 0.8,
+          "passed": 4,
+          "total": 5
+        },
+        {
+          "eval_id": 1,
+          "eval_name": "icon-button-review",
+          "pass_rate": 0.6,
+          "passed": 3,
+          "total": 5
+        },
+        {
+          "eval_id": 2,
+          "eval_name": "textarea-review",
+          "pass_rate": 0.2,
+          "passed": 1,
+          "total": 5
+        }
+      ],
+      "aggregate": { "mean_pass_rate": 0.533, "stddev": 0.249 }
+    }
+  ],
+  "delta": {
+    "mean_pass_rate_improvement": 0.4,
+    "description": "スキルありはスキルなしに比べて平均パス率が+40%改善"
+  }
+}

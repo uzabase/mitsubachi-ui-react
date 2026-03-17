@@ -1,0 +1,194 @@
+/* ==============================
+   SearchBox コンポーネントスタイル
+   ============================== */
+
+/* コンテナ（共通） */
+.container {
+  display: flex;
+  gap: var(--spacing-x-small, 4px);
+  align-items: center;
+  min-block-size: 40px;
+  padding-block: 2px;
+  padding-inline-start: var(--spacing-small, 8px);
+  padding-inline-end: var(--spacing-x-small, 4px);
+  border-radius: var(--radius-medium, 6px);
+  box-sizing: border-box;
+  inline-size: 100%;
+}
+
+/* テキスト入力済み → 右パディングを拡大 */
+.container.hasValue {
+  padding-inline-end: var(--spacing-small, 8px);
+}
+
+/* ==============================
+   バリアント: primary
+   ============================== */
+
+.primary {
+  background-color: var(--surface-semi-strong-default, #ededed);
+  border: none;
+}
+
+/* primary: hover */
+.primary:hover:not(:has(:disabled)):not(:has(:focus-visible)) {
+  background-color: var(--surface-semi-strong-hover, #e5e5e5);
+}
+
+/* primary: disabled */
+.primary:has(:disabled) {
+  background-color: var(--surface-regular-disabled, rgba(0, 0, 0, 0.03));
+}
+
+/* ==============================
+   バリアント: secondary
+   ============================== */
+
+.secondary {
+  background-color: var(--surface-regular-default, #ffffff);
+  border: 1px solid var(--border-semi-strong-default, rgba(0, 0, 0, 0.2));
+}
+
+/* secondary: hover */
+.secondary:hover:not(:has(:disabled)):not(:has(:focus-visible)) {
+  border-color: var(--border-semi-strong-hover, rgba(0, 0, 0, 0.35));
+}
+
+/* secondary: disabled */
+.secondary:has(:disabled) {
+  background-color: var(--surface-regular-disabled, rgba(0, 0, 0, 0.03));
+  border-color: transparent;
+}
+
+/* ==============================
+   フォーカス状態（共通）
+   ============================== */
+
+.container:has(.input:focus-visible) {
+  outline: none;
+  overflow: clip;
+  box-shadow:
+    0 0 0 2px var(--surface-regular-default, #ffffff),
+    0 0 0 4px var(--focus-ring-default, #191919);
+}
+
+/* ==============================
+   検索アイコン
+   ============================== */
+
+.searchIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  inline-size: 20px;
+  block-size: 20px;
+  color: var(--object-weak-default, rgba(0, 0, 0, 0.54));
+}
+
+.container:has(:disabled) .searchIcon {
+  color: var(--text-disabled, rgba(0, 0, 0, 0.35));
+}
+
+/* ==============================
+   入力フィールド
+   ============================== */
+
+.input {
+  flex: 1 0 0;
+  min-inline-size: 1px;
+  min-block-size: 1px;
+  border: none;
+  background-color: transparent;
+  outline: none;
+  padding-block: 0;
+  padding-inline: 0;
+
+  /* タイポグラフィ */
+  font-family: var(--typography-font-family, Arial, sans-serif);
+  font-weight: var(--typography-font-weight-regular, 400);
+  font-size: var(--font-scale-40, 14px);
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+  color: var(--text-regular-default, rgba(0, 0, 0, 0.84));
+
+  /* テキスト省略 */
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.input::placeholder {
+  color: var(--text-weak-default, rgba(0, 0, 0, 0.54));
+}
+
+.input:disabled {
+  color: var(--text-disabled, rgba(0, 0, 0, 0.35));
+  cursor: not-allowed;
+}
+
+.input:disabled::placeholder {
+  color: var(--text-disabled, rgba(0, 0, 0, 0.35));
+}
+
+/* ネイティブの検索クリアボタンを非表示 */
+.input::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+  appearance: none;
+  display: none;
+}
+
+/* ==============================
+   クリアボタン
+   ============================== */
+
+.clearButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  inline-size: 24px;
+  block-size: 24px;
+  padding-block: 2px;
+  padding-inline: 2px;
+  border: none;
+  border-radius: var(--radius-full, 9999px);
+  background-color: transparent;
+  color: var(--object-regular-default, rgba(0, 0, 0, 0.84));
+  cursor: pointer;
+  box-sizing: border-box;
+  outline: none;
+}
+
+/* hover */
+.clearButton:hover {
+  background-color: var(--surface-overlay-hover, rgba(0, 0, 0, 0.07));
+}
+
+/* active */
+.clearButton:active {
+  background-color: var(--surface-overlay-active, rgba(0, 0, 0, 0.1));
+}
+
+/* focus-visible */
+.clearButton:focus-visible {
+  background-color: var(--surface-regular-focus, rgba(255, 255, 255, 0));
+  box-shadow:
+    0 0 0 2px var(--surface-regular-default, #ffffff),
+    0 0 0 4px var(--focus-ring-default, #191919);
+}
+
+/* ==============================
+   レスポンシブ: phone
+   ============================== */
+
+@media (max-width: 720px) {
+  .searchIcon {
+    inline-size: 22px;
+    block-size: 22px;
+  }
+
+  .input {
+    font-size: var(--font-scale-50, 16px);
+  }
+}
