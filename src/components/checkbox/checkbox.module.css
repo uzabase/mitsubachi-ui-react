@@ -1,0 +1,153 @@
+/**
+ * Checkbox コンポーネントスタイル
+ *
+ * 項目の選択・解除を行うためのコンポーネント
+ * CSS擬似クラスおよびBase UIのdata属性で各状態を実装
+ */
+
+/* ========================================
+   ルート（24x24 ヒットエリア）
+   ======================================== */
+
+.checkbox {
+  /* リセット */
+  all: unset;
+  box-sizing: border-box;
+
+  /* レイアウト */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  /* サイズ */
+  inline-size: 24px;
+  block-size: 24px;
+
+  /* ボーダー */
+  border-radius: var(--border-radius-small, 4px);
+
+  /* カーソル */
+  cursor: pointer;
+
+  /* トランジション */
+  transition: background-color 0.2s ease;
+}
+
+/* hover: ヒットエリア背景 */
+.checkbox:hover:not([data-disabled]) {
+  background-color: var(--surface-regular-hover, #f5f5f5);
+}
+
+/* active: ヒットエリア背景 */
+.checkbox:active:not([data-disabled]) {
+  background-color: var(--surface-regular-active, #ededed);
+}
+
+/* disabled: カーソル */
+.checkbox[data-disabled] {
+  cursor: not-allowed;
+}
+
+/* ========================================
+   内側ボックス（16x16 チェックボックス本体）
+   ======================================== */
+
+.box {
+  /* レイアウト */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  /* サイズ */
+  inline-size: 16px;
+  block-size: 16px;
+
+  /* ボーダー */
+  border-radius: 2px;
+  border: 1.5px solid var(--border-semi-strong-default, rgba(0, 0, 0, 0.2));
+
+  /* 背景 */
+  background-color: var(--surface-regular-default, white);
+
+  /* トランジション */
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+/* checked: 青背景・ボーダーなし */
+.checkbox[data-checked] .box {
+  background-color: var(--surface-checked-default, #3f69f2);
+  border-color: transparent;
+  color: var(--object-static-white, white);
+}
+
+/* indeterminate: 青背景・ボーダーなし */
+.checkbox[data-indeterminate] .box {
+  background-color: var(--surface-checked-default, #3f69f2);
+  border-color: transparent;
+  color: var(--object-static-white, white);
+}
+
+/* hover + checked/indeterminate */
+.checkbox[data-checked]:hover:not([data-disabled]) .box {
+  background-color: var(--surface-checked-hover, #315ce8);
+}
+
+.checkbox[data-indeterminate]:hover:not([data-disabled]) .box {
+  background-color: var(--surface-checked-hover, #315ce8);
+}
+
+/* active + checked/indeterminate */
+.checkbox[data-checked]:active:not([data-disabled]) .box {
+  background-color: var(--surface-checked-active, #143dd0);
+}
+
+.checkbox[data-indeterminate]:active:not([data-disabled]) .box {
+  background-color: var(--surface-checked-active, #143dd0);
+}
+
+/* focus-visible: フォーカスリング（内側ボックスに適用） */
+.checkbox:focus-visible .box {
+  box-shadow:
+    0 0 0 2px var(--surface-regular-default, white),
+    0 0 0 4px var(--focus-ring-default, #191919);
+}
+
+/* disabled + unchecked */
+.checkbox[data-disabled][data-unchecked] .box {
+  background-color: var(--surface-strong-disabled, rgba(0, 0, 0, 0.18));
+  border-color: var(--border-disabled, rgba(0, 0, 0, 0.07));
+}
+
+/* disabled + checked */
+.checkbox[data-disabled][data-checked] .box {
+  background-color: var(--surface-strong-disabled, rgba(0, 0, 0, 0.18));
+  border-color: var(--border-disabled, rgba(0, 0, 0, 0.07));
+  color: var(--icon-disabled, rgba(0, 0, 0, 0.25));
+}
+
+/* disabled + indeterminate */
+.checkbox[data-disabled][data-indeterminate] .box {
+  background-color: var(--surface-strong-disabled, rgba(0, 0, 0, 0.18));
+  border-color: var(--border-disabled, rgba(0, 0, 0, 0.07));
+  color: var(--icon-disabled, rgba(0, 0, 0, 0.25));
+}
+
+/* ========================================
+   インジケーター（チェックマーク / ダッシュ）
+   ======================================== */
+
+.indicator {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  inline-size: 100%;
+  block-size: 100%;
+}
+
+/* 未チェック時は非表示（keepMountedでDOM維持） */
+.indicator[data-unchecked]:not([data-indeterminate]) {
+  visibility: hidden;
+}
