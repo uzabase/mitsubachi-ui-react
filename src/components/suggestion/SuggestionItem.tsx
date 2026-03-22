@@ -19,7 +19,7 @@ interface SuggestionItemTextProps extends SuggestionItemBaseProps {
 }
 
 interface SuggestionItemSlotProps extends SuggestionItemBaseProps {
-  /** カスタムコンテンツ */
+  /** カスタムコンテンツ（任意の要素を自由に配置可能。レイアウトは利用者側で構成する） */
   children: React.ReactNode;
   label?: never;
   icon?: never;
@@ -31,10 +31,28 @@ export type SuggestionItemProps =
   | SuggestionItemSlotProps;
 
 /**
- * サジェッションリスト内の個別の候補アイテムです。
+ * Suggestionリスト内の個別の候補アイテムです。
  *
- * - `label` を指定するとアイコン + テキストのテキストモードで表示
- * - `children` を指定するとカスタムコンテンツのスロットモードで表示
+ * ## Content Type: Text
+ * `label` を指定するとアイコン + テキストの定型レイアウトで表示します。
+ *
+ * ## Content Type: Slot
+ * `children` を指定すると、任意のカスタムコンテンツを差し込めるスロットモードになります。
+ * Slot 内のレイアウトは Suggestion の責務ではなく、利用者が自由に構成できます。
+ * 横並び・縦並び・複数要素の配置など、用途に応じた柔軟なレイアウトが可能です。
+ *
+ * @example
+ * ```tsx
+ * // Text モード
+ * <SuggestionItem label="Apple" icon={<SearchIcon />} />
+ *
+ * // Slot モード（利用者が任意のコンテンツを差し込む）
+ * <SuggestionItem>
+ *   <Avatar />
+ *   <span>山田 太郎</span>
+ *   <span>taro@example.com</span>
+ * </SuggestionItem>
+ * ```
  */
 export const SuggestionItem = (props: SuggestionItemProps) => {
   const { selected = false, onSelect, id } = props;

@@ -14,6 +14,32 @@ const meta = {
   subcomponents: { SuggestionItem, SuggestionCategory },
   parameters: {
     layout: 'centered',
+    docs: {
+      description: {
+        component:
+          '検索ボックスや入力フィールドをクリック、またはキーワードを入力した際に表示される候補リストのコンポーネントです。\n' +
+          '入力中の文字列に基づいて候補を提示し、選択による入力の補助やキーワードの補完を通じて、入力の手間を減らし操作効率を高めます。\n\n' +
+          '## 種類\n\n' +
+          '`SuggestionItem` は2つのコンテンツタイプをサポートします。\n\n' +
+          '### 1. Text\n' +
+          '`label` を指定すると、テキストとoptionalでアイコンの定型レイアウトで表示します。\n' +
+          '```tsx\n' +
+          '<SuggestionItem label="Apple" icon={<SearchIcon />} />\n' +
+          '```\n\n' +
+          '### 2. Slot\n' +
+          '`children` を指定すると、任意のカスタムコンテンツを差し込めるスロットモードになります。\n' +
+          'Slot 内のレイアウト（横並び・縦並び・複数要素の配置など）は **Suggestion の責務ではなく、利用者が自由に構成** できます。\n' +
+          '```tsx\n' +
+          '<SuggestionItem>\n' +
+          '  <div style={{ display: "flex", gap: "8px" }}>\n' +
+          '    <Avatar />\n' +
+          '    <span>山田 太郎</span>\n' +
+          '    <span>taro@example.com</span>\n' +
+          '  </div>\n' +
+          '</SuggestionItem>\n' +
+          '```',
+      },
+    },
   },
   decorators: [
     (Story) => (
@@ -233,6 +259,9 @@ export const TextSearchBoxEmpty: Story = {
 
 /**
  * Slot: デフォルト（カスタムコンテンツ）
+ *
+ * `children` に任意の要素を渡すことで、自由なレイアウトの候補アイテムを表示できます。
+ * Slot 内のレイアウトは Suggestion の責務ではなく、利用者が自由に構成します。
  */
 export const SlotDefault: Story = {
   render: () => (
@@ -327,6 +356,9 @@ const verticalSlotUsers = [
 
 /**
  * Slot: 横並びレイアウト（SearchBox + アバター + 名前 + メールアドレス）
+ *
+ * Slot に複数の要素を横並びで配置した例です。
+ * レイアウトは利用者側で自由に構成できます。
  */
 export const SlotHorizontalLayout: Story = {
   decorators: [
@@ -408,6 +440,9 @@ export const SlotHorizontalLayout: Story = {
 
 /**
  * Slot: 縦並びレイアウト（SearchBox + アバター + 名前・メールアドレスが縦に積まれる）
+ *
+ * Slot に複数の要素を縦並びで配置した例です。
+ * レイアウトは利用者側で自由に構成できます。
  */
 export const SlotVerticalLayout: Story = {
   decorators: [
