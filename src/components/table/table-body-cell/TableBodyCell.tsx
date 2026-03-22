@@ -8,6 +8,7 @@ export type TableBodyCellContentType =
   | 'number'
   | 'date'
   | 'checkbox'
+  | 'icon-button'
   | 'slot';
 
 export interface TableBodyCellProps {
@@ -16,7 +17,13 @@ export interface TableBodyCellProps {
    * @default 'text'
    */
   contentType?: TableBodyCellContentType;
-  /** セルのコンテンツ */
+  /**
+   * セルのコンテンツ。
+   *
+   * `null`・`undefined`・`''`・`false` の場合はダッシュ（`–`）を
+   * セル中央に自動表示する（null 表示）。
+   * `0` は有効な値として表示される。
+   */
   children?: ReactNode;
 }
 
@@ -27,7 +34,11 @@ const NULL_DISPLAY = '–';
  * TableBodyCell
  *
  * テーブルのボディセル。`<td>` をレンダリングする。
- * children が空の場合は null 表示（`–`）を自動適用する。
+ *
+ * ## null 表示
+ * `children` が空（`null`・`undefined`・`''`・`false`）の場合、
+ * セル中央にダッシュ（`–`）を自動表示する。
+ * `0` は有効な値として通常表示される。
  */
 export function TableBodyCell({
   contentType = 'text',
@@ -47,6 +58,10 @@ export function TableBodyCell({
     .join(' ');
 
   return (
-    <td className={cellClassName}>{hasContent ? children : NULL_DISPLAY}</td>
+    <td className={cellClassName}>
+      <span className={styles.cellContent}>
+        {hasContent ? children : NULL_DISPLAY}
+      </span>
+    </td>
   );
 }

@@ -5,6 +5,8 @@ import { Table } from '../../../src/components/table/table';
 import { TableHead } from '../../../src/components/table/table-head';
 import { TableRow } from '../../../src/components/table/table-row';
 import { Checkbox } from '../../../src/components/checkbox';
+import { IconButton } from '../../../src/components/button/icon-button';
+import { DummyIcon } from '../../../src/icons';
 
 /** Grid ビューでラップするデコレーター */
 const gridDecorator: Decorator = (Story) => (
@@ -46,7 +48,7 @@ const meta = {
           '  <TableHead>\n' +
           '    <TableRow>\n' +
           '      <TableHeaderCell>タイトル</TableHeaderCell>\n' +
-          '      <TableHeaderCell sort sortState="ascending" onSortChange={fn}>\n' +
+          '      <TableHeaderCell sortState="ascending" onSortChange={fn}>\n' +
           '        ソート列\n' +
           '      </TableHeaderCell>\n' +
           '    </TableRow>\n' +
@@ -82,8 +84,8 @@ export const GridTextDefault: Story = {
 export const GridTextHover: Story = {
   args: {
     children: 'Title',
-    sort: true,
     sortState: 'default',
+    onSortChange: () => {},
   },
   parameters: {
     pseudo: {
@@ -101,8 +103,8 @@ export const GridTextHover: Story = {
  */
 export const GridSortDefault: Story = {
   args: {
-    sort: true,
     sortState: 'default',
+    onSortChange: () => {},
     children: 'Title',
   },
 };
@@ -112,8 +114,8 @@ export const GridSortDefault: Story = {
  */
 export const GridSortAscending: Story = {
   args: {
-    sort: true,
     sortState: 'ascending',
+    onSortChange: () => {},
     children: 'Title',
   },
 };
@@ -123,74 +125,25 @@ export const GridSortAscending: Story = {
  */
 export const GridSortDescending: Story = {
   args: {
-    sort: true,
     sortState: 'descending',
+    onSortChange: () => {},
     children: 'Title',
   },
 };
 
 /**
- * Grid: ソート昇順（Hover）
+ * Grid: ソートボタン（Focus Visible 状態）
  */
-export const GridSortAscendingHover: Story = {
+export const GridSortFocusVisible: Story = {
   args: {
-    sort: true,
-    sortState: 'ascending',
+    sortState: 'default',
+    onSortChange: () => {},
     children: 'Title',
   },
   parameters: {
     pseudo: {
-      hover: true,
+      focusVisible: ['button'],
     },
-  },
-};
-
-/**
- * Grid: ソート降順（Hover）
- */
-export const GridSortDescendingHover: Story = {
-  args: {
-    sort: true,
-    sortState: 'descending',
-    children: 'Title',
-  },
-  parameters: {
-    pseudo: {
-      hover: true,
-    },
-  },
-};
-
-/* ==============================
-   Grid ビュー: ソート全状態一覧
-   ============================== */
-
-/**
- * Grid: ソート全状態（default / ascending / descending × normal / hover）
- */
-export const GridSortAllStates: Story = {
-  decorators: [
-    () => (
-      <Table view="grid" aria-label="ソート全状態">
-        <TableHead>
-          <TableRow>
-            <TableHeaderCell sort sortState="default">
-              未ソート
-            </TableHeaderCell>
-            <TableHeaderCell sort sortState="ascending">
-              昇順
-            </TableHeaderCell>
-            <TableHeaderCell sort sortState="descending">
-              降順
-            </TableHeaderCell>
-          </TableRow>
-        </TableHead>
-      </Table>
-    ),
-  ],
-  args: {
-    sort: true,
-    children: 'Title',
   },
 };
 
@@ -205,6 +158,24 @@ export const GridCheckbox: Story = {
   args: {
     contentType: 'checkbox',
     children: <Checkbox />,
+  },
+};
+
+/* ==============================
+   Grid ビュー: アイコンボタン
+   ============================== */
+
+/**
+ * Grid: アイコンボタン
+ */
+export const GridIconButton: Story = {
+  args: {
+    contentType: 'icon-button',
+    children: (
+      <IconButton variant="ghost" size="small" aria-label="編集">
+        <DummyIcon />
+      </IconButton>
+    ),
   },
 };
 
@@ -229,8 +200,8 @@ export const ListTextHover: Story = {
   decorators: [listDecorator],
   args: {
     children: 'Title',
-    sort: true,
     sortState: 'default',
+    onSortChange: () => {},
   },
   parameters: {
     pseudo: {
@@ -249,8 +220,8 @@ export const ListTextHover: Story = {
 export const ListSortDefault: Story = {
   decorators: [listDecorator],
   args: {
-    sort: true,
     sortState: 'default',
+    onSortChange: () => {},
     children: 'Title',
   },
 };
@@ -261,8 +232,8 @@ export const ListSortDefault: Story = {
 export const ListSortAscending: Story = {
   decorators: [listDecorator],
   args: {
-    sort: true,
     sortState: 'ascending',
+    onSortChange: () => {},
     children: 'Title',
   },
 };
@@ -273,42 +244,26 @@ export const ListSortAscending: Story = {
 export const ListSortDescending: Story = {
   decorators: [listDecorator],
   args: {
-    sort: true,
     sortState: 'descending',
+    onSortChange: () => {},
     children: 'Title',
   },
 };
 
-/* ==============================
-   List ビュー: ソート全状態一覧
-   ============================== */
-
 /**
- * List: ソート全状態（default / ascending / descending）
+ * List: ソートボタン（Focus Visible 状態）
  */
-export const ListSortAllStates: Story = {
-  decorators: [
-    () => (
-      <Table view="list" aria-label="ソート全状態">
-        <TableHead>
-          <TableRow>
-            <TableHeaderCell sort sortState="default">
-              未ソート
-            </TableHeaderCell>
-            <TableHeaderCell sort sortState="ascending">
-              昇順
-            </TableHeaderCell>
-            <TableHeaderCell sort sortState="descending">
-              降順
-            </TableHeaderCell>
-          </TableRow>
-        </TableHead>
-      </Table>
-    ),
-  ],
+export const ListSortFocusVisible: Story = {
+  decorators: [listDecorator],
   args: {
-    sort: true,
+    sortState: 'default',
+    onSortChange: () => {},
     children: 'Title',
+  },
+  parameters: {
+    pseudo: {
+      focusVisible: ['button'],
+    },
   },
 };
 
@@ -324,6 +279,25 @@ export const ListCheckbox: Story = {
   args: {
     contentType: 'checkbox',
     children: <Checkbox />,
+  },
+};
+
+/* ==============================
+   List ビュー: アイコンボタン
+   ============================== */
+
+/**
+ * List: アイコンボタン
+ */
+export const ListIconButton: Story = {
+  decorators: [listDecorator],
+  args: {
+    contentType: 'icon-button',
+    children: (
+      <IconButton variant="ghost" size="small" aria-label="編集">
+        <DummyIcon />
+      </IconButton>
+    ),
   },
 };
 
@@ -365,12 +339,27 @@ export const GridWithMenuHover: Story = {
 };
 
 /**
+ * Grid: カラムアクションメニュー（Focus Visible）
+ */
+export const GridWithMenuFocusVisible: Story = {
+  args: {
+    children: 'Title',
+    menuItems: sampleMenuItems,
+  },
+  parameters: {
+    pseudo: {
+      focusVisible: ['button'],
+    },
+  },
+};
+
+/**
  * Grid: ソート + カラムアクションメニュー
  */
 export const GridSortWithMenu: Story = {
   args: {
-    sort: true,
     sortState: 'ascending',
+    onSortChange: () => {},
     children: 'Title',
     menuItems: sampleMenuItems,
   },
@@ -416,15 +405,15 @@ export const ColumnActionAllStates: Story = {
               メニュー付き
             </TableHeaderCell>
             <TableHeaderCell
-              sort
               sortState="default"
+              onSortChange={() => {}}
               menuItems={sampleMenuItems}
             >
               ソート+メニュー
             </TableHeaderCell>
             <TableHeaderCell
-              sort
               sortState="ascending"
+              onSortChange={() => {}}
               menuItems={sampleMenuItems}
             >
               昇順+メニュー

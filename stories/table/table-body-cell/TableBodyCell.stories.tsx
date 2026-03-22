@@ -5,6 +5,8 @@ import { Table } from '../../../src/components/table/table';
 import { TableBody } from '../../../src/components/table/table-body';
 import { TableRow } from '../../../src/components/table/table-row';
 import { Checkbox } from '../../../src/components/checkbox';
+import { IconButton } from '../../../src/components/button/icon-button';
+import { DummyIcon } from '../../../src/icons';
 
 /** Grid ビューでラップするデコレーター */
 const gridDecorator: Decorator = (Story) => (
@@ -37,10 +39,12 @@ const meta = {
       description: {
         component:
           'テーブルのボディセルを表示するコンポーネントです。\n' +
-          'テキスト、数値、日付、チェックボックス、カスタムコンテンツなど、さまざまなコンテンツタイプに対応しています。\n' +
-          'children が空の場合はダッシュ（–）を自動表示します。\n\n' +
+          'テキスト、数値、日付、チェックボックス、カスタムコンテンツなど、さまざまなコンテンツタイプに対応しています。\n\n' +
           '> **⚠️注意:** このコンポーネントを単独で使用しないでください。\n' +
           '> Table, TableBody, TableRow 内に配置して利用してください。\n\n' +
+          '## null 表示\n\n' +
+          '`children` が空（`null`・`undefined`・`""`・`false`）の場合、セル中央にダッシュ（`–`）を自動表示します。\n' +
+          '`0` は有効な値として通常表示されます。\n\n' +
           '## 使用例\n\n' +
           '```tsx\n' +
           '<Table view="grid" aria-label="データ">\n' +
@@ -48,6 +52,7 @@ const meta = {
           '    <TableRow>\n' +
           '      <TableBodyCell>テキスト</TableBodyCell>\n' +
           '      <TableBodyCell contentType="number">99,999</TableBodyCell>\n' +
+          '      <TableBodyCell>{null}</TableBodyCell> {/* → – */}\n' +
           '    </TableRow>\n' +
           '  </TableBody>\n' +
           '</Table>\n' +
@@ -153,6 +158,24 @@ export const GridCheckboxChecked: Story = {
 };
 
 /* ==============================
+   Grid ビュー: アイコンボタン
+   ============================== */
+
+/**
+ * Grid: アイコンボタン
+ */
+export const GridIconButton: Story = {
+  args: {
+    contentType: 'icon-button',
+    children: (
+      <IconButton variant="ghost" size="small" aria-label="編集">
+        <DummyIcon />
+      </IconButton>
+    ),
+  },
+};
+
+/* ==============================
    Grid ビュー: スロット
    ============================== */
 
@@ -216,6 +239,21 @@ export const ListNumber: Story = {
   args: {
     contentType: 'number',
     children: '99,999',
+  },
+};
+
+/**
+ * List: アイコンボタン
+ */
+export const ListIconButton: Story = {
+  decorators: [listDecorator],
+  args: {
+    contentType: 'icon-button',
+    children: (
+      <IconButton variant="ghost" size="small" aria-label="編集">
+        <DummyIcon />
+      </IconButton>
+    ),
   },
 };
 

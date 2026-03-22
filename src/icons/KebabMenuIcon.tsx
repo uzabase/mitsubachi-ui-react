@@ -1,6 +1,7 @@
 /** 三点リーダー（縦）アイコン */
 export const KebabMenuIcon = () => (
   <svg
+    style={{ flexShrink: 0 }}
     width="18"
     height="18"
     viewBox="0 0 18 18"

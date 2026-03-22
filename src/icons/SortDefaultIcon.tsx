@@ -1,6 +1,7 @@
 /** ソートデフォルト（上下両矢印）アイコン */
 export const SortDefaultIcon = () => (
   <svg
+    style={{ flexShrink: 0 }}
     width="18"
     height="18"
     viewBox="0 0 18 18"

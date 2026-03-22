@@ -1,30 +1,38 @@
 import { useCallback, useState } from 'react';
 import type { TableHeaderMenuItem } from '../table-header-cell';
 
-export interface ColumnOption {
+export interface ColumnOption<K extends string = string> {
   /** データキー */
-  key: string;
+  key: K;
   /** 表示ラベル */
   label: string;
 }
 
-export interface ColumnConfig {
+export interface ColumnConfig<K extends string = string> {
   /** 切り替え可能な項目一覧 */
-  options: readonly ColumnOption[];
+  options: readonly ColumnOption<K>[];
   /** 初期選択キー（省略時は最初の項目） */
-  defaultKey?: string;
+  defaultKey?: K;
 }
 
-export interface ColumnState {
+export interface ColumnState<K extends string = string> {
   /** 現在のデータキー */
-  currentKey: string;
+  currentKey: K;
   /** 現在のヘッダーラベル */
   currentLabel: string;
   /** TableHeaderCell の menuItems に渡す項目（選択中にチェック付き） */
   menuItems: TableHeaderMenuItem[];
 }
 
-export type UseTableColumnsReturn<K extends string> = Record<K, ColumnState>;
+/** ColumnConfig からオプションキーの型を抽出 */
+export type OptionKeysOf<C> = C extends ColumnConfig<infer K> ? K : string;
+
+/** Hook の戻り値型：各カラムIDに対応する ColumnState（キー型推論付き） */
+export type UseTableColumnsReturn<
+  Config extends Record<string, ColumnConfig<string>>,
+> = {
+  [P in keyof Config]: ColumnState<OptionKeysOf<Config[P]>>;
+};
 
 /**
  * useTableColumns
@@ -40,19 +48,20 @@ export type UseTableColumnsReturn<K extends string> = Record<K, ColumnState>;
  *       { key: 'revenue', label: '営業利益' },
  *       { key: 'ebitda', label: 'EBITDA' },
  *     ],
- *   },
+ *   } as const,
  * });
  *
+ * // columns.revenue.currentKey は 'revenue' | 'ebitda' 型
  * <TableHeaderCell menuItems={columns.revenue.menuItems}>
  *   {columns.revenue.currentLabel}
  * </TableHeaderCell>
  * <TableBodyCell>{row[columns.revenue.currentKey]}</TableBodyCell>
  * ```
  */
-export function useTableColumns<K extends string>(
-  config: Record<K, ColumnConfig>
-): UseTableColumnsReturn<K> {
-  const keys = Object.keys(config) as K[];
+export function useTableColumns<
+  Config extends Record<string, ColumnConfig<string>>,
+>(config: Config): UseTableColumnsReturn<Config> {
+  const keys = Object.keys(config) as (keyof Config & string)[];
 
   const initialState = () => {
     const state: Record<string, string> = {};
@@ -69,7 +78,7 @@ export function useTableColumns<K extends string>(
     setSelectedKeys((prev) => ({ ...prev, [columnId]: optionKey }));
   }, []);
 
-  const result = {} as Record<K, ColumnState>;
+  const result = {} as UseTableColumnsReturn<Config>;
 
   for (const columnId of keys) {
     const col = config[columnId];
@@ -83,7 +92,8 @@ export function useTableColumns<K extends string>(
       onClick: () => selectOption(columnId, option.key),
     }));
 
-    result[columnId] = {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    (result as any)[columnId] = {
       currentKey,
       currentLabel,
       menuItems,

@@ -41,7 +41,7 @@ export interface UseTableSortReturn<T> {
  * ```tsx
  * const { sortedData, getSortState, createSortHandler } = useTableSort({ data: rows });
  *
- * <TableHeaderCell sort sortState={getSortState('name')} onSortChange={createSortHandler('name')}>
+ * <TableHeaderCell sortState={getSortState('name')} onSortChange={createSortHandler('name')}>
  *   企業名
  * </TableHeaderCell>
  * ```

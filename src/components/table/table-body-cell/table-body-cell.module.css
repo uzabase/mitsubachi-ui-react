@@ -4,14 +4,13 @@
 
 .bodyCell {
   box-sizing: border-box;
-  min-block-size: 40px;
   padding-block: var(--spacing-medium, 8px);
   padding-inline: var(--spacing-large, 12px);
 
   /* タイポグラフィ */
   font-family: var(--typography-font-family, Arial, sans-serif);
   font-weight: var(--typography-font-weight-regular, 400);
-  font-size: var(--font-scale-30, 12px);
+  font-size: var(--font-scale-40, 14px);
   line-height: 1.5;
   letter-spacing: 0.02em;
   text-align: start;
@@ -21,10 +20,7 @@
 
   /* table-layout: fixed 対応 */
   min-inline-size: 0;
-  overflow: hidden;
-
-  /* トランジション */
-  transition: background-color 0.2s ease;
+  word-break: break-word;
 }
 
 /* ==============================
@@ -32,14 +28,16 @@
    ============================== */
 
 .grid {
-  background-color: var(--surface-regular-default, #ffffff);
-  border-block-end: 1px solid var(--border-regular-default, rgba(0, 0, 0, 0.1));
+  background-color: var(--cell-bg, var(--surface-regular-default, #ffffff));
+  border-block-end: 1px solid
+    var(--border-semi-strong-default, rgba(0, 0, 0, 0.2));
   border-inline-start: 1px solid
-    var(--border-regular-default, rgba(0, 0, 0, 0.1));
+    var(--border-semi-strong-default, rgba(0, 0, 0, 0.2));
 }
 
 .grid:last-child {
-  border-inline-end: 1px solid var(--border-regular-default, rgba(0, 0, 0, 0.1));
+  border-inline-end: 1px solid
+    var(--border-semi-strong-default, rgba(0, 0, 0, 0.2));
 }
 
 /* ==============================
@@ -47,8 +45,10 @@
    ============================== */
 
 .list {
-  background-color: var(--surface-regular-default, #ffffff);
-  border-block-end: 1px solid var(--border-regular-default, rgba(0, 0, 0, 0.1));
+  background-color: var(--cell-bg, var(--surface-regular-default, #ffffff));
+  border-block-end: 1px solid
+    var(--border-semi-strong-default, rgba(0, 0, 0, 0.2));
+  padding-block: var(--spacing-large, 12px);
 }
 
 /* ==============================
@@ -79,21 +79,26 @@
 }
 
 /* ==============================
+   コンテンツタイプ: icon-button
+   ============================== */
+
+.icon-button {
+  padding-inline: var(--spacing-large, 12px);
+}
+
+/* ==============================
+   セルコンテンツ（垂直中央揃えラッパー）
+   ============================== */
+
+.cellContent {
+  display: flex;
+  align-items: center;
+}
+
+/* ==============================
    null 値の表示
    ============================== */
 
 .nullValue {
-  color: var(--text-weak-default, rgba(0, 0, 0, 0.54));
-}
-
-/* ==============================
-   行ホバー時のセル背景（透過で行背景を見せる）
-   ============================== */
-
-tr:hover > .bodyCell {
-  background-color: transparent;
-}
-
-tr[aria-selected='true'] > .bodyCell {
-  background-color: transparent;
+  text-align: center;
 }

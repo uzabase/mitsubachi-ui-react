@@ -1,6 +1,7 @@
 /** error-fill アイコン */
 export const ErrorIcon = () => (
   <svg
+    style={{ flexShrink: 0 }}
     width="20"
     height="20"
     viewBox="0 0 20 20"

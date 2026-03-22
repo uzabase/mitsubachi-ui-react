@@ -37,7 +37,7 @@ const meta = {
           '  <TableHead>\n' +
           '    <TableRow>\n' +
           '      <TableHeaderCell>企業名</TableHeaderCell>\n' +
-          '      <TableHeaderCell sort sortState="ascending" onSortChange={fn}>\n' +
+          '      <TableHeaderCell sortState="ascending" onSortChange={fn}>\n' +
           '        売上\n' +
           '      </TableHeaderCell>\n' +
           '    </TableRow>\n' +
@@ -94,12 +94,12 @@ const revenueColumnConfig = {
     { key: 'employees', label: '期末従業員数' },
     { key: 'marketCap', label: '時価総額' },
   ],
-};
+} as const;
 
 const sampleData = [
   {
     id: 1,
-    name: 'Label',
+    name: 'LabelLabelLabelLabelLabelLabelLabelLabel',
     text: 'Text',
     revenue: 99,
     totalRevenue: 1200,
@@ -268,8 +268,6 @@ function useTableInteraction() {
    ============================== */
 
 /**
- * Grid View
- *
  * グリッドビュー：行×列の二次元構造で、比較・分析に適したビュー。
  * チェックボックス、ソート、カラムメニュー、長い文字列の折り返し、
  * Slot、選択行を含むフル機能デモ。
@@ -317,7 +315,6 @@ export const GridView: Story = {
               文字列
             </TableHeaderCell>
             <TableHeaderCell
-              sort
               sortState={getSortState(columns.revenue.currentKey)}
               onSortChange={createSortHandler(columns.revenue.currentKey)}
               menuItems={columns.revenue.menuItems}
@@ -326,7 +323,6 @@ export const GridView: Story = {
               {columns.revenue.currentLabel}
             </TableHeaderCell>
             <TableHeaderCell
-              sort
               resizable
               sortState={getSortState('ratio')}
               onSortChange={createSortHandler('ratio')}
@@ -334,7 +330,6 @@ export const GridView: Story = {
               数字
             </TableHeaderCell>
             <TableHeaderCell
-              sort
               sortState={getSortState('date')}
               onSortChange={createSortHandler('date')}
               resizable
@@ -367,7 +362,7 @@ export const GridView: Story = {
                     gap: 'var(--spacing-small, 4px)',
                   }}
                 >
-                  <DummyIcon size={18} />
+                  <DummyIcon size={20} />
                   {row.name}
                 </span>
               </TableBodyCell>
@@ -398,8 +393,6 @@ export const GridView: Story = {
    ============================== */
 
 /**
- * List View
- *
  * リストビュー：一覧形式で、閲覧・把握に適したビュー。
  * チェックボックス、ソート、カラムメニュー、選択行を含むフル機能デモ。
  */
@@ -444,7 +437,6 @@ export const ListView: Story = {
               文字列
             </TableHeaderCell>
             <TableHeaderCell
-              sort
               sortState={getSortState(columns.revenue.currentKey)}
               onSortChange={createSortHandler(columns.revenue.currentKey)}
               menuItems={columns.revenue.menuItems}
@@ -453,7 +445,6 @@ export const ListView: Story = {
               {columns.revenue.currentLabel}
             </TableHeaderCell>
             <TableHeaderCell
-              sort
               resizable
               sortState={getSortState('ratio')}
               onSortChange={createSortHandler('ratio')}
@@ -461,7 +452,6 @@ export const ListView: Story = {
               数字
             </TableHeaderCell>
             <TableHeaderCell
-              sort
               sortState={getSortState('date')}
               onSortChange={createSortHandler('date')}
               resizable
@@ -489,7 +479,7 @@ export const ListView: Story = {
                     gap: 'var(--spacing-small, 4px)',
                   }}
                 >
-                  <DummyIcon size={18} />
+                  <DummyIcon size={20} />
                   {row.name}
                 </span>
               </TableBodyCell>

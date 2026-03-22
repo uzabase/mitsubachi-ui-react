@@ -8,9 +8,9 @@ export interface TableProps {
   /** テーブルのビューモード */
   view: TableView;
   /** テーブルのコンテンツ */
-  children: ReactNode;
-  /** テーブルのアクセシブルラベル */
-  'aria-label'?: string;
+  children?: ReactNode;
+  /** テーブルのアクセシブルラベル（`aria-label` または `aria-labelledby` のいずれかを指定） */
+  'aria-label': string;
 }
 
 /**

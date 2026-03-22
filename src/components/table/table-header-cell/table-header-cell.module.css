@@ -8,6 +8,7 @@
   min-block-size: 40px;
   padding-block: var(--spacing-medium, 8px);
   padding-inline: var(--spacing-large, 12px);
+  vertical-align: middle;
 
   /* タイポグラフィ */
   font-family: var(--typography-font-family, Arial, sans-serif);
@@ -20,9 +21,6 @@
   /* table-layout: fixed 対応 */
   min-inline-size: 0;
   overflow: hidden;
-
-  /* トランジション */
-  transition: background-color 0.2s ease;
 }
 
 /* ==============================
@@ -109,7 +107,7 @@
   box-sizing: border-box;
   display: inline-flex;
   align-items: center;
-  gap: 2px;
+  gap: var(--spacing-small, 4px);
   cursor: pointer;
   color: inherit;
   font: inherit;
@@ -131,8 +129,8 @@
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  inline-size: 18px;
-  block-size: 18px;
+  inline-size: var(--icon-size-small, 18px);
+  block-size: var(--icon-size-small, 18px);
   color: var(--object-weak-default, rgba(0, 0, 0, 0.54));
 }
 
@@ -157,7 +155,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: var(--spacing-x-small, 2px);
+  gap: var(--spacing-small, 4px);
 }
 
 .cellText {
@@ -185,14 +183,13 @@
   border-radius: var(--border-radius-full, 9999px);
   cursor: pointer;
   color: var(--icon-regular-default, rgba(0, 0, 0, 0.84));
-  transition: background-color 0.2s ease;
 }
 
-.menuButton:hover {
+.menuButton:hover:not(:disabled) {
   background-color: var(--surface-overlay-hover, rgba(0, 0, 0, 0.07));
 }
 
-.menuButton:active {
+.menuButton:active:not(:disabled) {
   background-color: var(--surface-overlay-active, rgba(0, 0, 0, 0.1));
 }
 
@@ -207,9 +204,6 @@
    ============================== */
 
 .menuDropdown {
-  position: absolute;
-  inset-block-start: 100%;
-  inset-inline-end: 0;
   z-index: 10;
   min-inline-size: 160px;
   padding-block: var(--spacing-small, 4px);
@@ -238,14 +232,13 @@
   letter-spacing: 0.02em;
   color: var(--text-regular-default, rgba(0, 0, 0, 0.84));
   cursor: pointer;
-  transition: background-color 0.2s ease;
 }
 
-.menuItem:hover {
+.menuItem:hover:not(:disabled) {
   background-color: var(--surface-overlay-hover, rgba(0, 0, 0, 0.07));
 }
 
-.menuItem:active {
+.menuItem:active:not(:disabled) {
   background-color: var(--surface-overlay-active, rgba(0, 0, 0, 0.1));
 }
 
@@ -260,13 +253,21 @@
   min-inline-size: 0;
 }
 
+.menuItemSelected {
+  background-color: var(--surface-selected-default, #e8edff);
+}
+
+.menuItemSelected:hover:not(:disabled) {
+  background-color: var(--surface-selected-hover, #dbe4ff);
+}
+
 .menuItemCheck {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  inline-size: 16px;
-  block-size: 16px;
+  inline-size: var(--icon-size-small, 18px);
+  block-size: var(--icon-size-small, 18px);
   color: var(--icon-selected, #3f69f2);
 }
 
@@ -282,7 +283,6 @@
   block-size: 100%;
   cursor: col-resize;
   background-color: transparent;
-  transition: background-color 0.2s ease;
 }
 
 .resizer:hover {

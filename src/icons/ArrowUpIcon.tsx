@@ -1,6 +1,7 @@
 /** arrow-up アイコン */
 export const ArrowUpIcon = () => (
   <svg
+    style={{ flexShrink: 0 }}
     width="12"
     height="12"
     viewBox="0 0 24 24"

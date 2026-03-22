@@ -1,4 +1,5 @@
 import React, { type ReactNode } from 'react';
+import { createPortal } from 'react-dom';
 import {
   CheckIcon,
   KebabMenuIcon,
@@ -15,24 +16,12 @@ export type TableHeaderCellContentType = 'text' | 'checkbox' | 'icon-button';
 /** ソート状態 */
 export type TableSortState = 'default' | 'ascending' | 'descending';
 
-export interface TableHeaderCellProps {
+interface TableHeaderCellCommonProps {
   /**
    * セルのコンテンツタイプ
    * @default 'text'
    */
   contentType?: TableHeaderCellContentType;
-  /**
-   * ソート可能かどうか
-   * @default false
-   */
-  sort?: boolean;
-  /**
-   * 現在のソート状態
-   * @default 'default'
-   */
-  sortState?: TableSortState;
-  /** ソート状態変更時のコールバック */
-  onSortChange?: (state: TableSortState) => void;
   /** カラムアクションメニューの項目 */
   menuItems?: readonly TableHeaderMenuItem[];
   /**
@@ -40,9 +29,22 @@ export interface TableHeaderCellProps {
    * @default false
    */
   resizable?: boolean;
+  /** カラムリサイズ完了時のコールバック */
+  onResize?: (width: number) => void;
   /** セルのコンテンツ */
   children?: ReactNode;
 }
+
+export type TableHeaderCellProps = TableHeaderCellCommonProps &
+  (
+    | { sortState?: undefined; onSortChange?: undefined }
+    | {
+        /** 現在のソート状態 */
+        sortState: TableSortState;
+        /** ソート状態変更時のコールバック */
+        onSortChange: (state: TableSortState) => void;
+      }
+  );
 
 export interface TableHeaderMenuItem {
   /** メニュー項目のラベル */
@@ -66,10 +68,10 @@ const SORT_NEXT_STATE: Record<TableSortState, TableSortState> = {
 /** aria-sort に変換 */
 function toAriaSortValue(
   sortState: TableSortState
-): 'ascending' | 'descending' | 'none' {
+): 'ascending' | 'descending' | undefined {
   if (sortState === 'ascending') return 'ascending';
   if (sortState === 'descending') return 'descending';
-  return 'none';
+  return undefined;
 }
 
 /**
@@ -80,24 +82,25 @@ function toAriaSortValue(
  */
 export function TableHeaderCell({
   contentType = 'text',
-  sort = false,
-  sortState = 'default',
+  sortState,
   onSortChange,
   menuItems,
   resizable = false,
+  onResize,
   children,
 }: TableHeaderCellProps) {
   const { view } = useTableContext();
   const thRef = React.useRef<HTMLTableCellElement>(null);
 
-  const isSorted = sortState !== 'default';
+  const sortable = sortState !== undefined;
+  const isSorted = sortable && sortState !== 'default';
   const hasMenu = menuItems && menuItems.length > 0;
 
   const cellClassName = [
     styles.headerCell,
     styles[view],
     styles[contentType],
-    sort && styles.sortable,
+    sortable && styles.sortable,
     isSorted && styles.sorted,
     hasMenu && styles.hasMenu,
   ]
@@ -105,15 +108,17 @@ export function TableHeaderCell({
     .join(' ');
 
   const handleSortClick = () => {
-    onSortChange?.(SORT_NEXT_STATE[sortState]);
+    onSortChange?.(SORT_NEXT_STATE[sortState!]);
   };
 
-  const ariaSortValue = sort ? toAriaSortValue(sortState) : undefined;
+  const ariaSortValue = sortable ? toAriaSortValue(sortState) : undefined;
 
   const menuButton = hasMenu ? <ColumnMenu menuItems={menuItems} /> : null;
-  const resizer = resizable ? <ColumnResizer thRef={thRef} /> : null;
+  const resizer = resizable ? (
+    <ColumnResizer thRef={thRef} onResize={onResize} />
+  ) : null;
 
-  if (contentType === 'text' && sort) {
+  if (contentType === 'text' && sortable) {
     return (
       <th
         ref={thRef}
@@ -153,15 +158,6 @@ export function TableHeaderCell({
   );
 }
 
-/** メニュー項目の要素を取得する */
-function getMenuItems(menuRef: React.RefObject<HTMLDivElement | null>) {
-  return Array.from(
-    menuRef.current?.querySelectorAll<HTMLButtonElement>(
-      '[role="menuitem"], [role="menuitemradio"]'
-    ) ?? []
-  );
-}
-
 /** カラムアクションメニュー */
 function ColumnMenu({
   menuItems,
@@ -171,24 +167,36 @@ function ColumnMenu({
   const [open, setOpen] = React.useState(false);
   const menuRef = React.useRef<HTMLDivElement>(null);
   const buttonRef = React.useRef<HTMLButtonElement>(null);
+  const itemRefs = React.useRef<(HTMLButtonElement | null)[]>([]);
+  const [menuPosition, setMenuPosition] = React.useState({ top: 0, left: 0 });
 
-  // メニュー展開時に最初の項目にフォーカス
+  // メニュー展開時に位置を計算して最初の項目にフォーカス
   React.useEffect(() => {
     if (!open) return;
 
-    const items = getMenuItems(menuRef);
-    items[0]?.focus();
+    if (buttonRef.current) {
+      const rect = buttonRef.current.getBoundingClientRect();
+      setMenuPosition({
+        top: rect.bottom,
+        left: rect.right,
+      });
+    }
+
+    itemRefs.current[0]?.focus();
   }, [open]);
 
   React.useEffect(() => {
     if (!open) return;
 
     const handleClickOutside = (e: MouseEvent) => {
+      const target = e.target;
+      if (!(target instanceof Node)) return;
+
       if (
         menuRef.current &&
-        !menuRef.current.contains(e.target as Node) &&
+        !menuRef.current.contains(target) &&
         buttonRef.current &&
-        !buttonRef.current.contains(e.target as Node)
+        !buttonRef.current.contains(target)
       ) {
         setOpen(false);
       }
@@ -201,7 +209,9 @@ function ColumnMenu({
   }, [open]);
 
   const handleMenuKeyDown = (e: React.KeyboardEvent) => {
-    const items = getMenuItems(menuRef);
+    const items = itemRefs.current.filter(
+      (ref): ref is HTMLButtonElement => ref !== null
+    );
     const currentIndex = items.indexOf(e.target as HTMLButtonElement);
 
     switch (e.key) {
@@ -247,39 +257,57 @@ function ColumnMenu({
       >
         <KebabMenuIcon />
       </button>
-      {open && (
-        <div
-          ref={menuRef}
-          className={styles.menuDropdown}
-          role="menu"
-          tabIndex={-1}
-          onKeyDown={handleMenuKeyDown}
-        >
-          {menuItems.map((item) => (
-            <button
-              key={item.label}
-              type="button"
-              className={styles.menuItem}
-              role={item.selected !== undefined ? 'menuitemradio' : 'menuitem'}
-              aria-checked={
-                item.selected !== undefined ? item.selected : undefined
-              }
-              tabIndex={-1}
-              onClick={() => {
-                item.onClick();
-                setOpen(false);
-              }}
-            >
-              <span className={styles.menuItemLabel}>{item.label}</span>
-              {item.selected && (
-                <span className={styles.menuItemCheck} aria-hidden="true">
-                  <CheckIcon />
-                </span>
-              )}
-            </button>
-          ))}
-        </div>
-      )}
+      {open &&
+        createPortal(
+          <div
+            ref={menuRef}
+            className={styles.menuDropdown}
+            role="menu"
+            tabIndex={-1}
+            onKeyDown={handleMenuKeyDown}
+            style={{
+              position: 'fixed',
+              insetBlockStart: menuPosition.top,
+              insetInlineStart: menuPosition.left,
+              transform: 'translateX(-100%)',
+            }}
+          >
+            {menuItems.map((item, index) => (
+              <button
+                key={item.label}
+                ref={(el) => {
+                  itemRefs.current[index] = el;
+                }}
+                type="button"
+                className={[
+                  styles.menuItem,
+                  item.selected && styles.menuItemSelected,
+                ]
+                  .filter(Boolean)
+                  .join(' ')}
+                role={
+                  item.selected !== undefined ? 'menuitemradio' : 'menuitem'
+                }
+                aria-checked={
+                  item.selected !== undefined ? item.selected : undefined
+                }
+                tabIndex={-1}
+                onClick={() => {
+                  item.onClick();
+                  setOpen(false);
+                }}
+              >
+                <span className={styles.menuItemLabel}>{item.label}</span>
+                {item.selected && (
+                  <span className={styles.menuItemCheck} aria-hidden="true">
+                    <CheckIcon />
+                  </span>
+                )}
+              </button>
+            ))}
+          </div>,
+          document.body
+        )}
     </span>
   );
 }
@@ -287,8 +315,10 @@ function ColumnMenu({
 /** カラムリサイザー */
 function ColumnResizer({
   thRef,
+  onResize,
 }: {
   thRef: React.RefObject<HTMLTableCellElement | null>;
+  onResize?: (width: number) => void;
 }) {
   const handleMouseDown = React.useCallback(
     (e: React.MouseEvent) => {
@@ -343,6 +373,9 @@ function ColumnResizer({
         document.removeEventListener('mouseup', handleMouseUp);
         document.body.style.cursor = '';
         document.body.style.userSelect = '';
+
+        const finalWidth = col ? col.offsetWidth : th.offsetWidth;
+        onResize?.(finalWidth);
       };
 
       document.body.style.cursor = 'col-resize';
@@ -350,7 +383,7 @@ function ColumnResizer({
       document.addEventListener('mousemove', handleMouseMove);
       document.addEventListener('mouseup', handleMouseUp);
     },
-    [thRef]
+    [thRef, onResize]
   );
 
   return (
@@ -360,7 +393,7 @@ function ColumnResizer({
 }
 
 /** ソートアイコンのマッピング */
-const SORT_ICON_MAP: Record<TableSortState, React.FC> = {
+const SORT_ICON_MAP: Record<TableSortState, () => React.JSX.Element> = {
   default: SortDefaultIcon,
   ascending: SortAscendingIcon,
   descending: SortDescendingIcon,

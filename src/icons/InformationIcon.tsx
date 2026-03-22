@@ -1,6 +1,7 @@
 /** information-fill アイコン */
 export const InformationIcon = () => (
   <svg
+    style={{ flexShrink: 0 }}
     width="20"
     height="20"
     viewBox="0 0 20 20"
