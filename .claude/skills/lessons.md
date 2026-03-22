@@ -80,6 +80,24 @@
 - **学び**: このプロジェクトではコンポーネントのスタイルはCSS Modulesで完結させ、外部からclassNameを注入するAPIは提供しない方針。既存コンポーネント（Button等）もclassNameを受け付けていない
 - **ルール**: 新規コンポーネント作成時、`className` プロパティを追加しない。既存コンポーネントのprops設計を確認し、プロジェクト方針と一貫させる
 
+### 2026-02-27: [CSS] background ショートハンドと background-color ロングハンドを混在させない
+
+- **状況**: `.clearButton` のベーススタイルで `background: transparent`（ショートハンド）を使い、`:hover` 状態で `background-color`（ロングハンド）を使ったところ、hover時の背景色変化がStorybookで視覚的に確認できなかった
+- **学び**: `background` ショートハンドは `background-color` を含む全サブプロパティをリセットする。後から `background-color` だけを変更しても、ショートハンドの他のプロパティ（image, position等）の初期値が残り、期待通りに動かない場合がある。同じプロパティ軸で統一すべき
+- **ルール**: `background-color` を状態（hover, active, focus等）で変更する場合、ベーススタイルも `background-color: transparent` と書く。ショートハンド `background` とロングファンド `background-color` を同一要素で混在させない
+
+### 2026-02-27: [CSS] :has() セレクタで親のフォーカスリングを制御する場合、対象子要素を明示する
+
+- **状況**: `.container:has(:focus-visible)` でコンテナにフォーカスリングを表示していたが、input とクリアボタンの両方にマッチしてしまい、クリアボタンにフォーカスが移ってもコンテナのフォーカスリングが残り続けた。WCAG 2.4.7 違反の状態
+- **学び**: `:has(:focus-visible)` は子孫のいずれかがフォーカスされるとマッチする。複合コンポーネントで複数のフォーカス可能要素がある場合、どの要素のフォーカスで親スタイルを変更するか明示しないと、フォーカスの所在が曖昧になりアクセシビリティ上の問題になる
+- **ルール**: `:has(:focus-visible)` を使う際は、対象クラスを明示する（例: `.container:has(.input:focus-visible)`）。複数のインタラクティブ要素を持つコンテナでは、各要素のフォーカスリングを個別に管理する
+
+### 2026-02-27: [React] Uncontrolled input のプログラマティックなクリアには nativeInputValueSetter を使う
+
+- **状況**: uncontrolled モード（`defaultValue` 使用）の `<input>` で、クリアボタン押下時に `setInternalValue('')` でReact stateを更新したが、DOMの入力値はクリアされなかった
+- **学び**: `value={undefined}` の uncontrolled input は React が DOM の value を管理しないため、React state を更新しても DOM に反映されない。DOM を直接操作する必要がある。さらに、React は synthetic event を通じて onChange を発火するため、`input.value = ''` の直接代入では onChange が呼ばれない
+- **ルール**: uncontrolled input のプログラマティックなクリアには `Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, 'value')?.set` で native setter を取得し、`dispatchEvent(new Event('input', { bubbles: true }))` でイベントを発火する。これにより親コンポーネントの onChange も正しく通知される
+
 ### 2026-02-25: [デザイントークン] Figmaの指定値を一般的な慣習より優先する
 
 - **状況**: Figmaでアイコンサイズが `width: 20, height: 20` と指定されていたにもかかわらず、`24px` で実装してしまった
@@ -134,3 +152,9 @@
 - **原因**: 「HTMLElementは両方の共通基底型だから安全」と安易に判断した。Ref<T>のTは共変ではなく、スーパータイプ（HTMLElement）からサブタイプ（HTMLButtonElement）への代入は型安全でないためTSが拒否する
 - **学び**: `Ref<スーパータイプ>` は `Ref<サブタイプ>` に代入できない。ポリモーフィックコンポーネント（`as` propで要素タイプが変わる）では、intersection型（`HTMLButtonElement & HTMLSpanElement`）へのキャストが正しい。intersection型は両方のサブタイプとして扱われるため、どちらの要素型にも代入可能
 - **ルール**: ポリモーフィックコンポーネントのrefキャストでは `Ref<HTMLElement>` ではなく `Ref<ElementA & ElementB>` のintersection型を使う。型の方向（スーパータイプ vs サブタイプ）を必ず確認してからレビュー指摘する
+
+### 2026-02-28: [ドキュメント] JSDocはですます調で統一し、使用例を含める
+
+- **状況**: SearchBoxのJSDocで「〜が望ましい。」「〜で補足する。」と体言止め・である調が混在していた
+- **学び**: デザインシステムのドキュメントは利用者向けなので、ですます調で統一すべき。また、コンポーネントの説明だけでなく `@example` で具体的な使用例を含めることで、利用者がすぐにコピペで使い始められる
+- **ルール**: JSDocは①ですます調で統一 ②コンポーネント説明の下に `@example`（または `### 使用例`）で利用者向けのコード例を含める

@@ -4,6 +4,7 @@ export * from './dialog';
 export * from './button';
 export * from './inline-notification';
 export * from './label-unit';
+export * from './search-box';
 export * from './section-tab';
 export * from './segmented-control';
 export * from './snackbar';

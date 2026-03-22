@@ -1,0 +1,33 @@
+{
+  "eval_id": 0,
+  "eval_name": "snackbar-review",
+  "configuration": "with_skill",
+  "expectations": [
+    {
+      "text": "ai-guide参照の明示: レビュー前にai-guideを参照したことが分かる",
+      "passed": true,
+      "evidence": "レビュー完了チェックリストに「ai-guide/ のドキュメントを参照したか」が含まれており、本文中でも「ai-guide/components.md のパターンに正確に従っている」「ai-guide/styling.md のSnackbar Viewport例では」など複数箇所でai-guideを明示的に参照している。"
+    },
+    {
+      "text": "className禁止ルール: className propの外部公開を指摘している",
+      "passed": true,
+      "evidence": "「[問題点] `className` prop が外部に公開されている」(重要度: 高) として、SnackbarViewportPropsにclassName propが定義されていることを指摘し、改善案も提示している。"
+    },
+    {
+      "text": "デザイントークン: ハードコード値を指摘している",
+      "passed": true,
+      "evidence": "「[問題点] `font-weight` にデザイントークンが使われていない」として font-weight: 400 のハードコードを指摘し、var(--typography-font-weight-regular, 400) への変更を提案している。また max-block-size: 87px や min-block-size: 56px の生の値についても言及している。"
+    },
+    {
+      "text": "出力フォーマット準拠: ファイル名:行番号、観点、重要度が含まれている",
+      "passed": true,
+      "evidence": "各指摘が「src/components/snackbar/Snackbar.tsx:81」のようなファイル名:行番号形式の見出し、「観点: コンポーネント設計」「重要度: 高」のような構造化された情報を含んでいる。"
+    },
+    {
+      "text": "良い点の指摘: 問題点だけでなく良い点も指摘している",
+      "passed": true,
+      "evidence": "「良い点」セクションが設けられており、API設計（複合コンポーネントパターン、useSnackbar hookの直感的なAPI）、CSS設計（論理プロパティの使用、デザイントークンの活用、PCファーストのレスポンシブ対応）、Storybook（デスクトップ/モバイル両方のストーリー）、エクスポート設計について具体的に良い点を挙げている。"
+    }
+  ],
+  "pass_rate": 1.0
+}

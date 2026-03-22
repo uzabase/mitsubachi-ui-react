@@ -1,0 +1,35 @@
+{
+  "skill_name": "design-system-review",
+  "evals": [
+    {
+      "id": 0,
+      "prompt": "Snackbarコンポーネントをレビューして。src/components/snackbar/ が対象。",
+      "expected_output": "className propの外部公開、z-indexのハードコード値、合成コンポーネントの構造などの問題を指摘する",
+      "files": [
+        "src/components/snackbar/Snackbar.tsx",
+        "src/components/snackbar/snackbar.module.css",
+        "src/components/snackbar/index.ts"
+      ]
+    },
+    {
+      "id": 1,
+      "prompt": "IconButtonコンポーネントをレビューして。src/components/button/icon-button/ が対象。",
+      "expected_output": "aria属性の一貫性、スプレッドによるclassName注入可能性、loading状態の構造変更などを指摘する",
+      "files": [
+        "src/components/button/icon-button/IconButton.tsx",
+        "src/components/button/icon-button/icon-button.module.css",
+        "src/components/button/icon-button/index.ts"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "TextAreaコンポーネントをレビューして。src/components/text-area/text-area/ が対象。",
+      "expected_output": "CSS物理プロパティの混在、ハードコード値、aria-describedbyの実装、disabled状態の伝播などを指摘する",
+      "files": [
+        "src/components/text-area/text-area/TextArea.tsx",
+        "src/components/text-area/text-area/text-area.module.css",
+        "src/components/text-area/text-area/index.ts"
+      ]
+    }
+  ]
+}

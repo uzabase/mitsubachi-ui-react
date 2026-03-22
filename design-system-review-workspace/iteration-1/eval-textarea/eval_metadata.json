@@ -1,0 +1,27 @@
+{
+  "eval_id": 2,
+  "eval_name": "textarea-review",
+  "prompt": "TextAreaコンポーネントをレビューして。src/components/text-area/text-area/ が対象。",
+  "assertions": [
+    {
+      "text": "ai-guide参照の明示: レビュー前にai-guideを参照したことが分かる",
+      "type": "qualitative"
+    },
+    {
+      "text": "CSS物理プロパティ: paddingショートハンドやvertical-align等の物理プロパティを指摘している",
+      "type": "check"
+    },
+    {
+      "text": "デザイントークン: ハードコード値(gap: 2pxなど)を指摘している",
+      "type": "check"
+    },
+    {
+      "text": "disabled状態の伝播: disabled時のスタイル伝播について確認/指摘している",
+      "type": "check"
+    },
+    {
+      "text": "出力フォーマット準拠: ファイル名:行番号、観点、重要度が含まれている",
+      "type": "format"
+    }
+  ]
+}
