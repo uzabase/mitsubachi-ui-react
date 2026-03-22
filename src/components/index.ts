@@ -11,4 +11,5 @@ export * from './snackbar';
 export * from './tag';
 export * from './text-area';
 export * from './timeline';
+export * from './suggestion';
 export * from './tooltip';
