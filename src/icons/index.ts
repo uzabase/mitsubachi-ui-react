@@ -6,6 +6,7 @@ export { CloseIcon } from './CloseIcon';
 export { CrossIcon } from './CrossIcon';
 export { DummyIcon } from './DummyIcon';
 export { ErrorIcon } from './ErrorIcon';
+export { HistoryIcon } from './HistoryIcon';
 export { SpinnerIcon } from './SpinnerIcon';
 export { InformationIcon } from './InformationIcon';
 export { KebabMenuIcon } from './KebabMenuIcon';
