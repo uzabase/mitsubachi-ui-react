@@ -2,76 +2,13 @@ import { useRef } from 'react';
 import type { Decorator, Meta, StoryObj } from '@storybook/react-vite';
 import { Menu } from '@base-ui/react/menu';
 import { ActionMenuItem } from '../../../src/components/menu';
-import { IconButton } from '../../../src/components/button';
-import { DummyIcon } from '../../../src/icons';
-
-/** もっと見る（縦3点）アイコン */
-const MoreVerticalIcon = () => (
-  <svg
-    width="20"
-    height="20"
-    viewBox="0 0 20 20"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-    aria-hidden="true"
-  >
-    <path
-      d="M11.4167 4.75C11.4167 5.53333 10.7833 6.16667 10 6.16667C9.21667 6.16667 8.58333 5.525 8.58333 4.75C8.58333 3.975 9.21667 3.33333 10 3.33333C10.7833 3.33333 11.4167 3.975 11.4167 4.75ZM11.4167 9.99167C11.4167 9.20833 10.7833 8.575 10 8.575C9.21667 8.575 8.58333 9.20833 8.58333 9.99167C8.58333 10.775 9.21667 11.4083 10 11.4083C10.7833 11.4083 11.4167 10.775 11.4167 9.99167ZM11.4167 15.25C11.4167 14.475 10.7833 13.8333 10 13.8333C9.21667 13.8333 8.58333 14.4667 8.58333 15.25C8.58333 16.0333 9.21667 16.6667 10 16.6667C10.7833 16.6667 11.4167 16.0333 11.4167 15.25Z"
-      fill="currentColor"
-    />
-  </svg>
-);
-
-/** 編集アイコン */
-const PencilIcon = () => (
-  <svg
-    width="20"
-    height="20"
-    viewBox="0 0 20 20"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-    aria-hidden="true"
-  >
-    <path
-      d="M4.167 15.833h1.178l8.282-8.282-1.178-1.178-8.282 8.282v1.178Zm-1.25 1.25v-2.768l9.591-9.574 2.768 2.75-9.591 9.592H2.917Zm11.18-10.001-1.57-1.57 1.57 1.57Z"
-      fill="currentColor"
-    />
-  </svg>
-);
-
-/** コピーアイコン */
-const CopyIcon = () => (
-  <svg
-    width="20"
-    height="20"
-    viewBox="0 0 20 20"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-    aria-hidden="true"
-  >
-    <path
-      d="M7.5 14.167c-.458 0-.85-.163-1.177-.49a1.605 1.605 0 0 1-.49-1.177V3.333c0-.458.164-.85.49-1.177.327-.326.72-.49 1.177-.49h7.5c.458 0 .851.164 1.178.49.326.327.489.72.489 1.177V12.5c0 .458-.163.851-.49 1.177a1.605 1.605 0 0 1-1.177.49h-7.5ZM5 16.667c-.458 0-.851-.163-1.178-.49a1.605 1.605 0 0 1-.489-1.177V5h1.25v10h8.75v1.25H5v.417Z"
-      fill="currentColor"
-    />
-  </svg>
-);
-
-/** 削除アイコン */
-const TrashIcon = () => (
-  <svg
-    width="20"
-    height="20"
-    viewBox="0 0 20 20"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-    aria-hidden="true"
-  >
-    <path
-      d="M6.25 17.083c-.458 0-.85-.163-1.177-.489a1.605 1.605 0 0 1-.49-1.178V5H3.75V3.75h3.75V2.917h5v.833h3.75V5h-.833v10.417c0 .458-.163.85-.49 1.177a1.605 1.605 0 0 1-1.177.49H6.25ZM8.333 14.167h1.25V6.667h-1.25v7.5Zm2.084 0h1.25V6.667h-1.25v7.5Z"
-      fill="currentColor"
-    />
-  </svg>
-);
+import { MenuButton } from '../../../src/components/button';
+import {
+  CopyIcon,
+  DummyIcon,
+  PencilSquareIcon,
+  TrashIcon,
+} from '../../../src/icons';
 
 /** Menu.Popup の幅を指定できるデコレータ生成関数 */
 function MenuDecoratorWithWidth(width: number): Decorator {
@@ -154,7 +91,6 @@ const meta = {
     },
   },
   tags: ['autodocs'],
-  decorators: [MenuDecorator],
   argTypes: {
     variant: {
       control: 'radio',
@@ -179,8 +115,12 @@ type Story = StoryObj<typeof meta>;
    Neutral バリアント
    ======================================== */
 
+/** 単一アイテムストーリー用の共通設定 */
+const menuItemStory = { decorators: [MenuDecorator] };
+
 /** デフォルト状態 */
 export const Normal: Story = {
+  ...menuItemStory,
   args: {
     children: 'アクション',
   },
@@ -188,6 +128,7 @@ export const Normal: Story = {
 
 /** アイコン付き */
 export const WithIcon: Story = {
+  ...menuItemStory,
   args: {
     ...Normal.args,
     icon: <DummyIcon />,
@@ -196,6 +137,7 @@ export const WithIcon: Story = {
 
 /** 補助テキスト付き */
 export const WithSupportText: Story = {
+  ...menuItemStory,
   args: {
     ...Normal.args,
     supportText: '補助テキスト',
@@ -204,6 +146,7 @@ export const WithSupportText: Story = {
 
 /** アイコン + 補助テキスト付き */
 export const WithIconAndSupportText: Story = {
+  ...menuItemStory,
   args: {
     ...Normal.args,
     icon: <DummyIcon />,
@@ -217,24 +160,28 @@ export const WithIconAndSupportText: Story = {
 
 /** Hover 状態 */
 export const Hover: Story = {
+  ...menuItemStory,
   args: { ...Normal.args },
   parameters: { pseudo: { hover: true } },
 };
 
 /** Active 状態 */
 export const Active: Story = {
+  ...menuItemStory,
   args: { ...Normal.args },
   parameters: { pseudo: { active: true } },
 };
 
 /** Focus 状態 */
 export const Focus: Story = {
+  ...menuItemStory,
   args: { ...Normal.args },
   parameters: { pseudo: { focusVisible: true } },
 };
 
 /** Disabled 状態 */
 export const Disabled: Story = {
+  ...menuItemStory,
   args: {
     ...Normal.args,
     disabled: true,
@@ -243,6 +190,7 @@ export const Disabled: Story = {
 
 /** Disabled + アイコン + 補助テキスト */
 export const DisabledWithIconAndSupportText: Story = {
+  ...menuItemStory,
   args: {
     ...WithIconAndSupportText.args,
     disabled: true,
@@ -255,6 +203,7 @@ export const DisabledWithIconAndSupportText: Story = {
 
 /** Danger デフォルト */
 export const Danger: Story = {
+  ...menuItemStory,
   args: {
     children: '削除',
     variant: 'danger',
@@ -263,6 +212,7 @@ export const Danger: Story = {
 
 /** Danger + アイコン */
 export const DangerWithIcon: Story = {
+  ...menuItemStory,
   args: {
     ...Danger.args,
     icon: <DummyIcon />,
@@ -271,6 +221,7 @@ export const DangerWithIcon: Story = {
 
 /** Danger + 補助テキスト */
 export const DangerWithSupportText: Story = {
+  ...menuItemStory,
   args: {
     ...Danger.args,
     supportText: '元に戻せません',
@@ -279,24 +230,28 @@ export const DangerWithSupportText: Story = {
 
 /** Danger - Hover */
 export const DangerHover: Story = {
+  ...menuItemStory,
   args: { ...Danger.args },
   parameters: { pseudo: { hover: true } },
 };
 
 /** Danger - Active */
 export const DangerActive: Story = {
+  ...menuItemStory,
   args: { ...Danger.args },
   parameters: { pseudo: { active: true } },
 };
 
 /** Danger - Focus */
 export const DangerFocus: Story = {
+  ...menuItemStory,
   args: { ...Danger.args },
   parameters: { pseudo: { focusVisible: true } },
 };
 
 /** Danger - Disabled */
 export const DangerDisabled: Story = {
+  ...menuItemStory,
   args: {
     ...Danger.args,
     disabled: true,
@@ -392,11 +347,7 @@ export const MenuWithTrigger: Story = {
     () => (
       <Menu.Root>
         <Menu.Trigger
-          render={
-            <IconButton variant="ghost" size="medium" aria-label="もっと見る">
-              <MoreVerticalIcon />
-            </IconButton>
-          }
+          render={<MenuButton variant="primary">もっと見る</MenuButton>}
         />
         <Menu.Portal>
           <Menu.Positioner side="bottom" align="start" sideOffset={4}>
@@ -412,7 +363,7 @@ export const MenuWithTrigger: Story = {
                 minWidth: '144px',
               }}
             >
-              <ActionMenuItem icon={<PencilIcon />}>編集</ActionMenuItem>
+              <ActionMenuItem icon={<PencilSquareIcon />}>編集</ActionMenuItem>
               <ActionMenuItem icon={<CopyIcon />}>複製</ActionMenuItem>
               <ActionMenuItem variant="danger" icon={<TrashIcon />}>
                 削除
