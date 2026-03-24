@@ -96,6 +96,33 @@
 }
 
 /* ==============================
+   アイコン付きセル
+   ============================== */
+
+.withIcon {
+  gap: var(--spacing-small, 4px);
+}
+
+/* grid + icon: 上揃え */
+.grid .withIcon {
+  align-items: flex-start;
+}
+
+/* list + icon: 中央揃え（cellContent のデフォルト center を継承） */
+
+/* アイコンラッパー（縮小防止） */
+.icon {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+}
+
+/* テキストラッパー */
+.label {
+  min-inline-size: 0;
+}
+
+/* ==============================
    null 値の表示
    ============================== */
 

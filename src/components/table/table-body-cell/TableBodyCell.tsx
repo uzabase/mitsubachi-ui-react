@@ -18,6 +18,18 @@ export interface TableBodyCellProps {
    */
   contentType?: TableBodyCellContentType;
   /**
+   * セルの先頭に表示するアイコン。
+   *
+   * アイコンとテキストの垂直配置は view に応じて自動で切り替わる:
+   * - grid: 上揃え（`flex-start`）
+   * - list: 中央揃え（`center`）
+   *
+   * テキスト系の contentType（`text` など）での使用を想定。
+   * `checkbox` や `slot` でも型エラーにはならないが、
+   * レイアウトが意図どおりにならない場合がある。
+   */
+  icon?: ReactNode;
+  /**
    * セルのコンテンツ。
    *
    * `null`・`undefined`・`''`・`false` の場合はダッシュ（`–`）を
@@ -42,6 +54,7 @@ const NULL_DISPLAY = '–';
  */
 export function TableBodyCell({
   contentType = 'text',
+  icon,
   children,
 }: TableBodyCellProps) {
   const { view } = useTableContext();
@@ -57,10 +70,23 @@ export function TableBodyCell({
     .filter(Boolean)
     .join(' ');
 
+  const cellContentClassName = [styles.cellContent, icon && styles.withIcon]
+    .filter(Boolean)
+    .join(' ');
+
+  const content = hasContent ? children : NULL_DISPLAY;
+
   return (
     <td className={cellClassName}>
-      <span className={styles.cellContent}>
-        {hasContent ? children : NULL_DISPLAY}
+      <span className={cellContentClassName}>
+        {icon ? (
+          <>
+            <span className={styles.icon}>{icon}</span>
+            <span className={styles.label}>{content}</span>
+          </>
+        ) : (
+          content
+        )}
       </span>
     </td>
   );

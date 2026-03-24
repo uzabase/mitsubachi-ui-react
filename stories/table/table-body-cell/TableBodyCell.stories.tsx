@@ -56,7 +56,19 @@ const meta = {
           '    </TableRow>\n' +
           '  </TableBody>\n' +
           '</Table>\n' +
-          '```',
+          '```\n\n' +
+          '## アイコン付きセル\n\n' +
+          '`icon` prop でセルの先頭にアイコンを表示できます。\n' +
+          'アイコンとテキストの垂直配置は view に応じて自動で切り替わります:\n\n' +
+          '- **grid**: 上揃え（テキストが折り返しても、アイコンは先頭行に固定）\n' +
+          '- **list**: 中央揃え\n\n' +
+          '```tsx\n' +
+          '<TableBodyCell icon={<SomeIcon size={20} />}>\n' +
+          '  テキスト\n' +
+          '</TableBodyCell>\n' +
+          '```\n\n' +
+          '> **💡ヒント:** `icon` はテキスト系の contentType（`text` など）での使用を想定しています。\n' +
+          '> `checkbox` や `slot` でも型エラーにはなりませんが、レイアウトが意図どおりにならない場合があります。',
       },
     },
   },
@@ -194,6 +206,31 @@ export const GridSlot: Story = {
 };
 
 /* ==============================
+   Grid ビュー: テキスト + アイコン
+   ============================== */
+
+/**
+ * Grid: テキスト + アイコン
+ */
+export const GridTextWithIcon: Story = {
+  args: {
+    icon: <DummyIcon size={20} />,
+    children: 'Label',
+  },
+};
+
+/**
+ * Grid: テキスト + アイコン（長いテキスト・上揃え確認用）
+ */
+export const GridTextWithIconLongText: Story = {
+  args: {
+    icon: <DummyIcon size={20} />,
+    children:
+      'LabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabel',
+  },
+};
+
+/* ==============================
    Grid ビュー: 選択行
    ============================== */
 
@@ -263,6 +300,33 @@ export const ListIconButton: Story = {
 export const ListNull: Story = {
   decorators: [listDecorator],
   args: {},
+};
+
+/* ==============================
+   List ビュー: テキスト + アイコン
+   ============================== */
+
+/**
+ * List: テキスト + アイコン
+ */
+export const ListTextWithIcon: Story = {
+  decorators: [listDecorator],
+  args: {
+    icon: <DummyIcon size={20} />,
+    children: 'Label',
+  },
+};
+
+/**
+ * List: テキスト + アイコン（長いテキスト・中央揃え確認用）
+ */
+export const ListTextWithIconLongText: Story = {
+  decorators: [listDecorator],
+  args: {
+    icon: <DummyIcon size={20} />,
+    children:
+      'LabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabel',
+  },
 };
 
 /**
