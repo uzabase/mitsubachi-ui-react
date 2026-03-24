@@ -1,0 +1,136 @@
+/* ==============================
+   ボディセルの基本スタイル
+   ============================== */
+
+.bodyCell {
+  box-sizing: border-box;
+  padding-block: var(--spacing-medium, 8px);
+  padding-inline: var(--spacing-large, 12px);
+
+  /* タイポグラフィ */
+  font-family: var(--typography-font-family, Arial, sans-serif);
+  font-weight: var(--typography-font-weight-regular, 400);
+  font-size: var(--font-scale-40, 14px);
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+  text-align: start;
+
+  /* 色 */
+  color: var(--text-regular-default, rgba(0, 0, 0, 0.84));
+
+  /* table-layout: fixed 対応 */
+  min-inline-size: 0;
+  word-break: break-word;
+}
+
+/* ==============================
+   グリッドビュー
+   ============================== */
+
+.grid {
+  background-color: var(--cell-bg, var(--surface-regular-default, #ffffff));
+  border-block-end: 1px solid
+    var(--border-semi-strong-default, rgba(0, 0, 0, 0.2));
+  border-inline-start: 1px solid
+    var(--border-semi-strong-default, rgba(0, 0, 0, 0.2));
+}
+
+.grid:last-child {
+  border-inline-end: 1px solid
+    var(--border-semi-strong-default, rgba(0, 0, 0, 0.2));
+}
+
+/* ==============================
+   リストビュー
+   ============================== */
+
+.list {
+  background-color: var(--cell-bg, var(--surface-regular-default, #ffffff));
+  border-block-end: 1px solid
+    var(--border-semi-strong-default, rgba(0, 0, 0, 0.2));
+  padding-block: var(--spacing-large, 12px);
+}
+
+/* ==============================
+   コンテンツタイプ: number
+   ============================== */
+
+.number {
+  text-align: end;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ==============================
+   コンテンツタイプ: date
+   ============================== */
+
+.date {
+  font-variant-numeric: tabular-nums;
+}
+
+/* ==============================
+   コンテンツタイプ: checkbox
+   ============================== */
+
+.checkbox {
+  padding-inline: var(--spacing-medium, 8px);
+  padding-block: var(--spacing-small, 4px);
+}
+
+.checkbox .cellContent {
+  justify-content: center;
+}
+
+/* ==============================
+   コンテンツタイプ: icon-button
+   ============================== */
+
+.icon-button {
+  padding-inline: var(--spacing-large, 12px);
+}
+
+/* ==============================
+   セルコンテンツ（垂直中央揃えラッパー）
+   ============================== */
+
+.cellContent {
+  display: flex;
+  align-items: center;
+}
+
+/* ==============================
+   アイコン付きセル
+   ============================== */
+
+.withIcon {
+  gap: var(--spacing-small, 4px);
+}
+
+/* grid + icon: 上揃え */
+.grid .withIcon {
+  align-items: flex-start;
+}
+
+/* list + icon: 中央揃え（cellContent のデフォルト center を継承） */
+
+/* アイコンラッパー */
+.icon {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  inline-size: var(--icon-size-medium, 20px);
+  block-size: var(--icon-size-medium, 20px);
+}
+
+/* テキストラッパー */
+.label {
+  min-inline-size: 0;
+}
+
+/* ==============================
+   null 値の表示
+   ============================== */
+
+.nullValue {
+  text-align: center;
+}

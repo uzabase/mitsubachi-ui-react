@@ -1,6 +1,7 @@
 /** warning-fill アイコン */
 export const WarningIcon = () => (
   <svg
+    style={{ flexShrink: 0 }}
     width="20"
     height="18"
     viewBox="0 0 20 18"

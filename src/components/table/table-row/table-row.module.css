@@ -1,0 +1,25 @@
+/* ==============================
+   ホバー状態
+   ============================== */
+
+.row {
+  /* className生成用（ホバー・選択セレクタの基点） */
+}
+
+.row:hover:not(.selected) {
+  --cell-bg: transparent;
+  background-color: var(--surface-overlay-hover, rgba(0, 0, 0, 0.04));
+}
+
+/* ==============================
+   選択状態
+   ============================== */
+
+.selected {
+  --cell-bg: transparent;
+  background-color: var(--surface-selected-default, #e8edff);
+}
+
+.selected:hover {
+  background-color: var(--surface-selected-hover, #dbe4ff);
+}

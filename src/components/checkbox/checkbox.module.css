@@ -28,9 +28,6 @@
 
   /* カーソル */
   cursor: pointer;
-
-  /* トランジション */
-  transition: background-color 0.2s ease;
 }
 
 /* hover: ヒットエリア背景 */
@@ -68,12 +65,6 @@
 
   /* 背景 */
   background-color: var(--surface-regular-default, white);
-
-  /* トランジション */
-  transition:
-    background-color 0.2s ease,
-    border-color 0.2s ease,
-    box-shadow 0.2s ease;
 }
 
 /* checked: 青背景・ボーダーなし */

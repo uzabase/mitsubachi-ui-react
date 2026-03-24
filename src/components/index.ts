@@ -8,6 +8,7 @@ export * from './search-box';
 export * from './section-tab';
 export * from './segmented-control';
 export * from './snackbar';
+export * from './table';
 export * from './tag';
 export * from './text-area';
 export * from './timeline';

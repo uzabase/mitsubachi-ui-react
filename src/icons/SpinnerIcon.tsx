@@ -1,6 +1,7 @@
 /** ローディングスピナーアイコン（15px 固定。ラッパーでセンタリングして使用） */
 export const SpinnerIcon = () => (
   <svg
+    style={{ flexShrink: 0 }}
     viewBox="0 0 24 24"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
