@@ -63,12 +63,12 @@ const meta = {
           '- **grid**: 上揃え（テキストが折り返しても、アイコンは先頭行に固定）\n' +
           '- **list**: 中央揃え\n\n' +
           '```tsx\n' +
-          '<TableBodyCell icon={<SomeIcon size={20} />}>\n' +
+          '<TableBodyCell icon={<SomeIcon />}>\n' +
           '  テキスト\n' +
           '</TableBodyCell>\n' +
           '```\n\n' +
-          '> **💡ヒント:** `icon` はテキスト系の contentType（`text` など）での使用を想定しています。\n' +
-          '> `checkbox` や `slot` でも型エラーにはなりませんが、レイアウトが意図どおりにならない場合があります。',
+          '> **⚠️注意:** `icon` はテキスト系の contentType（`text` など）での使用を想定しています。\n' +
+          '> `checkbox` や `slot` など他の contentType との併用は非推奨です。',
       },
     },
   },
@@ -214,7 +214,7 @@ export const GridSlot: Story = {
  */
 export const GridTextWithIcon: Story = {
   args: {
-    icon: <DummyIcon size={20} />,
+    icon: <DummyIcon />,
     children: 'Label',
   },
 };
@@ -224,7 +224,7 @@ export const GridTextWithIcon: Story = {
  */
 export const GridTextWithIconLongText: Story = {
   args: {
-    icon: <DummyIcon size={20} />,
+    icon: <DummyIcon />,
     children:
       'LabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabel',
   },
@@ -312,7 +312,7 @@ export const ListNull: Story = {
 export const ListTextWithIcon: Story = {
   decorators: [listDecorator],
   args: {
-    icon: <DummyIcon size={20} />,
+    icon: <DummyIcon />,
     children: 'Label',
   },
 };
@@ -323,7 +323,7 @@ export const ListTextWithIcon: Story = {
 export const ListTextWithIconLongText: Story = {
   decorators: [listDecorator],
   args: {
-    icon: <DummyIcon size={20} />,
+    icon: <DummyIcon />,
     children:
       'LabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabel',
   },

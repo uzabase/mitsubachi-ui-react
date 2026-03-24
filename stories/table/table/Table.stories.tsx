@@ -354,9 +354,7 @@ export const GridView: Story = {
                   aria-label={`${row.name}を選択`}
                 />
               </TableBodyCell>
-              <TableBodyCell icon={<DummyIcon size={20} />}>
-                {row.name}
-              </TableBodyCell>
+              <TableBodyCell icon={<DummyIcon />}>{row.name}</TableBodyCell>
               <TableBodyCell>{row.text}</TableBodyCell>
               <TableBodyCell contentType="number">
                 {(
@@ -462,9 +460,7 @@ export const ListView: Story = {
                   aria-label={`${row.name}を選択`}
                 />
               </TableBodyCell>
-              <TableBodyCell icon={<DummyIcon size={20} />}>
-                {row.name}
-              </TableBodyCell>
+              <TableBodyCell icon={<DummyIcon />}>{row.name}</TableBodyCell>
               <TableBodyCell>{row.text}</TableBodyCell>
               <TableBodyCell contentType="number">
                 {(

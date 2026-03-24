@@ -75,7 +75,10 @@
 .checkbox {
   padding-inline: var(--spacing-medium, 8px);
   padding-block: var(--spacing-small, 4px);
-  text-align: center;
+}
+
+.checkbox .cellContent {
+  justify-content: center;
 }
 
 /* ==============================
@@ -110,11 +113,13 @@
 
 /* list + icon: 中央揃え（cellContent のデフォルト center を継承） */
 
-/* アイコンラッパー（縮小防止） */
+/* アイコンラッパー */
 .icon {
   display: flex;
   flex-shrink: 0;
   align-items: center;
+  inline-size: var(--icon-size-medium, 20px);
+  block-size: var(--icon-size-medium, 20px);
 }
 
 /* テキストラッパー */

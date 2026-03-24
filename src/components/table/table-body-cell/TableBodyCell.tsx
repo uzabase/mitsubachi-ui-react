@@ -25,8 +25,7 @@ export interface TableBodyCellProps {
    * - list: 中央揃え（`center`）
    *
    * テキスト系の contentType（`text` など）での使用を想定。
-   * `checkbox` や `slot` でも型エラーにはならないが、
-   * レイアウトが意図どおりにならない場合がある。
+   * `checkbox` や `slot` など他の contentType との併用は非推奨。
    */
   icon?: ReactNode;
   /**
