@@ -1,0 +1,67 @@
+import { Meta, Canvas, ArgTypes } from '@storybook/addon-docs/blocks';
+import * as IconButtonStories from '../../../../stories/button/icon-button/IconButton.stories';
+
+<Meta of={IconButtonStories} />
+
+# IconButton
+
+テキストを持たず、アイコンのみで操作を表現するコンパクトなボタンです。検索、閉じる、編集など、意味が広く共有されている操作に向いています。
+
+- Figma URL : [IconButton](https://www.figma.com/design/kHQNLM1dnk0EhZwOKBEBkL/%F0%9F%90%9D-Base-Component-Speeda-3.1-%E3%83%9F%E3%83%84%E3%83%90%E3%83%81?node-id=5831-6556&t=zM7h2IG5BR94xaxh-1)
+
+<Canvas of={IconButtonStories.Normal} />
+
+---
+
+## When to Use
+
+- 検索、閉じる、編集、削除など、アイコンだけで意味が伝わる操作を配置するとき
+- ツールバーやヘッダーなど、省スペースでアクションを並べる必要があるとき
+- トグル操作（お気に入り、ブックマークなど）を `selected` 状態で表現するとき
+- テーブル行やカード内など、テキストラベルを置く余裕がない場所で操作ボタンを配置するとき
+
+## When NOT to Use
+
+- ⚠️ アイコンだけでは意味が伝わりにくい操作のとき。テキストラベル付きのボタンを使ってください
+- ⚠️ メニューやドロップダウンを開くトリガーとして使いたいとき。代わりに [MenuButton](?path=/docs/components-button-menubutton--docs) を使ってください
+- ⚠️ ページ遷移やリンクとして機能させたいとき。`<a>` 要素ベースのリンクコンポーネントを使ってください
+
+## Service Context — Speeda AI Agent での使い方
+
+- チャット画面の入力欄周辺の送信ボタンや添付ボタン
+- サイドバーやヘッダーのナビゲーション操作（メニュー展開、設定など）
+- テーブルの各行に対するアクション（編集、削除、詳細表示）
+- ダイアログやパネルの閉じるボタン
+
+## バリエーション
+
+| バリエーション | 用途 |
+| --- | --- |
+| `primary` | 最も目立たせたい主要なアクション。塗りつぶし背景で強調されます。`selected` 状態は非対応です |
+| `secondary` | 枠線付きのボタン。primary ほど強調しないが、明確にボタンと認識させたい場合に使ってください。`selected` 対応です |
+| `tertiary` | secondary より控えめな枠線（薄いボーダー）。補助的な操作に使ってください。`selected` 対応です |
+| `ghost` | 枠線も背景もなく、最も控えめな表示。ツールバーなどで大量に並べる場合に適しています。`selected` 対応です |
+
+### サイズ
+
+| サイズ | ボタンサイズ | アイコンサイズ | 用途 |
+| --- | --- | --- | --- |
+| `small` | 24px | 18px | テーブル行内など極めて狭い領域 |
+| `medium` | 32px | 20px | 標準的な用途（デフォルト） |
+| `large` | 40px | 22px | タッチ操作やヘッダーなど大きめの領域 |
+
+<Canvas of={IconButtonStories.AllVariants} />
+
+## アクセシビリティ
+
+- `aria-label` は必須です。ツールチップのテキストとしても使用されます
+- `selected` 状態のとき `aria-pressed="true"` が付与され、トグルの選択状態がスクリーンリーダーに通知されます
+- `loading` 状態のとき `aria-busy="true"` が付与され、処理中であることが通知されます
+
+## Props
+
+<ArgTypes of={IconButtonStories} />
+
+## 関連コンポーネント
+
+- [MenuButton](?path=/docs/components-button-menubutton--docs) : テキストラベルとドロップダウン矢印を持つメニュートリガー用ボタンです。IconButton はアイコンのみの単発アクション向けです
