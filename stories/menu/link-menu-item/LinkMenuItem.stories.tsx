@@ -1,14 +1,9 @@
 import { useRef } from 'react';
 import type { Decorator, Meta, StoryObj } from '@storybook/react-vite';
 import { Menu } from '@base-ui/react/menu';
-import { ActionMenuItem } from '../../../src/components/menu';
+import { LinkMenuItem } from '../../../src/components/menu';
 import { MenuButton } from '../../../src/components/button';
-import {
-  CopyIcon,
-  DummyIcon,
-  PencilSquareIcon,
-  TrashIcon,
-} from '../../../src/icons';
+import { DummyIcon } from '../../../src/icons';
 
 /** Menu.Popup の幅を指定できるデコレータ生成関数 */
 function MenuDecoratorWithWidth(width: number): Decorator {
@@ -78,41 +73,40 @@ const MenuDecorator: Decorator = (Story) => {
 };
 
 const meta = {
-  title: 'Components/Menu/ActionMenuItem',
-  component: ActionMenuItem,
+  title: 'Components/Menu/LinkMenuItem',
+  component: LinkMenuItem,
   parameters: {
     layout: 'centered',
     docs: {
       description: {
         component:
-          '画面遷移を伴わずに特定のアクションを実行するメニュー項目です。\n' +
-          '選択すると、データの更新、実行、削除などの操作が即座に実行されます。',
+          '別のページや画面に遷移するためのメニュー項目です。\n' +
+          '選択すると指定されたリンク先へ移動します。menuコンポーネント内でナビゲーション目的の操作に使用します。',
       },
     },
   },
   tags: ['autodocs'],
   argTypes: {
-    variant: {
-      control: 'radio',
-      options: ['neutral', 'danger'],
-      description: 'バリアント',
+    href: {
+      control: 'text',
+      description: 'リンク先URL',
     },
-    disabled: {
+    newWindow: {
       control: 'boolean',
-      description: '無効化状態',
+      description: '新しいウィンドウで開く',
     },
     supportText: {
       control: 'text',
       description: '補助テキスト',
     },
   },
-} satisfies Meta<typeof ActionMenuItem>;
+} satisfies Meta<typeof LinkMenuItem>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
 /* ========================================
-   Neutral バリアント
+   基本
    ======================================== */
 
 /** 単一アイテムストーリー用の共通設定 */
@@ -122,7 +116,8 @@ const menuItemStory = { decorators: [MenuDecorator] };
 export const Normal: Story = {
   ...menuItemStory,
   args: {
-    children: 'アクション',
+    href: '#',
+    children: 'リンク',
   },
 };
 
@@ -154,8 +149,36 @@ export const WithIconAndSupportText: Story = {
   },
 };
 
+/** 新しいウィンドウで開く */
+export const NewWindow: Story = {
+  ...menuItemStory,
+  args: {
+    href: 'https://example.com',
+    children: '外部リンク',
+    newWindow: true,
+  },
+};
+
+/** 新しいウィンドウ + アイコン付き */
+export const NewWindowWithIcon: Story = {
+  ...menuItemStory,
+  args: {
+    ...NewWindow.args,
+    icon: <DummyIcon />,
+  },
+};
+
+/** 新しいウィンドウ + 補助テキスト付き */
+export const NewWindowWithSupportText: Story = {
+  ...menuItemStory,
+  args: {
+    ...NewWindow.args,
+    supportText: '補助テキスト',
+  },
+};
+
 /* ========================================
-   Neutral 擬似状態
+   擬似状態
    ======================================== */
 
 /** Hover 状態 */
@@ -179,85 +202,6 @@ export const Focus: Story = {
   parameters: { pseudo: { focusVisible: true } },
 };
 
-/** Disabled 状態 */
-export const Disabled: Story = {
-  ...menuItemStory,
-  args: {
-    ...Normal.args,
-    disabled: true,
-  },
-};
-
-/** Disabled + アイコン + 補助テキスト */
-export const DisabledWithIconAndSupportText: Story = {
-  ...menuItemStory,
-  args: {
-    ...WithIconAndSupportText.args,
-    disabled: true,
-  },
-};
-
-/* ========================================
-   Danger バリアント
-   ======================================== */
-
-/** Danger デフォルト */
-export const Danger: Story = {
-  ...menuItemStory,
-  args: {
-    children: '削除',
-    variant: 'danger',
-  },
-};
-
-/** Danger + アイコン */
-export const DangerWithIcon: Story = {
-  ...menuItemStory,
-  args: {
-    ...Danger.args,
-    icon: <DummyIcon />,
-  },
-};
-
-/** Danger + 補助テキスト */
-export const DangerWithSupportText: Story = {
-  ...menuItemStory,
-  args: {
-    ...Danger.args,
-    supportText: '元に戻せません',
-  },
-};
-
-/** Danger - Hover */
-export const DangerHover: Story = {
-  ...menuItemStory,
-  args: { ...Danger.args },
-  parameters: { pseudo: { hover: true } },
-};
-
-/** Danger - Active */
-export const DangerActive: Story = {
-  ...menuItemStory,
-  args: { ...Danger.args },
-  parameters: { pseudo: { active: true } },
-};
-
-/** Danger - Focus */
-export const DangerFocus: Story = {
-  ...menuItemStory,
-  args: { ...Danger.args },
-  parameters: { pseudo: { focusVisible: true } },
-};
-
-/** Danger - Disabled */
-export const DangerDisabled: Story = {
-  ...menuItemStory,
-  args: {
-    ...Danger.args,
-    disabled: true,
-  },
-};
-
 /* ========================================
    長い文字列
    ======================================== */
@@ -265,17 +209,17 @@ export const DangerDisabled: Story = {
 /** 長い文字列は折り返す（省略禁止） */
 export const LongText: Story = {
   args: {
-    children: 'アクション',
+    href: '#',
+    children: 'リンク',
   },
   decorators: [MenuDecoratorWithWidth(200)],
   render: () => (
     <>
-      <ActionMenuItem>Action</ActionMenuItem>
-      <ActionMenuItem>
+      <LinkMenuItem href="#">リンク</LinkMenuItem>
+      <LinkMenuItem href="#">
         長い文字列の場合長い文字列の場合長い文字列
-      </ActionMenuItem>
-      <ActionMenuItem>Action</ActionMenuItem>
-      <ActionMenuItem>Action</ActionMenuItem>
+      </LinkMenuItem>
+      <LinkMenuItem href="#">リンク</LinkMenuItem>
     </>
   ),
 };
@@ -283,16 +227,24 @@ export const LongText: Story = {
 /** 長い文字列 + サポートテキスト */
 export const LongTextWithSupportText: Story = {
   args: {
-    children: 'アクション',
+    href: '#',
+    children: 'リンク',
   },
   decorators: [MenuDecoratorWithWidth(200)],
   render: () => (
     <>
-      <ActionMenuItem supportText="Support text">Action</ActionMenuItem>
-      <ActionMenuItem supportText="長い文字列のサポートテキストが入る場合のサポートテキスト">
+      <LinkMenuItem href="#" supportText="Support text">
+        リンク
+      </LinkMenuItem>
+      <LinkMenuItem
+        href="#"
+        supportText="長い文字列のサポートテキストが入る場合のサポートテキスト"
+      >
         長い文字列の場合長い文字列の場合長い文字列
-      </ActionMenuItem>
-      <ActionMenuItem supportText="Support text">Action</ActionMenuItem>
+      </LinkMenuItem>
+      <LinkMenuItem href="#" supportText="Support text">
+        リンク
+      </LinkMenuItem>
     </>
   ),
 };
@@ -304,45 +256,55 @@ export const LongTextWithSupportText: Story = {
 /** 全バリアント・状態を一覧表示 */
 export const AllStates: Story = {
   args: {
-    children: 'アクション',
+    href: '#',
+    children: 'リンク',
   },
   decorators: [MenuDecorator],
   render: () => (
     <>
-      <ActionMenuItem>編集</ActionMenuItem>
-      <ActionMenuItem icon={<DummyIcon />}>アイコン付き</ActionMenuItem>
-      <ActionMenuItem supportText="補助テキスト">
+      <LinkMenuItem href="#">リンク</LinkMenuItem>
+      <LinkMenuItem href="#" icon={<DummyIcon />}>
+        アイコン付き
+      </LinkMenuItem>
+      <LinkMenuItem href="#" supportText="補助テキスト">
         補助テキスト付き
-      </ActionMenuItem>
-      <ActionMenuItem icon={<DummyIcon />} supportText="補助テキスト">
+      </LinkMenuItem>
+      <LinkMenuItem href="#" icon={<DummyIcon />} supportText="補助テキスト">
         アイコン + 補助テキスト
-      </ActionMenuItem>
-      <ActionMenuItem disabled>無効化</ActionMenuItem>
-      <ActionMenuItem variant="danger">削除</ActionMenuItem>
-      <ActionMenuItem variant="danger" icon={<DummyIcon />}>
-        削除（アイコン付き）
-      </ActionMenuItem>
-      <ActionMenuItem variant="danger" disabled>
-        削除（無効化）
-      </ActionMenuItem>
+      </LinkMenuItem>
+      <LinkMenuItem href="https://example.com" newWindow>
+        新しいウィンドウ
+      </LinkMenuItem>
+      <LinkMenuItem href="https://example.com" newWindow icon={<DummyIcon />}>
+        新しいウィンドウ + アイコン
+      </LinkMenuItem>
+      <LinkMenuItem
+        href="https://example.com"
+        newWindow
+        icon={<DummyIcon />}
+        supportText="補助テキスト"
+      >
+        全部入り
+      </LinkMenuItem>
     </>
   ),
 };
 
 /**
- * もっと見るボタンから開くメニューの実例
+ * メニューボタンから開くリンクメニューの実例
  *
- * Figma: https://www.figma.com/design/kHQNLM1dnk0EhZwOKBEBkL?node-id=8589-3821
+ * Figma: https://www.figma.com/design/kHQNLM1dnk0EhZwOKBEBkL?node-id=8376-4985
  */
 export const MenuWithTrigger: Story = {
   args: {
-    children: 'アクション',
+    href: '#',
+    children: 'リンク',
   },
   decorators: [
     () => (
       <Menu.Root>
         <Menu.Trigger
-          render={<MenuButton variant="primary">もっと見る</MenuButton>}
+          render={<MenuButton variant="primary">メニュー</MenuButton>}
         />
         <Menu.Portal>
           <Menu.Positioner side="bottom" align="start" sideOffset={4}>
@@ -358,11 +320,13 @@ export const MenuWithTrigger: Story = {
                 minWidth: '144px',
               }}
             >
-              <ActionMenuItem icon={<PencilSquareIcon />}>編集</ActionMenuItem>
-              <ActionMenuItem icon={<CopyIcon />}>複製</ActionMenuItem>
-              <ActionMenuItem variant="danger" icon={<TrashIcon />}>
-                削除
-              </ActionMenuItem>
+              <LinkMenuItem href="/settings">設定</LinkMenuItem>
+              <LinkMenuItem href="/profile" icon={<DummyIcon />}>
+                プロフィール
+              </LinkMenuItem>
+              <LinkMenuItem href="https://example.com" newWindow>
+                ヘルプ
+              </LinkMenuItem>
             </Menu.Popup>
           </Menu.Positioner>
         </Menu.Portal>

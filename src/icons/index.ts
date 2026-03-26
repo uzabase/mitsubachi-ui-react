@@ -11,6 +11,7 @@ export { HistoryIcon } from './HistoryIcon';
 export { SpinnerIcon } from './SpinnerIcon';
 export { InformationIcon } from './InformationIcon';
 export { KebabMenuIcon } from './KebabMenuIcon';
+export { OpenInNewIcon } from './OpenInNewIcon';
 export { PencilSquareIcon } from './PencilSquareIcon';
 export { SearchIcon } from './SearchIcon';
 export { SortAscendingIcon } from './SortAscendingIcon';
