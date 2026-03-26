@@ -1,0 +1,70 @@
+/**
+ * SelectMenuItem コンポーネントスタイル
+ *
+ * 選択状態を持つメニュー項目。
+ * Base UI Menu.RadioItem をラップし、data属性 + CSS擬似クラスで各状態を実装。
+ */
+
+/* ========================================
+   ルート
+   ======================================== */
+
+.root {
+  composes: root from '../shared/menu-item-root.module.css';
+  padding-block: var(--spacing-small, 4px);
+  padding-inline-start: var(--spacing-x-large, 16px);
+  padding-inline-end: var(--spacing-large, 12px);
+  color: var(--text-regular-default, rgba(0, 0, 0, 0.84));
+  --menu-item-icon-color: var(--icon-regular-default, rgba(0, 0, 0, 0.84));
+  --menu-item-support-text-color: var(--text-weak-default, rgba(0, 0, 0, 0.54));
+  --select-menu-item-check-color: var(
+    --object-regular-default,
+    rgba(0, 0, 0, 0.84)
+  );
+}
+
+/* ========================================
+   状態: selected（data-checked）
+   ======================================== */
+
+.root[data-checked] {
+  background-color: var(--surface-selected-default, #e8edff);
+}
+
+.root[data-checked]:hover:not([data-disabled]) {
+  background-color: var(--surface-selected-hover, #dbe4ff);
+}
+
+.root[data-checked]:active:not([data-disabled]) {
+  background-color: var(--surface-selected-active, #d5dfff);
+}
+
+.root[data-checked]:focus-visible {
+  background-color: var(--surface-selected-default, #e8edff);
+}
+
+/* ========================================
+   状態: disabled
+   ======================================== */
+
+.root[data-disabled] {
+  --menu-item-icon-color: var(--icon-disabled, rgba(0, 0, 0, 0.25));
+  --menu-item-support-text-color: var(--text-disabled, rgba(0, 0, 0, 0.35));
+  --select-menu-item-check-color: var(--icon-disabled, rgba(0, 0, 0, 0.25));
+  color: var(--text-disabled, rgba(0, 0, 0, 0.35));
+  cursor: not-allowed;
+}
+
+/* ========================================
+   チェックアイコン
+   ======================================== */
+
+.checkIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  inline-size: 22px;
+  block-size: 22px;
+  color: var(--select-menu-item-check-color);
+}
