@@ -102,89 +102,24 @@ export const Medium: Story = {
 };
 
 /**
- * 長いテキスト
+ * Small 長いテキスト
  */
-export const LongText: Story = {
+export const SmallLongText: Story = {
   args: {
-    size: 'medium',
+    size: 'small',
     text: 'アップロードしたファイルの名寄せが完了しました。結果はダウンロードページから確認できます。',
   },
   render: (args) => <SnackbarTrigger {...args} />,
 };
 
 /**
- * デスクトップ配置
- * 画面右上に表示され、右からスライドインする
+ * Medium 長いテキスト
  */
-export const DesktopPosition: Story = {
+export const MediumLongText: Story = {
   args: {
-    size: 'small',
-    text: '保存しました',
+    size: 'medium',
+    text: 'アップロードしたファイルの名寄せが完了しました。結果はダウンロードページから確認できます。',
   },
-  parameters: {
-    layout: 'fullscreen',
-    viewport: {
-      defaultViewport: 'responsive',
-    },
-  },
-  decorators: [
-    (Story) => (
-      <Snackbar.Provider>
-        <div style={{ padding: '40px' }}>
-          <div style={{ marginBlockEnd: '24px' }}>
-            <p
-              style={{ color: '#666', fontSize: '14px', marginBlockEnd: '8px' }}
-            >
-              デスクトップ配置: 画面右上に表示、右からスライドイン
-            </p>
-            <p style={{ color: '#999', fontSize: '12px' }}>
-              721px以上のビューポートで確認してください
-            </p>
-          </div>
-          <Story />
-        </div>
-        <Snackbar.Viewport />
-      </Snackbar.Provider>
-    ),
-  ],
-  render: (args) => <SnackbarTrigger {...args} />,
-};
-
-/**
- * モバイル配置
- * 画面下中央に表示され、下からスライドインする
- */
-export const MobilePosition: Story = {
-  args: {
-    size: 'small',
-    text: '保存しました',
-  },
-  parameters: {
-    layout: 'fullscreen',
-    viewport: {
-      defaultViewport: 'mobile1',
-    },
-  },
-  decorators: [
-    (Story) => (
-      <Snackbar.Provider>
-        <div style={{ padding: '40px' }}>
-          <div style={{ marginBlockEnd: '24px' }}>
-            <p
-              style={{ color: '#666', fontSize: '14px', marginBlockEnd: '8px' }}
-            >
-              モバイル配置: 画面下中央に表示、下からスライドイン
-            </p>
-            <p style={{ color: '#999', fontSize: '12px' }}>
-              720px以下のビューポートで確認してください
-            </p>
-          </div>
-          <Story />
-        </div>
-        <Snackbar.Viewport />
-      </Snackbar.Provider>
-    ),
-  ],
   render: (args) => <SnackbarTrigger {...args} />,
 };
 
@@ -218,6 +153,17 @@ export const AllPatterns: Story = {
           Medium
         </h3>
         <SnackbarTrigger {...args} size="medium" />
+      </div>
+
+      <div>
+        <h3 style={{ marginBlockEnd: '16px', color: '#666', fontSize: '14px' }}>
+          Small（長文）
+        </h3>
+        <SnackbarTrigger
+          {...args}
+          size="small"
+          text="アップロードしたファイルの名寄せが完了しました。結果はダウンロードページから確認できます。"
+        />
       </div>
 
       <div>

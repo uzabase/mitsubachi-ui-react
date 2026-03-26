@@ -1,6 +1,7 @@
 /** check（✓）アイコン */
 export const CheckIcon = () => (
   <svg
+    style={{ flexShrink: 0 }}
     width="16"
     height="16"
     viewBox="0 0 16 16"

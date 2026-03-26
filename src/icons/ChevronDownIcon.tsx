@@ -1,6 +1,7 @@
 /** chevron-down アイコン（サイズは親要素の CSS で制御） */
 export const ChevronDownIcon = () => (
   <svg
+    style={{ flexShrink: 0 }}
     viewBox="0 0 18 18"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"

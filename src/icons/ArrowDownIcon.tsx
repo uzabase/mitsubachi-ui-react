@@ -1,6 +1,7 @@
 /** arrow-down アイコン */
 export const ArrowDownIcon = () => (
   <svg
+    style={{ flexShrink: 0 }}
     width="12"
     height="12"
     viewBox="0 0 24 24"
