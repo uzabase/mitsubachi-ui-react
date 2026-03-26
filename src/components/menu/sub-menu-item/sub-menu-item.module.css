@@ -1,0 +1,43 @@
+/* ========================================
+   ルート
+   ======================================== */
+
+.root {
+  composes: root from '../shared/menu-item-root.module.css';
+  padding-block: var(--spacing-small, 4px);
+  padding-inline-start: var(--spacing-x-large, 16px);
+  padding-inline-end: var(--spacing-large, 12px);
+  color: var(--text-regular-default, rgba(0, 0, 0, 0.84));
+  --menu-item-icon-color: var(--icon-regular-default, rgba(0, 0, 0, 0.84));
+}
+
+/* ========================================
+   状態: disabled
+   ======================================== */
+
+.root[data-disabled] {
+  color: var(--text-disabled, rgba(0, 0, 0, 0.35));
+  --menu-item-icon-color: var(--icon-disabled, rgba(0, 0, 0, 0.25));
+  cursor: not-allowed;
+}
+
+/* ========================================
+   シェブロンアイコン
+   ======================================== */
+
+.chevronIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  inline-size: 5.33px;
+  block-size: 10px;
+  color: var(--menu-item-icon-color);
+}
+
+@media (max-width: 720px) {
+  .chevronIcon {
+    inline-size: 5.86px;
+    block-size: 11px;
+  }
+}
