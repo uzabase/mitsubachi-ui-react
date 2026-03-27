@@ -1,0 +1,41 @@
+import { Meta, Canvas, ArgTypes } from '@storybook/addon-docs/blocks';
+import * as FormDialogStories from '../../../../stories/dialog/form-dialog/FormDialog.stories';
+
+<Meta of={FormDialogStories} />
+
+# FormDialog
+
+フォーム入力を行うためのモーダルダイアログです。Desktop では medium サイズ固定、Phone では画面端まで広がりフルスクリーンで表示されます。
+
+- Figma URL : [FormDialog](https://www.figma.com/design/kHQNLM1dnk0EhZwOKBEBkL/%F0%9F%90%9D-Base-Component-Speeda-3.1-%E3%83%9F%E3%83%84%E3%83%90%E3%83%81?node-id=9081-10787&t=wAsCASAO2ZF6eRSb-1)
+
+<Canvas of={FormDialogStories.Default} />
+
+---
+
+## When to Use
+
+- ダイアログ内でテキスト入力やセレクトボックスなどのフォーム操作を行うとき
+- 新規作成や編集など、複数フィールドへの入力が必要なとき
+- メインのページコンテキストを保持したまま、フォーム入力を完了させたいとき
+
+## When NOT to Use
+
+- ⚠️ フォーム入力を伴わない単純な確認のとき。代わりに [ActionDialog](?path=/docs/components-dialog-actiondialog--docs) を使ってください
+- ⚠️ 利用規約や長文の情報を読ませたいとき。代わりに [InformationDialog](?path=/docs/components-dialog-informationdialog--docs) を使ってください
+- ⚠️ 入力フィールドが1つだけの簡易な入力のとき。インラインの入力フォームで対応できないか検討してください
+
+## Service Context — Speeda AI Agent での使い方
+
+- 新規アイテムの作成フォーム（ステータス追加、メモ作成など）
+- 既存アイテムの編集フォーム
+- 設定変更やプロフィール編集など、複数フィールドの入力が必要な操作
+
+## Props
+
+<ArgTypes of={FormDialogStories} />
+
+## 関連コンポーネント
+
+- [ActionDialog](?path=/docs/components-dialog-actiondialog--docs) : 確認や削除など、入力なしの意思決定用ダイアログです
+- [InformationDialog](?path=/docs/components-dialog-informationdialog--docs) : 利用規約など長文の情報表示用ダイアログです。複数サイズに対応しています

@@ -1,0 +1,41 @@
+import { Meta, Canvas, ArgTypes } from '@storybook/addon-docs/blocks';
+import * as SegmentedControlStories from '../../../../stories/segmented-control/segmented-control/SegmentedControl.stories';
+
+<Meta of={SegmentedControlStories} />
+
+# SegmentedControl
+
+排他的な単一選択（ラジオボタン相当）のセグメントグループです。2〜5個の選択肢を横並びで表示し、1つだけを選択できます。
+
+- Figma URL : [SegmentedControl](https://www.figma.com/design/kHQNLM1dnk0EhZwOKBEBkL/%F0%9F%90%9D-Base-Component-Speeda-3.1-%E3%83%9F%E3%83%84%E3%83%90%E3%83%81?node-id=7684-7484&t=wAsCASAO2ZF6eRSb-1)
+
+<Canvas of={SegmentedControlStories.TextTwoItems} />
+
+---
+
+## When to Use
+
+- 2〜5個の排他的な選択肢を切り替えるとき
+- 表示モードやビューの切り替えなど、即座に反映される選択に使うとき
+
+## When NOT to Use
+
+- ⚠️ 選択肢が6個以上あるとき。代わりに [FilterChipSingleSelectGroup](?path=/docs/components-chip-filterchipsingleselectgroup--docs) やドロップダウンを使ってください
+- ⚠️ 複数選択が必要なとき。[Checkbox](?path=/docs/components-checkbox--docs) グループや [FilterChipMultiSelectGroup](?path=/docs/components-chip-filterchipmultiselectgroup--docs) を使ってください
+- ⚠️ ページ内セクションの切り替えのとき。代わりに [SectionTabGroup](?path=/docs/components-sectiontab-sectiontabgroup--docs) を使ってください
+
+## Service Context — Speeda AI Agent での使い方
+
+- テーブルのビューモード切り替え（グリッド/リスト）
+- チャートの表示期間切り替え（1Y/3Y/5Y）
+- データの表示形式切り替え（テーブル/チャート）
+
+## Props
+
+<ArgTypes of={SegmentedControlStories} />
+
+## 関連コンポーネント
+
+- [Segment](?path=/docs/components-segmentedcontrol-segment--docs) : グループ内の個別セグメントコンポーネントです
+- [SectionTabGroup](?path=/docs/components-sectiontab-sectiontabgroup--docs) : ページ内セクションの切り替えに使うタブグループです
+- [FilterChipSingleSelectGroup](?path=/docs/components-chip-filterchipsingleselectgroup--docs) : より多い選択肢を単一選択するフィルターチップグループです

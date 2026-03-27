@@ -8,6 +8,11 @@ const meta = {
   component: SearchBox,
   parameters: {
     layout: 'centered',
+    docs: {
+      description: {
+        component: 'キーワード検索のための入力フィールドコンポーネントです。',
+      },
+    },
   },
   decorators: [
     (Story) => (
@@ -16,7 +21,6 @@ const meta = {
       </div>
     ),
   ],
-  tags: ['autodocs'],
   argTypes: {
     variant: {
       control: 'select',

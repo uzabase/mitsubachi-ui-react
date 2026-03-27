@@ -8,8 +8,13 @@ const meta = {
   component: ActionDialog,
   parameters: {
     layout: 'centered',
+    docs: {
+      description: {
+        component: '確認や削除など、ユーザーの意思決定を求めるダイアログです。',
+      },
+    },
   },
-  tags: ['autodocs'],
+  tags: [],
   argTypes: {
     open: {
       control: false,
@@ -428,5 +433,143 @@ export const PhoneLongContent: Story = {
   },
   globals: {
     viewport: { value: 'mobile2' },
+  },
+};
+
+/**
+ * すべてのバリアントを一覧表示
+ */
+export const AllVariants: Story = {
+  args: {
+    ...Default.args,
+  },
+  render: function Render() {
+    const [defaultOpen, setDefaultOpen] = useState(false);
+    const [destructiveOpen, setDestructiveOpen] = useState(false);
+
+    const destructiveButtonStyle = {
+      minBlockSize: '40px',
+      paddingBlock: '2px',
+      paddingInline: 'var(--spacing-x-large, 16px)',
+      fontFamily: 'var(--typography-font-family, Arial, sans-serif)',
+      fontSize: 'var(--typography-font-size-font-scale-40, 14px)',
+      fontWeight: 400,
+      lineHeight: 1.5,
+      color: 'var(--text-inverse, #ffffff)',
+      background: 'var(--surface-error-default, #d93020)',
+      border: 'none',
+      borderRadius: 'var(--border-radius-full, 9999px)',
+      cursor: 'pointer',
+    } as const;
+
+    return (
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '32px',
+          padding: '40px',
+        }}
+      >
+        <style>{`
+          .all-variants-destructive-button:hover {
+            background: #b3281a;
+          }
+          .all-variants-destructive-button:focus-visible {
+            outline: 2px solid var(--focus-ring-default, #191919);
+            outline-offset: 2px;
+          }
+          .all-variants-footer-container {
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: var(--spacing-medium, 8px);
+            padding-block-start: var(--spacing-x-large, 16px);
+            padding-block-end: var(--spacing-x-large, 16px);
+            padding-inline-start: var(--spacing-x-large, 16px);
+            padding-inline-end: var(--spacing-2x-large, 24px);
+            border-block-start: 1px solid transparent;
+            transition: border-block-start-color 0s ease;
+          }
+          .all-variants-footer-cancel {
+            min-block-size: 40px;
+            padding-block: 2px;
+            padding-inline: var(--spacing-x-large, 16px);
+            font-family: var(--typography-font-family, Arial, sans-serif);
+            font-size: var(--typography-font-size-font-scale-40, 14px);
+            font-weight: 400;
+            line-height: 1.5;
+            color: var(--text-regular-default, rgba(0, 0, 0, 0.84));
+            background: transparent;
+            border: 1px solid var(--border-regular-default, rgba(0, 0, 0, 0.1));
+            border-radius: var(--border-radius-full, 9999px);
+            cursor: pointer;
+          }
+          .all-variants-footer-cancel:hover {
+            background: var(--neutral-neutral-30-alpha, rgba(0, 0, 0, 0.13));
+          }
+          .all-variants-footer-cancel:focus-visible {
+            outline: 2px solid var(--focus-ring-default, #191919);
+            outline-offset: 2px;
+          }
+        `}</style>
+        <div>
+          <h3>Default</h3>
+          <button type="button" onClick={() => setDefaultOpen(true)}>
+            開く
+          </button>
+          <ActionDialog
+            size="small"
+            open={defaultOpen}
+            onOpenChange={setDefaultOpen}
+          >
+            <ActionDialog.Header text="操作の確認" />
+            <ActionDialog.Body>
+              この操作を実行してもよろしいですか？
+            </ActionDialog.Body>
+            <ActionDialog.Footer
+              cancelLabel="キャンセル"
+              actionLabel="実行する"
+              onAction={() => console.log('action')}
+            />
+          </ActionDialog>
+        </div>
+        <div>
+          <h3>Destructive</h3>
+          <button type="button" onClick={() => setDestructiveOpen(true)}>
+            削除
+          </button>
+          <ActionDialog
+            size="small"
+            open={destructiveOpen}
+            onOpenChange={setDestructiveOpen}
+          >
+            <ActionDialog.Header text="ステータスの削除" />
+            <ActionDialog.Body>
+              <strong>{'{ステータス名}'}を削除しますか？</strong>
+              <br />
+              削除したステータスは元に戻せません。
+            </ActionDialog.Body>
+            <div className="all-variants-footer-container">
+              <BaseDialog.Close
+                className="all-variants-footer-cancel"
+                render={<button type="button" />}
+              >
+                キャンセル
+              </BaseDialog.Close>
+              <BaseDialog.Close
+                className="all-variants-destructive-button"
+                style={destructiveButtonStyle}
+                onClick={() => console.log('delete')}
+                render={<button type="button" />}
+              >
+                削除する
+              </BaseDialog.Close>
+            </div>
+          </ActionDialog>
+        </div>
+      </div>
+    );
   },
 };

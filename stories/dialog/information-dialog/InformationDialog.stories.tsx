@@ -7,8 +7,14 @@ const meta = {
   component: InformationDialog,
   parameters: {
     layout: 'centered',
+    docs: {
+      description: {
+        component:
+          '利用規約やお知らせなど、重要な情報を表示するダイアログです。',
+      },
+    },
   },
-  tags: ['autodocs'],
+  tags: [],
   argTypes: {
     open: {
       control: false,
@@ -501,5 +507,101 @@ export const PhoneLongContent: Story = {
   },
   globals: {
     viewport: { value: 'mobile2' },
+  },
+};
+
+/**
+ * すべてのサイズを一覧表示
+ */
+export const AllSizes: Story = {
+  args: {
+    ...Default.args,
+  },
+  render: function Render() {
+    const [smallOpen, setSmallOpen] = useState(false);
+    const [mediumOpen, setMediumOpen] = useState(false);
+    const [largeOpen, setLargeOpen] = useState(false);
+
+    return (
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '32px',
+          padding: '40px',
+        }}
+      >
+        <div>
+          <h3>Small</h3>
+          <button type="button" onClick={() => setSmallOpen(true)}>
+            お知らせ（小）
+          </button>
+          <InformationDialog
+            size="small"
+            open={smallOpen}
+            onOpenChange={setSmallOpen}
+          >
+            <InformationDialog.Header text="お知らせ" />
+            <InformationDialog.Body>
+              <p>短いお知らせ内容がここに表示されます。</p>
+            </InformationDialog.Body>
+            <InformationDialog.Footer
+              actionLabel="閉じる"
+              onAction={() => console.log('close')}
+            />
+          </InformationDialog>
+        </div>
+        <div>
+          <h3>Medium</h3>
+          <button type="button" onClick={() => setMediumOpen(true)}>
+            プライバシーポリシー（中）
+          </button>
+          <InformationDialog
+            size="medium"
+            open={mediumOpen}
+            onOpenChange={setMediumOpen}
+          >
+            <InformationDialog.Header text="プライバシーポリシー" />
+            <InformationDialog.Body>
+              <p>プライバシーポリシーの本文がここに表示されます。</p>
+              <p>中程度の長さの情報を表示するのに適したサイズです。</p>
+              <p>複数の段落を含むことができます。</p>
+            </InformationDialog.Body>
+            <InformationDialog.Footer
+              actionLabel="閉じる"
+              onAction={() => console.log('close')}
+            />
+          </InformationDialog>
+        </div>
+        <div>
+          <h3>Large</h3>
+          <button type="button" onClick={() => setLargeOpen(true)}>
+            利用規約（大）
+          </button>
+          <InformationDialog
+            size="large"
+            open={largeOpen}
+            onOpenChange={setLargeOpen}
+          >
+            <InformationDialog.Header text="利用規約（詳細版）" />
+            <InformationDialog.Body>
+              <h3>第1条 総則</h3>
+              <p>本規約は、当サービスの利用条件を定めるものです。</p>
+              <h3>第2条 定義</h3>
+              <p>本規約において使用する用語の定義は以下の通りとします。</p>
+              <h3>第3条 利用許諾</h3>
+              <p>
+                ユーザーは、本規約に同意することにより、当サービスを利用することができます。
+              </p>
+              <p>長文のドキュメントを表示するのに適したサイズです。</p>
+            </InformationDialog.Body>
+            <InformationDialog.Footer
+              actionLabel="閉じる"
+              onAction={() => console.log('close')}
+            />
+          </InformationDialog>
+        </div>
+      </div>
+    );
   },
 };

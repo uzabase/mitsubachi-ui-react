@@ -17,27 +17,7 @@ const meta = {
     docs: {
       description: {
         component:
-          '検索ボックスや入力フィールドをクリック、またはキーワードを入力した際に表示される候補リストのコンポーネントです。\n' +
-          '入力中の文字列に基づいて候補を提示し、選択による入力の補助やキーワードの補完を通じて、入力の手間を減らし操作効率を高めます。\n\n' +
-          '## 種類\n\n' +
-          '`SuggestionItem` は2つのコンテンツタイプをサポートします。\n\n' +
-          '### 1. Text\n' +
-          '`label` を指定すると、テキストとoptionalでアイコンの定型レイアウトで表示します。\n' +
-          '```tsx\n' +
-          '<SuggestionItem label="Apple" icon={<SearchIcon />} />\n' +
-          '```\n\n' +
-          '### 2. Slot\n' +
-          '`children` を指定すると、任意のカスタムコンテンツを差し込めるスロットモードになります。\n' +
-          'Slot 内のレイアウト（横並び・縦並び・複数要素の配置など）は **Suggestion の責務ではなく、利用者が自由に構成** できます。\n' +
-          '```tsx\n' +
-          '<SuggestionItem>\n' +
-          '  <div style={{ display: "flex", gap: "8px" }}>\n' +
-          '    <Avatar />\n' +
-          '    <span>山田 太郎</span>\n' +
-          '    <span>taro@example.com</span>\n' +
-          '  </div>\n' +
-          '</SuggestionItem>\n' +
-          '```',
+          '検索キーワードの候補を表示するサジェストリストコンポーネントです。',
       },
     },
   },
@@ -48,7 +28,25 @@ const meta = {
       </div>
     ),
   ],
-  tags: ['autodocs'],
+  tags: [],
+  argTypes: {
+    emptyMessage: {
+      control: 'text',
+      description: '候補が空のときに表示するメッセージ',
+    },
+    children: {
+      control: false,
+      description: '子要素（SuggestionItem, SuggestionCategory）',
+    },
+    'aria-label': {
+      control: 'text',
+      description: 'listboxのアクセシブルラベル',
+    },
+    id: {
+      control: 'text',
+      description: 'listboxのID（comboboxのaria-controlsに使用）',
+    },
+  },
 } satisfies Meta<typeof Suggestion>;
 
 export default meta;

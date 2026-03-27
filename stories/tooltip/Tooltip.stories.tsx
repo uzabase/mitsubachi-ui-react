@@ -14,8 +14,13 @@ const meta = {
   component: Tooltip,
   parameters: {
     layout: 'centered',
+    docs: {
+      description: {
+        component:
+          'ホバーまたはフォーカス時に補足情報を表示するコンポーネントです。',
+      },
+    },
   },
-  tags: ['autodocs'],
   argTypes: {
     side: {
       control: 'select',

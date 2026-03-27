@@ -1,0 +1,41 @@
+import { Meta, Canvas, ArgTypes } from '@storybook/addon-docs/blocks';
+import * as SegmentStories from '../../../../stories/segmented-control/segment/Segment.stories';
+
+<Meta of={SegmentStories} />
+
+# Segment
+
+SegmentedControl 内の個別セグメントです。テキストまたはアイコンで選択肢を表現します。
+
+- Figma URL : [Segment](https://www.figma.com/design/kHQNLM1dnk0EhZwOKBEBkL/%F0%9F%90%9D-Base-Component-Speeda-3.1-%E3%83%9F%E3%83%84%E3%83%90%E3%83%81?node-id=7684-7761&t=wAsCASAO2ZF6eRSb-1)
+
+<Canvas of={SegmentStories.TextNormal} />
+
+---
+
+## When to Use
+
+- SegmentedControl 内で個別の選択肢を構成するとき
+- テキストまたはアイコンで選択肢を表現するとき
+
+## When NOT to Use
+
+- 🚫 単独で配置したいとき。必ず [SegmentedControl](?path=/docs/components-segmentedcontrol-segmentedcontrol--docs) 内に配置してください
+- ⚠️ 複数選択が必要なとき。[Checkbox](?path=/docs/components-checkbox--docs) グループを検討してください
+
+## Service Context — Speeda AI Agent での使い方
+
+- データの表示形式切り替え（テーブル/チャート）の個別選択肢
+- 表示モード（グリッド/リスト）の個別選択肢
+
+## バリエーション
+
+<Canvas of={SegmentStories.AllStates} />
+
+## Props
+
+<ArgTypes of={SegmentStories} />
+
+## 関連コンポーネント
+
+- [SegmentedControl](?path=/docs/components-segmentedcontrol-segmentedcontrol--docs) : Segment を配置する親コンテナです

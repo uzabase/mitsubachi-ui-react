@@ -10,14 +10,10 @@ const meta = {
     layout: 'centered',
     docs: {
       description: {
-        component:
-          '項目の選択・解除を行うためのコンポーネントです。\n' +
-          '有効（チェックなし）、有効（チェックあり）、一部有効（中間状態）の3つの選択状態があります。\n\n' +
-          '複数選択が可能です。複数の選択肢から1つを選択する場合は、RadioButtonを使用してください。',
+        component: '項目の選択・解除を行うコンポーネントです。',
       },
     },
   },
-  tags: ['autodocs'],
   argTypes: {
     checked: {
       control: 'boolean',

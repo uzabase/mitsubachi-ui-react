@@ -1,0 +1,52 @@
+import { Meta, Canvas, ArgTypes } from '@storybook/addon-docs/blocks';
+import * as TableStories from '../../../../stories/table/table/Table.stories';
+
+<Meta of={TableStories} />
+
+# Table
+
+データを行と列で表示するテーブルコンポーネントです。グリッドビューとリストビューの2つのビューモードを持ちます。
+
+- Figma URL : [Table](https://www.figma.com/design/kHQNLM1dnk0EhZwOKBEBkL/%F0%9F%90%9D-Base-Component-Speeda-3.1-%E3%83%9F%E3%83%84%E3%83%90%E3%83%81?node-id=6423-13144&t=wAsCASAO2ZF6eRSb-1)
+
+<Canvas of={TableStories.GridView} />
+
+---
+
+## When to Use
+
+- 構造化されたデータを行と列の形式で表示するとき
+- データの比較・分析が必要なとき（グリッドビュー）
+- データの一覧・閲覧が目的のとき（リストビュー）
+
+## When NOT to Use
+
+- ⚠️ 1〜2項目のキーバリュー表示のとき。テーブルではなくラベルとテキストの組み合わせを使ってください
+- ⚠️ カード形式のレイアウトが適切なとき。テーブルは表形式のデータに使用してください
+
+## Service Context — Speeda AI Agent での使い方
+
+- 企業一覧、財務データ、業界比較などの表形式データ表示
+- ソート機能を使ったデータの並び替え
+- 行選択によるデータの一括操作
+
+## バリエーション
+
+| ビューモード | 用途 |
+| --- | --- |
+| `grid` | 行×列の二次元構造で比較・分析に適しています |
+| `list` | 一覧形式で閲覧・把握に適しています |
+
+## アクセシビリティ
+
+- ソート機能は `useTableSort` Hook で提供され、`aria-sort` 属性でソート状態が通知されます
+- 行選択時は `aria-selected` が付与されます
+
+## Props
+
+<ArgTypes of={TableStories} />
+
+## 関連コンポーネント
+
+- [TableHeaderCell](?path=/docs/components-table-tableheadercell--docs) : テーブルのヘッダーセルです。ソートやカラムアクションを提供します
+- [TableBodyCell](?path=/docs/components-table-tablebodycell--docs) : テーブルのボディセルです。さまざまなコンテンツタイプに対応します

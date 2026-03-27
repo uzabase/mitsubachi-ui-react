@@ -37,28 +37,26 @@ const meta = {
     layout: 'padded',
     docs: {
       description: {
-        component:
-          'テーブルのヘッダーセルを表示するコンポーネントです。\n' +
-          'ソート機能やカラムアクションメニューを提供します。\n\n' +
-          '> **⚠️注意:** このコンポーネントを単独で使用しないでください。\n' +
-          '> Table, TableHead, TableRow 内に配置して利用してください。\n\n' +
-          '## 使用例\n\n' +
-          '```tsx\n' +
-          '<Table view="grid" aria-label="データ">\n' +
-          '  <TableHead>\n' +
-          '    <TableRow>\n' +
-          '      <TableHeaderCell>タイトル</TableHeaderCell>\n' +
-          '      <TableHeaderCell sortState="ascending" onSortChange={fn}>\n' +
-          '        ソート列\n' +
-          '      </TableHeaderCell>\n' +
-          '    </TableRow>\n' +
-          '  </TableHead>\n' +
-          '</Table>\n' +
-          '```',
+        component: 'テーブルのヘッダーセルを表示するコンポーネントです。',
       },
     },
   },
-  tags: ['autodocs'],
+  argTypes: {
+    contentType: {
+      control: 'select',
+      options: ['text', 'checkbox', 'icon-button'],
+      description: 'セルのコンテンツタイプ',
+    },
+    sortState: {
+      control: 'select',
+      options: ['default', 'ascending', 'descending'],
+      description: '現在のソート状態',
+    },
+    resizable: {
+      control: 'boolean',
+      description: 'カラム幅のリサイズを許可するかどうか',
+    },
+  },
   decorators: [gridDecorator],
 } satisfies Meta<typeof TableHeaderCell>;
 

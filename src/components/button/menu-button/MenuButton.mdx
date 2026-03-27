@@ -1,0 +1,54 @@
+import { Meta, Canvas, ArgTypes } from '@storybook/addon-docs/blocks';
+import * as MenuButtonStories from '../../../../stories/button/menu-button/MenuButton.stories';
+
+<Meta of={MenuButtonStories} />
+
+# MenuButton
+
+メニューを表示するためのトリガーとなるボタンコンポーネントです。クリックで関連するメニューを展開し、複数の操作や遷移先を提示します。
+
+- Figma URL : [MenuButton](https://www.figma.com/design/kHQNLM1dnk0EhZwOKBEBkL/%F0%9F%90%9D-Base-Component-Speeda-3.1-%E3%83%9F%E3%83%84%E3%83%90%E3%83%81?node-id=8301-3447&t=wAsCASAO2ZF6eRSb-1)
+
+<Canvas of={MenuButtonStories.Normal} />
+
+---
+
+## When to Use
+
+- 複数の操作や遷移先をドロップダウンメニューとして提示するとき
+- ボタンクリックでメニューを展開させたいとき
+
+## When NOT to Use
+
+- ⚠️ アイコンのみでメニューを開きたいとき。代わりに [IconButton](?path=/docs/components-button-iconbutton--docs) とメニューの組み合わせを検討してください
+- ⚠️ 現在の値を表示・選択する用途のとき。MenuButton は「操作の入り口」であり、値の選択には Select-box を使用してください
+- 🚫 単体で使用したいとき。必ず Menu コンポーネントと組み合わせて使用してください
+
+## Service Context — Speeda AI Agent での使い方
+
+- ヘッダーやツールバーの操作メニュー
+- テーブルの行アクションメニュー
+- 設定画面のオプションメニュー
+
+## バリエーション
+
+| バリエーション | 用途 |
+| --- | --- |
+| `primary` | 最も目立たせたい主要なメニュートリガーに使用してください |
+| `secondary` | 標準的なメニュートリガーに使用してください（デフォルト） |
+| `ghost` | 控えめなメニュートリガーに使用してください |
+
+<Canvas of={MenuButtonStories.AllVariants} />
+
+## アクセシビリティ
+
+- `aria-haspopup` と `aria-expanded` でメニューの開閉状態が通知されます
+- `loading` 状態のとき `aria-busy="true"` が付与されます
+
+## Props
+
+<ArgTypes of={MenuButtonStories} />
+
+## 関連コンポーネント
+
+- [IconButton](?path=/docs/components-button-iconbutton--docs) : アイコンのみの単発アクション向けボタンです

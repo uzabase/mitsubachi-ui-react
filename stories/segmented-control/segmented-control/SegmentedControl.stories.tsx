@@ -12,21 +12,36 @@ const meta = {
     layout: 'padded',
     docs: {
       description: {
-        component:
-          '排他的な単一選択（ラジオボタン相当）のセグメントグループです。\n\n' +
-          '> **使い分け:** 複数選択が必要な場合は、チェックボックスグループの使用を検討してください。\n\n' +
-          '## 使用例\n\n' +
-          '```tsx\n' +
-          '<SegmentedControl defaultValue="tab1" aria-label="表示切り替え">\n' +
-          '  <Segment variant="text" value="Item1">アイテム1</Segment>\n' +
-          '  <Segment variant="text" value="Item2">アイテム2</Segment>\n' +
-          '  <Segment variant="text" value="Item3">アイテム3</Segment>\n' +
-          '</SegmentedControl>\n' +
-          '```',
+        component: '排他的な単一選択のセグメントグループです。',
       },
     },
   },
-  tags: ['autodocs'],
+  argTypes: {
+    value: {
+      control: 'text',
+      description: '現在選択されているセグメントの値（制御モード）',
+    },
+    defaultValue: {
+      control: 'text',
+      description: '初期選択セグメントの値（非制御モード）',
+    },
+    onValueChange: {
+      action: 'valueChanged',
+      description: 'セグメント切り替え時のコールバック',
+    },
+    disabled: {
+      control: 'boolean',
+      description: '無効化状態（全セグメントを無効化）',
+    },
+    children: {
+      control: false,
+      description: 'Segment コンポーネント群',
+    },
+    'aria-label': {
+      control: 'text',
+      description: 'アクセシブルラベル',
+    },
+  },
 } satisfies Meta<typeof SegmentedControl>;
 
 export default meta;
@@ -330,4 +345,173 @@ export const IconWithDisabled: Story = {
       </>
     ),
   },
+};
+
+/**
+ * すべてのバリエーションを一覧表示
+ */
+export const AllStates: Story = {
+  args: {
+    ...TextTwoItems.args,
+  },
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '32px' }}>
+      <div>
+        <p style={{ marginBlockEnd: '8px', fontWeight: 'bold' }}>
+          テキスト（2〜5個）
+        </p>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+          <SegmentedControl defaultValue="item1" aria-label="テキスト2項目">
+            <Segment variant="text" value="item1">
+              Label
+            </Segment>
+            <Segment variant="text" value="item2">
+              Label
+            </Segment>
+          </SegmentedControl>
+          <SegmentedControl defaultValue="item1" aria-label="テキスト3項目">
+            <Segment variant="text" value="item1">
+              Label
+            </Segment>
+            <Segment variant="text" value="item2">
+              Label
+            </Segment>
+            <Segment variant="text" value="item3">
+              Label
+            </Segment>
+          </SegmentedControl>
+          <SegmentedControl defaultValue="item1" aria-label="テキスト4項目">
+            <Segment variant="text" value="item1">
+              Label
+            </Segment>
+            <Segment variant="text" value="item2">
+              Label
+            </Segment>
+            <Segment variant="text" value="item3">
+              Label
+            </Segment>
+            <Segment variant="text" value="item4">
+              Label
+            </Segment>
+          </SegmentedControl>
+          <SegmentedControl defaultValue="item1" aria-label="テキスト5項目">
+            <Segment variant="text" value="item1">
+              Label
+            </Segment>
+            <Segment variant="text" value="item2">
+              Label
+            </Segment>
+            <Segment variant="text" value="item3">
+              Label
+            </Segment>
+            <Segment variant="text" value="item4">
+              Label
+            </Segment>
+            <Segment variant="text" value="item5">
+              Label
+            </Segment>
+          </SegmentedControl>
+        </div>
+      </div>
+
+      <div>
+        <p style={{ marginBlockEnd: '8px', fontWeight: 'bold' }}>
+          アイコン（2〜5個）
+        </p>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+          <SegmentedControl defaultValue="item1" aria-label="アイコン2項目">
+            <Segment variant="icon" value="item1" aria-label="サンプル1">
+              <DummyIcon size={18} />
+            </Segment>
+            <Segment variant="icon" value="item2" aria-label="サンプル2">
+              <DummyIcon size={18} />
+            </Segment>
+          </SegmentedControl>
+          <SegmentedControl defaultValue="item1" aria-label="アイコン3項目">
+            <Segment variant="icon" value="item1" aria-label="サンプル1">
+              <DummyIcon size={18} />
+            </Segment>
+            <Segment variant="icon" value="item2" aria-label="サンプル2">
+              <DummyIcon size={18} />
+            </Segment>
+            <Segment variant="icon" value="item3" aria-label="サンプル3">
+              <DummyIcon size={18} />
+            </Segment>
+          </SegmentedControl>
+          <SegmentedControl defaultValue="item1" aria-label="アイコン4項目">
+            <Segment variant="icon" value="item1" aria-label="サンプル1">
+              <DummyIcon size={18} />
+            </Segment>
+            <Segment variant="icon" value="item2" aria-label="サンプル2">
+              <DummyIcon size={18} />
+            </Segment>
+            <Segment variant="icon" value="item3" aria-label="サンプル3">
+              <DummyIcon size={18} />
+            </Segment>
+            <Segment variant="icon" value="item4" aria-label="サンプル4">
+              <DummyIcon size={18} />
+            </Segment>
+          </SegmentedControl>
+          <SegmentedControl defaultValue="item1" aria-label="アイコン5項目">
+            <Segment variant="icon" value="item1" aria-label="サンプル1">
+              <DummyIcon size={18} />
+            </Segment>
+            <Segment variant="icon" value="item2" aria-label="サンプル2">
+              <DummyIcon size={18} />
+            </Segment>
+            <Segment variant="icon" value="item3" aria-label="サンプル3">
+              <DummyIcon size={18} />
+            </Segment>
+            <Segment variant="icon" value="item4" aria-label="サンプル4">
+              <DummyIcon size={18} />
+            </Segment>
+            <Segment variant="icon" value="item5" aria-label="サンプル5">
+              <DummyIcon size={18} />
+            </Segment>
+          </SegmentedControl>
+        </div>
+      </div>
+
+      <div>
+        <p style={{ marginBlockEnd: '8px', fontWeight: 'bold' }}>
+          無効化（テキスト / アイコン）
+        </p>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+          <SegmentedControl
+            defaultValue="item1"
+            aria-label="テキスト一部無効化"
+          >
+            <Segment variant="text" value="item1">
+              有効
+            </Segment>
+            <Segment variant="text" value="item2" disabled>
+              無効
+            </Segment>
+            <Segment variant="text" value="item3">
+              有効
+            </Segment>
+          </SegmentedControl>
+          <SegmentedControl
+            defaultValue="item1"
+            aria-label="アイコン一部無効化"
+          >
+            <Segment variant="icon" value="item1" aria-label="サンプル1">
+              <DummyIcon size={18} />
+            </Segment>
+            <Segment
+              variant="icon"
+              value="item2"
+              aria-label="サンプル2"
+              disabled
+            >
+              <DummyIcon size={18} />
+            </Segment>
+            <Segment variant="icon" value="item3" aria-label="サンプル3">
+              <DummyIcon size={18} />
+            </Segment>
+          </SegmentedControl>
+        </div>
+      </div>
+    </div>
+  ),
 };

@@ -1,0 +1,38 @@
+import { Meta, Canvas, ArgTypes } from '@storybook/addon-docs/blocks';
+import * as LinkTagGroupStories from '../../../../stories/tag/link-tag-group/LinkTagGroup.stories';
+
+<Meta of={LinkTagGroupStories} />
+
+# LinkTagGroup
+
+複数の LinkTag をグループ化して表示するコンポーネントです。タグは折り返しを許容します。
+
+- Figma URL : [LinkTagGroup](https://www.figma.com/design/kHQNLM1dnk0EhZwOKBEBkL/%F0%9F%90%9D-Base-Component-Speeda-3.1-%E3%83%9F%E3%83%84%E3%83%90%E3%83%81?node-id=5615-1410&t=wAsCASAO2ZF6eRSb-1)
+
+<Canvas of={LinkTagGroupStories.Default} />
+
+---
+
+## When to Use
+
+- 複数の LinkTag を横並びで表示したいとき
+- タグの数が多く、折り返しが必要なとき
+
+## When NOT to Use
+
+- ⚠️ タグが1つだけのとき。[LinkTag](?path=/docs/components-tag-linktag--docs) を単体で使ってください
+- ⚠️ ユーザーが入力した内容をチップとして管理したいとき。代わりに [InputChipGroup](?path=/docs/components-chip-inputchipgroup--docs) を使ってください
+
+## Service Context — Speeda AI Agent での使い方
+
+- 企業詳細ページの業種・地域タグ一覧
+- 記事やレポートに紐づくカテゴリタグの表示
+
+## Props
+
+<ArgTypes of={LinkTagGroupStories} />
+
+## 関連コンポーネント
+
+- [LinkTag](?path=/docs/components-tag-linktag--docs) : グループ内の個別タグコンポーネントです
+- [ReadOnlyTag](?path=/docs/components-tag-readonlytag--docs) : クリック不可の読み取り専用タグです

@@ -17,21 +17,10 @@ const meta = {
     layout: 'centered',
     docs: {
       description: {
-        component:
-          '時系列の個別アイテムです。\n\n' +
-          '`emphasized` を指定すると、ドットが有彩色になり重要な出来事を強調できます。\n\n' +
-          '> **⚠️注意:** 必ず `<Timeline>` の子要素として使用してください（`<Timeline.Item>` で参照可能）。Timeline の外で使用するとエラーになります。\n\n' +
-          '## 使用例\n\n' +
-          '```tsx\n' +
-          '<Timeline>\n' +
-          '  <Timeline.Item>2024年05月 CEO室 マネジャー</Timeline.Item>\n' +
-          '  <Timeline.Item emphasized>2024年05月 CEO室 マネジャー</Timeline.Item>\n' +
-          '</Timeline>\n' +
-          '```',
+        component: '時系列の個別アイテムです。',
       },
     },
   },
-  tags: ['autodocs'],
   args: {
     children: undefined,
   },
@@ -85,5 +74,37 @@ export const Emphasized: Story = {
     <TimelineItem {...args}>
       <span style={textStyle}>2024年05月 在籍中 CEO室 マネジャー</span>
     </TimelineItem>
+  ),
+};
+
+/**
+ * すべての状態を一覧表示
+ */
+export const AllStates: Story = {
+  args: {
+    ...Default.args,
+  },
+  render: () => (
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '32px',
+        padding: '40px',
+      }}
+    >
+      <div>
+        <h3>Default</h3>
+        <TimelineItem>
+          <span style={textStyle}>2024年05月 CEO室 マネジャー</span>
+        </TimelineItem>
+      </div>
+      <div>
+        <h3>Emphasized</h3>
+        <TimelineItem emphasized>
+          <span style={textStyle}>2024年05月 在籍中 CEO室 マネジャー</span>
+        </TimelineItem>
+      </div>
+    </div>
   ),
 };
