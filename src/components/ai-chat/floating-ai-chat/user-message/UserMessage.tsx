@@ -10,7 +10,7 @@ export const UserMessage = ({ children }: UserMessageProps) => {
   return (
     <div className={styles.container}>
       <div className={styles.bubble}>
-        <div className={styles.text}>{children}</div>
+        <p className={styles.text}>{children}</p>
       </div>
     </div>
   );

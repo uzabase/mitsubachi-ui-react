@@ -1,9 +1,12 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
+import type { KeyboardEvent } from 'react';
 import { SearchIcon, CheckIcon } from '../../../../../icons';
 import styles from './ai-chat-segmented-control.module.css';
 
 /** セグメントの値 */
 export type AiChatSegmentValue = 'flash' | 'deep';
+
+const SEGMENTS: AiChatSegmentValue[] = ['flash', 'deep'];
 
 export interface AiChatSegmentedControlProps {
   /** 選択中の値（controlled） */
@@ -25,6 +28,7 @@ export const AiChatSegmentedControl = ({
   const [internalValue, setInternalValue] =
     useState<AiChatSegmentValue>(defaultValue);
   const value = valueProp ?? internalValue;
+  const segmentRefs = useRef<(HTMLButtonElement | null)[]>([]);
 
   const handleSelect = (next: AiChatSegmentValue) => {
     if (disabled || next === value) return;
@@ -32,6 +36,25 @@ export const AiChatSegmentedControl = ({
       setInternalValue(next);
     }
     onValueChange?.(next);
+  };
+
+  const handleKeyDown = (e: KeyboardEvent<HTMLButtonElement>) => {
+    const currentIndex = SEGMENTS.indexOf(value);
+    let nextIndex: number | undefined;
+
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+      e.preventDefault();
+      nextIndex = (currentIndex + 1) % SEGMENTS.length;
+    } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+      e.preventDefault();
+      nextIndex = (currentIndex - 1 + SEGMENTS.length) % SEGMENTS.length;
+    }
+
+    if (nextIndex !== undefined) {
+      const next = SEGMENTS[nextIndex];
+      handleSelect(next);
+      segmentRefs.current[nextIndex]?.focus();
+    }
   };
 
   const containerClassName = [styles.container, disabled && styles.disabled]
@@ -44,38 +67,32 @@ export const AiChatSegmentedControl = ({
       role="radiogroup"
       aria-label="リサーチモード"
     >
-      <button
-        type="button"
-        role="radio"
-        aria-checked={value === 'flash'}
-        aria-label="Flash Research"
-        className={[styles.segment, value === 'flash' && styles.selected]
-          .filter(Boolean)
-          .join(' ')}
-        onClick={() => handleSelect('flash')}
-        disabled={disabled}
-      >
-        <span className={styles.icon}>
-          <SearchIcon />
-        </span>
-        <span className={styles.label}>Flash Research</span>
-      </button>
-      <button
-        type="button"
-        role="radio"
-        aria-checked={value === 'deep'}
-        aria-label="Deep Research"
-        className={[styles.segment, value === 'deep' && styles.selected]
-          .filter(Boolean)
-          .join(' ')}
-        onClick={() => handleSelect('deep')}
-        disabled={disabled}
-      >
-        <span className={styles.icon}>
-          <CheckIcon />
-        </span>
-        <span className={styles.label}>Deep Research</span>
-      </button>
+      {SEGMENTS.map((segment, index) => (
+        <button
+          key={segment}
+          ref={(el) => {
+            segmentRefs.current[index] = el;
+          }}
+          type="button"
+          role="radio"
+          aria-checked={value === segment}
+          aria-label={segment === 'flash' ? 'Flash Research' : 'Deep Research'}
+          tabIndex={value === segment ? 0 : -1}
+          className={[styles.segment, value === segment && styles.selected]
+            .filter(Boolean)
+            .join(' ')}
+          onClick={() => handleSelect(segment)}
+          onKeyDown={handleKeyDown}
+          disabled={disabled}
+        >
+          <span className={styles.icon}>
+            {segment === 'flash' ? <SearchIcon /> : <CheckIcon />}
+          </span>
+          <span className={styles.label}>
+            {segment === 'flash' ? 'Flash Research' : 'Deep Research'}
+          </span>
+        </button>
+      ))}
     </div>
   );
 };

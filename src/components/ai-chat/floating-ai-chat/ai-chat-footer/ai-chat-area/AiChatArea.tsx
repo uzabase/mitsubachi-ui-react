@@ -47,8 +47,15 @@ export const AiChatArea = ({
   const isInProgress = state === 'in-progress';
   const isEmpty = !value || value.trim() === '';
 
+  const canSubmit = !isEmpty && !isDisabled && !isInProgress;
+
   const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
-    if (e.key === 'Enter' && !e.shiftKey && !e.nativeEvent.isComposing) {
+    if (
+      e.key === 'Enter' &&
+      !e.shiftKey &&
+      !e.nativeEvent.isComposing &&
+      canSubmit
+    ) {
       e.preventDefault();
       onSubmit?.();
     }

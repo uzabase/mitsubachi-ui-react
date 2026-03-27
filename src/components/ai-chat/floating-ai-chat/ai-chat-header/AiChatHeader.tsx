@@ -45,7 +45,7 @@ export const AiChatHeader = ({
         <span className={titleClassName}>{title}</span>
         <IconButton
           variant="ghost"
-          size="small"
+          size="medium"
           aria-label="履歴"
           onClick={onHistoryClick}
         >
@@ -55,7 +55,7 @@ export const AiChatHeader = ({
       <div className={styles.actionArea}>
         <IconButton
           variant="ghost"
-          size="small"
+          size="medium"
           aria-label="新規チャット"
           onClick={onNewChatClick}
         >
@@ -63,7 +63,7 @@ export const AiChatHeader = ({
         </IconButton>
         <IconButton
           variant="ghost"
-          size="small"
+          size="medium"
           aria-label={size === 'collapsed' ? '最大化' : '最小化'}
           onClick={onToggleSizeClick}
         >
@@ -75,7 +75,7 @@ export const AiChatHeader = ({
         </IconButton>
         <IconButton
           variant="ghost"
-          size="small"
+          size="medium"
           aria-label="閉じる"
           onClick={onMinimizeClick}
         >

@@ -10,7 +10,7 @@ export interface FloatingAiChatContextValue {
 const FloatingAiChatContext =
   React.createContext<FloatingAiChatContextValue | null>(null);
 
-export const FloatingAiChatProvider = FloatingAiChatContext.Provider;
+export const FloatingAiChatProvider = FloatingAiChatContext;
 
 export function useFloatingAiChatContext(): FloatingAiChatContextValue {
   const ctx = React.useContext(FloatingAiChatContext);
