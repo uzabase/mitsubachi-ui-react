@@ -9,16 +9,10 @@ const meta = {
     layout: 'centered',
     docs: {
       description: {
-        component:
-          'フィルター条件を選択して切り替えるコンポーネントです。\n' +
-          '押下することでon/offを切り替えることができ、選択状態を視覚的に示します。\n\n' +
-          '> **⚠️注意:** このコンポーネントを単独で使用しないでください。\n' +
-          '> [FilterChipSingleSelectGroup](?path=/docs/components-chip-filterchipsingleselectgroup--docs) または ' +
-          '[FilterChipMultiSelectGroup](?path=/docs/components-chip-filterchipmultiselectgroup--docs) 経由で利用してください。',
+        component: 'フィルター条件を選択して切り替えるコンポーネントです。',
       },
     },
   },
-  tags: ['autodocs'],
   argTypes: {
     label: {
       control: 'text',

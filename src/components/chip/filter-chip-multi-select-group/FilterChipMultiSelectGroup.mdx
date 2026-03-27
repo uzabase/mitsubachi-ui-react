@@ -1,0 +1,39 @@
+import { Meta, Canvas, ArgTypes } from '@storybook/addon-docs/blocks';
+import * as FilterChipMultiSelectGroupStories from '../../../../stories/chip/filter-chip-multi-select-group/FilterChipMultiSelectGroup.stories';
+
+<Meta of={FilterChipMultiSelectGroupStories} />
+
+# FilterChipMultiSelectGroup
+
+FilterChip を横並び・折り返しでレイアウトし、複数同時に選択できるグループコンポーネントです。
+
+- Figma URL : [FilterChipMultiSelectGroup](https://www.figma.com/design/kHQNLM1dnk0EhZwOKBEBkL/%F0%9F%90%9D-Base-Component-Speeda-3.1-%E3%83%9F%E3%83%84%E3%83%90%E3%83%81?node-id=7216-14722&t=wAsCASAO2ZF6eRSb-1)
+
+<Canvas of={FilterChipMultiSelectGroupStories.Default} />
+
+---
+
+## When to Use
+
+- フィルター条件を複数同時に選択させたいとき
+- 選択肢をチップ形式で横並びに表示したいとき
+
+## When NOT to Use
+
+- ⚠️ 選択肢から1つだけ選ばせたいとき。代わりに [FilterChipSingleSelectGroup](?path=/docs/components-chip-filterchipsingleselectgroup--docs) を使ってください
+- ⚠️ ユーザーの入力内容をタグとして管理したいとき。代わりに [InputChipGroup](?path=/docs/components-chip-inputchipgroup--docs) を使ってください
+
+## Service Context — Speeda AI Agent での使い方
+
+- 検索フィルターで複数の業種やカテゴリを同時に選択する場面
+- レポート設定で複数の表示項目を選択する場面
+
+## Props
+
+<ArgTypes of={FilterChipMultiSelectGroupStories} />
+
+## 関連コンポーネント
+
+- [FilterChipSingleSelectGroup](?path=/docs/components-chip-filterchipsingleselectgroup--docs) : 単一選択のフィルターチップグループです
+- [FilterChip](?path=/docs/components-chip-filterchip--docs) : グループ内の個別チップコンポーネントです
+- [InputChipGroup](?path=/docs/components-chip-inputchipgroup--docs) : ユーザー入力をチップで管理するグループです

@@ -7,6 +7,11 @@ const meta = {
   component: TextArea,
   parameters: {
     layout: 'centered',
+    docs: {
+      description: {
+        component: '複数行のテキスト入力を受け付けるコンポーネントです。',
+      },
+    },
   },
   decorators: [
     (Story) => (
@@ -15,7 +20,6 @@ const meta = {
       </div>
     ),
   ],
-  tags: ['autodocs'],
   argTypes: {
     size: {
       control: 'select',

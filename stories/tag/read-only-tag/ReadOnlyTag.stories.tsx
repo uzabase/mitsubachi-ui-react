@@ -13,8 +13,13 @@ const meta = {
   component: ReadOnlyTag,
   parameters: {
     layout: 'centered',
+    docs: {
+      description: {
+        component:
+          'ステータスや属性を示す読み取り専用のタグコンポーネントです。',
+      },
+    },
   },
-  tags: ['autodocs'],
   argTypes: {
     text: {
       control: 'text',

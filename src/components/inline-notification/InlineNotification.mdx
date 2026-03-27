@@ -1,0 +1,50 @@
+import { Meta, Canvas, ArgTypes } from '@storybook/addon-docs/blocks';
+import * as InlineNotificationStories from '../../../stories/inline-notification/InlineNotification.stories';
+
+<Meta of={InlineNotificationStories} />
+
+# InlineNotification
+
+ユーザーの操作に対して即座に理解すべきエラーや時間的制約のある情報を、画面の文脈の中で提示する通知コンポーネントです。Overlay ではなく UI の一部として常に表示されるため、ユーザーが見逃すことがありません。
+
+- Figma URL : [InlineNotification](https://www.figma.com/design/kHQNLM1dnk0EhZwOKBEBkL/%F0%9F%90%9D-Base-Component-Speeda-3.1-%E3%83%9F%E3%83%84%E3%83%90%E3%83%81?node-id=5638-4165&t=wAsCASAO2ZF6eRSb-1)
+
+<Canvas of={InlineNotificationStories.PrimaryInformation} />
+
+---
+
+## When to Use
+
+- 失敗・警告・エラーなど見逃してほしくない重要な情報を通知するとき
+- フォームのバリデーションエラーを画面内に表示するとき
+- ユーザーの注意を引く必要がある情報を常時表示したいとき
+
+## When NOT to Use
+
+- ⚠️ 成功時の短いフィードバックを表示したいとき。代わりに [Snackbar](?path=/docs/components-snackbar--docs) を使ってください
+- ⚠️ 操作を中断して確認を求めたいとき。代わりに [ActionDialog](?path=/docs/components-dialog-actiondialog--docs) を使ってください
+
+## Service Context — Speeda AI Agent での使い方
+
+- API エラーやデータ取得失敗のエラーメッセージ表示
+- フォーム入力のバリデーションエラー
+- 機能制限やメンテナンス情報の通知
+
+## バリエーション
+
+| バリエーション | 用途 |
+| --- | --- |
+| `information` | 補足情報や案内に使用してください |
+| `success` | 処理の成功を通知するときに使用してください |
+| `warning` | 注意が必要な状態を伝えるときに使用してください |
+| `error` | エラーや失敗を通知するときに使用してください |
+
+<Canvas of={InlineNotificationStories.AllPatterns} />
+
+## Props
+
+<ArgTypes of={InlineNotificationStories} />
+
+## 関連コンポーネント
+
+- [Snackbar](?path=/docs/components-snackbar--docs) : 成功フィードバック用の軽量な Overlay 通知です

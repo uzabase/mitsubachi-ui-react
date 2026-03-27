@@ -10,15 +10,10 @@ const meta = {
     docs: {
       description: {
         component:
-          'コンテンツの属性や分類を簡潔に示すためのクリック可能なタグコンポーネント。\n\n' +
-          '## サイズ使用ガイドライン\n' +
-          '- **x-small**: 文中や文末に置くときは、x-smallを使用。\n' +
-          '- **small**: 原則はmediumだが、12pxの文字列と並べて配置するときは、smallサイズでもOK\n' +
-          '- **medium**: 原則、mediumを使用。',
+          'コンテンツの属性や分類を簡潔に示すクリック可能なタグコンポーネントです。',
       },
     },
   },
-  tags: ['autodocs'],
   argTypes: {
     text: {
       control: 'text',
@@ -154,7 +149,32 @@ export const Focus: Story = {
   },
   parameters: {
     pseudo: {
-      focus: true,
+      focusVisible: true,
     },
   },
+};
+
+/**
+ * すべての状態を一覧表示
+ */
+export const AllStates: Story = {
+  args: {
+    ...Normal.args,
+  },
+  render: () => (
+    <div
+      style={{
+        display: 'flex',
+        gap: '12px',
+        padding: '40px',
+        flexWrap: 'wrap',
+        alignItems: 'center',
+      }}
+    >
+      <LinkTag text="Normal" size="medium" href="#" />
+      <LinkTag text="x-small" size="x-small" href="#" />
+      <LinkTag text="small" size="small" href="#" />
+      <LinkTag text="medium" size="medium" href="#" />
+    </div>
+  ),
 };

@@ -1,0 +1,47 @@
+import { Meta, Canvas, ArgTypes } from '@storybook/addon-docs/blocks';
+import * as TextAreaStories from '../../../../stories/text-area/text-area/TextArea.stories';
+
+<Meta of={TextAreaStories} />
+
+# TextArea
+
+複数行のテキスト入力を受け付けるコンポーネントです。
+
+- Figma URL : [TextArea](https://www.figma.com/design/kHQNLM1dnk0EhZwOKBEBkL/%F0%9F%90%9D-Base-Component-Speeda-3.1-%E3%83%9F%E3%83%84%E3%83%90%E3%83%81?node-id=182-4766&t=wAsCASAO2ZF6eRSb-1)
+
+<Canvas of={TextAreaStories.Default} />
+
+---
+
+## When to Use
+
+- ユーザーに複数行のテキストを入力させるとき
+- コメント、メモ、説明文など長めのテキスト入力が必要なとき
+
+## When NOT to Use
+
+- ⚠️ ラベルやサポートテキストを含む完成されたフォームフィールドが必要なとき。代わりに [TextAreaUnit](?path=/docs/components-textarea-textareaunit--docs) を使ってください
+- ⚠️ 1行の短いテキスト入力のとき。テキストインプットコンポーネントを使ってください
+
+## Service Context — Speeda AI Agent での使い方
+
+- チャット入力欄でのメッセージ入力
+- レポートや分析メモの自由記述フィールド
+- フィードバック・コメント入力
+
+## バリエーション
+
+<Canvas of={TextAreaStories.AllStates} />
+
+## アクセシビリティ
+
+- `error` 状態のとき `aria-invalid="true"` が付与されます
+- 文字数カウント機能で入力制限を視覚的に伝えます
+
+## Props
+
+<ArgTypes of={TextAreaStories} />
+
+## 関連コンポーネント
+
+- [TextAreaUnit](?path=/docs/components-textarea-textareaunit--docs) : ラベルやサポートテキストを含む完成されたテキストエリアフィールドです

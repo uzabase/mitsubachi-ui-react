@@ -238,45 +238,28 @@ const meta = {
     layout: 'padded',
     docs: {
       description: {
-        component:
-          'ページ内の特定セクションにおける表示内容を切り替えるためのタブグループです。\n\n' +
-          'ページ全体の構造や文脈は維持したまま、同一セクション内にある情報や表示形式のみを切り替えることを目的としています。\n\n' +
-          '## 使用例\n\n' +
-          '### 基本\n\n' +
-          '```tsx\n' +
-          '<SectionTabGroup defaultValue="tab1">\n' +
-          '  <SectionTabGroup.List>\n' +
-          '    <SectionTab value="tab1">タブ1</SectionTab>\n' +
-          '    <SectionTab value="tab2">タブ2</SectionTab>\n' +
-          '  </SectionTabGroup.List>\n' +
-          '  <SectionTabGroup.Panel value="tab1">コンテンツ1</SectionTabGroup.Panel>\n' +
-          '  <SectionTabGroup.Panel value="tab2">コンテンツ2</SectionTabGroup.Panel>\n' +
-          '</SectionTabGroup>\n' +
-          '```\n\n' +
-          '### 国旗付き（国・地域タブ）\n\n' +
-          '国旗のある国には `flag` prop を渡し、地域名（ヨーロッパ、アジア等）には渡しません。\n\n' +
-          '```tsx\n' +
-          '<SectionTabGroup defaultValue="jpn">\n' +
-          '  <SectionTabGroup.List>\n' +
-          '    <SectionTab value="jpn" flag={<JpnFlag />}>JPN</SectionTab>\n' +
-          '    <SectionTab value="europe">ヨーロッパ</SectionTab>\n' +
-          '  </SectionTabGroup.List>\n' +
-          '</SectionTabGroup>\n' +
-          '```\n\n' +
-          '### 制御モード\n\n' +
-          '```tsx\n' +
-          'const [value, setValue] = useState("tab1");\n\n' +
-          '<SectionTabGroup value={value} onValueChange={setValue}>\n' +
-          '  <SectionTabGroup.List>\n' +
-          '    <SectionTab value="tab1">タブ1</SectionTab>\n' +
-          '    <SectionTab value="tab2">タブ2</SectionTab>\n' +
-          '  </SectionTabGroup.List>\n' +
-          '</SectionTabGroup>\n' +
-          '```',
+        component: 'ページ内セクションの表示内容を切り替えるタブグループです。',
       },
     },
   },
-  tags: ['autodocs'],
+  argTypes: {
+    value: {
+      control: 'text',
+      description:
+        '現在選択されているタブの値（制御モード）。`null` を渡すとどのタブも選択されない',
+    },
+    defaultValue: {
+      control: 'text',
+      description: '初期選択タブの値（非制御モード）',
+    },
+    onValueChange: {
+      description: 'タブ切り替え時のコールバック',
+    },
+    children: {
+      control: false,
+      description: '子要素（SectionTabGroup.List + SectionTabGroup.Panel）',
+    },
+  },
 } satisfies Meta<typeof SectionTabGroup>;
 
 export default meta;

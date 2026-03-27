@@ -1,0 +1,41 @@
+import { Meta, Canvas, ArgTypes } from '@storybook/addon-docs/blocks';
+import * as SectionTabStories from '../../../../stories/section-tab/section-tab/SectionTab.stories';
+
+<Meta of={SectionTabStories} />
+
+# SectionTab
+
+ページ内セクションの切り替えに使用する個別タブです。
+
+- Figma URL : [SectionTab](https://www.figma.com/design/kHQNLM1dnk0EhZwOKBEBkL/%F0%9F%90%9D-Base-Component-Speeda-3.1-%E3%83%9F%E3%83%84%E3%83%90%E3%83%81?node-id=5634-1269&t=wAsCASAO2ZF6eRSb-1)
+
+<Canvas of={SectionTabStories.Normal} />
+
+---
+
+## When to Use
+
+- SectionTabGroup 内で個別のタブを構成するとき
+- タブにフラグ（通知バッジ）を表示するとき
+
+## When NOT to Use
+
+- 🚫 単独で配置したいとき。必ず [SectionTabGroup](?path=/docs/components-sectiontab-sectiontabgroup--docs) 経由で使用してください
+- ⚠️ ページ全体のナビゲーションとして使いたいとき。SectionTab はページ内セクションの切り替え専用です
+
+## Service Context — Speeda AI Agent での使い方
+
+- 企業詳細ページのセクション切り替え（概要、財務、ニュースなど）
+- 分析レポート内のデータビュー切り替え
+
+## バリエーション
+
+<Canvas of={SectionTabStories.AllStates} />
+
+## Props
+
+<ArgTypes of={SectionTabStories} />
+
+## 関連コンポーネント
+
+- [SectionTabGroup](?path=/docs/components-sectiontab-sectiontabgroup--docs) : SectionTab を配置する親コンテナです

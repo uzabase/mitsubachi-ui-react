@@ -1,0 +1,44 @@
+import { Meta, Canvas, ArgTypes } from '@storybook/addon-docs/blocks';
+import * as CheckboxStories from '../../../stories/checkbox/Checkbox.stories';
+
+<Meta of={CheckboxStories} />
+
+# Checkbox
+
+項目の選択・解除を行うためのコンポーネントです。チェックなし、チェックあり、中間状態の3つの選択状態があります。
+
+- Figma URL : [Checkbox](https://www.figma.com/design/kHQNLM1dnk0EhZwOKBEBkL/%F0%9F%90%9D-Base-Component-Speeda-3.1-%E3%83%9F%E3%83%84%E3%83%90%E3%83%81?node-id=178-197&t=wAsCASAO2ZF6eRSb-1)
+
+<Canvas of={CheckboxStories.Playground} />
+
+---
+
+## When to Use
+
+- 複数の選択肢から複数を選択させるとき
+- 単一の項目の有効/無効を切り替えるとき
+- 親子関係のある選択肢で中間状態（indeterminate）を表現するとき
+
+## When NOT to Use
+
+- ⚠️ 複数の選択肢から1つだけ選ばせたいとき。RadioButton を使ってください
+- ⚠️ 即座にアクションを実行するトグルスイッチが必要なとき。Switch コンポーネントを使ってください
+
+## Service Context — Speeda AI Agent での使い方
+
+- テーブルの行選択（全選択・個別選択）
+- フォームダイアログ内の複数選択項目
+- フィルター設定の条件選択
+
+## バリエーション
+
+<Canvas of={CheckboxStories.AllStates} />
+
+## アクセシビリティ
+
+- `indeterminate` 状態は `aria-checked="mixed"` で通知されます
+- ラベルとチェックボックスは適切に関連付けられています
+
+## Props
+
+<ArgTypes of={CheckboxStories} />

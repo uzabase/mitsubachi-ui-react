@@ -10,34 +10,11 @@ const meta = {
     layout: 'centered',
     docs: {
       description: {
-        component: [
-          'FilterChipを横並び・折り返しでレイアウトするコンポーネントです。',
-          '選択肢の中から1つだけを選択できます。',
-          '',
-          '### 使用例',
-          '',
-          '```tsx',
-          'import { FilterChipSingleSelectGroup } from "mitsubachi-ui-react";',
-          'import type { FilterChipOption } from "mitsubachi-ui-react";',
-          '',
-          'const options: FilterChipOption[] = [',
-          '  { value: "all", label: "すべて" },',
-          '  { value: "news", label: "ニュース" },',
-          '  { value: "analysis", label: "分析" },',
-          '];',
-          '',
-          '<FilterChipSingleSelectGroup',
-          '  options={options}',
-          '  defaultValue="all"',
-          '  onChange={(value) => console.log(value)}',
-          '  aria-label="コンテンツタイプ"',
-          '/>',
-          '```',
-        ].join('\n'),
+        component:
+          'FilterChipを横並び・折り返しでレイアウトし、1つだけを選択できるグループコンポーネントです。',
       },
     },
   },
-  tags: ['autodocs'],
   argTypes: {
     disabled: {
       control: 'boolean',
@@ -107,6 +84,66 @@ export const Wrap: Story = {
         defaultValue="all"
         aria-label="コンテンツタイプ"
       />
+    </div>
+  ),
+};
+
+/**
+ * すべての状態を一覧表示
+ */
+export const AllStates: Story = {
+  args: {
+    ...Default.args,
+  },
+  render: () => (
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '32px',
+        padding: '40px',
+      }}
+    >
+      <div>
+        <h3>Default</h3>
+        <FilterChipSingleSelectGroup
+          options={sampleOptions}
+          defaultValue="all"
+          aria-label="コンテンツタイプ"
+        />
+      </div>
+      <div>
+        <h3>Disabled</h3>
+        <FilterChipSingleSelectGroup
+          options={sampleOptions}
+          defaultValue="all"
+          disabled
+          aria-label="コンテンツタイプ（無効）"
+        />
+      </div>
+      <div>
+        <h3>Partial Disabled</h3>
+        <FilterChipSingleSelectGroup
+          options={[
+            { value: 'all', label: 'すべて' },
+            { value: 'news', label: 'ニュース' },
+            { value: 'analysis', label: '分析', disabled: true },
+            { value: 'report', label: 'レポート' },
+          ]}
+          defaultValue="all"
+          aria-label="コンテンツタイプ（一部無効）"
+        />
+      </div>
+      <div>
+        <h3>Wrap</h3>
+        <div style={{ maxInlineSize: '200px' }}>
+          <FilterChipSingleSelectGroup
+            options={sampleOptions}
+            defaultValue="all"
+            aria-label="コンテンツタイプ（折り返し）"
+          />
+        </div>
+      </div>
     </div>
   ),
 };

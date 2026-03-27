@@ -1,0 +1,44 @@
+import { Meta, Canvas, ArgTypes } from '@storybook/addon-docs/blocks';
+import * as TextAreaUnitStories from '../../../../stories/text-area/text-area-unit/TextAreaUnit.stories';
+
+<Meta of={TextAreaUnitStories} />
+
+# TextAreaUnit
+
+ラベル、サポートテキスト、文字数カウントを含む、完成されたテキストエリアフィールドコンポーネントです。
+
+- Figma URL : [TextAreaUnit](https://www.figma.com/design/kHQNLM1dnk0EhZwOKBEBkL/%F0%9F%90%9D-Base-Component-Speeda-3.1-%E3%83%9F%E3%83%84%E3%83%90%E3%83%81?node-id=7136-7463&t=wAsCASAO2ZF6eRSb-1)
+
+<Canvas of={TextAreaUnitStories.Default} />
+
+---
+
+## When to Use
+
+- フォーム内でラベル付きの複数行テキスト入力を配置するとき
+- 必須マークやサポートテキストを含む入力フィールドが必要なとき
+
+## When NOT to Use
+
+- ⚠️ ラベルなしでテキストエリアだけを配置したいとき。代わりに [TextArea](?path=/docs/components-textarea-textarea--docs) を使ってください
+- ⚠️ 1行の短いテキスト入力のとき。テキストインプットコンポーネントを使ってください
+
+## Service Context — Speeda AI Agent での使い方
+
+- フォームダイアログ内の説明・コメント入力フィールド
+- 設定画面のメモ・備考欄
+- レポート作成画面の自由記述フィールド
+
+## バリエーション
+
+<Canvas of={TextAreaUnitStories.AllStates} />
+
+<Canvas of={TextAreaUnitStories.AllLabelVariants} />
+
+## Props
+
+<ArgTypes of={TextAreaUnitStories} />
+
+## 関連コンポーネント
+
+- [TextArea](?path=/docs/components-textarea-textarea--docs) : ラベルなしのテキストエリアコンポーネントです

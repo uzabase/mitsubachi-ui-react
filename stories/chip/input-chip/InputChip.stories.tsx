@@ -10,14 +10,10 @@ const meta = {
     docs: {
       description: {
         component:
-          'ユーザーが入力した内容を、要素ごとに整理して表示するコンポーネントです。\n' +
-          'Chipの削除操作（×ボタン）で、ユーザーが入力内容を削除することができます。\n\n' +
-          '> **⚠️注意:** このコンポーネントを単独で使用しないでください。\n' +
-          '> [InputChipGroup](?path=/docs/components-chip-inputchipgroup--docs) 経由で利用してください。',
+          'ユーザーが入力した内容を要素ごとに表示し、個別に削除できるコンポーネントです。',
       },
     },
   },
-  tags: ['autodocs'],
   argTypes: {
     label: {
       control: 'text',
@@ -79,4 +75,41 @@ export const Active: Story = {
       active: true,
     },
   },
+};
+
+/**
+ * Focus状態（:focus-visible）
+ */
+export const Focus: Story = {
+  args: {
+    ...Default.args,
+  },
+  parameters: {
+    pseudo: {
+      focusVisible: true,
+    },
+  },
+};
+
+/**
+ * すべての状態を一覧表示
+ */
+export const AllStates: Story = {
+  args: {
+    ...Default.args,
+  },
+  render: () => (
+    <div
+      style={{
+        display: 'grid',
+        gridTemplateColumns: 'repeat(5, auto)',
+        gap: '16px',
+        alignItems: 'center',
+        padding: '40px',
+      }}
+    >
+      <InputChip label="Default" onRemove={() => {}} />
+      <InputChip label="Disabled" onRemove={() => {}} disabled />
+    </div>
+  ),
 };

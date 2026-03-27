@@ -1,0 +1,48 @@
+import { Meta, Canvas, ArgTypes } from '@storybook/addon-docs/blocks';
+import * as TableHeaderCellStories from '../../../../stories/table/table-header-cell/TableHeaderCell.stories';
+
+<Meta of={TableHeaderCellStories} />
+
+# TableHeaderCell
+
+テーブルのヘッダーセルを表示するコンポーネントです。ソート機能やカラムアクションメニューを提供します。
+
+- Figma URL : [TableHeaderCell](https://www.figma.com/design/kHQNLM1dnk0EhZwOKBEBkL/%F0%9F%90%9D-Base-Component-Speeda-3.1-%E3%83%9F%E3%83%84%E3%83%90%E3%83%81?node-id=6055-17160&t=wAsCASAO2ZF6eRSb-1)
+
+<Canvas of={TableHeaderCellStories.GridTextDefault} />
+
+---
+
+## When to Use
+
+- Table コンポーネント内でカラムヘッダーを表示するとき
+- ソートやカラムアクションメニューを提供するとき
+
+## When NOT to Use
+
+- 🚫 単独で配置したいとき。必ず Table、TableHead、TableRow 内に配置してください
+- ⚠️ データセルとして使いたいとき。代わりに [TableBodyCell](?path=/docs/components-table-tablebodycell--docs) を使ってください
+
+## Service Context — Speeda AI Agent での使い方
+
+- データテーブルのカラムヘッダー（企業名、売上高、更新日など）
+- ソート可能なカラムの提供
+- カラムアクションメニュー（非表示、フィルターなど）の配置
+
+## バリエーション
+
+<Canvas of={TableHeaderCellStories.ColumnActionAllStates} />
+
+## アクセシビリティ
+
+- ソート状態は `aria-sort` 属性で通知されます
+- カラムアクションメニューはキーボードで操作可能です
+
+## Props
+
+<ArgTypes of={TableHeaderCellStories} />
+
+## 関連コンポーネント
+
+- [Table](?path=/docs/components-table-table--docs) : テーブル全体のコンテナです
+- [TableBodyCell](?path=/docs/components-table-tablebodycell--docs) : テーブルのボディセルです
