@@ -33,10 +33,14 @@ function createMenuDecorator(selected: boolean): Decorator {
         ref={containerRef}
         style={{ position: 'relative', minHeight: '80px' }}
       >
-        <Menu.Root open>
+        <Menu.Root open modal={false}>
           <div ref={anchorRef} />
           <Menu.Portal container={containerRef}>
-            <Menu.Positioner anchor={anchorRef} sideOffset={0}>
+            <Menu.Positioner
+              anchor={anchorRef}
+              sideOffset={0}
+              style={{ outline: 'none' }}
+            >
               <Menu.Popup style={popupStyle}>
                 <Menu.RadioGroup defaultValue={selected ? 'item' : '__none__'}>
                   <Story />
@@ -61,10 +65,14 @@ function MenuDecorator(): Decorator {
         ref={containerRef}
         style={{ position: 'relative', minHeight: '80px' }}
       >
-        <Menu.Root open>
+        <Menu.Root open modal={false}>
           <div ref={anchorRef} />
           <Menu.Portal container={containerRef}>
-            <Menu.Positioner anchor={anchorRef} sideOffset={0}>
+            <Menu.Positioner
+              anchor={anchorRef}
+              sideOffset={0}
+              style={{ outline: 'none' }}
+            >
               <Menu.Popup style={popupStyle}>
                 <Story />
               </Menu.Popup>
@@ -87,10 +95,14 @@ function MenuDecoratorWithWidth(width: number): Decorator {
         ref={containerRef}
         style={{ position: 'relative', minHeight: '80px' }}
       >
-        <Menu.Root open>
+        <Menu.Root open modal={false}>
           <div ref={anchorRef} />
           <Menu.Portal container={containerRef}>
-            <Menu.Positioner anchor={anchorRef} sideOffset={0}>
+            <Menu.Positioner
+              anchor={anchorRef}
+              sideOffset={0}
+              style={{ outline: 'none' }}
+            >
               <Menu.Popup style={{ ...popupStyle, width: `${width}px` }}>
                 <Story />
               </Menu.Popup>
@@ -344,7 +356,12 @@ export const RequiredSelection: Story = {
             render={<MenuButton variant="primary">職種（必須）</MenuButton>}
           />
           <Menu.Portal>
-            <Menu.Positioner side="bottom" align="start" sideOffset={4}>
+            <Menu.Positioner
+              side="bottom"
+              align="start"
+              sideOffset={4}
+              style={{ outline: 'none' }}
+            >
               <Menu.Popup style={popupStyle}>
                 <Menu.RadioGroup value={value} onValueChange={setValue}>
                   <SelectMenuItem value="sales">営業</SelectMenuItem>
@@ -395,7 +412,12 @@ export const OptionalSelection: Story = {
             render={<MenuButton variant="primary">職種</MenuButton>}
           />
           <Menu.Portal>
-            <Menu.Positioner side="bottom" align="start" sideOffset={4}>
+            <Menu.Positioner
+              side="bottom"
+              align="start"
+              sideOffset={4}
+              style={{ outline: 'none' }}
+            >
               <Menu.Popup style={popupStyle}>
                 <Menu.RadioGroup value={value} onValueChange={setValue}>
                   <SelectMenuItem value="">指定なし</SelectMenuItem>

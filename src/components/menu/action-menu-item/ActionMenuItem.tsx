@@ -1,4 +1,4 @@
-import React from 'react';
+import type React from 'react';
 import { Menu } from '@base-ui/react/menu';
 import { MenuItemLayout } from '../shared';
 import styles from './action-menu-item.module.css';

@@ -20,10 +20,14 @@ function MenuDecoratorWithWidth(width: number): Decorator {
         ref={containerRef}
         style={{ position: 'relative', minHeight: '80px' }}
       >
-        <Menu.Root open>
+        <Menu.Root open modal={false}>
           <div ref={anchorRef} />
           <Menu.Portal container={containerRef}>
-            <Menu.Positioner anchor={anchorRef} sideOffset={0}>
+            <Menu.Positioner
+              anchor={anchorRef}
+              sideOffset={0}
+              style={{ outline: 'none' }}
+            >
               <Menu.Popup
                 style={{
                   display: 'flex',
@@ -52,10 +56,14 @@ const MenuDecorator: Decorator = (Story) => {
   const anchorRef = useRef<HTMLDivElement>(null);
   return (
     <div ref={containerRef} style={{ position: 'relative', minHeight: '80px' }}>
-      <Menu.Root open>
+      <Menu.Root open modal={false}>
         <div ref={anchorRef} />
         <Menu.Portal container={containerRef}>
-          <Menu.Positioner anchor={anchorRef} sideOffset={0}>
+          <Menu.Positioner
+            anchor={anchorRef}
+            sideOffset={0}
+            style={{ outline: 'none' }}
+          >
             <Menu.Popup
               style={{
                 display: 'flex',
@@ -345,7 +353,12 @@ export const MenuWithTrigger: Story = {
           render={<MenuButton variant="primary">もっと見る</MenuButton>}
         />
         <Menu.Portal>
-          <Menu.Positioner side="bottom" align="start" sideOffset={4}>
+          <Menu.Positioner
+            side="bottom"
+            align="start"
+            sideOffset={4}
+            style={{ outline: 'none' }}
+          >
             <Menu.Popup
               style={{
                 display: 'flex',

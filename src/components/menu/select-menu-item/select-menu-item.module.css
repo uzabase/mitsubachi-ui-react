@@ -11,6 +11,7 @@
 
 .root {
   composes: root from '../shared/menu-item-root.module.css';
+  gap: var(--spacing-large, 12px);
   padding-block: var(--spacing-small, 4px);
   padding-inline-start: var(--spacing-x-large, 16px);
   padding-inline-end: var(--spacing-large, 12px);
@@ -21,6 +22,12 @@
     --object-regular-default,
     rgba(0, 0, 0, 0.84)
   );
+}
+
+/* MenuItemLayout を伸ばしてチェックアイコンを右端に配置 */
+.root > :first-child {
+  flex: 1;
+  min-inline-size: 0;
 }
 
 /* ========================================
@@ -64,7 +71,27 @@
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  inline-size: 22px;
-  block-size: 22px;
+  inline-size: var(--icon-size-medium, 20px);
+  block-size: var(--icon-size-medium, 20px);
   color: var(--select-menu-item-check-color);
+}
+
+@media (max-width: 720px) {
+  .checkIcon {
+    inline-size: var(--icon-size-large, 22px);
+    block-size: var(--icon-size-large, 22px);
+  }
+}
+
+.checkIconSvg {
+  display: inline-flex;
+  inline-size: 10.02px;
+  block-size: 7.02px;
+}
+
+@media (max-width: 720px) {
+  .checkIconSvg {
+    inline-size: 11.02px;
+    block-size: 7.72px;
+  }
 }

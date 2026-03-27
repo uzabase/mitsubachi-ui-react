@@ -1,4 +1,4 @@
-import React from 'react';
+import type React from 'react';
 import styles from './menu-item-layout.module.css';
 
 export interface MenuItemLayoutProps {

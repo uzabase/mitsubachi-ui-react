@@ -61,7 +61,9 @@ export const SubMenuItem = ({
     >
       <MenuItemLayout icon={icon}>{children}</MenuItemLayout>
       <span className={styles.chevronIcon} aria-hidden="true">
-        <ChevronRightIcon />
+        <span className={styles.chevronIconSvg}>
+          <ChevronRightIcon />
+        </span>
       </span>
     </Menu.SubmenuTrigger>
   );
