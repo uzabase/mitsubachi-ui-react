@@ -96,6 +96,7 @@
 | `--spacing-x-large` | `16px` | Dialog セクションパディング |
 | `--spacing-2x-large` | `24px` | Dialog 外側パディング |
 | `--spacing-3x-large` | `32px` | Timeline loose スペーシング |
+| `--spacing-4x-large` | `40px` | UserMessage 左パディング |
 
 ### Border Radius
 

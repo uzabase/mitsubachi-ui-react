@@ -1,0 +1,28 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--surface-regular-default, #ffffff);
+  border-radius: var(--border-radius-x-large, 12px);
+  box-shadow:
+    0 4px 16px var(--neutral-neutral-30-alpha, rgba(0, 0, 0, 0.13)),
+    0 1px 4px var(--neutral-neutral-30-alpha, rgba(0, 0, 0, 0.13));
+  overflow: clip;
+}
+
+.collapsed {
+  inline-size: 536px;
+}
+
+.expanded {
+  inline-size: 720px;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  overflow-y: auto;
+  padding-inline: var(--spacing-x-large, 16px);
+  padding-block: var(--spacing-medium, 8px);
+  gap: var(--spacing-x-large, 16px);
+}

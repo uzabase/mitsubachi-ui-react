@@ -1,0 +1,68 @@
+import { Meta, Canvas, ArgTypes } from '@storybook/addon-docs/blocks';
+import * as FloatingAiChatStories from '../../../../stories/ai-chat/floating-ai-chat/FloatingAiChat.stories';
+
+<Meta of={FloatingAiChatStories} />
+
+# FloatingAiChat
+
+AIチャットのフローティングウィンドウコンポーネントです。Header / Body / Footer の3パーツで構成されます。
+
+- Figma URL : [ai-chat-header](https://www.figma.com/design/kHQNLM1dnk0EhZwOKBEBkL/%F0%9F%90%9D-Base-Component-Speeda-3.1-%E3%83%9F%E3%83%84%E3%83%90%E3%83%81?node-id=9336-8463) / [ai-chat-footer](https://www.figma.com/design/kHQNLM1dnk0EhZwOKBEBkL/%F0%9F%90%9D-Base-Component-Speeda-3.1-%E3%83%9F%E3%83%84%E3%83%90%E3%83%81?node-id=9336-8399)
+
+<Canvas of={FloatingAiChatStories.CollapsedNewSession} />
+
+---
+
+## When to Use
+
+- ユーザーがAIと対話するためのフローティングチャットUIを提供するとき
+- ページのメインコンテンツを遮らずに、補助的なAIチャット機能を提供するとき
+
+## When NOT to Use
+
+- ⚠️ ページ全体をチャットUIとして使用するとき。フルページチャットには専用のレイアウトコンポーネントを使用してください
+- ⚠️ 単純な通知やフィードバックを表示するとき。代わりに [Snackbar](?path=/docs/components-snackbar--docs) や [InlineNotification](?path=/docs/components-inlinenotification--docs) を使用してください
+
+## Service Context — Speeda AI Agent での使い方
+
+- メイン画面右下にフローティング表示され、ユーザーがAIに質問を送信し回答を受け取るインターフェースとして使用します
+- 初回起動時は `collapsed` サイズ・新規セッション状態で表示し、ユーザーの操作でサイズを切り替えます
+
+## 構成
+
+複合コンポーネント（Compound Component）パターンで構成されます。
+
+```tsx
+<FloatingAiChat size="collapsed">
+  <FloatingAiChat.Header newSession onHistoryClick={...} />
+  <FloatingAiChat.Body>
+    <UserMessage text="..." />
+  </FloatingAiChat.Body>
+  <FloatingAiChat.Footer>
+    <AiChatArea value={value} onValueChange={setValue} onSubmit={handleSubmit}>
+      <AiChatSegmentedControl value={mode} onValueChange={setMode} />
+    </AiChatArea>
+  </FloatingAiChat.Footer>
+</FloatingAiChat>
+```
+
+| サブコンポーネント | 役割 |
+| --- | --- |
+| `FloatingAiChat.Header` | [AiChatHeader](?path=/docs/components-aichat-aichatheader--docs) — タイトルとアクションボタン群 |
+| `FloatingAiChat.Body` | メッセージ表示エリア（スクロール可能） |
+| `FloatingAiChat.Footer` | [AiChatFooter](?path=/docs/components-aichat-aichatfooter--docs) — 入力エリア + 免責文 |
+
+## バリエーション
+
+| バリエーション | 幅 | 用途 |
+| --- | --- | --- |
+| `collapsed` | 536px | デフォルトのコンパクト表示です |
+| `expanded` | 720px | より広い入力・閲覧スペースが必要なときに使用します |
+
+<Canvas of={FloatingAiChatStories.AllStates} />
+
+## 関連コンポーネント
+
+- [AiChatHeader](?path=/docs/components-aichat-aichatheader--docs) : ヘッダーコンポーネントです
+- [AiChatFooter](?path=/docs/components-aichat-aichatfooter--docs) : フッターコンポーネントです
+- [UserMessage](?path=/docs/components-aichat-usermessage--docs) : ユーザー発言の表示コンポーネントです
