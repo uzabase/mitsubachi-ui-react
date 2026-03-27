@@ -9,7 +9,7 @@ export interface ReportHeadingProps {
   level?: ReportHeadingLevel;
   /** アクションスロット（ボタンなどのコンポーネントを配置） */
   action?: React.ReactNode;
-  /** ref */
+  /** ルートDOM要素への参照 */
   ref?: React.Ref<HTMLDivElement>;
 }
 
