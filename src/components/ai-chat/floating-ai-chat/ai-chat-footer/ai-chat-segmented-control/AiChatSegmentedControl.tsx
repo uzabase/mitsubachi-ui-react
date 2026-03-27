@@ -56,7 +56,7 @@ export const AiChatSegmentedControl = ({
         disabled={disabled}
       >
         <span className={styles.icon}>
-          {value === 'flash' ? <CheckIcon /> : <SearchIcon />}
+          <SearchIcon />
         </span>
         <span className={styles.label}>Flash Research</span>
       </button>
@@ -71,11 +71,9 @@ export const AiChatSegmentedControl = ({
         onClick={() => handleSelect('deep')}
         disabled={disabled}
       >
-        {value === 'deep' && (
-          <span className={styles.icon}>
-            <CheckIcon />
-          </span>
-        )}
+        <span className={styles.icon}>
+          <CheckIcon />
+        </span>
         <span className={styles.label}>Deep Research</span>
       </button>
     </div>
