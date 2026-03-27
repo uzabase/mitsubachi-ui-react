@@ -62,7 +62,7 @@
 
   /* タイポグラフィ */
   font-family: var(--typography-font-family, Arial, sans-serif);
-  font-weight: 400;
+  font-weight: var(--typography-font-weight-regular, 400);
 
   /* アニメーション */
   transition:
@@ -114,7 +114,7 @@
 
 .small .text {
   font-size: var(--font-scale-40, 14px);
-  line-height: 130%;
+  line-height: 150%;
   letter-spacing: 0.02em;
 }
 
@@ -123,7 +123,8 @@
    ============================== */
 
 .medium {
-  inline-size: 400px;
+  min-inline-size: 280px;
+  max-inline-size: 400px;
   min-block-size: 56px;
   max-block-size: 87px; /* 3行分: 14px × 1.5 × 3 + padding 24px */
   padding-block: var(--spacing-large, 12px);

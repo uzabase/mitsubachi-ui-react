@@ -91,22 +91,14 @@ function SnackbarProvider({
    Snackbar.Viewport
    ============================== */
 
-export interface SnackbarViewportProps {
-  className?: string;
-}
-
 /**
  * Snackbar の表示領域。
  * デスクトップでは画面右上、スマホでは画面下中央に配置される。
  */
-function SnackbarViewport({ className }: SnackbarViewportProps) {
-  const viewportClassName = [styles.viewport, className]
-    .filter(Boolean)
-    .join(' ');
-
+function SnackbarViewport() {
   return (
     <Toast.Portal>
-      <Toast.Viewport className={viewportClassName}>
+      <Toast.Viewport className={styles.viewport}>
         <SnackbarList />
       </Toast.Viewport>
     </Toast.Portal>
@@ -161,7 +153,6 @@ function SnackbarRoot({ toast, size = 'small' }: SnackbarRootProps) {
         <Toast.Description className={styles.text} />
       </div>
       <Toast.Close
-        className={styles.close}
         render={
           <IconButton
             variant="ghost"
