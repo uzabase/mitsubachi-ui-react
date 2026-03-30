@@ -1,0 +1,56 @@
+import { Meta, Canvas, ArgTypes } from '@storybook/addon-docs/blocks';
+import * as ActionMenuItemStories from '../../../../stories/menu/action-menu-item/ActionMenuItem.stories';
+
+<Meta of={ActionMenuItemStories} />
+
+# ActionMenuItem
+
+画面遷移を伴わずに特定のアクションを実行するメニュー項目です。
+選択すると、データの更新、実行、削除などの操作が即座に実行されます。
+
+- Figma URL : [ActionMenuItem]()
+
+<Canvas of={ActionMenuItemStories.Normal} />
+
+---
+
+## When to Use
+
+- 編集・コピー・複製など、その場で完結するアクションを提供したいとき
+- データの削除や取り消し困難な破壊的操作を提供したいとき（`variant="danger"` を使用）
+
+## When NOT to Use
+
+- 🚫 Menu コンポーネントの外で単体使用しないでください。必ず `<Menu>` + `<MenuDropdown>` 内に配置してください。
+- ⚠️ 別ページへ遷移させたいとき。[LinkMenuItem](?path=/docs/components-menu-linkmenuitem--docs) を使ってください。
+- ⚠️ 複数の選択肢から1つを選ばせたいとき。[SelectMenuItem](?path=/docs/components-menu-selectmenuitem--docs) を使ってください。
+- ⚠️ サブメニューを開きたいとき。[SubMenuItem](?path=/docs/components-menu-submenuitem--docs) を使ってください。
+
+## Service Context — Speeda AI Agent での使い方
+
+- チャット履歴の「編集」「削除」操作
+- コンテンツカードの「コピー」「複製」操作
+- 設定画面での即時実行アクション
+
+## バリエーション
+
+| バリアント | 用途 |
+| --- | --- |
+| `neutral` | 通常のアクション（編集、コピーなど） |
+| `danger` | 破壊的操作（削除、取り消しなど） |
+
+<Canvas of={ActionMenuItemStories.AllStates} />
+
+## アクセシビリティ
+
+- `disabled` 状態ではクリック操作が無効になり、テキストとアイコンが淡色表示になります
+- キーボード操作: 矢印キーでフォーカス移動、Enter で実行
+
+## Props
+
+<ArgTypes of={ActionMenuItemStories} />
+
+## 関連コンポーネント
+
+- [LinkMenuItem](?path=/docs/components-menu-linkmenuitem--docs) : ページ遷移用。ActionMenuItem はアクション実行用
+- [Menu](?path=/docs/components-menu-menu--docs) : ActionMenuItem を内包するコンテナ

@@ -1,0 +1,84 @@
+/**
+ * Menu コンポーネントスタイル
+ *
+ * ドロップダウンメニューの popup、group、groupLabel のスタイルを定義。
+ * Base UI Menu をラップし、data属性でアニメーション状態を管理。
+ */
+
+/* ========================================
+   Positioner
+   ======================================== */
+
+.positioner {
+  z-index: 2147483647;
+  outline: none;
+}
+
+/* ========================================
+   Popup
+   ======================================== */
+
+.popup {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--zabuton-regular, #ffffff);
+  border-radius: var(--border-radius-medium, 6px);
+  box-shadow:
+    0px 8px 16px 0px var(--elevation-regular, rgba(0, 0, 0, 0.13)),
+    0px 0px 6px 0px var(--elevation-semi-weak, rgba(0, 0, 0, 0.1));
+  min-inline-size: 120px;
+  max-block-size: calc(100dvh - 32px);
+  overflow: auto;
+  padding-block: var(--spacing-medium, 8px);
+
+  /* アニメーション */
+  transform-origin: var(--transform-origin);
+  transition:
+    opacity 150ms ease-out,
+    transform 150ms ease-out;
+}
+
+/* 状態: focus-visible（Tab でフォーカスが当たった際の黒枠） */
+.popup:focus-visible {
+  outline: 2px solid var(--focus-ring-default, #191919);
+  outline-offset: -2px;
+}
+
+/* Group 使用時は popup の padding を無効化（各 group が padding を持つ） */
+.popup:has(> .group) {
+  padding-block: 0;
+}
+
+.popup[data-starting-style],
+.popup[data-ending-style] {
+  opacity: 0;
+  transform: scale(0.95);
+}
+
+/* ========================================
+   Group
+   ======================================== */
+
+.group {
+  padding-block: var(--spacing-medium, 8px);
+}
+
+.group:not(:last-child) {
+  border-block-end: 1px solid var(--border-regular-default, rgba(0, 0, 0, 0.1));
+}
+
+/* ========================================
+   GroupLabel
+   ======================================== */
+
+.groupLabel {
+  padding-block: var(--spacing-small, 4px);
+  padding-inline: var(--spacing-x-large, 16px);
+  font-family: var(--typography-font-family, Arial, sans-serif);
+  font-weight: var(--typography-font-weight-regular, 400);
+  font-size: var(--font-scale-30, 12px);
+  line-height: 1.3;
+  letter-spacing: 0.02em;
+  color: var(--text-weak-default, rgba(0, 0, 0, 0.54));
+}

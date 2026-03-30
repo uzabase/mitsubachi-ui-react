@@ -1,7 +1,11 @@
 import { useRef } from 'react';
 import type { Decorator, Meta, StoryObj } from '@storybook/react-vite';
-import { Menu } from '@base-ui/react/menu';
-import { LinkMenuItem } from '../../../src/components/menu';
+import {
+  LinkMenuItem,
+  Menu as MenuComponent,
+  MenuTrigger,
+  MenuDropdown,
+} from '../../../src/components/menu';
 import { MenuButton } from '../../../src/components/button';
 import { DummyIcon } from '../../../src/icons';
 
@@ -9,37 +13,19 @@ import { DummyIcon } from '../../../src/icons';
 function MenuDecoratorWithWidth(width: number): Decorator {
   const Wrapper: Decorator = (Story) => {
     const containerRef = useRef<HTMLDivElement>(null);
-    const anchorRef = useRef<HTMLDivElement>(null);
     return (
-      <div
-        ref={containerRef}
-        style={{ position: 'relative', minHeight: '80px' }}
-      >
-        <Menu.Root open modal={false}>
-          <div ref={anchorRef} />
-          <Menu.Portal container={containerRef}>
-            <Menu.Positioner
-              anchor={anchorRef}
-              sideOffset={0}
-              style={{ outline: 'none' }}
-            >
-              <Menu.Popup
-                style={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  background: 'white',
-                  borderRadius: '6px',
-                  boxShadow:
-                    '0px 8px 16px 0px rgba(0,0,0,0.13), 0px 0px 6px 0px rgba(0,0,0,0.1)',
-                  paddingBlock: '8px',
-                  width: `${width}px`,
-                }}
-              >
-                <Story />
-              </Menu.Popup>
-            </Menu.Positioner>
-          </Menu.Portal>
-        </Menu.Root>
+      <div ref={containerRef}>
+        <MenuComponent open modal={false}>
+          <MenuDropdown
+            sideOffset={0}
+            width={width}
+            unstyled
+            positionStatic
+            container={containerRef}
+          >
+            <Story />
+          </MenuDropdown>
+        </MenuComponent>
       </div>
     );
   };
@@ -48,34 +34,18 @@ function MenuDecoratorWithWidth(width: number): Decorator {
 
 const MenuDecorator: Decorator = (Story) => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const anchorRef = useRef<HTMLDivElement>(null);
   return (
-    <div ref={containerRef} style={{ position: 'relative', minHeight: '80px' }}>
-      <Menu.Root open modal={false}>
-        <div ref={anchorRef} />
-        <Menu.Portal container={containerRef}>
-          <Menu.Positioner
-            anchor={anchorRef}
-            sideOffset={0}
-            style={{ outline: 'none' }}
-          >
-            <Menu.Popup
-              style={{
-                display: 'flex',
-                flexDirection: 'column',
-                background: 'white',
-                borderRadius: '6px',
-                boxShadow:
-                  '0px 8px 16px 0px rgba(0,0,0,0.13), 0px 0px 6px 0px rgba(0,0,0,0.1)',
-                paddingBlock: '8px',
-                minWidth: '160px',
-              }}
-            >
-              <Story />
-            </Menu.Popup>
-          </Menu.Positioner>
-        </Menu.Portal>
-      </Menu.Root>
+    <div ref={containerRef}>
+      <MenuComponent open modal={false}>
+        <MenuDropdown
+          sideOffset={0}
+          unstyled
+          positionStatic
+          container={containerRef}
+        >
+          <Story />
+        </MenuDropdown>
+      </MenuComponent>
     </div>
   );
 };
@@ -87,13 +57,11 @@ const meta = {
     layout: 'centered',
     docs: {
       description: {
-        component:
-          '別のページや画面に遷移するためのメニュー項目です。\n' +
-          '選択すると指定されたリンク先へ移動します。menuコンポーネント内でナビゲーション目的の操作に使用します。',
+        component: '別のページや画面に遷移するためのメニュー項目です。',
       },
     },
   },
-  tags: ['autodocs'],
+  tags: [],
   argTypes: {
     href: {
       control: 'text',
@@ -310,40 +278,20 @@ export const MenuWithTrigger: Story = {
   },
   decorators: [
     () => (
-      <Menu.Root>
-        <Menu.Trigger
-          render={<MenuButton variant="primary">メニュー</MenuButton>}
-        />
-        <Menu.Portal>
-          <Menu.Positioner
-            side="bottom"
-            align="start"
-            sideOffset={4}
-            style={{ outline: 'none' }}
-          >
-            <Menu.Popup
-              style={{
-                display: 'flex',
-                flexDirection: 'column',
-                background: 'white',
-                borderRadius: '6px',
-                boxShadow:
-                  '0px 8px 16px 0px rgba(0,0,0,0.13), 0px 0px 6px 0px rgba(0,0,0,0.1)',
-                paddingBlock: '8px',
-                minWidth: '144px',
-              }}
-            >
-              <LinkMenuItem href="/settings">設定</LinkMenuItem>
-              <LinkMenuItem href="/profile" icon={<DummyIcon />}>
-                プロフィール
-              </LinkMenuItem>
-              <LinkMenuItem href="https://example.com" newWindow>
-                ヘルプ
-              </LinkMenuItem>
-            </Menu.Popup>
-          </Menu.Positioner>
-        </Menu.Portal>
-      </Menu.Root>
+      <MenuComponent>
+        <MenuTrigger>
+          <MenuButton variant="primary">メニュー</MenuButton>
+        </MenuTrigger>
+        <MenuDropdown width={144}>
+          <LinkMenuItem href="/settings">設定</LinkMenuItem>
+          <LinkMenuItem href="/profile" icon={<DummyIcon />}>
+            プロフィール
+          </LinkMenuItem>
+          <LinkMenuItem href="https://example.com" newWindow>
+            ヘルプ
+          </LinkMenuItem>
+        </MenuDropdown>
+      </MenuComponent>
     ),
   ],
 };

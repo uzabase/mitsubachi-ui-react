@@ -1,0 +1,87 @@
+import { Meta, Canvas, ArgTypes } from '@storybook/addon-docs/blocks';
+import * as MenuStories from '../../../../stories/menu/menu/Menu.stories';
+
+<Meta of={MenuStories} />
+
+# Menu
+
+トリガー要素をクリックで開き、外側クリックまたはESCで閉じるドロップダウンメニューです。
+MenuGroup で項目をグルーピングし、区切り線で視覚的に分離できます。
+
+- Figma URL : [Menu]()
+
+<Canvas of={MenuStories.Default} />
+
+---
+
+## When to Use
+
+- ボタンやアイコンボタンのクリックで複数の操作を提示したいとき
+- ページ遷移・アクション実行・設定切り替えなど、異なる種類の操作をひとつのメニューにまとめたいとき
+- コンテキストに応じた操作群を省スペースで提供したいとき
+
+## When NOT to Use
+
+- ⚠️ 選択肢が1つしかないとき。ボタンを直接配置してください。
+- ⚠️ フォームの選択UIが必要なとき。Select コンポーネントを使ってください。
+- ⚠️ 常に表示しておくべきナビゲーションのとき。サイドバーやタブを使ってください。
+
+## Service Context — Speeda AI Agent での使い方
+
+- チャットヘッダーの履歴ボタンから会話履歴一覧を表示
+- ユーザーメニュー（プロフィール、設定、ログアウト等）
+- コンテンツカードの「もっと見る」ボタンからの操作メニュー
+
+## 構成コンポーネント
+
+| コンポーネント | 役割 |
+| --- | --- |
+| `Menu` | 開閉状態を管理するルート |
+| `MenuTrigger` | トリガー要素（MenuButton, IconButton 等）のラップ |
+| `MenuDropdown` | Portal + Positioner + Popup をまとめたドロップダウン本体 |
+| `MenuGroup` | アイテムのグルーピング + 区切り線 |
+| `SubMenuDropdown` | サブメニュー用ドロップダウン |
+| `MenuSubmenuRoot` | サブメニューのルート（Base UI 再エクスポート） |
+| `MenuRadioGroup` | SelectMenuItem 用ラジオグループ（Base UI 再エクスポート） |
+
+## バリエーション
+
+### グループ付き
+
+複数の MenuGroup を並べると、グループ間に区切り線が表示されます。
+
+<Canvas of={MenuStories.WithGroups} />
+
+### ラベル付きグループ
+
+<Canvas of={MenuStories.WithGroupLabels} />
+
+### 全アイテム種別の混在
+
+<Canvas of={MenuStories.MixedItems} />
+
+### サブメニュー
+
+<Canvas of={MenuStories.WithSubMenu} />
+
+### RadioGroup（単一選択）
+
+<Canvas of={MenuStories.WithRadioGroup} />
+
+## アクセシビリティ
+
+- メニューは `ESC` キーで閉じることができます
+- メニュー内のアイテムは矢印キーで移動できます
+- `modal` がデフォルト `true` のため、メニュー外の操作はブロックされます
+
+## Props
+
+<ArgTypes of={MenuStories} />
+
+## 関連コンポーネント
+
+- [ActionMenuItem](?path=/docs/components-menu-actionmenuitem--docs) : アクション実行用メニュー項目
+- [LinkMenuItem](?path=/docs/components-menu-linkmenuitem--docs) : ページ遷移用メニュー項目
+- [SelectMenuItem](?path=/docs/components-menu-selectmenuitem--docs) : 単一選択用メニュー項目
+- [SubMenuItem](?path=/docs/components-menu-submenuitem--docs) : サブメニュー展開用メニュー項目
+- [MenuButton](?path=/docs/components-button-menubutton--docs) : メニューのトリガーボタン
