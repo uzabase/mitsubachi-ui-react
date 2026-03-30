@@ -7,6 +7,12 @@ const meta = {
   component: TextAreaUnit,
   parameters: {
     layout: 'centered',
+    docs: {
+      description: {
+        component:
+          'ラベルとサポートテキストを含むテキストエリアフィールドです。',
+      },
+    },
   },
   decorators: [
     (Story) => (
@@ -15,7 +21,6 @@ const meta = {
       </div>
     ),
   ],
-  tags: ['autodocs'],
   argTypes: {
     label: {
       control: 'text',

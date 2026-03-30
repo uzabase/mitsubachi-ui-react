@@ -15,7 +15,6 @@ const meta = {
       },
     },
   },
-  tags: [],
   argTypes: {
     variant: {
       control: 'select',

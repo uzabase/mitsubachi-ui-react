@@ -9,13 +9,10 @@ const meta = {
     layout: 'centered',
     docs: {
       description: {
-        component:
-          '複数のLinkTagをグループ化して表示するコンポーネント。\n\n' +
-          'タグは折り返しを許容します。',
+        component: '複数のLinkTagをグループ化して表示するコンポーネントです。',
       },
     },
   },
-  tags: ['autodocs'],
   argTypes: {
     tags: {
       description: '表示するタグの配列',

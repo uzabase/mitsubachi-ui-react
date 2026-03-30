@@ -1,0 +1,39 @@
+import { Meta, Canvas, ArgTypes } from '@storybook/addon-docs/blocks';
+import * as InputChipStories from '../../../../stories/chip/input-chip/InputChip.stories';
+
+<Meta of={InputChipStories} />
+
+# InputChip
+
+ユーザーが入力した内容を、要素ごとに整理して表示するコンポーネントです。×ボタンで個別に削除できます。
+
+- Figma URL : [InputChip](https://www.figma.com/design/kHQNLM1dnk0EhZwOKBEBkL/%F0%9F%90%9D-Base-Component-Speeda-3.1-%E3%83%9F%E3%83%84%E3%83%90%E3%83%81?node-id=5815-12862&t=wAsCASAO2ZF6eRSb-1)
+
+<Canvas of={InputChipStories.Default} />
+
+---
+
+## When to Use
+
+- ユーザーが入力・選択した項目をタグ形式で一覧表示するとき
+- 各項目を個別に削除できるようにしたいとき
+
+## When NOT to Use
+
+- 🚫 単独で配置したいとき。必ず [InputChipGroup](?path=/docs/components-chip-inputchipgroup--docs) 経由で使用してください
+- ⚠️ フィルター条件の on/off を切り替えたいとき。代わりに [FilterChip](?path=/docs/components-chip-filterchip--docs) を使ってください
+- ⚠️ 読み取り専用のラベルを表示したいとき。代わりに [ReadOnlyTag](?path=/docs/components-tag-readonlytag--docs) を使ってください
+
+## Service Context — Speeda AI Agent での使い方
+
+- 検索条件として入力されたキーワードの一覧表示
+- 選択済みのフィルター項目（企業名、タグなど）の表示と削除
+
+## Props
+
+<ArgTypes of={InputChipStories} />
+
+## 関連コンポーネント
+
+- [InputChipGroup](?path=/docs/components-chip-inputchipgroup--docs) : InputChip をグループとしてレイアウトします
+- [FilterChip](?path=/docs/components-chip-filterchip--docs) : フィルター条件の on/off を切り替えるチップです

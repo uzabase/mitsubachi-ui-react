@@ -1,0 +1,46 @@
+import { Meta, Canvas, ArgTypes } from '@storybook/addon-docs/blocks';
+import * as TimelineStories from '../../../../stories/timeline/Timeline.stories';
+
+<Meta of={TimelineStories} />
+
+# Timeline
+
+出来事や状態の変化を時系列に沿って表示するコンポーネントです。<br/>
+過去から現在までの経過や、複数のイベントの関係性を直感的に理解できるようにします。
+
+- Figma URL : [Timeline](https://www.figma.com/design/kHQNLM1dnk0EhZwOKBEBkL/%F0%9F%90%9D-Base-Component-Speeda-3.1-%E3%83%9F%E3%83%84%E3%83%90%E3%83%81?node-id=6931-6395&t=wAsCASAO2ZF6eRSb-1)
+
+<Canvas of={TimelineStories.Normal} />
+
+---
+
+## When to Use
+
+- イベントや変更履歴を時系列で表示するとき
+- 進捗やステータスの推移を可視化するとき
+
+## When NOT to Use
+
+- ⚠️ 単純なリスト表示で十分なとき。時系列の文脈が不要であれば、通常のリストを使ってください
+- ⚠️ ステップバイステップのウィザード形式のとき。タイムラインは過去の記録の表示に適しています
+
+## Service Context — Speeda AI Agent での使い方
+
+- 企業の沿革やイベント履歴の表示
+- 分析レポートの更新履歴
+- データ処理の進捗ステータス表示
+
+## バリエーション
+
+| バリエーション | 用途 |
+| --- | --- |
+| `normal`（デフォルト） | 標準的な間隔で表示します |
+| `loose` | 余裕のある間隔で表示します。項目ごとの情報量が多いときに使用してください |
+
+## Props
+
+<ArgTypes of={TimelineStories} />
+
+## 関連コンポーネント
+
+- [TimelineItem](?path=/docs/components-timeline-timelineitem--docs) : タイムライン内の個別アイテムです

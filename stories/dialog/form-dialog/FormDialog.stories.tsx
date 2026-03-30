@@ -8,8 +8,13 @@ const meta = {
   component: FormDialog,
   parameters: {
     layout: 'centered',
+    docs: {
+      description: {
+        component: 'フォーム入力を行うためのダイアログです。',
+      },
+    },
   },
-  tags: ['autodocs'],
+  tags: [],
   argTypes: {
     open: {
       control: false,

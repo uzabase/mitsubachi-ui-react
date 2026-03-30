@@ -1,0 +1,50 @@
+import { Meta, Canvas, ArgTypes } from '@storybook/addon-docs/blocks';
+import * as FilterChipStories from '../../../../stories/chip/filter-chip/FilterChip.stories';
+
+<Meta of={FilterChipStories} />
+
+# FilterChip
+
+フィルター条件を選択して切り替えるコンポーネントです。押下することで on/off を切り替え、選択状態を視覚的に示します。
+
+- Figma URL : [FilterChip](https://www.figma.com/design/kHQNLM1dnk0EhZwOKBEBkL/%F0%9F%90%9D-Base-Component-Speeda-3.1-%E3%83%9F%E3%83%84%E3%83%90%E3%83%81?node-id=5416-7932&t=wAsCASAO2ZF6eRSb-1)
+
+<Canvas of={FilterChipStories.UnselectedDefault} />
+
+---
+
+## When to Use
+
+- フィルター条件の on/off を切り替えるとき
+- 複数の選択肢から条件を選ばせるとき（FilterChipSingleSelectGroup または FilterChipMultiSelectGroup 経由で使用）
+
+## When NOT to Use
+
+- 🚫 単独で配置したいとき。必ず [FilterChipSingleSelectGroup](?path=/docs/components-chip-filterchipsingleselectgroup--docs) または [FilterChipMultiSelectGroup](?path=/docs/components-chip-filterchipmultiselectgroup--docs) 経由で使用してください
+- ⚠️ ユーザーが入力した内容をタグとして表示・削除したいとき。代わりに [InputChip](?path=/docs/components-chip-inputchip--docs) を使ってください
+- ⚠️ 読み取り専用のラベルとして表示したいとき。代わりに [ReadOnlyTag](?path=/docs/components-tag-readonlytag--docs) を使ってください
+
+## Service Context — Speeda AI Agent での使い方
+
+- 検索結果のフィルタリング条件（業種、地域、期間など）の切り替え
+- レポートやダッシュボードの表示項目の絞り込み
+- データ一覧画面でのカテゴリフィルター
+
+## バリエーション
+
+<Canvas of={FilterChipStories.AllStates} />
+
+## アクセシビリティ
+
+- チェックボックスのロールを持ち、`aria-checked` で選択状態が通知されます
+- `disabled` 状態では操作が無効化され、スクリーンリーダーにも伝わります
+
+## Props
+
+<ArgTypes of={FilterChipStories} />
+
+## 関連コンポーネント
+
+- [FilterChipSingleSelectGroup](?path=/docs/components-chip-filterchipsingleselectgroup--docs) : FilterChip を単一選択グループとしてレイアウトします
+- [FilterChipMultiSelectGroup](?path=/docs/components-chip-filterchipmultiselectgroup--docs) : FilterChip を複数選択グループとしてレイアウトします
+- [InputChip](?path=/docs/components-chip-inputchip--docs) : ユーザーが入力した内容を削除可能なタグとして表示します

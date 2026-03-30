@@ -22,52 +22,22 @@ const meta = {
     layout: 'padded',
     docs: {
       description: {
-        component:
-          'データを行と列で表示するテーブルコンポーネントです。\n' +
-          'グリッドビューとリストビューの2つのビューモードを持ちます。\n\n' +
-          '- **グリッドビュー**: 行×列の二次元構造で、比較・分析に適しています（例: 財務諸表、競合比較）\n' +
-          '- **リストビュー**: 一覧形式で、閲覧・把握に適しています（例: ユーザー一覧、人物一覧）\n\n' +
-          'ソート機能は `useTableSort` Hook で提供しています。\n' +
-          'カラムアクションメニューは `menuItems` prop で表示できます。\n\n' +
-          '## 使用例\n\n' +
-          '```tsx\n' +
-          '<Table view="grid" aria-label="財務データ">\n' +
-          '  <TableCol width="40%" />\n' +
-          '  <TableCol width="30%" />\n' +
-          '  <TableHead>\n' +
-          '    <TableRow>\n' +
-          '      <TableHeaderCell>企業名</TableHeaderCell>\n' +
-          '      <TableHeaderCell sortState="ascending" onSortChange={fn}>\n' +
-          '        売上\n' +
-          '      </TableHeaderCell>\n' +
-          '    </TableRow>\n' +
-          '  </TableHead>\n' +
-          '  <TableBody>\n' +
-          '    <TableRow>\n' +
-          '      <TableBodyCell>株式会社A</TableBodyCell>\n' +
-          '      <TableBodyCell contentType="number">99,999</TableBodyCell>\n' +
-          '    </TableRow>\n' +
-          '  </TableBody>\n' +
-          '</Table>\n' +
-          '```\n\n' +
-          '## 行の選択状態について\n\n' +
-          '> **⚠️注意:** チェックボックスの選択状態と行の背景色（青色）は自動では連動しません。\n' +
-          '> チェックボックスの状態を管理し、`TableRow` の `selected` prop に反映してください。\n\n' +
-          '```tsx\n' +
-          'const [selectedIds, setSelectedIds] = useState<Set<number>>(new Set());\n\n' +
-          '<TableRow selected={selectedIds.has(row.id)}>\n' +
-          '  <TableBodyCell contentType="checkbox">\n' +
-          '    <Checkbox\n' +
-          '      checked={selectedIds.has(row.id)}\n' +
-          '      onCheckedChange={() => toggleRow(row.id)}\n' +
-          '    />\n' +
-          '  </TableBodyCell>\n' +
-          '</TableRow>\n' +
-          '```',
+        component: 'データを行と列で表示するテーブルコンポーネントです。',
       },
     },
   },
-  tags: ['autodocs'],
+  argTypes: {
+    view: {
+      control: 'select',
+      options: ['grid', 'list'],
+      description:
+        'テーブルのビューモード。グリッドは比較・分析向け、リストは一覧・閲覧向け',
+    },
+    'aria-label': {
+      control: 'text',
+      description: 'テーブルのアクセシブルラベル（スクリーンリーダー向け）',
+    },
+  },
 } satisfies Meta<typeof Table>;
 
 export default meta;

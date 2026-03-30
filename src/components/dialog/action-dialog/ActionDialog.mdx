@@ -1,0 +1,41 @@
+import { Meta, Canvas, ArgTypes } from '@storybook/addon-docs/blocks';
+import * as ActionDialogStories from '../../../../stories/dialog/action-dialog/ActionDialog.stories';
+
+<Meta of={ActionDialogStories} />
+
+# ActionDialog
+
+確認や削除など、ユーザーの意思決定を求めるモーダルダイアログです。Desktop では small サイズ固定、Phone では横に余白を持ちコンパクトに表示されます。
+
+- Figma URL : [ActionDialog](https://www.figma.com/design/kHQNLM1dnk0EhZwOKBEBkL/%F0%9F%90%9D-Base-Component-Speeda-3.1-%E3%83%9F%E3%83%84%E3%83%90%E3%83%81?node-id=9079-10648&t=wAsCASAO2ZF6eRSb-1)
+
+<Canvas of={ActionDialogStories.Default} />
+
+---
+
+## When to Use
+
+- 操作の実行前にユーザーへ確認を求めるとき（例：「本当に実行しますか？」）
+- 削除やリセットなど、取り消しが難しい破壊的操作の最終確認を行うとき
+- 短いメッセージとアクションボタンだけで完結する簡潔な確認ダイアログが必要なとき
+
+## When NOT to Use
+
+- ⚠️ フォーム入力を伴う操作のとき。代わりに [FormDialog](?path=/docs/components-dialog-formdialog--docs) を使ってください
+- ⚠️ 利用規約や長文の情報を読ませたいとき。代わりに [InformationDialog](?path=/docs/components-dialog-informationdialog--docs) を使ってください
+- ⚠️ 単純な通知やフィードバックを表示したいとき。代わりに [Snackbar](?path=/docs/components-snackbar--docs) を使ってください
+
+## Service Context — Speeda AI Agent での使い方
+
+- データの削除やリセット操作の確認ダイアログ
+- ステータス変更やワークフロー遷移の最終確認
+- ログアウトやセッション終了の確認
+
+## Props
+
+<ArgTypes of={ActionDialogStories} />
+
+## 関連コンポーネント
+
+- [FormDialog](?path=/docs/components-dialog-formdialog--docs) : フォーム入力を伴うダイアログです。ActionDialog は入力なしの確認用途に特化しています
+- [InformationDialog](?path=/docs/components-dialog-informationdialog--docs) : 利用規約など長文の情報表示用ダイアログです。複数サイズに対応しています

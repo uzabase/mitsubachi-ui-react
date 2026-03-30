@@ -1,0 +1,51 @@
+import { Meta, Canvas, ArgTypes } from '@storybook/addon-docs/blocks';
+import * as ReadOnlyTagStories from '../../../../stories/tag/read-only-tag/ReadOnlyTag.stories';
+
+<Meta of={ReadOnlyTagStories} />
+
+# ReadOnlyTag
+
+情報の分類や属性、状態を示すための表示専用のタグコンポーネントです。<br/>
+ユーザー操作はできず、ラベルとして情報を補足・整理する目的で使用されます。
+
+- Figma URL : [ReadOnlyTag](https://www.figma.com/design/kHQNLM1dnk0EhZwOKBEBkL/%F0%9F%90%9D-Base-Component-Speeda-3.1-%E3%83%9F%E3%83%84%E3%83%90%E3%83%81?node-id=5646-1874&t=wAsCASAO2ZF6eRSb-1)
+
+<Canvas of={ReadOnlyTagStories.Neutral} />
+
+---
+
+## When to Use
+
+- コンテンツのステータス（成功、警告、エラーなど）を視覚的に示すとき
+- 読み取り専用の属性ラベルを表示するとき
+
+## When NOT to Use
+
+- ⚠️ タグをクリックして遷移させたいとき。代わりに [LinkTag](?path=/docs/components-tag-linktag--docs) を使ってください
+- ⚠️ ユーザーが削除できるタグを表示したいとき。代わりに [InputChip](?path=/docs/components-chip-inputchip--docs) を使ってください
+
+## Service Context — Speeda AI Agent での使い方
+
+- データの処理ステータス表示（完了、処理中、エラーなど）
+- タイムライン上のイベント分類ラベル
+- テーブル行内のカテゴリ表示
+
+## バリエーション
+
+| バリエーション | 用途 |
+| --- | --- |
+| `neutral` | 特定の意味を持たない汎用ラベルに使用してください |
+| `information` | 情報・補足を示すラベルに使用してください |
+| `positive` | 成功・完了など肯定的なステータスに使用してください |
+| `negative` | エラー・失敗など否定的なステータスに使用してください |
+
+<Canvas of={ReadOnlyTagStories.AllPatterns} />
+
+## Props
+
+<ArgTypes of={ReadOnlyTagStories} />
+
+## 関連コンポーネント
+
+- [LinkTag](?path=/docs/components-tag-linktag--docs) : クリック可能なタグコンポーネントです
+- [LinkTagGroup](?path=/docs/components-tag-linktaggroup--docs) : 複数の LinkTag をグループ化します

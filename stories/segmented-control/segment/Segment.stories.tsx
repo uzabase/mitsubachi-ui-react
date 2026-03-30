@@ -11,23 +11,10 @@ const meta = {
     layout: 'padded',
     docs: {
       description: {
-        component:
-          'SegmentedControl 内の個別セグメントです。\n\n' +
-          '> **注意:** このコンポーネントを単独で使用しないでください。\n' +
-          '> [SegmentedControl](?path=/docs/components-segmentedcontrol-segmentedcontrol--docs) 内に配置して利用してください。\n\n' +
-          '> **使い分け:** SegmentedControl は単一選択のUIコンポーネントです。\n' +
-          '> 複数選択が必要な場合は、チェックボックスグループの使用を検討してください。\n\n' +
-          '## 使用例\n\n' +
-          '```tsx\n' +
-          '<SegmentedControl defaultValue="tab1">\n' +
-          '  <Segment variant="text" value="Item1">アイテム1</Segment>\n' +
-          '  <Segment variant="text" value="Item2">アイテム2</Segment>\n' +
-          '</SegmentedControl>\n' +
-          '```',
+        component: 'SegmentedControl内の個別セグメントです。',
       },
     },
   },
-  tags: ['autodocs'],
   argTypes: {
     value: {
       control: 'text',

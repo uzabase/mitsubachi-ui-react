@@ -1,0 +1,42 @@
+import { Meta, Canvas, ArgTypes } from '@storybook/addon-docs/blocks';
+import * as SearchBoxStories from '../../../stories/search-box/SearchBox.stories';
+
+<Meta of={SearchBoxStories} />
+
+# SearchBox
+
+キーワード検索のための入力フィールドコンポーネントです。検索アイコンとクリアボタンを備えています。
+
+- Figma URL : [SearchBox](https://www.figma.com/design/kHQNLM1dnk0EhZwOKBEBkL/%F0%9F%90%9D-Base-Component-Speeda-3.1-%E3%83%9F%E3%83%84%E3%83%90%E3%83%81?node-id=5809-9293&t=wAsCASAO2ZF6eRSb-1)
+
+<Canvas of={SearchBoxStories.Default} />
+
+---
+
+## When to Use
+
+- キーワード入力による検索機能を提供するとき
+- リストやテーブルのフィルタリング入力として使うとき
+
+## When NOT to Use
+
+- ⚠️ 検索候補のサジェストリストを表示したいとき。SearchBox と [Suggestion](?path=/docs/components-suggestion--docs) を組み合わせてください
+- ⚠️ 汎用的なテキスト入力のとき。検索目的でなければテキストインプットを使ってください
+
+## Service Context — Speeda AI Agent での使い方
+
+- メイン検索バーでのキーワード入力
+- サイドバーやダイアログ内のフィルター検索
+- テーブル上部の検索フィールド
+
+## バリエーション
+
+<Canvas of={SearchBoxStories.AllStates} />
+
+## Props
+
+<ArgTypes of={SearchBoxStories} />
+
+## 関連コンポーネント
+
+- [Suggestion](?path=/docs/components-suggestion--docs) : 検索候補を表示するサジェストリストです

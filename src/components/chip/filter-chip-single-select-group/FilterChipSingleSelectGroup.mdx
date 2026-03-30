@@ -1,0 +1,39 @@
+import { Meta, Canvas, ArgTypes } from '@storybook/addon-docs/blocks';
+import * as FilterChipSingleSelectGroupStories from '../../../../stories/chip/filter-chip-single-select-group/FilterChipSingleSelectGroup.stories';
+
+<Meta of={FilterChipSingleSelectGroupStories} />
+
+# FilterChipSingleSelectGroup
+
+FilterChip を横並び・折り返しでレイアウトし、選択肢の中から1つだけを選択できるグループコンポーネントです。
+
+- Figma URL : [FilterChipSingleSelectGroup](https://www.figma.com/design/kHQNLM1dnk0EhZwOKBEBkL/%F0%9F%90%9D-Base-Component-Speeda-3.1-%E3%83%9F%E3%83%84%E3%83%90%E3%83%81?node-id=5702-6400&t=wAsCASAO2ZF6eRSb-1)
+
+<Canvas of={FilterChipSingleSelectGroupStories.Default} />
+
+---
+
+## When to Use
+
+- フィルター条件を排他的に1つだけ選択させたいとき
+- ラジオボタンの代替として、よりコンパクトなUIで選択肢を提示したいとき
+
+## When NOT to Use
+
+- ⚠️ 複数の条件を同時に選択させたいとき。代わりに [FilterChipMultiSelectGroup](?path=/docs/components-chip-filterchipmultiselectgroup--docs) を使ってください
+- ⚠️ 選択肢が2〜5個の固定的な切り替えのとき。代わりに [SegmentedControl](?path=/docs/components-segmentedcontrol-segmentedcontrol--docs) を検討してください
+
+## Service Context — Speeda AI Agent での使い方
+
+- 検索結果の表示期間（1年、3年、5年など）の切り替え
+- データの表示モード（日次、週次、月次など）の選択
+
+## Props
+
+<ArgTypes of={FilterChipSingleSelectGroupStories} />
+
+## 関連コンポーネント
+
+- [FilterChipMultiSelectGroup](?path=/docs/components-chip-filterchipmultiselectgroup--docs) : 複数選択のフィルターチップグループです
+- [FilterChip](?path=/docs/components-chip-filterchip--docs) : グループ内の個別チップコンポーネントです
+- [SegmentedControl](?path=/docs/components-segmentedcontrol-segmentedcontrol--docs) : 少数の固定選択肢を切り替えるコントロールです

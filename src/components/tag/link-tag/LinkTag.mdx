@@ -1,0 +1,49 @@
+import { Meta, Canvas, ArgTypes } from '@storybook/addon-docs/blocks';
+import * as LinkTagStories from '../../../../stories/tag/link-tag/LinkTag.stories';
+
+<Meta of={LinkTagStories} />
+
+# LinkTag
+
+コンテンツの属性や分類を簡潔に示すためのクリック可能なタグコンポーネントです。
+
+- Figma URL : [LinkTag](https://www.figma.com/design/kHQNLM1dnk0EhZwOKBEBkL/%F0%9F%90%9D-Base-Component-Speeda-3.1-%E3%83%9F%E3%83%84%E3%83%90%E3%83%81?node-id=5416-7917&t=wAsCASAO2ZF6eRSb-1)
+
+<Canvas of={LinkTagStories.Medium} />
+
+---
+
+## When to Use
+
+- コンテンツに関連するカテゴリやキーワードをクリック可能なタグとして表示するとき
+- タグをクリックして関連コンテンツへ遷移させたいとき
+
+## When NOT to Use
+
+- ⚠️ クリックさせる必要がない読み取り専用のラベルを表示したいとき。代わりに [ReadOnlyTag](?path=/docs/components-tag-readonlytag--docs) を使ってください
+- ⚠️ ユーザーが入力した内容を削除可能なタグとして表示したいとき。代わりに [InputChip](?path=/docs/components-chip-inputchip--docs) を使ってください
+
+## Service Context — Speeda AI Agent での使い方
+
+- 企業情報に紐づく業種タグや地域タグの表示
+- 記事やレポートのカテゴリタグ
+- 検索結果の関連キーワードタグ
+
+## バリエーション
+
+| サイズ | 用途 |
+| --- | --- |
+| `x-small` | 文中や文末に配置するとき |
+| `small` | 12px の文字列と並べるとき |
+| `medium` | 原則このサイズを使用してください |
+
+<Canvas of={LinkTagStories.AllSizes} />
+
+## Props
+
+<ArgTypes of={LinkTagStories} />
+
+## 関連コンポーネント
+
+- [LinkTagGroup](?path=/docs/components-tag-linktaggroup--docs) : 複数の LinkTag をグループ化して表示します
+- [ReadOnlyTag](?path=/docs/components-tag-readonlytag--docs) : クリック不可の読み取り専用タグです

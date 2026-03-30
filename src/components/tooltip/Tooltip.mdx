@@ -1,0 +1,45 @@
+import { Meta, Canvas, ArgTypes } from '@storybook/addon-docs/blocks';
+import * as TooltipStories from '../../../stories/tooltip/Tooltip.stories';
+
+<Meta of={TooltipStories} />
+
+# Tooltip
+
+UI要素に関する補足情報や説明を一時的に表示するコンポーネントです。<br/>
+アイコンやボタン、テキストなどにホバーすることで表示され、ユーザーの操作を妨げずに理解を助けます。
+
+- Figma URL : [Tooltip](https://www.figma.com/design/kHQNLM1dnk0EhZwOKBEBkL/%F0%9F%90%9D-Base-Component-Speeda-3.1-%E3%83%9F%E3%83%84%E3%83%90%E3%83%81?node-id=6656-2365&t=wAsCASAO2ZF6eRSb-1)
+
+<Canvas of={TooltipStories.Normal} />
+
+---
+
+## When to Use
+
+- アイコンボタンなどテキストラベルを持たない要素に説明を付けるとき
+- 操作の補足説明やヒントを一時的に表示するとき
+
+## When NOT to Use
+
+- ⚠️ 重要な情報や操作に必須の情報を伝えたいとき。Tooltip はホバー・フォーカスでしか表示されないため、常時表示のテキストやラベルを使ってください
+- ⚠️ リッチなコンテンツ（画像、リンク、ボタンなど）を表示したいとき。Tooltip はプレーンテキスト専用です
+
+## Service Context — Speeda AI Agent での使い方
+
+- アイコンボタンのラベル表示（IconButton の `aria-label` と連動）
+- テーブルヘッダーの項目説明
+- 省略されたテキストの全文表示
+
+## バリエーション
+
+<Canvas of={TooltipStories.AllPlacements} />
+
+## アクセシビリティ
+
+- トリガー要素にフォーカスが当たると自動的に表示されます
+- `Escape` キーで非表示にできます
+- `role="tooltip"` と `aria-describedby` で支援技術に関連付けられます
+
+## Props
+
+<ArgTypes of={TooltipStories} />

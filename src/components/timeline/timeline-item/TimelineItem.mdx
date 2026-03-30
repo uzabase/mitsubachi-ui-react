@@ -1,0 +1,37 @@
+import { Meta, Canvas, ArgTypes } from '@storybook/addon-docs/blocks';
+import * as TimelineItemStories from '../../../../stories/timeline/TimelineItem.stories';
+
+<Meta of={TimelineItemStories} />
+
+# TimelineItem
+
+出来事や状態の変化を時系列に沿って表示するコンポーネントの、時系列の個別アイテムです。。<br/>
+`emphasized` を指定すると、ドットが有彩色になり重要な出来事を強調できます。
+
+- Figma URL : [TimelineItem](https://www.figma.com/design/kHQNLM1dnk0EhZwOKBEBkL/%F0%9F%90%9D-Base-Component-Speeda-3.1-%E3%83%9F%E3%83%84%E3%83%90%E3%83%81?node-id=6931-5682&t=wAsCASAO2ZF6eRSb-1)
+
+<Canvas of={TimelineItemStories.Default} />
+
+---
+
+## When to Use
+
+- Timeline コンポーネント内で個別のイベントを表示するとき
+- 重要なイベントを `emphasized` で強調したいとき
+
+## When NOT to Use
+
+- 🚫 Timeline の外で単独使用したいとき。必ず [Timeline](?path=/docs/components-timeline-timeline--docs) の子要素として使用してください
+
+## Service Context — Speeda AI Agent での使い方
+
+- 企業の重要イベント（上場、M&A など）を `emphasized` で強調
+- 通常のイベント（決算発表、プレスリリースなど）をデフォルトで表示
+
+## Props
+
+<ArgTypes of={TimelineItemStories} />
+
+## 関連コンポーネント
+
+- [Timeline](?path=/docs/components-timeline-timeline--docs) : TimelineItem を配置する親コンテナです

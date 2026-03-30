@@ -73,23 +73,10 @@ const meta = {
     docs: {
       description: {
         component:
-          '出来事や状態の変化を時系列に沿って表示するためのコンポーネントです。\n\n' +
-          '時間の流れに基づいて情報を並べることで、過去から現在までの経過や、複数のイベントの関係性を直感的に理解できるようにします。\n\n' +
-          '## 使用例\n\n' +
-          '```tsx\n' +
-          '<Timeline itemSpacing="normal">\n' +
-          '  <Timeline.Item>2018年07月 常務執行役員</Timeline.Item>\n' +
-          '  <Timeline.Item emphasized>2018年07月 法人事業統括 現任</Timeline.Item>\n' +
-          '  <Timeline.Item>2018年07月 事業戦略担当</Timeline.Item>\n' +
-          '</Timeline>\n' +
-          '```\n\n' +
-          '### 強調（emphasized）\n\n' +
-          '最も重要な出来事、文脈の起点、現在のステータスなどに使用します。\n' +
-          '一つのタイムライン内で複数に使用することも可能です。',
+          '出来事や状態の変化を時系列に沿って表示するコンポーネントです。',
       },
     },
   },
-  tags: ['autodocs'],
   args: {
     children: undefined,
   },
@@ -345,6 +332,78 @@ export const TwoItems: Story = {
           </span>
         </Timeline.Item>
       </Timeline>
+    </div>
+  ),
+};
+
+/**
+ * すべての状態を一覧表示
+ */
+export const AllStates: Story = {
+  args: {
+    ...Normal.args,
+  },
+  render: () => (
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '32px',
+        padding: '40px',
+      }}
+    >
+      <div>
+        <h3>Normal</h3>
+        <Timeline itemSpacing="normal">
+          <Timeline.Item>
+            <span style={{ ...textStyle, ...rowStyle }}>
+              <span style={dateStyle}>2018年07月</span>
+              <span>常務執行役員</span>
+            </span>
+          </Timeline.Item>
+          <Timeline.Item>
+            <span style={{ ...textStyle, ...rowStyle }}>
+              <span style={dateStyle}>2018年07月</span>
+              <span>法人事業統括</span>
+            </span>
+          </Timeline.Item>
+          <Timeline.Item emphasized>
+            <span style={{ ...textStyle, ...rowStyle }}>
+              <span style={dateStyle}>2018年07月</span>
+              <span style={rowStyle}>
+                <span>専務執行役員</span>
+                <ReadOnlyTag text="現任" pattern="information" />
+              </span>
+            </span>
+          </Timeline.Item>
+        </Timeline>
+      </div>
+      <div>
+        <h3>Loose</h3>
+        <Timeline itemSpacing="loose">
+          <Timeline.Item>
+            <span style={{ ...textStyle, ...rowStyle }}>
+              <span style={dateStyle}>2018年07月</span>
+              <span>常務執行役員</span>
+            </span>
+          </Timeline.Item>
+          <Timeline.Item>
+            <span style={{ ...textStyle, ...rowStyle }}>
+              <span style={dateStyle}>2018年07月</span>
+              <span>法人事業統括</span>
+            </span>
+          </Timeline.Item>
+          <Timeline.Item emphasized>
+            <span style={{ ...textStyle, ...rowStyle }}>
+              <span style={dateStyle}>2018年07月</span>
+              <span style={rowStyle}>
+                <span>専務執行役員</span>
+                <ReadOnlyTag text="現任" pattern="information" />
+              </span>
+            </span>
+          </Timeline.Item>
+        </Timeline>
+      </div>
     </div>
   ),
 };

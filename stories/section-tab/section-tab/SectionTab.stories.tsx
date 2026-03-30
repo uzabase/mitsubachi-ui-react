@@ -59,29 +59,10 @@ const meta = {
     layout: 'padded',
     docs: {
       description: {
-        component:
-          'ページ内セクションの切り替えに使用する個別タブです。\n\n' +
-          '> **⚠️注意:** このコンポーネントを単独で使用しないでください。\n' +
-          '> [SectionTabGroup](?path=/docs/components-sectiontab-sectiontabgroup--docs) 経由で利用してください。\n\n' +
-          '## 使用例\n\n' +
-          '### 基本\n\n' +
-          '```tsx\n' +
-          '<SectionTab value="tab1">タブ1</SectionTab>\n' +
-          '```\n\n' +
-          '### 国旗付き\n\n' +
-          '国旗のある国には `flag` prop を渡し、地域名（ヨーロッパ、アジア等）には渡しません。\n\n' +
-          '```tsx\n' +
-          '<SectionTab value="jpn" flag={<JpnFlag />}>JPN</SectionTab>\n' +
-          '<SectionTab value="europe">ヨーロッパ</SectionTab>\n' +
-          '```\n\n' +
-          '### 無効化\n\n' +
-          '```tsx\n' +
-          '<SectionTab value="tab1" disabled>タブ1</SectionTab>\n' +
-          '```',
+        component: 'ページ内セクションの切り替えに使用する個別タブです。',
       },
     },
   },
-  tags: ['autodocs'],
   argTypes: {
     value: {
       control: 'text',

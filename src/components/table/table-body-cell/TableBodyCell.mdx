@@ -1,0 +1,43 @@
+import { Meta, Canvas, ArgTypes } from '@storybook/addon-docs/blocks';
+import * as TableBodyCellStories from '../../../../stories/table/table-body-cell/TableBodyCell.stories';
+
+<Meta of={TableBodyCellStories} />
+
+# TableBodyCell
+
+テーブルのボディセルを表示するコンポーネントです。テキスト、数値、日付、チェックボックス、アイコンボタン、カスタムコンテンツなど、さまざまなコンテンツタイプに対応しています。
+
+- Figma URL : [TableBodyCell](https://www.figma.com/design/kHQNLM1dnk0EhZwOKBEBkL/%F0%9F%90%9D-Base-Component-Speeda-3.1-%E3%83%9F%E3%83%84%E3%83%90%E3%83%81?node-id=6055-17729&t=wAsCASAO2ZF6eRSb-1)
+
+<Canvas of={TableBodyCellStories.GridText} />
+
+---
+
+## When to Use
+
+- Table コンポーネント内でデータセルを表示するとき
+- テキスト、数値、日付など異なるコンテンツタイプを適切にフォーマットして表示するとき
+
+## When NOT to Use
+
+- 🚫 単独で配置したいとき。必ず Table、TableBody、TableRow 内に配置してください
+- ⚠️ ヘッダーセルとして使いたいとき。代わりに [TableHeaderCell](?path=/docs/components-table-tableheadercell--docs) を使ってください
+
+## Service Context — Speeda AI Agent での使い方
+
+- 企業一覧テーブルの各データセル（企業名、売上高、日付など）
+- 財務データのフォーマット済み数値表示
+- テーブル行内のアクションボタン配置
+
+## アクセシビリティ
+
+- `children` が空の場合、ダッシュ（—）が自動表示されます
+
+## Props
+
+<ArgTypes of={TableBodyCellStories} />
+
+## 関連コンポーネント
+
+- [Table](?path=/docs/components-table-table--docs) : テーブル全体のコンテナです
+- [TableHeaderCell](?path=/docs/components-table-tableheadercell--docs) : テーブルのヘッダーセルです

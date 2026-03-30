@@ -11,31 +11,11 @@ const meta = {
     layout: 'centered',
     docs: {
       description: {
-        component: [
-          'InputChipを横並び・折り返しでレイアウトするコンポーネントです。',
-          'ユーザーが入力した内容を一覧表示して、個別削除ができます。',
-          '',
-          '### 使用例',
-          '',
-          '```tsx',
-          'import { InputChipGroup } from "mitsubachi-ui-react";',
-          '',
-          'const [items, setItems] = useState([',
-          '  { id: "1", label: "Apple" },',
-          '  { id: "2", label: "Banana" },',
-          ']);',
-          '',
-          '<InputChipGroup',
-          '  items={items}',
-          '  onRemove={(id) => setItems((prev) => prev.filter((item) => item.id !== id))}',
-          '  aria-label="フルーツ一覧"',
-          '/>',
-          '```',
-        ].join('\n'),
+        component:
+          'InputChipを横並び・折り返しでレイアウトするグループコンポーネントです。',
       },
     },
   },
-  tags: ['autodocs'],
   argTypes: {
     disabled: {
       control: 'boolean',
@@ -145,4 +125,51 @@ export const Interactive: Story = {
       />
     );
   },
+};
+
+/**
+ * すべての状態を一覧表示
+ */
+export const AllStates: Story = {
+  args: {
+    ...Default.args,
+  },
+  render: () => (
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '32px',
+        padding: '40px',
+      }}
+    >
+      <div>
+        <h3>Default</h3>
+        <InputChipGroup
+          items={sampleItems}
+          onRemove={() => {}}
+          aria-label="フルーツ一覧"
+        />
+      </div>
+      <div>
+        <h3>Disabled</h3>
+        <InputChipGroup
+          items={sampleItems}
+          onRemove={() => {}}
+          disabled
+          aria-label="フルーツ一覧（無効）"
+        />
+      </div>
+      <div>
+        <h3>Wrap</h3>
+        <div style={{ maxInlineSize: '300px' }}>
+          <InputChipGroup
+            items={sampleItems}
+            onRemove={() => {}}
+            aria-label="フルーツ一覧（折り返し）"
+          />
+        </div>
+      </div>
+    </div>
+  ),
 };

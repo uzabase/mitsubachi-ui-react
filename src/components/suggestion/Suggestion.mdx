@@ -1,0 +1,51 @@
+import { Meta, Canvas, ArgTypes } from '@storybook/addon-docs/blocks';
+import * as SuggestionStories from '../../../stories/suggestion/Suggestion.stories';
+
+<Meta of={SuggestionStories} />
+
+# Suggestion
+
+検索ボックスや入力フィールドに入力した際に表示される候補リストコンポーネントです。入力中の文字列に基づいて候補を提示し、選択による入力補助を提供します。
+
+- Figma URL : [Suggestion](https://www.figma.com/design/kHQNLM1dnk0EhZwOKBEBkL/%F0%9F%90%9D-Base-Component-Speeda-3.1-%E3%83%9F%E3%83%84%E3%83%90%E3%83%81?node-id=7685-7082&t=wAsCASAO2ZF6eRSb-1)
+
+<Canvas of={SuggestionStories.TextDefault} />
+
+---
+
+## When to Use
+
+- 検索キーワードの候補をサジェストとして表示するとき
+- 入力フィールドに補完候補を提示して入力効率を高めるとき
+- カテゴリ別に候補を分類して表示するとき
+
+## When NOT to Use
+
+- ⚠️ 固定的な選択肢から選ばせたいとき。ドロップダウンや Select-box を使ってください
+- ⚠️ フィルター条件を切り替えたいとき。代わりに [FilterChipSingleSelectGroup](?path=/docs/components-chip-filterchipsingleselectgroup--docs) や [FilterChipMultiSelectGroup](?path=/docs/components-chip-filterchipmultiselectgroup--docs) を使ってください
+
+## Service Context — Speeda AI Agent での使い方
+
+- メイン検索バーの企業名・キーワードサジェスト
+- フィルター入力での候補表示
+- タグ入力時の既存タグ候補の提示
+
+## バリエーション
+
+| モード | 用途 |
+| --- | --- |
+| Text | ラベルとアイコンで候補を表示します（標準） |
+| Slot | カスタムコンテンツで候補を自由にレイアウトします |
+
+## アクセシビリティ
+
+- キーボード操作で候補の選択・決定が可能です
+- `aria-activedescendant` でフォーカス中の候補が通知されます
+
+## Props
+
+<ArgTypes of={SuggestionStories} />
+
+## 関連コンポーネント
+
+- [SearchBox](?path=/docs/components-searchbox--docs) : Suggestion と組み合わせて使用する検索入力フィールドです

@@ -1,0 +1,48 @@
+import { Meta, Canvas, ArgTypes } from '@storybook/addon-docs/blocks';
+import * as SnackbarStories from '../../../stories/snackbar/Snackbar.stories';
+
+<Meta of={SnackbarStories} />
+
+# Snackbar
+
+ユーザー操作に対する短いフィードバックを、既存 UI の上に重ねて表示する軽量な Overlay 通知コンポーネントです。操作フローを中断させずに状態を共有します。
+
+- Figma URL : [Snackbar](https://www.figma.com/design/kHQNLM1dnk0EhZwOKBEBkL/%F0%9F%90%9D-Base-Component-Speeda-3.1-%E3%83%9F%E3%83%84%E3%83%90%E3%83%81?node-id=5916-6744&t=wAsCASAO2ZF6eRSb-1)
+
+<Canvas of={SnackbarStories.Small} />
+
+---
+
+## When to Use
+
+- 操作の成功を短いフィードバックとして通知するとき
+- ユーザーの操作フローを中断させずに情報を伝えるとき
+
+## When NOT to Use
+
+- ⚠️ 失敗・警告・エラーを通知したいとき。代わりに [InlineNotification](?path=/docs/components-inlinenotification--docs) を使ってください
+- ⚠️ 重要な情報を確実にユーザーに伝えたいとき。Snackbar は短時間で消えるため見逃される可能性があります。[InlineNotification](?path=/docs/components-inlinenotification--docs) を使ってください
+- ⚠️ ユーザーに確認を求めたいとき。代わりに [ActionDialog](?path=/docs/components-dialog-actiondialog--docs) を使ってください
+
+## Service Context — Speeda AI Agent での使い方
+
+- データの保存完了通知
+- 設定の更新完了通知
+- クリップボードへのコピー完了通知
+
+## バリエーション
+
+| サイズ | 用途 |
+| --- | --- |
+| `small` | 短いメッセージの表示に使用してください（デフォルト） |
+| `medium` | やや長いメッセージの表示に使用してください |
+
+<Canvas of={SnackbarStories.AllPatterns} />
+
+## Props
+
+<ArgTypes of={SnackbarStories} />
+
+## 関連コンポーネント
+
+- [InlineNotification](?path=/docs/components-inlinenotification--docs) : エラーや警告など見逃してほしくない通知に使用します

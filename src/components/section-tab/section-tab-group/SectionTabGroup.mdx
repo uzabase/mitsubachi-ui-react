@@ -1,0 +1,38 @@
+import { Meta, Canvas, ArgTypes } from '@storybook/addon-docs/blocks';
+import * as SectionTabGroupStories from '../../../../stories/section-tab/section-tab-group/SectionTabGroup.stories';
+
+<Meta of={SectionTabGroupStories} />
+
+# SectionTabGroup
+
+ページ内の特定セクションにおける表示内容を切り替えるためのタブグループです。ページ全体の構造は維持したまま、同一セクション内の情報や表示形式のみを切り替えます。
+
+- Figma URL : [SectionTabGroup](https://www.figma.com/design/kHQNLM1dnk0EhZwOKBEBkL/%F0%9F%90%9D-Base-Component-Speeda-3.1-%E3%83%9F%E3%83%84%E3%83%90%E3%83%81?node-id=5634-1222&t=wAsCASAO2ZF6eRSb-1)
+
+<Canvas of={SectionTabGroupStories.Default} />
+
+---
+
+## When to Use
+
+- ページ内のセクションで表示内容をタブで切り替えるとき
+- 同じ文脈内で異なるビュー（リスト/チャートなど）を提供するとき
+
+## When NOT to Use
+
+- ⚠️ ページ全体のナビゲーションとして使いたいとき。ルーティングベースのナビゲーションを使ってください
+- ⚠️ 排他的な少数の選択肢を切り替えるだけのとき。代わりに [SegmentedControl](?path=/docs/components-segmentedcontrol-segmentedcontrol--docs) を検討してください
+
+## Service Context — Speeda AI Agent での使い方
+
+- 企業詳細ページの情報セクション切り替え（概要、財務、ニュース、関連企業など）
+- ダッシュボードの表示形式切り替え
+
+## Props
+
+<ArgTypes of={SectionTabGroupStories} />
+
+## 関連コンポーネント
+
+- [SectionTab](?path=/docs/components-sectiontab-sectiontab--docs) : グループ内の個別タブコンポーネントです
+- [SegmentedControl](?path=/docs/components-segmentedcontrol-segmentedcontrol--docs) : 少数の固定選択肢を切り替えるコントロールです

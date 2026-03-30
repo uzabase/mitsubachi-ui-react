@@ -1,0 +1,38 @@
+import { Meta, Canvas, ArgTypes } from '@storybook/addon-docs/blocks';
+import * as InputChipGroupStories from '../../../../stories/chip/input-chip-group/InputChipGroup.stories';
+
+<Meta of={InputChipGroupStories} />
+
+# InputChipGroup
+
+InputChip を横並び・折り返しでレイアウトするグループコンポーネントです。ユーザーが入力した内容を一覧表示し、個別に削除できます。
+
+- Figma URL : [InputChipGroup](https://www.figma.com/design/kHQNLM1dnk0EhZwOKBEBkL/%F0%9F%90%9D-Base-Component-Speeda-3.1-%E3%83%9F%E3%83%84%E3%83%90%E3%83%81?node-id=5815-12881&t=wAsCASAO2ZF6eRSb-1)
+
+<Canvas of={InputChipGroupStories.Default} />
+
+---
+
+## When to Use
+
+- ユーザーが入力・選択した複数の項目をチップ形式で管理するとき
+- 項目の追加・削除をインタラクティブに行うとき
+
+## When NOT to Use
+
+- ⚠️ フィルター条件を選択させたいとき。代わりに [FilterChipMultiSelectGroup](?path=/docs/components-chip-filterchipmultiselectgroup--docs) または [FilterChipSingleSelectGroup](?path=/docs/components-chip-filterchipsingleselectgroup--docs) を使ってください
+- ⚠️ 読み取り専用のタグを並べたいとき。代わりに [LinkTagGroup](?path=/docs/components-tag-linktaggroup--docs) を使ってください
+
+## Service Context — Speeda AI Agent での使い方
+
+- 検索キーワードの複数入力と管理
+- レポート作成時のタグ付け・条件設定
+
+## Props
+
+<ArgTypes of={InputChipGroupStories} />
+
+## 関連コンポーネント
+
+- [InputChip](?path=/docs/components-chip-inputchip--docs) : グループ内の個別チップコンポーネントです
+- [FilterChipMultiSelectGroup](?path=/docs/components-chip-filterchipmultiselectgroup--docs) : フィルター条件を複数選択するグループです
