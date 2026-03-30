@@ -1,0 +1,138 @@
+/* ==============================
+   ReportHeading コンポーネントスタイル
+   ============================== */
+
+/* ==============================
+   Base
+   ============================== */
+
+.container {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-x-large, 16px);
+}
+
+.textArea {
+  display: flex;
+  flex: 1 0 0;
+  align-items: center;
+  min-inline-size: 0;
+  min-block-size: 1px;
+}
+
+.heading {
+  flex: 1 0 0;
+  margin-block: 0;
+  margin-inline: 0;
+  min-inline-size: 0;
+  min-block-size: 1px;
+  font-family: var(--typography-font-family, Arial, sans-serif);
+  color: var(--text-regular-default, rgba(0, 0, 0, 0.84));
+}
+
+.actionSlot {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  align-self: stretch;
+  inline-size: 40px;
+}
+
+/* ==============================
+   Level 1 (h1)
+   ============================== */
+
+.level1 .heading {
+  font-weight: var(--typography-font-weight-regular, 400);
+  font-size: var(--font-scale-110, 32px);
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+}
+
+/* ==============================
+   Level 2 (h2)
+   ============================== */
+
+.level2 {
+  border-block-end: 1px solid var(--border-regular-default, rgba(0, 0, 0, 0.1));
+  padding-block-end: var(--spacing-medium, 8px);
+}
+
+.level2 .heading {
+  font-weight: var(--typography-font-weight-bold, 700);
+  font-size: var(--font-scale-90, 25px);
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+}
+
+/* ==============================
+   Level 3 (h3)
+   ============================== */
+
+.level3 .textArea {
+  gap: var(--spacing-medium, 8px);
+}
+
+.divider {
+  display: flex;
+  align-self: stretch;
+  inline-size: 2px;
+  flex-shrink: 0;
+  background-color: var(--palette-regular-red, #f72a48);
+}
+
+.level3 .heading {
+  font-weight: var(--typography-font-weight-bold, 700);
+  font-size: var(--font-scale-70, 20px);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+}
+
+/* ==============================
+   Level 4 (h4)
+   ============================== */
+
+.level4 .heading {
+  font-weight: var(--typography-font-weight-bold, 700);
+  font-size: var(--font-scale-60, 18px);
+  line-height: 1.5;
+  letter-spacing: 0.01em;
+}
+
+/* ==============================
+   Level 5 (h5)
+   ============================== */
+
+.level5 .heading {
+  font-weight: var(--typography-font-weight-bold, 700);
+  font-size: var(--font-scale-50, 16px);
+  line-height: 1.5;
+  letter-spacing: 0.01em;
+}
+
+/* ==============================
+   Level 6 (h6)
+   ============================== */
+
+.level6 .heading {
+  font-weight: var(--typography-font-weight-bold, 700);
+  font-size: var(--font-scale-50, 16px);
+  line-height: 1.5;
+  letter-spacing: 0.01em;
+  color: var(--text-weak-default, rgba(0, 0, 0, 0.54));
+}
+
+/* ==============================
+   Responsive (Phone: max-width 720px)
+   ============================== */
+
+@media (max-width: 720px) {
+  .level1 .heading {
+    font-weight: var(--typography-font-weight-bold, 700);
+    font-size: var(--font-scale-90, 25px);
+  }
+
+  .level6 .heading {
+    font-size: var(--font-scale-40, 14px);
+  }
+}
