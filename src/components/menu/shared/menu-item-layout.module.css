@@ -24,15 +24,15 @@
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  inline-size: var(--icon-size-medium, 20px);
-  block-size: var(--icon-size-medium, 20px);
+  min-inline-size: var(--icon-size-medium, 20px);
+  min-block-size: var(--icon-size-medium, 20px);
   color: var(--menu-item-icon-color);
 }
 
 @media (max-width: 720px) {
   .iconWrapper {
-    inline-size: var(--icon-size-large, 22px);
-    block-size: var(--icon-size-large, 22px);
+    min-inline-size: var(--icon-size-large, 22px);
+    min-block-size: var(--icon-size-large, 22px);
   }
 }
 
