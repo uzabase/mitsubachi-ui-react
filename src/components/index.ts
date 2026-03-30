@@ -14,3 +14,4 @@ export * from './text-area';
 export * from './timeline';
 export * from './suggestion';
 export * from './tooltip';
+export * from './report-heading';
