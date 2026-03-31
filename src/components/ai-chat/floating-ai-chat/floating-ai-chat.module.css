@@ -22,7 +22,7 @@
   display: flex;
   flex-direction: column;
   flex: 1;
-  overflow-y: auto;
+  overflow-block: auto;
   padding-inline: var(--spacing-x-large, 16px);
   padding-block: var(--spacing-medium, 8px);
   gap: var(--spacing-x-large, 16px);
