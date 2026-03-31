@@ -86,7 +86,11 @@ export const AiChatSegmentedControl = ({
           disabled={disabled}
         >
           <span className={styles.icon}>
-            {segment === 'flash' ? <SearchIcon /> : <CheckIcon />}
+            {segment === 'flash' ? (
+              <SearchIcon size={18} />
+            ) : (
+              <CheckIcon size={18} />
+            )}
           </span>
           <span className={styles.label}>
             {segment === 'flash' ? 'Flash Research' : 'Deep Research'}
