@@ -1,0 +1,165 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Docs/コントリビューション" />
+
+# コントリビューションガイド
+
+mitsubachi-ui-react にコンポーネントを追加・修正するための開発ガイドです。
+
+---
+
+## 開発環境のセットアップ
+
+```bash
+# 依存パッケージのインストール
+pnpm install
+
+# Storybook の起動（開発中のプレビュー）
+pnpm storybook
+```
+
+### 主要コマンド
+
+| コマンド              | 説明                      |
+| --------------------- | ------------------------- |
+| `pnpm storybook`      | Storybook 起動            |
+| `pnpm test`           | 全テスト実行              |
+| `pnpm test:unit`      | ユニットテストのみ        |
+| `pnpm test:storybook` | Storybook テストのみ      |
+| `pnpm test:coverage`  | カバレッジ付きテスト      |
+| `pnpm lint`           | ESLint チェック           |
+| `pnpm lint:fix`       | ESLint 自動修正           |
+| `pnpm format`         | Prettier フォーマット適用 |
+| `pnpm format:check`   | フォーマットチェック      |
+
+---
+
+## ディレクトリ構造
+
+```
+src/
+├── components/             # UI コンポーネント
+│   ├── icon-button/        # kebab-case ディレクトリ
+│   │   ├── IconButton.tsx  # PascalCase コンポーネントファイル
+│   │   ├── icon-button.module.css
+│   │   └── index.ts        # エクスポート
+│   └── ...
+├── icons/                  # SVG アイコンコンポーネント
+└── index.ts                # エントリーポイント
+
+stories/                    # Storybook ストーリー（src 外に配置）
+├── button/
+│   └── icon-button/
+│       └── IconButton.stories.tsx
+└── ...
+```
+
+- コンポーネントソース: `src/components/<kebab-case>/`
+- ストーリーファイル: `stories/<kebab-case>/`
+- MDX ドキュメント: `src/components/<name>/ComponentName.mdx`
+
+---
+
+## コーディングルール
+
+### CSS
+
+- **class 名セレクタのみ使用**（ID やタグセレクタは禁止）
+- **論理プロパティを使用**（`margin-inline-start` 等、物理プロパティは非推奨）
+- **擬似クラスで状態を表現** — `:hover`, `:active`, `:disabled`
+- **フォーカスには `:focus-visible`** を使用（`:focus` は使わない）
+- **BEM やプレフィックスは不要** — CSS Modules でスコープ化されるため
+
+```css
+/* 例 */
+.button {
+  padding-inline: var(--spacing-medium, 8px);
+  border-radius: var(--border-radius-full, 9999px);
+}
+
+.button:hover {
+  background-color: var(--surface-overlay-hover, rgba(0, 0, 0, 0.07));
+}
+
+.button:focus-visible {
+  outline: 2px solid var(--focus-ring-default, #191919);
+}
+```
+
+### アクセシビリティ
+
+- セマンティック HTML を基本とする
+- WCAG 2.2 準拠を目指す
+- `eslint-plugin-jsx-a11y` による自動チェック
+
+### レスポンシブ
+
+- PC ファースト（デスクトップがデフォルト）
+- ブレイクポイントは **720px の 1 箇所のみ**
+- スマホ版は最小 360px を保証
+
+```css
+/* デスクトップ（デフォルト） */
+.component {
+  /* ... */
+}
+
+/* スマホ */
+@media (max-width: 720px) {
+  .component {
+    /* ... */
+  }
+}
+```
+
+### リンターとフォーマッター
+
+コード品質の維持には ESLint と Prettier を使用しています。
+
+- **ESLint** — TypeScript・JSX のコード品質チェック。`eslint-plugin-jsx-a11y` によるアクセシビリティチェックも含む
+- **Prettier** — コードフォーマットの統一。セミコロンなし、シングルクォート、インデント 2 スペース、行幅 80 文字
+
+手動で実行する場合は `pnpm lint` と `pnpm format` を使います。コミット時には pre-commit フックで自動実行されるため、通常は意識する必要はありません。
+
+---
+
+## コミットメッセージ
+
+### フォーマット
+
+```
+<type>(<scope>): <日本語の概要>
+```
+
+- `type` と `scope` は英語、概要は日本語で記述
+- やったことがわかるように具体的に書く
+
+### type 一覧
+
+| type       | 用途                              |
+| ---------- | --------------------------------- |
+| `feat`     | 新機能追加                        |
+| `fix`      | バグ修正、UI の見た目が変わる変更 |
+| `refactor` | UI の見た目が変わらない変更       |
+| `docs`     | ドキュメントのみの変更            |
+| `test`     | テストの追加・修正                |
+| `chore`    | ビルド・設定の変更                |
+
+### 例
+
+```
+feat(Snackbar): Snackbarコンポーネントを追加
+fix(Tooltip): ホバー時の表示位置ずれを修正
+refactor(IconButton): フォーカススタイルを:focus-visibleに変更
+```
+
+---
+
+## pre-commit フック
+
+コミット時に以下が自動実行されます：
+
+- `.ts`, `.tsx` ファイル: ESLint + Prettier
+- `.js`, `.json`, `.css`, `.md` ファイル: Prettier
+
+リントエラーがある場合はコミットがブロックされます。`pnpm lint:fix` で自動修正してから再度コミットしてください。

@@ -19,7 +19,16 @@ const preview: Preview = {
     options: {
       storySort: {
         method: 'alphabetical',
-        order: [],
+        order: [
+          'Docs',
+          [
+            'はじめに',
+            'デザイントークン',
+            'コントリビューション',
+            'Claude Code の使い方',
+          ],
+          'Components',
+        ],
         locales: 'en-US',
       },
     },
