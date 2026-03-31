@@ -1,0 +1,42 @@
+import { Meta, Canvas, ArgTypes } from '@storybook/addon-docs/blocks';
+import * as UserMessageStories from '../../../../../stories/ai-chat/user-message/UserMessage.stories';
+
+<Meta of={UserMessageStories} />
+
+# UserMessage
+
+チャット内でユーザーが入力・送信したプロンプトを表示するコンポーネントです。右寄せのバブル表示でユーザーの発言を識別します。
+
+- Figma URL : [user-message](https://www.figma.com/design/kHQNLM1dnk0EhZwOKBEBkL/%F0%9F%90%9D-Base-Component-Speeda-3.1-%E3%83%9F%E3%83%84%E3%83%90%E3%83%81?node-id=9425-986)
+
+<Canvas of={UserMessageStories.Normal} />
+
+---
+
+## When to Use
+
+- ユーザーが送信したプロンプトをチャット会話内に表示するとき
+- AIの回答と対比してユーザーの発言を視覚的に区別するとき
+
+## When NOT to Use
+
+- 🚫 単体で使用しないでください。必ず [FloatingAiChat](?path=/docs/components-aichat-floatingaichat--docs) 内で使用してください
+- ⚠️ AIからの回答を表示するとき。AI側の回答には専用のコンポーネントを使用してください
+- ⚠️ システムメッセージやエラー通知を表示するとき。代わりに [InlineNotification](?path=/docs/components-inlinenotification--docs) を使用してください
+
+## Service Context — Speeda AI Agent での使い方
+
+- Speeda AI Agent のフローティングチャットウィンドウ内で、ユーザーが入力・送信したプロンプトを表示します
+- Flash Research / Deep Research いずれのモードでも、ユーザー発言の表示に使用します
+
+## バリエーション
+
+<Canvas of={UserMessageStories.AllStates} />
+
+## アクセシビリティ
+
+- チャットのメッセージリスト内で使用する場合、親要素に適切な `role` 属性（`log` など）を設定してください
+
+## Props
+
+<ArgTypes of={UserMessageStories} />

@@ -1,0 +1,28 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding-inline-start: var(--spacing-4x-large, 40px);
+  inline-size: 100%;
+  box-sizing: border-box;
+}
+
+.bubble {
+  background-color: var(--surface-semi-strong-default, #ededed);
+  padding-block: var(--spacing-medium, 8px);
+  padding-inline: var(--spacing-x-large, 16px);
+  border-radius: var(--border-radius-medium, 6px);
+  max-inline-size: 560px;
+  inline-size: fit-content;
+}
+
+.text {
+  margin: 0;
+  font-family: var(--typography-font-family, Arial, sans-serif);
+  font-weight: var(--typography-font-weight-regular, 400);
+  font-size: var(--font-scale-40, 14px);
+  line-height: 1.75;
+  letter-spacing: 0.02em;
+  color: var(--text-regular-default, rgba(0, 0, 0, 0.84));
+  word-break: break-word;
+}

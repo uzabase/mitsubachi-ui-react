@@ -1,0 +1,66 @@
+import { Meta, Canvas, ArgTypes } from '@storybook/addon-docs/blocks';
+import * as AiChatHeaderStories from '../../../../../stories/ai-chat/ai-chat-header/AiChatHeader.stories';
+
+<Meta of={AiChatHeaderStories} />
+
+# AiChatHeader
+
+AIチャットウィンドウのヘッダーコンポーネントです。タイトルとアクションボタン群（履歴・新規チャット・サイズ切替・閉じる）を表示します。
+
+- Figma URL : [ai-chat-header](https://www.figma.com/design/kHQNLM1dnk0EhZwOKBEBkL/%F0%9F%90%9D-Base-Component-Speeda-3.1-%E3%83%9F%E3%83%84%E3%83%90%E3%83%81?node-id=9336-8463)
+
+<Canvas of={AiChatHeaderStories.NewSession} />
+
+---
+
+## When to Use
+
+- FloatingAiChat のヘッダー部分としてタイトルとアクションボタンを表示するとき
+
+## When NOT to Use
+
+- 🚫 単体で使用しないでください。必ず [FloatingAiChat](?path=/docs/components-aichat-floatingaichat--docs) 内で使用してください（Context に依存しています）
+
+## Service Context — Speeda AI Agent での使い方
+
+- 新規セッション時は太字の「AI Research β版」を表示します
+- 既存セッション時は会話履歴のタイトルを通常ウェイトで表示します
+- 履歴ボタンをクリックすると、過去の会話履歴をドロップダウンメニューで表示します
+- ヘッダーのアクションボタンから新規チャット作成、ウィンドウサイズ切替、最小化を操作します
+
+## バリエーション
+
+| 状態 | タイトル表示 |
+| --- | --- |
+| `newSession={true}` | 太字16pxの「AI Research β版」を表示します |
+| `newSession={false}` | 通常14pxの会話履歴タイトルを表示します |
+
+<Canvas of={AiChatHeaderStories.AllStates} />
+
+## 履歴メニュー
+
+履歴データは `FloatingAiChat` の `histories` prop 経由で Context に渡されます。AiChatHeader は Context から履歴データを取得し、ドロップダウンメニューで表示します。
+
+```tsx
+<FloatingAiChat histories={[
+  { id: '1', title: '日本のGDP推移について', url: '/chat/1' },
+  { id: '2', title: '半導体業界の最新動向', url: '/chat/2' },
+]}>
+  <FloatingAiChat.Header />
+</FloatingAiChat>
+```
+
+## アクセシビリティ
+
+- 各アクションボタンには `aria-label`（「履歴」「新規チャット」「最大化」/「最小化」「閉じる」）が設定されています
+- サイズ切替ボタンのラベルは `size` に応じて動的に切り替わります
+- 履歴メニューはキーボード操作（ArrowDown/Up, Enter, Escape）に対応しています
+
+## Props
+
+<ArgTypes of={AiChatHeaderStories} />
+
+## 関連コンポーネント
+
+- [FloatingAiChat](?path=/docs/components-aichat-floatingaichat--docs) : 親コンポーネントです
+- [IconButton](?path=/docs/components-button-iconbutton--docs) : アクションボタンに使用しています

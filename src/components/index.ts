@@ -1,3 +1,4 @@
+export * from './ai-chat';
 export * from './checkbox';
 export * from './chip';
 export * from './dialog';

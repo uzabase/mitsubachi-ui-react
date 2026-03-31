@@ -1,0 +1,56 @@
+import { Meta, Canvas, ArgTypes } from '@storybook/addon-docs/blocks';
+import * as AiChatAreaStories from '../../../../../../stories/ai-chat/ai-chat-area/AiChatArea.stories';
+
+<Meta of={AiChatAreaStories} />
+
+# AiChatArea
+
+AIとの対話において、ユーザーがプロンプトを入力・送信するためのコンポーネントです。
+
+- Figma URL : [ai-chat-area](https://www.figma.com/design/kHQNLM1dnk0EhZwOKBEBkL/%F0%9F%90%9D-Base-Component-Speeda-3.1-%E3%83%9F%E3%83%84%E3%83%90%E3%83%81?node-id=9336-8406&m=dev)
+
+<Canvas of={AiChatAreaStories.Default} />
+
+---
+
+## When to Use
+
+- ユーザーがAIにプロンプトを入力・送信するUIが必要なとき
+- 送信中に停止操作を提供するとき（`in-progress` 状態）
+
+## When NOT to Use
+
+- 🚫 単体で使用しないでください。必ず [AiChatFooter](?path=/docs/components-aichat-aichatfooter--docs) 経由で使用してください
+- ⚠️ 通常のテキスト入力が必要なとき。代わりに TextArea を使用してください
+
+## Service Context — Speeda AI Agent での使い方
+
+- AiChatFooter 内に配置され、ユーザーがAIへの質問を入力・送信するインターフェースとして使用します
+- `children`（option-slot）にセグメントコントロールを配置して Flash Research / Deep Research のモード切り替えを提供します
+- AIが回答生成中は `state="in-progress"` に切り替え、停止ボタンで中断できるようにします
+
+## バリエーション
+
+| 状態 | 送信ボタン | 用途 |
+| --- | --- | --- |
+| `default` | 矢印アイコン（空欄時は無効） | 通常の入力待ち状態で使用します |
+| `in-progress` | 停止アイコン（常に有効） | AIが回答を生成中に使用します |
+| `disabled` | 矢印アイコン（常に無効） | 入力を受け付けない状態で使用します |
+
+<Canvas of={AiChatAreaStories.AllStates} />
+
+## アクセシビリティ
+
+- `Enter` キーで送信、`Shift + Enter` で改行に対応しています
+- IME確定時の誤送信を `isComposing` チェックで防止しています
+- `disabled` 状態では `textarea` に `disabled` 属性が付与されます
+- 送信ボタン・停止ボタンには適切な `aria-label`（「送信」「停止」）が設定されています
+
+## Props
+
+<ArgTypes of={AiChatAreaStories} />
+
+## 関連コンポーネント
+
+- [AiChatFooter](?path=/docs/components-aichat-aichatfooter--docs) : AiChatArea を内包する親コンポーネントです
+- [UserMessage](?path=/docs/components-aichat-usermessage--docs) : ユーザーが送信したプロンプトを表示するコンポーネントです

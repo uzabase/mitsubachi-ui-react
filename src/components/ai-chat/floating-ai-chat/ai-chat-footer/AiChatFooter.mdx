@@ -1,0 +1,52 @@
+import { Meta, Canvas, ArgTypes } from '@storybook/addon-docs/blocks';
+import * as AiChatFooterStories from '../../../../../stories/ai-chat/ai-chat-footer/AiChatFooter.stories';
+
+<Meta of={AiChatFooterStories} />
+
+# AiChatFooter
+
+AIチャットウィンドウのフッターコンポーネントです。`children`に [AiChatArea](?path=/docs/components-aichat-aichatarea--docs) を受け取り、免責文とセットで表示します。
+
+- Figma URL : [ai-chat-footer](https://www.figma.com/design/kHQNLM1dnk0EhZwOKBEBkL/%F0%9F%90%9D-Base-Component-Speeda-3.1-%E3%83%9F%E3%83%84%E3%83%90%E3%83%81?node-id=9336-8399)
+
+<Canvas of={AiChatFooterStories.Default} />
+
+---
+
+## When to Use
+
+- FloatingAiChat のフッター部分として AiChatArea と免責文を表示するとき
+
+## When NOT to Use
+
+- 🚫 単体で使用しないでください。必ず [FloatingAiChat](?path=/docs/components-aichat-floatingaichat--docs) 内で使用してください
+
+## Service Context — Speeda AI Agent での使い方
+
+- `children` に AiChatArea を配置し、ユーザーの入力・送信UIを提供します
+- 免責文はデフォルトで表示され、`disclaimer` prop でカスタマイズ可能です
+
+## 使い方
+
+```tsx
+<FloatingAiChat.Footer>
+  <AiChatArea
+    value={value}
+    onValueChange={setValue}
+    onSubmit={handleSubmit}
+  >
+    <AiChatSegmentedControl value={mode} onValueChange={setMode} />
+  </AiChatArea>
+</FloatingAiChat.Footer>
+```
+
+<Canvas of={AiChatFooterStories.AllStates} />
+
+## Props
+
+<ArgTypes of={AiChatFooterStories} />
+
+## 関連コンポーネント
+
+- [FloatingAiChat](?path=/docs/components-aichat-floatingaichat--docs) : 親コンポーネントです
+- [AiChatArea](?path=/docs/components-aichat-aichatarea--docs) : children として配置する入力エリアコンポーネントです

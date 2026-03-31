@@ -1,0 +1,29 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--surface-regular-default, #ffffff);
+  border-radius: var(--border-radius-medium, 6px);
+  box-shadow:
+    0 0 1px 0 var(--elevation-semi-strong-inverse, rgba(255, 255, 255, 0)) inset,
+    0 16px 32px 0 var(--elevation-regular, rgba(0, 0, 0, 0.13)),
+    0 0 10px 0 var(--elevation-semi-weak, rgba(0, 0, 0, 0.1));
+  overflow: clip;
+}
+
+.collapsed {
+  inline-size: 536px;
+}
+
+.expanded {
+  inline-size: 720px;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  overflow-block: auto;
+  padding-inline: var(--spacing-x-large, 16px);
+  padding-block: var(--spacing-medium, 8px);
+  gap: var(--spacing-x-large, 16px);
+}
