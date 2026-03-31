@@ -1,5 +1,5 @@
 import React from 'react';
-import type { FloatingAiChatSize } from './shared';
+import type { FloatingAiChatSize, AiChatHistoryItem } from './shared';
 import { FloatingAiChatProvider } from './shared';
 import { AiChatHeader } from './ai-chat-header';
 import { AiChatFooter } from './ai-chat-footer';
@@ -16,17 +16,24 @@ const FloatingAiChatBody = ({ children }: FloatingAiChatBodyProps) => {
 export interface FloatingAiChatProps {
   /** チャットウィンドウのサイズ @default 'collapsed' */
   size?: FloatingAiChatSize;
+  /** 履歴メニューに表示するアイテム一覧 @default [] */
+  histories?: AiChatHistoryItem[];
   children: React.ReactNode;
 }
 
 function FloatingAiChatRoot({
   size = 'collapsed',
+  histories = [],
   children,
 }: FloatingAiChatProps) {
   const containerClassName = [styles.container, styles[size]].join(' ');
+  const contextValue = React.useMemo(
+    () => ({ size, histories }),
+    [size, histories]
+  );
 
   return (
-    <FloatingAiChatProvider value={{ size }}>
+    <FloatingAiChatProvider value={contextValue}>
       <div className={containerClassName}>{children}</div>
     </FloatingAiChatProvider>
   );

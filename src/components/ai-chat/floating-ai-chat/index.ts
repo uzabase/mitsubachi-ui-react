@@ -1,6 +1,6 @@
 export { FloatingAiChat } from './FloatingAiChat';
 export type { FloatingAiChatProps } from './FloatingAiChat';
-export type { FloatingAiChatSize } from './shared';
+export type { FloatingAiChatSize, AiChatHistoryItem } from './shared';
 export { FloatingAiChatProvider } from './shared';
 export { AiChatHeader } from './ai-chat-header';
 export type { AiChatHeaderProps } from './ai-chat-header';

@@ -1,4 +1,5 @@
 import { IconButton } from '../../../button/icon-button';
+import { Menu, MenuTrigger, MenuDropdown, LinkMenuItem } from '../../../menu';
 import {
   HistoryIcon,
   PencilSquareIcon,
@@ -14,8 +15,6 @@ export interface AiChatHeaderProps {
   title?: string;
   /** 新規セッションかどうか @default true */
   newSession?: boolean;
-  /** 履歴ボタンクリック時のコールバック */
-  onHistoryClick?: () => void;
   /** 新規チャットボタンクリック時のコールバック */
   onNewChatClick?: () => void;
   /** サイズ切り替えボタンクリック時のコールバック */
@@ -27,12 +26,11 @@ export interface AiChatHeaderProps {
 export const AiChatHeader = ({
   title = 'AI Research β版',
   newSession = true,
-  onHistoryClick,
   onNewChatClick,
   onToggleSizeClick,
   onMinimizeClick,
 }: AiChatHeaderProps) => {
-  const { size } = useFloatingAiChatContext();
+  const { size, histories } = useFloatingAiChatContext();
 
   const titleClassName = [
     styles.titleText,
@@ -43,14 +41,20 @@ export const AiChatHeader = ({
     <header className={styles.header}>
       <div className={styles.titleArea}>
         <span className={titleClassName}>{title}</span>
-        <IconButton
-          variant="ghost"
-          size="medium"
-          aria-label="履歴"
-          onClick={onHistoryClick}
-        >
-          <HistoryIcon size={20} />
-        </IconButton>
+        <Menu>
+          <MenuTrigger>
+            <IconButton variant="ghost" size="medium" aria-label="履歴">
+              <HistoryIcon size={20} />
+            </IconButton>
+          </MenuTrigger>
+          <MenuDropdown side="bottom" align="end">
+            {histories.map((h) => (
+              <LinkMenuItem key={h.id} href={h.url}>
+                {h.title}
+              </LinkMenuItem>
+            ))}
+          </MenuDropdown>
+        </Menu>
       </div>
       <div className={styles.actionArea}>
         <IconButton

@@ -5,4 +5,5 @@ export {
 export type {
   FloatingAiChatSize,
   FloatingAiChatContextValue,
+  AiChatHistoryItem,
 } from './floating-ai-chat-context';

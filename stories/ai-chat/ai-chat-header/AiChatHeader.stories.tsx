@@ -4,6 +4,13 @@ import {
   FloatingAiChatProvider,
   AiChatHeader,
 } from '../../../src/components/ai-chat';
+import type { AiChatHistoryItem } from '../../../src/components/ai-chat';
+
+const sampleHistories: AiChatHistoryItem[] = [
+  { id: '1', title: '日本のGDP推移について', url: '/chat/1' },
+  { id: '2', title: '半導体業界の最新動向', url: '/chat/2' },
+  { id: '3', title: 'ESG投資のトレンド分析', url: '/chat/3' },
+];
 
 const meta = {
   title: 'Components/AiChat/AiChatHeader',
@@ -20,7 +27,9 @@ const meta = {
   tags: [],
   decorators: [
     (Story) => (
-      <FloatingAiChatProvider value={{ size: 'collapsed' }}>
+      <FloatingAiChatProvider
+        value={{ size: 'collapsed', histories: sampleHistories }}
+      >
         <div style={{ inlineSize: '536px' }}>
           <Story />
         </div>
@@ -70,7 +79,9 @@ export const Expanded: Story = {
   },
   decorators: [
     (Story) => (
-      <FloatingAiChatProvider value={{ size: 'expanded' }}>
+      <FloatingAiChatProvider
+        value={{ size: 'expanded', histories: sampleHistories }}
+      >
         <div style={{ inlineSize: '720px' }}>
           <Story />
         </div>
@@ -99,7 +110,9 @@ export const AllStates: Story = {
         <p style={{ marginBlockEnd: '4px', fontWeight: 'bold' }}>
           Collapsed / New Session
         </p>
-        <FloatingAiChatProvider value={{ size: 'collapsed' }}>
+        <FloatingAiChatProvider
+          value={{ size: 'collapsed', histories: sampleHistories }}
+        >
           <div style={{ inlineSize: '536px' }}>
             <AiChatHeader newSession />
           </div>
@@ -109,7 +122,9 @@ export const AllStates: Story = {
         <p style={{ marginBlockEnd: '4px', fontWeight: 'bold' }}>
           Collapsed / Existing Session
         </p>
-        <FloatingAiChatProvider value={{ size: 'collapsed' }}>
+        <FloatingAiChatProvider
+          value={{ size: 'collapsed', histories: sampleHistories }}
+        >
           <div style={{ inlineSize: '536px' }}>
             <AiChatHeader newSession={false} title="日本のGDP推移について" />
           </div>
@@ -119,7 +134,9 @@ export const AllStates: Story = {
         <p style={{ marginBlockEnd: '4px', fontWeight: 'bold' }}>
           Expanded / New Session
         </p>
-        <FloatingAiChatProvider value={{ size: 'expanded' }}>
+        <FloatingAiChatProvider
+          value={{ size: 'expanded', histories: sampleHistories }}
+        >
           <div style={{ inlineSize: '720px' }}>
             <AiChatHeader newSession />
           </div>
@@ -129,7 +146,9 @@ export const AllStates: Story = {
         <p style={{ marginBlockEnd: '4px', fontWeight: 'bold' }}>
           Expanded / Existing Session
         </p>
-        <FloatingAiChatProvider value={{ size: 'expanded' }}>
+        <FloatingAiChatProvider
+          value={{ size: 'expanded', histories: sampleHistories }}
+        >
           <div style={{ inlineSize: '720px' }}>
             <AiChatHeader newSession={false} title="日本のGDP推移について" />
           </div>
