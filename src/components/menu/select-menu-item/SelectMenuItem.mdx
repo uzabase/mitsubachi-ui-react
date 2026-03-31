@@ -1,0 +1,66 @@
+import { Meta, Canvas, ArgTypes } from '@storybook/addon-docs/blocks';
+import * as SelectMenuItemStories from '../../../../stories/menu/select-menu-item/SelectMenuItem.stories';
+
+<Meta of={SelectMenuItemStories} />
+
+# SelectMenuItem
+
+選択状態を持つメニュー項目です。
+設定値やフィルター条件などの切り替えに使用します。`MenuRadioGroup` 内に配置し、グループ内で1つだけ選択できます（Single-select）。
+
+- Figma URL : [SelectMenuItem]()
+
+<Canvas of={SelectMenuItemStories.Selected} />
+
+---
+
+## When to Use
+
+- メニュー内で設定値やフィルター条件を切り替えたいとき
+- 選択肢の中から1つだけを選ばせたいとき
+
+## When NOT to Use
+
+- 🚫 Menu コンポーネントの外で単体使用しないでください。必ず `<Menu>` + `<MenuDropdown>` 内に配置してください。
+- ⚠️ 複数選択（Multi-select / Checkbox）が必要なとき。このコンポーネントは単一選択専用です。
+- ⚠️ フォーム内の選択UIが必要なとき。Select コンポーネントを使ってください。
+- ⚠️ アクション実行が目的のとき。[ActionMenuItem](?path=/docs/components-menu-actionmenuitem--docs) を使ってください。
+
+## Service Context — Speeda AI Agent での使い方
+
+- 言語設定の切り替え
+- 表示フィルターの切り替え
+- ソート順の選択
+
+## バリエーション
+
+### 選択必須パターン
+
+選択肢のみを並べます。いずれかの値が必ず選択されている状態です。
+
+<Canvas of={SelectMenuItemStories.RequiredSelection} />
+
+### 任意選択パターン
+
+先頭に `value=""` の「指定なし」を配置し、未選択状態を表現します。
+
+<Canvas of={SelectMenuItemStories.OptionalSelection} />
+
+### 全状態一覧
+
+<Canvas of={SelectMenuItemStories.AllStates} />
+
+## アクセシビリティ
+
+- `MenuRadioGroup` 内でラジオボタンとして振る舞います
+- 選択状態はチェックアイコンで視覚的に示されます
+- `disabled` 状態では選択操作が無効になります
+
+## Props
+
+<ArgTypes of={SelectMenuItemStories} />
+
+## 関連コンポーネント
+
+- [ActionMenuItem](?path=/docs/components-menu-actionmenuitem--docs) : アクション実行用。SelectMenuItem は選択切り替え用
+- [Menu](?path=/docs/components-menu-menu--docs) : SelectMenuItem を内包するコンテナ

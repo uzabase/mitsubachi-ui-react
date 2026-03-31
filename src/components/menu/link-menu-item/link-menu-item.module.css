@@ -1,0 +1,36 @@
+/**
+ * LinkMenuItem コンポーネントスタイル
+ *
+ * 別のページや画面に遷移するためのメニュー項目。
+ * Base UI Menu.Item を <a> 要素でレンダリングし、data属性 + CSS擬似クラスで各状態を実装。
+ */
+
+/* ========================================
+   ルート
+   ======================================== */
+
+.root {
+  composes: root from '../shared/menu-item-root.module.css';
+  gap: var(--spacing-medium, 8px);
+  padding-block: var(--spacing-small, 4px);
+  padding-inline-start: var(--spacing-x-large, 16px);
+  padding-inline-end: var(--spacing-large, 12px);
+  text-decoration: none;
+  color: var(--text-regular-default, rgba(0, 0, 0, 0.84));
+  --menu-item-icon-color: var(--icon-regular-default, rgba(0, 0, 0, 0.84));
+  --menu-item-support-text-color: var(--text-weak-default, rgba(0, 0, 0, 0.54));
+}
+
+/* MenuItemLayout を伸ばして newWindow アイコンを右端に配置 */
+.root > :first-child {
+  flex: 1;
+  min-inline-size: 0;
+}
+
+/* ========================================
+   新しいウィンドウアイコン
+   ======================================== */
+
+.newWindowIcon {
+  composes: iconWrapper from '../shared/menu-item-layout.module.css';
+}

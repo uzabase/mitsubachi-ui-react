@@ -1,0 +1,60 @@
+import { Meta, Canvas, ArgTypes } from '@storybook/addon-docs/blocks';
+import * as SubMenuItemStories from '../../../../stories/menu/sub-menu-item/SubMenuItem.stories';
+
+<Meta of={SubMenuItemStories} />
+
+# SubMenuItem
+
+サブメニューを開くためのメニュー項目です。
+選択すると階層化されたメニューが展開され、追加のメニュー項目を表示します。
+
+- Figma URL : [SubMenuItem]()
+
+<Canvas of={SubMenuItemStories.Normal} />
+
+---
+
+## When to Use
+
+- メニュー内の選択肢が多く、カテゴリ別にグループ化したいとき
+- 「移動先」「エクスポート形式」など、親操作に紐づく子選択肢を提示したいとき
+
+## When NOT to Use
+
+- 🚫 Menu コンポーネントの外で単体使用しないでください。必ず `<Menu>` + `<MenuDropdown>` 内に配置してください。
+- ⚠️ 階層が3階層以上になるとき。メニューの階層は **最大2階層まで** です。
+- ⚠️ 子選択肢が1〜2個しかないとき。フラットに並べた方がわかりやすいです。
+
+## Service Context — Speeda AI Agent での使い方
+
+- コンテンツの「移動先」フォルダ選択
+- エクスポート形式の選択（CSV、Excel 等）
+
+## 開閉仕様
+
+| デバイス | 開く | 閉じる |
+| --- | --- | --- |
+| 非タッチデバイス | hover で表示 | hover を外すと閉じる |
+| タッチデバイス | tap で表示 | 再度 tap、またはメニュー外側の tap で閉じる |
+
+## サブメニューの表示位置
+
+親メニューの右側に上端を揃えて表示します。右側にスペースがない場合は左側に、下にスペースがない場合は上方向に展開します。
+
+## 全状態一覧
+
+<Canvas of={SubMenuItemStories.AllStates} />
+
+## アクセシビリティ
+
+- 右端にシェブロンアイコンが常に表示され、サブメニューの存在を視覚的に示します
+- キーボード操作: 右矢印キーでサブメニューを開き、左矢印キーで閉じます
+
+## Props
+
+<ArgTypes of={SubMenuItemStories} />
+
+## 関連コンポーネント
+
+- [ActionMenuItem](?path=/docs/components-menu-actionmenuitem--docs) : サブメニュー内のアクション項目として使用
+- [Menu](?path=/docs/components-menu-menu--docs) : SubMenuItem を内包するコンテナ

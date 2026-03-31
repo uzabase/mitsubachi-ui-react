@@ -1,0 +1,47 @@
+/**
+ * ActionMenuItem コンポーネントスタイル
+ *
+ * 画面遷移を伴わずアクションを実行するメニュー項目。
+ * Base UI Menu.Item をラップし、data属性 + CSS擬似クラスで各状態を実装。
+ */
+
+/* ========================================
+   ルート
+   ======================================== */
+
+.root {
+  composes: root from '../shared/menu-item-root.module.css';
+  padding-block: var(--spacing-small, 4px);
+  padding-inline: var(--spacing-x-large, 16px);
+}
+
+/* ========================================
+   バリアント: neutral
+   ======================================== */
+
+.root.neutral {
+  --menu-item-icon-color: var(--icon-regular-default, rgba(0, 0, 0, 0.84));
+  --menu-item-support-text-color: var(--text-weak-default, rgba(0, 0, 0, 0.54));
+  color: var(--text-regular-default, rgba(0, 0, 0, 0.84));
+}
+
+/* ========================================
+   バリアント: danger
+   ======================================== */
+
+.root.danger {
+  --menu-item-icon-color: var(--text-negative, #c92812);
+  --menu-item-support-text-color: var(--text-weak-default, rgba(0, 0, 0, 0.54));
+  color: var(--text-negative, #c92812);
+}
+
+/* ========================================
+   状態: disabled
+   ======================================== */
+
+.root[data-disabled] {
+  --menu-item-icon-color: var(--icon-disabled, rgba(0, 0, 0, 0.25));
+  --menu-item-support-text-color: var(--text-disabled, rgba(0, 0, 0, 0.35));
+  color: var(--text-disabled, rgba(0, 0, 0, 0.35));
+  cursor: not-allowed;
+}
