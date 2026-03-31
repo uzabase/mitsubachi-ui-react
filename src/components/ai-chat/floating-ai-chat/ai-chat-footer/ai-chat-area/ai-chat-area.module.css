@@ -30,7 +30,7 @@
   box-sizing: border-box;
   min-block-size: 32px;
   max-block-size: 140px;
-  overflow-y: auto;
+  overflow-block: auto;
 }
 
 .textarea {
