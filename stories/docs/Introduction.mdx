@@ -1,0 +1,49 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Docs/はじめに" />
+
+# mitsubachi-ui-react
+
+React 19 ベースのデザインシステムコンポーネントライブラリです。
+ヘッドレス UI ライブラリの [Base UI](https://base-ui.com/) をベースに、CSS Modules でスタイリングしたコンポーネントを提供します。
+
+---
+
+## 技術スタック
+
+| カテゴリ         | 技術                                  |
+| ---------------- | ------------------------------------- |
+| フレームワーク   | React 19                              |
+| UI ライブラリ    | Base UI（ヘッドレス UI）              |
+| 言語             | TypeScript（strict mode）             |
+| スタイリング     | CSS Modules                           |
+| ビルドツール     | Vite                                  |
+| ドキュメント     | Storybook 10                          |
+| テスト           | Vitest + Playwright + Testing Library |
+| アクセシビリティ | eslint-plugin-jsx-a11y                |
+
+---
+
+## 設計原則
+
+### Base UI + CSS Modules
+
+Base UI のヘッドレスコンポーネントをラップし、CSS Modules でスタイルを適用します。Base UI で対応できない部分は Web Components で実装します。
+
+> **Note:** Base UI はアクセシビリティやキーボード操作などのロジック面を担保するために採用していますが、将来的に自前実装に切り替える可能性があります。
+
+### TypeScript strict mode
+
+Props はすべて `interface` で型定義し、バリアントやサイズは文字列リテラルユニオンで表現します。`enum` は使用しません。
+
+### 論理プロパティ
+
+RTL（右から左）レイアウトに対応するため、CSS では `margin-left` ではなく `margin-inline-start` のような論理プロパティを使用します。
+
+### アクセシビリティ
+
+WCAG 2.2 準拠を目指します。セマンティック HTML を基本とし、eslint-plugin-jsx-a11y で自動チェックを行います。
+
+### PC ファースト
+
+デスクトップをデフォルトとし、ブレイクポイントは **720px の 1 箇所のみ** です。スマホ版は最小 360px でレイアウトが崩れないことを保証します。
