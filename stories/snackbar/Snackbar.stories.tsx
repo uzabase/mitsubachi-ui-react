@@ -1,3 +1,4 @@
+import { useRef } from 'react';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import { Snackbar, useSnackbar } from '../../src/components/snackbar';
@@ -12,14 +13,28 @@ interface SnackbarStoryArgs {
 /**
  * Snackbar トリガーボタン
  * ストーリー内でSnackbarを発火させるためのヘルパーコンポーネント
+ * showCounter=true でクリックごとに連番付きメッセージを表示する
  */
-function SnackbarTrigger({ size, text }: { size: SnackbarSize; text: string }) {
+function SnackbarTrigger({
+  size,
+  text,
+  showCounter = false,
+}: {
+  size: SnackbarSize;
+  text: string;
+  showCounter?: boolean;
+}) {
   const snackbar = useSnackbar();
+  const counterRef = useRef(0);
 
   return (
     <button
       type="button"
-      onClick={() => snackbar.show(text, { size })}
+      onClick={() => {
+        counterRef.current += 1;
+        const message = showCounter ? `${text} #${counterRef.current}` : text;
+        snackbar.show(message, { size });
+      }}
       style={{
         padding: '8px 16px',
         borderRadius: '6px',
@@ -29,7 +44,9 @@ function SnackbarTrigger({ size, text }: { size: SnackbarSize; text: string }) {
         fontSize: '14px',
       }}
     >
-      Snackbarを表示
+      {showCounter
+        ? 'Snackbarを追加（連続クリックで複数表示）'
+        : 'Snackbarを表示'}
     </button>
   );
 }
@@ -116,6 +133,18 @@ export const MediumLongText: Story = {
     text: 'アップロードしたファイルの名寄せが完了しました。結果はダウンロードページから確認できます。',
   },
   render: (args) => <SnackbarTrigger {...args} />,
+};
+
+/**
+ * 複数Snackbarの同時表示
+ * ボタンを連続クリックして複数Snackbarが重ならずにスタックされることを確認
+ */
+export const MultipleStacking: Story = {
+  args: {
+    size: 'medium',
+    text: 'Message',
+  },
+  render: (args) => <SnackbarTrigger {...args} showCounter />,
 };
 
 /**

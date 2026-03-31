@@ -17,13 +17,12 @@
   z-index: 2147483647;
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-small, 4px);
 
   /* デスクトップ: 右上 */
-  inset-block-start: var(--spacing-large, 12px);
+  inset-block-start: var(--spacing-x-large, 16px);
   inset-block-end: auto;
   inset-inline-start: auto;
-  inset-inline-end: var(--spacing-large, 12px);
+  inset-inline-end: var(--spacing-x-large, 16px);
 }
 
 /* スマホ: 下中央 */
@@ -31,7 +30,7 @@
   .viewport {
     inset-block-start: auto;
     inset-inline-end: auto;
-    inset-block-end: var(--spacing-large, 12px);
+    inset-block-end: var(--spacing-x-large, 16px);
     inset-inline-start: 50%;
     transform: translateX(-50%);
   }
@@ -49,6 +48,9 @@
   box-sizing: border-box;
   overflow: clip;
 
+  /* Snackbar間のスペーシング（gapではなくmarginで管理し、退出時にスムーズに詰める） */
+  margin-block-end: var(--spacing-x-large, 16px);
+
   /* 背景・角丸 */
   background-color: var(--surface-success, #dff5ea);
   border-radius: var(--border-radius-medium, 6px);
@@ -60,12 +62,17 @@
 
   /* タイポグラフィ */
   font-family: var(--typography-font-family, Arial, sans-serif);
-  font-weight: 400;
+  font-weight: var(--typography-font-weight-regular, 400);
 
   /* アニメーション */
   transition:
     opacity 200ms ease-out,
-    transform 200ms ease-out;
+    transform 200ms ease-out,
+    margin-block-end 200ms ease-out;
+}
+
+.root:last-child {
+  margin-block-end: 0;
 }
 
 /* デスクトップ: 右からスライドイン */
@@ -74,9 +81,11 @@
   transform: translateX(100%);
 }
 
-.root[data-ending-style] {
+.root[data-ending-style],
+.root[data-limited] {
   opacity: 0;
   transform: translateX(100%);
+  margin-block-end: 0;
 }
 
 /* スマホ: 下からスライドイン */
@@ -86,9 +95,11 @@
     transform: translateY(100%);
   }
 
-  .root[data-ending-style] {
+  .root[data-ending-style],
+  .root[data-limited] {
     opacity: 0;
     transform: translateY(100%);
+    margin-block-end: 0;
   }
 }
 
@@ -97,12 +108,13 @@
    ============================== */
 
 .small {
-  padding: var(--spacing-medium, 8px);
+  padding-block: var(--spacing-medium, 8px);
+  padding-inline: var(--spacing-medium, 8px);
 }
 
 .small .text {
   font-size: var(--font-scale-40, 14px);
-  line-height: 130%;
+  line-height: 150%;
   letter-spacing: 0.02em;
 }
 
@@ -111,7 +123,8 @@
    ============================== */
 
 .medium {
-  inline-size: 400px;
+  min-inline-size: 280px;
+  max-inline-size: 400px;
   min-block-size: 56px;
   max-block-size: 87px; /* 3行分: 14px × 1.5 × 3 + padding 24px */
   padding-block: var(--spacing-large, 12px);
@@ -151,7 +164,8 @@
 .text {
   flex: 1 0 0;
   min-inline-size: 0;
-  margin: 0;
+  margin-block: 0;
+  margin-inline: 0;
   color: var(--text-regular-default, rgba(0, 0, 0, 0.84));
 
   /* 3行制限 */

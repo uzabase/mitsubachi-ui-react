@@ -62,6 +62,8 @@
 | `--icon-regular-default` | `rgba(0,0,0,0.84)` | 通常アイコン |
 | `--icon-disabled` | `rgba(0,0,0,0.25)` | disabled アイコン |
 | `--icon-selected` | `#3f69f2` | 選択状態アイコン |
+| `--object-regular-default` | `rgba(0,0,0,0.84)` | 通常オブジェクト（チェックマーク、Chip 閉じるアイコン等） |
+| `--object-regular-disabled` | `rgba(0,0,0,0.35)` | disabled オブジェクト |
 | `--object-weak-default` | `rgba(0,0,0,0.54)` | 弱調オブジェクト（ソートアイコン等） |
 
 #### サイズ

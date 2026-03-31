@@ -1,0 +1,54 @@
+import { Meta, Canvas, ArgTypes } from '@storybook/addon-docs/blocks';
+import * as LinkMenuItemStories from '../../../../stories/menu/link-menu-item/LinkMenuItem.stories';
+
+<Meta of={LinkMenuItemStories} />
+
+# LinkMenuItem
+
+別のページや画面に遷移するためのメニュー項目です。
+選択すると指定されたリンク先へ移動します。
+
+- Figma URL : [LinkMenuItem]()
+
+<Canvas of={LinkMenuItemStories.Normal} />
+
+---
+
+## When to Use
+
+- メニュー内からページ遷移を提供したいとき
+- 外部サイトへのリンクをメニュー内に配置したいとき（`newWindow` を使用）
+
+## When NOT to Use
+
+- 🚫 Menu コンポーネントの外で単体使用しないでください。必ず `<Menu>` + `<MenuDropdown>` 内に配置してください。
+- ⚠️ 画面遷移を伴わないアクションのとき。[ActionMenuItem](?path=/docs/components-menu-actionmenuitem--docs) を使ってください。
+- ⚠️ メニュー外のナビゲーションリンクのとき。通常の `<a>` 要素やリンクコンポーネントを使ってください。
+
+## Service Context — Speeda AI Agent での使い方
+
+- ユーザーメニューから設定ページやプロフィールページへの遷移
+- ヘルプセンターや外部ドキュメントへのリンク
+
+## バリエーション
+
+| バリエーション | 用途 |
+| --- | --- |
+| `newWindow={false}` | 同一ウィンドウでの遷移（デフォルト） |
+| `newWindow={true}` | 新しいウィンドウで開く。右端に open-in-new アイコンが表示されます |
+
+<Canvas of={LinkMenuItemStories.AllStates} />
+
+## アクセシビリティ
+
+- `newWindow` が `true` の場合、`target="_blank"` と `rel="noopener noreferrer"` が自動設定されます
+- `<a>` 要素としてレンダリングされるため、ブラウザのリンク操作（右クリックメニュー等）が使えます
+
+## Props
+
+<ArgTypes of={LinkMenuItemStories} />
+
+## 関連コンポーネント
+
+- [ActionMenuItem](?path=/docs/components-menu-actionmenuitem--docs) : アクション実行用。LinkMenuItem はページ遷移用
+- [Menu](?path=/docs/components-menu-menu--docs) : LinkMenuItem を内包するコンテナ

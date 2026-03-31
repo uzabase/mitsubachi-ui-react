@@ -63,36 +63,42 @@ export interface SnackbarProviderProps {
    * @default 5000
    */
   timeout?: number;
+  /**
+   * 同時に表示できるSnackbarの最大数。
+   * 上限を超えると古いものから自動的に削除される。
+   * @default 5
+   */
+  limit?: number;
 }
 
 /**
  * Snackbar のコンテキストを提供するプロバイダー。
  * アプリのルート付近に配置する。
  */
-function SnackbarProvider({ children, timeout = 5000 }: SnackbarProviderProps) {
-  return <Toast.Provider timeout={timeout}>{children}</Toast.Provider>;
+function SnackbarProvider({
+  children,
+  timeout = 5000,
+  limit = 5,
+}: SnackbarProviderProps) {
+  return (
+    <Toast.Provider timeout={timeout} limit={limit}>
+      {children}
+    </Toast.Provider>
+  );
 }
 
 /* ==============================
    Snackbar.Viewport
    ============================== */
 
-export interface SnackbarViewportProps {
-  className?: string;
-}
-
 /**
  * Snackbar の表示領域。
  * デスクトップでは画面右上、スマホでは画面下中央に配置される。
  */
-function SnackbarViewport({ className }: SnackbarViewportProps) {
-  const viewportClassName = [styles.viewport, className]
-    .filter(Boolean)
-    .join(' ');
-
+function SnackbarViewport() {
   return (
     <Toast.Portal>
-      <Toast.Viewport className={viewportClassName}>
+      <Toast.Viewport className={styles.viewport}>
         <SnackbarList />
       </Toast.Viewport>
     </Toast.Portal>
@@ -147,7 +153,6 @@ function SnackbarRoot({ toast, size = 'small' }: SnackbarRootProps) {
         <Toast.Description className={styles.text} />
       </div>
       <Toast.Close
-        className={styles.close}
         render={
           <IconButton
             variant="ghost"

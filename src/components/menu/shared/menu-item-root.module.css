@@ -1,0 +1,49 @@
+/**
+ * MenuItemRoot 共有スタイル
+ *
+ * 全menu-item種別で共通するルートレイアウトと状態スタイルを定義。
+ * padding や color はコンポーネント固有のため含めない。
+ */
+
+/* ========================================
+   ルート（共通ベース）
+   ======================================== */
+
+.root {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  min-block-size: 32px;
+  cursor: pointer;
+}
+
+@media (max-width: 720px) {
+  .root {
+    min-block-size: 40px;
+  }
+}
+
+/* ========================================
+   状態: hover
+   ======================================== */
+
+.root:hover:not([data-disabled]) {
+  background-color: var(--surface-overlay-hover, rgba(0, 0, 0, 0.07));
+}
+
+/* ========================================
+   状態: active
+   ======================================== */
+
+.root:active:not([data-disabled]) {
+  background-color: var(--surface-overlay-active, rgba(0, 0, 0, 0.1));
+}
+
+/* ========================================
+   状態: focus-visible
+   ======================================== */
+
+.root:focus-visible {
+  outline: 2px solid var(--focus-ring-default, #191919);
+  outline-offset: -2px;
+}

@@ -1,15 +1,14 @@
-/** check（✓）アイコン */
+/** check（✓）アイコン（サイズは親要素の CSS で制御） */
 export const CheckIcon = () => (
   <svg
-    style={{ flexShrink: 0 }}
-    width="16"
-    height="16"
-    viewBox="0 0 16 16"
-    fill="none"
     xmlns="http://www.w3.org/2000/svg"
+    width="100%"
+    height="100%"
+    viewBox="0 0 12 8"
+    fill="none"
   >
     <path
-      d="M6.4875 10.815L3 7.3425L3.795 6.5475L6.4875 9.225L11.22 4.5L12.015 5.295L6.4875 10.815Z"
+      d="M4.2625 7.71833L0 3.47417L0.971667 2.5025L4.2625 5.775L10.0467 0L11.0183 0.971667L4.2625 7.71833Z"
       fill="currentColor"
     />
   </svg>
