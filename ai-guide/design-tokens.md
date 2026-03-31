@@ -13,6 +13,7 @@
 | `--surface-semi-strong-hover` | `#e5e5e5` | LinkTag hover |
 | `--surface-semi-strong-active` | `#dfdfdf` | LinkTag active |
 | `--surface-semi-strong-disabled` | `rgba(0,0,0,0.07)` | disabled 背景 |
+| `--surface-semi-strong-inactive` | `rgba(0,0,0,0.07)` | セグメントコントロール非活性背景 |
 | `--surface-regular-default` | `#ffffff` | Dialog 背景、フォーカスリング内側 |
 | `--surface-regular-disabled` | `rgba(0,0,0,0.03)` | TextArea disabled 背景 |
 | `--surface-overlay-hover` | `rgba(0,0,0,0.07)` | secondary/tertiary/ghost hover |
@@ -48,6 +49,7 @@
 | `--border-semi-strong-default` | `rgba(0,0,0,0.2)` | TextArea ボーダー |
 | `--border-semi-strong-hover` | `rgba(0,0,0,0.35)` | TextArea hover ボーダー |
 | `--border-strong-default` | `rgba(0,0,0,0.84)` | secondary ボタンボーダー |
+| `--border-semi-strong-disabled` | `rgba(0,0,0,0.18)` | TextArea disabled ボーダー |
 | `--border-disabled` | `rgba(0,0,0,0.07)` | disabled ボーダー |
 | `--border-selected` | `#3f69f2` | 選択状態ボーダー |
 | `--border-error-default` | `#db351f` | エラーボーダー |
@@ -82,6 +84,7 @@
 | `--typography-font-family` | `Arial, sans-serif` | 全コンポーネント |
 | `--typography-font-weight-regular` | `400` | 通常ウェイト |
 | `--typography-font-weight-bold` | `700` | ラベル太字 |
+| `--font-scale-10` | `10px` | 免責文 |
 | `--font-scale-20` | `11px` | 必須バッジ、小タグ |
 | `--font-scale-30` | `12px` | サポートテキスト、文字数カウント、ツールチップ |
 | `--font-scale-40` | `14px` | 本文テキスト、Snackbar |
