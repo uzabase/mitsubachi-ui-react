@@ -1,0 +1,1 @@
+{"version":3,"file":"TableCol.d.ts","sourceRoot":"","sources":["../../../../src/components/table/table-col/TableCol.tsx"],"names":[],"mappings":"AAAA,MAAM,WAAW,aAAa;IAC5B,gDAAgD;IAChD,KAAK,CAAC,EAAE,MAAM,CAAC;IACf,4BAA4B;IAC5B,QAAQ,CAAC,EAAE,MAAM,CAAC;CACnB;AAED;;;;;GAKG;AACH,wBAAgB,QAAQ,CAAC,EAAE,KAAK,EAAE,QAAQ,EAAE,EAAE,aAAa,2CAI1D"}

@@ -1,0 +1,1 @@
+{"version":3,"file":"TimelineContext.d.ts","sourceRoot":"","sources":["../../../../src/components/timeline/shared/TimelineContext.ts"],"names":[],"mappings":"AAEA,MAAM,MAAM,mBAAmB,GAAG,QAAQ,GAAG,OAAO,CAAC;AAErD,UAAU,oBAAoB;IAC5B,WAAW,EAAE,mBAAmB,CAAC;CAClC;AAID,eAAO,MAAM,gBAAgB,uDAA2B,CAAC;AAEzD,wBAAgB,kBAAkB,IAAI,oBAAoB,CAMzD"}

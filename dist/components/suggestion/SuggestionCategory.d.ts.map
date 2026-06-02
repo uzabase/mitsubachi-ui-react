@@ -1,0 +1,1 @@
+{"version":3,"file":"SuggestionCategory.d.ts","sourceRoot":"","sources":["../../../src/components/suggestion/SuggestionCategory.tsx"],"names":[],"mappings":"AAAA,OAAO,KAAgB,MAAM,OAAO,CAAC;AAGrC,MAAM,WAAW,uBAAuB;IACtC,eAAe;IACf,KAAK,EAAE,MAAM,CAAC;IACd,0BAA0B;IAC1B,QAAQ,EAAE,KAAK,CAAC,SAAS,CAAC;CAC3B;AAED;;;GAGG;AACH,eAAO,MAAM,kBAAkB,GAAI,sBAGhC,uBAAuB,4CAezB,CAAC"}

@@ -1,0 +1,1 @@
+{"version":3,"file":"dialog-body.d.ts","sourceRoot":"","sources":["../../../../src/components/dialog/shared/dialog-body.tsx"],"names":[],"mappings":"AAAA,OAAO,KAAsC,MAAM,OAAO,CAAC;AAG3D,MAAM,WAAW,eAAe;IAC9B,QAAQ,EAAE,KAAK,CAAC,SAAS,CAAC;CAC3B;AAED;;;;;GAKG;AACH,wBAAgB,UAAU,CAAC,EAAE,QAAQ,EAAE,EAAE,eAAe,2CA8CvD"}
