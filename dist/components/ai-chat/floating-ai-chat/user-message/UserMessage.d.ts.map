@@ -1,0 +1,1 @@
+{"version":3,"file":"UserMessage.d.ts","sourceRoot":"","sources":["../../../../../src/components/ai-chat/floating-ai-chat/user-message/UserMessage.tsx"],"names":[],"mappings":"AAAA,OAAO,KAAK,KAAK,MAAM,OAAO,CAAC;AAG/B,MAAM,WAAW,gBAAgB;IAC/B,eAAe;IACf,QAAQ,EAAE,KAAK,CAAC,SAAS,CAAC;CAC3B;AAED,eAAO,MAAM,WAAW,GAAI,cAAc,gBAAgB,4CAQzD,CAAC"}

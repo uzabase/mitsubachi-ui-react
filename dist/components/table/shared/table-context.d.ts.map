@@ -1,0 +1,1 @@
+{"version":3,"file":"table-context.d.ts","sourceRoot":"","sources":["../../../../src/components/table/shared/table-context.tsx"],"names":[],"mappings":"AAEA,kBAAkB;AAClB,MAAM,MAAM,SAAS,GAAG,MAAM,GAAG,MAAM,CAAC;AAExC,MAAM,WAAW,iBAAiB;IAChC,IAAI,EAAE,SAAS,CAAC;CACjB;AAED,eAAO,MAAM,YAAY,mDAAgD,CAAC;AAE1E,wBAAgB,eAAe,IAAI,iBAAiB,CAQnD"}
