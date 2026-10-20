@@ -8,11 +8,6 @@ export default defineConfig({
     react(),
     dts({
       tsconfigPath: './tsconfig-build.json',
-      bundleTypes: {
-        extractorConfig: {
-          newlineKind: 'lf',
-        },
-      },
     }),
   ],
   build: {
