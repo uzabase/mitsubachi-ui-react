@@ -36,33 +36,32 @@ function MyComponent() {
 
 ## 開発環境のセットアップ
 
-このリポジトリを開発する場合は、依存関係をインストールした後にGitフックを設定してください。
+このリポジトリではpnpmを使用します。`package.json`の`packageManager`に指定されたバージョンを用意し、依存関係をインストールした後にGitフックを設定してください。
 
 ```bash
-npm ci
-npm run setup:hooks
+pnpm install --frozen-lockfile
+pnpm run setup:hooks
 ```
 
-pnpmを使う場合は、`pnpm install --frozen-lockfile`と`pnpm run setup:hooks`を実行してください。
 Gitフックの設定は明示的に実行するため、このライブラリを依存パッケージとしてインストールしても実行されません。
 
-GitHub経由で配布するビルド成果物は`dist`にコミットしています。ライブラリを変更した場合は、`npm run build`を実行して成果物も更新してください。
+GitHub経由で配布するビルド成果物は`dist`にコミットしています。ライブラリを変更した場合は、`pnpm run build`を実行して成果物も更新してください。
 
 ## 開発コマンド
 
 ```bash
 # Storybook起動
-npm run storybook
+pnpm run storybook
 
 # テスト実行
-npm run test              # 全テスト
-npm run test:unit         # ユニットテストのみ
-npm run test:storybook    # Storybookテストのみ
-npm run test:coverage     # カバレッジ付き
+pnpm run test              # 全テスト
+pnpm run test:unit         # ユニットテストのみ
+pnpm run test:storybook    # Storybookテストのみ
+pnpm run test:coverage     # カバレッジ付き
 
 # リント・フォーマット
-npm run lint              # ESLintチェック
-npm run lint:fix          # ESLint自動修正
-npm run format            # Prettier適用
-npm run format:check      # フォーマットチェック
+pnpm run lint              # ESLintチェック
+pnpm run lint:fix          # ESLint自動修正
+pnpm run format            # Prettier適用
+pnpm run format:check      # フォーマットチェック
 ```

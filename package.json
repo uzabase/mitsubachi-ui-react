@@ -1,6 +1,7 @@
 {
   "name": "mitsubachi-ui-react",
   "version": "1.0.0",
+  "packageManager": "pnpm@10.23.0",
   "description": "",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
