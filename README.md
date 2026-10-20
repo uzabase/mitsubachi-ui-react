@@ -36,7 +36,7 @@ function MyComponent() {
 
 ## 開発環境のセットアップ
 
-このリポジトリではpnpmを使用します。`package.json`の`packageManager`に指定されたバージョンを用意し、依存関係をインストールした後にGitフックを設定してください。
+このリポジトリではNode.js 24または26とpnpmを使用します。`package.json`の`packageManager`に指定されたバージョンを用意し、依存関係をインストールした後にGitフックを設定してください。
 
 ```bash
 pnpm install --frozen-lockfile

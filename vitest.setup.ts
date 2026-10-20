@@ -24,8 +24,8 @@ expect.extend({
 
 // カスタムマッチャーの型定義
 declare module 'vitest' {
-  interface Assertion<T> {
-    toHaveShadowText(expectedText: string): T;
+  interface Matchers<R extends void | Promise<void>> {
+    toHaveShadowText(expectedText: string): R;
   }
   interface AsymmetricMatchersContaining {
     toHaveShadowText(expectedText: string): unknown;

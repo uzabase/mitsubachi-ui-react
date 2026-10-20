@@ -32,6 +32,9 @@ import {
 const meta = {
   title: 'Components/Menu/Menu',
   component: Menu,
+  args: {
+    children: null,
+  },
   parameters: {
     layout: 'centered',
     docs: {

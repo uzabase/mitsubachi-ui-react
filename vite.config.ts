@@ -1,23 +1,27 @@
 import { resolve } from 'node:path';
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
-import dts from 'vite-plugin-dts';
+import dts from 'unplugin-dts/vite';
 
 export default defineConfig({
   plugins: [
     react(),
     dts({
       tsconfigPath: './tsconfig-build.json',
-      rollupTypes: true,
+      bundleTypes: {
+        extractorConfig: {
+          newlineKind: 'lf',
+        },
+      },
     }),
   ],
   build: {
     lib: {
-      entry: resolve(__dirname, 'src/index.ts'),
+      entry: resolve(import.meta.dirname, 'src/index.ts'),
       formats: ['es'],
       fileName: 'index',
     },
-    rollupOptions: {
+    rolldownOptions: {
       external: [
         'react',
         'react-dom',
