@@ -34,6 +34,20 @@ function MyComponent() {
 
 詳細は [Base UI公式ドキュメント](https://base-ui.com/) を参照してください。
 
+## 開発環境のセットアップ
+
+このリポジトリを開発する場合は、依存関係をインストールした後にGitフックを設定してください。
+
+```bash
+npm ci
+npm run setup:hooks
+```
+
+pnpmを使う場合は、`pnpm install --frozen-lockfile`と`pnpm run setup:hooks`を実行してください。
+Gitフックの設定は明示的に実行するため、このライブラリを依存パッケージとしてインストールしても実行されません。
+
+GitHub経由で配布するビルド成果物は`dist`にコミットしています。ライブラリを変更した場合は、`npm run build`を実行して成果物も更新してください。
+
 ## 開発コマンド
 
 ```bash
