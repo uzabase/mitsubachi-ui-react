@@ -19,13 +19,11 @@ jobs:
         uses: actions/setup-node@v7.1.0
         with:
           node-version: 26
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v6.1.0
       - name: Build pages for main branch
         run: |
           git checkout main
-          pnpm install --frozen-lockfile
-          pnpm run build-storybook
+          npm ci
+          npm run build-storybook
         env:
           REPOSITORY_NAME: ${{ github.event.repository.name }}
       - name: Upload artifacts
