@@ -9,5 +9,5 @@ export interface SuggestionCategoryProps {
  * サジェッションリスト内のカテゴリーグループです。
  * カテゴリーラベルの下に候補アイテムをグループ化して表示します。
  */
-export declare const SuggestionCategory: ({ label, children, }: SuggestionCategoryProps) => React.JSX.Element;
+export declare const SuggestionCategory: ({ label, children, }: SuggestionCategoryProps) => import("react/jsx-runtime").JSX.Element;
 //# sourceMappingURL=SuggestionCategory.d.ts.map

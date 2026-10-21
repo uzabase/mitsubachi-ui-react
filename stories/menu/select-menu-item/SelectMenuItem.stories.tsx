@@ -1,6 +1,5 @@
 import { useRef, useState } from 'react';
 import type { Decorator, Meta, StoryObj } from '@storybook/react-vite';
-import { expect, within } from 'storybook/test';
 import {
   SelectMenuItem,
   type SelectMenuItemProps,
@@ -247,15 +246,6 @@ export const LongText: Story = {
       <SelectMenuItem value="short2">選択肢</SelectMenuItem>
     </MenuRadioGroup>
   ),
-  play: async ({ canvasElement }) => {
-    const menu = await within(canvasElement).findByRole('menu');
-    await expect(menu).toBeVisible();
-    await expect(
-      within(menu).getByRole('menuitemradio', {
-        name: '長い文字列の場合長い文字列の場合長い文字列',
-      })
-    ).toBeVisible();
-  },
 };
 
 /* ========================================

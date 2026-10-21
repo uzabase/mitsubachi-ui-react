@@ -7,5 +7,5 @@ export interface LinkTagGroupProps {
         id?: string;
     }>;
 }
-export declare const LinkTagGroup: ({ tags }: LinkTagGroupProps) => import('react').JSX.Element;
+export declare const LinkTagGroup: ({ tags }: LinkTagGroupProps) => import("react/jsx-runtime").JSX.Element;
 //# sourceMappingURL=LinkTagGroup.d.ts.map

@@ -46,6 +46,6 @@ export type SuggestionItemProps = SuggestionItemTextProps | SuggestionItemSlotPr
  * </SuggestionItem>
  * ```
  */
-export declare const SuggestionItem: (props: SuggestionItemProps) => React.JSX.Element;
+export declare const SuggestionItem: (props: SuggestionItemProps) => import("react/jsx-runtime").JSX.Element;
 export {};
 //# sourceMappingURL=SuggestionItem.d.ts.map

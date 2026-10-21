@@ -10,11 +10,11 @@ export interface FloatingAiChatProps {
     histories?: AiChatHistoryItem[];
     children: React.ReactNode;
 }
-declare function FloatingAiChatRoot({ size, histories, children, }: FloatingAiChatProps): React.JSX.Element;
+declare function FloatingAiChatRoot({ size, histories, children, }: FloatingAiChatProps): import("react/jsx-runtime").JSX.Element;
 export declare const FloatingAiChat: typeof FloatingAiChatRoot & {
-    Header: ({ title, newSession, onNewChatClick, onToggleSizeClick, onMinimizeClick, }: import('./ai-chat-header').AiChatHeaderProps) => React.JSX.Element;
-    Body: ({ children }: FloatingAiChatBodyProps) => React.JSX.Element;
-    Footer: ({ disclaimer, children, }: import('./ai-chat-footer').AiChatFooterProps) => React.JSX.Element;
+    Header: ({ title, newSession, onNewChatClick, onToggleSizeClick, onMinimizeClick, }: import('./ai-chat-header').AiChatHeaderProps) => import("react/jsx-runtime").JSX.Element;
+    Body: ({ children }: FloatingAiChatBodyProps) => import("react/jsx-runtime").JSX.Element;
+    Footer: ({ disclaimer, children, }: import('./ai-chat-footer').AiChatFooterProps) => import("react/jsx-runtime").JSX.Element;
 };
 export {};
 //# sourceMappingURL=FloatingAiChat.d.ts.map

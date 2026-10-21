@@ -13,5 +13,5 @@ export interface ReportHeadingProps {
  * レポートや記事などの読み物コンテンツにおいて、
  * 内容の区切りや構造を示すための見出しコンポーネント
  */
-export declare const ReportHeading: ({ children, level, action, ref, }: ReportHeadingProps) => import('react').JSX.Element;
+export declare const ReportHeading: ({ children, level, action, ref, }: ReportHeadingProps) => import("react/jsx-runtime").JSX.Element;
 //# sourceMappingURL=ReportHeading.d.ts.map

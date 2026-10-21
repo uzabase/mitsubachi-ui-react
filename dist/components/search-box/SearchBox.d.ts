@@ -20,5 +20,5 @@ export interface SearchBoxProps extends Omit<React.InputHTMLAttributes<HTMLInput
  * <SearchBox id="search-competitor" placeholder="企業を検索" variant="secondary" />
  * ```
  */
-export declare const SearchBox: ({ variant, onClear, value, defaultValue, onChange, disabled, ...rest }: SearchBoxProps) => React.JSX.Element;
+export declare const SearchBox: ({ variant, onClear, value, defaultValue, onChange, disabled, ...rest }: SearchBoxProps) => import("react/jsx-runtime").JSX.Element;
 //# sourceMappingURL=SearchBox.d.ts.map

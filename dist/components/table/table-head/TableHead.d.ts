@@ -8,5 +8,5 @@ export interface TableHeadProps {
  *
  * `<thead>` をレンダリングするラッパーコンポーネント。
  */
-export declare function TableHead({ children }: TableHeadProps): import('react').JSX.Element;
+export declare function TableHead({ children }: TableHeadProps): import("react/jsx-runtime").JSX.Element;
 //# sourceMappingURL=TableHead.d.ts.map

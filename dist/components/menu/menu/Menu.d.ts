@@ -34,7 +34,7 @@ export interface MenuProps {
  * </Menu>
  * ```
  */
-export declare const Menu: ({ open, defaultOpen, onOpenChange, modal, children, }: MenuProps) => React.JSX.Element;
+export declare const Menu: ({ open, defaultOpen, onOpenChange, modal, children, }: MenuProps) => import("react/jsx-runtime").JSX.Element;
 export interface MenuTriggerProps {
     /** トリガーとなる要素（MenuButton, IconButton など） */
     children: React.ReactElement;
@@ -45,7 +45,7 @@ export interface MenuTriggerProps {
  * 子要素をクリックするとメニューが開閉する。
  * MenuButton, IconButton などの任意の要素をトリガーとして使用できる。
  */
-export declare const MenuTrigger: ({ children }: MenuTriggerProps) => React.JSX.Element;
+export declare const MenuTrigger: ({ children }: MenuTriggerProps) => import("react/jsx-runtime").JSX.Element;
 /** MenuDropdown の表示方向 */
 export type MenuDropdownSide = 'top' | 'bottom' | 'inline-start' | 'inline-end';
 /** MenuDropdown の配置調整 */
@@ -94,7 +94,7 @@ export interface MenuDropdownProps {
  * ビューポート端から16pxの余白を確保し、収まりきらない場合はスクロールバーを表示する。
  * 表示位置はビューポートに応じて自動調整される。
  */
-export declare const MenuDropdown: ({ side, align, sideOffset, width, container, unstyled, positionStatic, children, }: MenuDropdownProps) => React.JSX.Element;
+export declare const MenuDropdown: ({ side, align, sideOffset, width, container, unstyled, positionStatic, children, }: MenuDropdownProps) => import("react/jsx-runtime").JSX.Element;
 export interface MenuGroupProps {
     /** グループのラベル */
     label?: string;
@@ -106,7 +106,7 @@ export interface MenuGroupProps {
  * 複数のMenuGroupを並べると、グループ間に区切り線が表示される。
  * オプションの label でグループにラベルを付けられる。
  */
-export declare const MenuGroup: ({ label, children }: MenuGroupProps) => React.JSX.Element;
+export declare const MenuGroup: ({ label, children }: MenuGroupProps) => import("react/jsx-runtime").JSX.Element;
 export interface SubMenuDropdownProps {
     /**
      * トリガーに対する表示方向
@@ -147,7 +147,7 @@ export interface SubMenuDropdownProps {
  * </MenuSubmenuRoot>
  * ```
  */
-export declare const SubMenuDropdown: ({ side, align, sideOffset, width, children, }: SubMenuDropdownProps) => React.JSX.Element;
+export declare const SubMenuDropdown: ({ side, align, sideOffset, width, children, }: SubMenuDropdownProps) => import("react/jsx-runtime").JSX.Element;
 export declare const MenuSubmenuRoot: typeof BaseMenu.SubmenuRoot;
 export declare const MenuRadioGroup: React.NamedExoticComponent<Omit<import('@base-ui/react').ContextMenuRadioGroupProps, "ref"> & React.RefAttributes<HTMLDivElement>>;
 //# sourceMappingURL=Menu.d.ts.map

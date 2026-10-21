@@ -10,5 +10,5 @@ export interface TableColProps {
  * テーブルのカラム幅を指定する `<col>` 要素をレンダリングする。
  * Table の直接の子として配置すると、自動的に `<colgroup>` 内にまとめられる。
  */
-export declare function TableCol({ width, minWidth }: TableColProps): import('react').JSX.Element;
+export declare function TableCol({ width, minWidth }: TableColProps): import("react/jsx-runtime").JSX.Element;
 //# sourceMappingURL=TableCol.d.ts.map

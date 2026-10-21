@@ -33,7 +33,7 @@ export interface InformationDialogFooterProps {
     /** アクションボタンクリック時のコールバック */
     onAction?: () => void;
 }
-declare function InformationDialogRoot({ open, defaultOpen, onOpenChange, size, children, }: InformationDialogRootProps): React.JSX.Element;
+declare function InformationDialogRoot({ open, defaultOpen, onOpenChange, size, children, }: InformationDialogRootProps): import("react/jsx-runtime").JSX.Element;
 /**
  * Information Dialog
  *

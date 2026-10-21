@@ -1,4 +1,4 @@
-import { default as React, ReactNode } from 'react';
+import { ReactNode } from 'react';
 /** ヘッダーセルのコンテンツタイプ */
 export type TableHeaderCellContentType = 'text' | 'checkbox' | 'icon-button';
 /** ソート状態 */
@@ -47,6 +47,6 @@ export interface TableHeaderMenuItem {
  * テーブルのヘッダーセル。`<th>` をレンダリングする。
  * ソート機能、チェックボックス、アイコンボタンなどのコンテンツタイプに対応。
  */
-export declare function TableHeaderCell({ contentType, sortState, onSortChange, menuItems, resizable, onResize, children, }: TableHeaderCellProps): React.JSX.Element;
+export declare function TableHeaderCell({ contentType, sortState, onSortChange, menuItems, resizable, onResize, children, }: TableHeaderCellProps): import("react/jsx-runtime").JSX.Element;
 export {};
 //# sourceMappingURL=TableHeaderCell.d.ts.map

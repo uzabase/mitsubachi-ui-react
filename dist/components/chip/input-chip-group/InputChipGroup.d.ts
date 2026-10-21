@@ -17,5 +17,5 @@ export interface InputChipGroupProps {
 /**
  * InputChipを横並び・折り返しでレイアウトするWrapperコンポーネントです。
  */
-export declare const InputChipGroup: ({ items, onRemove, disabled, "aria-label": ariaLabel, }: InputChipGroupProps) => import('react').JSX.Element;
+export declare const InputChipGroup: ({ items, onRemove, disabled, "aria-label": ariaLabel, }: InputChipGroupProps) => import("react/jsx-runtime").JSX.Element;
 //# sourceMappingURL=InputChipGroup.d.ts.map

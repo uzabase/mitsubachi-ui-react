@@ -43,5 +43,5 @@ export interface CheckboxProps extends Omit<React.ComponentPropsWithoutRef<'span
  * <Checkbox indeterminate={true} />
  * ```
  */
-export declare const Checkbox: ({ checked, defaultChecked, indeterminate, disabled, onCheckedChange, name, value, required, readOnly, id, inputRef, ref, ...rest }: CheckboxProps) => import('react').JSX.Element;
+export declare const Checkbox: ({ checked, defaultChecked, indeterminate, disabled, onCheckedChange, name, value, required, readOnly, id, inputRef, ref, ...rest }: CheckboxProps) => import("react/jsx-runtime").JSX.Element;
 //# sourceMappingURL=Checkbox.d.ts.map

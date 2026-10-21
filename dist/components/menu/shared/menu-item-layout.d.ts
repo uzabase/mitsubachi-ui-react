@@ -14,5 +14,5 @@ export interface MenuItemLayoutProps {
  * 色はCSS custom propertiesで親コンポーネントから制御される。
  * レスポンシブ対応はメディアクエリ（720px）で自動切り替え。
  */
-export declare const MenuItemLayout: ({ icon, supportText, children, }: MenuItemLayoutProps) => React.JSX.Element;
+export declare const MenuItemLayout: ({ icon, supportText, children, }: MenuItemLayoutProps) => import("react/jsx-runtime").JSX.Element;
 //# sourceMappingURL=menu-item-layout.d.ts.map

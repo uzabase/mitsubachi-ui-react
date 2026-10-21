@@ -27,7 +27,7 @@ export interface MenuButtonProps extends Omit<React.ButtonHTMLAttributes<HTMLBut
     ref?: React.Ref<HTMLButtonElement>;
 }
 export declare const MenuButton: {
-    ({ variant, size, loading, disabled, children, icon, ref, ...rest }: MenuButtonProps): import('react').JSX.Element;
+    ({ variant, size, loading, disabled, children, icon, ref, ...rest }: MenuButtonProps): import("react/jsx-runtime").JSX.Element;
     displayName: string;
 };
 //# sourceMappingURL=MenuButton.d.ts.map

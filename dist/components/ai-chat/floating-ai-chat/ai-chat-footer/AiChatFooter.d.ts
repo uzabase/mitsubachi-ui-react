@@ -5,5 +5,5 @@ export interface AiChatFooterProps {
     /** AiChatArea等のコンテンツ */
     children?: React.ReactNode;
 }
-export declare const AiChatFooter: ({ disclaimer, children, }: AiChatFooterProps) => React.JSX.Element;
+export declare const AiChatFooter: ({ disclaimer, children, }: AiChatFooterProps) => import("react/jsx-runtime").JSX.Element;
 //# sourceMappingURL=AiChatFooter.d.ts.map

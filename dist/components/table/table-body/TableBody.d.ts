@@ -8,5 +8,5 @@ export interface TableBodyProps {
  *
  * `<tbody>` をレンダリングするラッパーコンポーネント。
  */
-export declare function TableBody({ children }: TableBodyProps): import('react').JSX.Element;
+export declare function TableBody({ children }: TableBodyProps): import("react/jsx-runtime").JSX.Element;
 //# sourceMappingURL=TableBody.d.ts.map

@@ -30,5 +30,5 @@ export interface TooltipProps {
  *
  * @see https://www.w3.org/WAI/ARIA/apg/patterns/tooltip/
  */
-export declare const Tooltip: ({ label, children, side, align, }: TooltipProps) => React.JSX.Element;
+export declare const Tooltip: ({ label, children, side, align, }: TooltipProps) => import("react/jsx-runtime").JSX.Element;
 //# sourceMappingURL=tooltip.d.ts.map

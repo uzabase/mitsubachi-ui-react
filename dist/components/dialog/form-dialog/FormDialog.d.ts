@@ -33,7 +33,7 @@ export interface FormDialogFooterProps {
     /** アクションボタンクリック時のコールバック */
     onAction?: () => void;
 }
-declare function FormDialogRoot({ open, defaultOpen, onOpenChange, size, children, }: FormDialogRootProps): React.JSX.Element;
+declare function FormDialogRoot({ open, defaultOpen, onOpenChange, size, children, }: FormDialogRootProps): import("react/jsx-runtime").JSX.Element;
 /**
  * Form Dialog
  *

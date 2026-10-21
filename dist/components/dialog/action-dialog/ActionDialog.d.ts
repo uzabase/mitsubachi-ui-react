@@ -33,7 +33,7 @@ export interface ActionDialogFooterProps {
     /** アクションボタンクリック時のコールバック */
     onAction?: () => void;
 }
-declare function ActionDialogRoot({ open, defaultOpen, onOpenChange, size, children, }: ActionDialogRootProps): React.JSX.Element;
+declare function ActionDialogRoot({ open, defaultOpen, onOpenChange, size, children, }: ActionDialogRootProps): import("react/jsx-runtime").JSX.Element;
 /**
  * Action Dialog
  *

@@ -24,5 +24,5 @@ export interface AiChatAreaProps {
     /** オプションスロットを上書きする場合に使用（デフォルトはAiChatSegmentedControl） */
     children?: React.ReactNode;
 }
-export declare const AiChatArea: ({ placeholder, value, onValueChange, onSubmit, onStop, state, segmentValue, defaultSegmentValue, onSegmentValueChange, children, }: AiChatAreaProps) => React.JSX.Element;
+export declare const AiChatArea: ({ placeholder, value, onValueChange, onSubmit, onStop, state, segmentValue, defaultSegmentValue, onSegmentValueChange, children, }: AiChatAreaProps) => import("react/jsx-runtime").JSX.Element;
 //# sourceMappingURL=AiChatArea.d.ts.map

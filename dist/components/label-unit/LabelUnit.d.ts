@@ -14,5 +14,5 @@ export interface LabelUnitProps {
  * フォーム用コンポーネントが「何を入力・選択するためのものか」を
  * 明確に伝えるためのラベルコンポーネントです。
  */
-export declare const LabelUnit: ({ text, required, supportText, htmlFor, disabled, }: LabelUnitProps) => import('react').JSX.Element;
+export declare const LabelUnit: ({ text, required, supportText, htmlFor, disabled, }: LabelUnitProps) => import("react/jsx-runtime").JSX.Element;
 //# sourceMappingURL=LabelUnit.d.ts.map

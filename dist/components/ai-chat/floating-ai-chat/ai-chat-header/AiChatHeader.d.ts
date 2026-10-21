@@ -10,5 +10,5 @@ export interface AiChatHeaderProps {
     /** 最小化ボタンクリック時のコールバック */
     onMinimizeClick?: () => void;
 }
-export declare const AiChatHeader: ({ title, newSession, onNewChatClick, onToggleSizeClick, onMinimizeClick, }: AiChatHeaderProps) => import('react').JSX.Element;
+export declare const AiChatHeader: ({ title, newSession, onNewChatClick, onToggleSizeClick, onMinimizeClick, }: AiChatHeaderProps) => import("react/jsx-runtime").JSX.Element;
 //# sourceMappingURL=AiChatHeader.d.ts.map

@@ -28,5 +28,5 @@ export interface SegmentProps {
  * Base UI の Toggle をベースに実装。
  * @see https://base-ui.com/react/components/toggle-group
  */
-export declare function Segment({ value, variant, children, disabled, 'aria-label': ariaLabel, }: SegmentProps): import('react').JSX.Element;
+export declare function Segment({ value, variant, children, disabled, 'aria-label': ariaLabel, }: SegmentProps): import("react/jsx-runtime").JSX.Element;
 //# sourceMappingURL=Segment.d.ts.map

@@ -43,5 +43,5 @@ export interface SegmentedControlProps {
  * </SegmentedControl>
  * ```
  */
-export declare function SegmentedControl({ value, defaultValue, onValueChange, disabled, children, 'aria-label': ariaLabel, }: SegmentedControlProps): import('react').JSX.Element;
+export declare function SegmentedControl({ value, defaultValue, onValueChange, disabled, children, 'aria-label': ariaLabel, }: SegmentedControlProps): import("react/jsx-runtime").JSX.Element;
 //# sourceMappingURL=SegmentedControl.d.ts.map

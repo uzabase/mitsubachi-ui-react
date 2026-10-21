@@ -26,7 +26,7 @@ export declare function useSnackbar(): {
     /** Snackbar を表示する */
     show: (description: string, options?: SnackbarShowOptions) => string;
     /** 指定IDの Snackbar を閉じる */
-    close: (toastId?: string) => void;
+    close: (toastId: string) => void;
 };
 export interface SnackbarProviderProps {
     children: ReactNode;
@@ -46,12 +46,12 @@ export interface SnackbarProviderProps {
  * Snackbar のコンテキストを提供するプロバイダー。
  * アプリのルート付近に配置する。
  */
-declare function SnackbarProvider({ children, timeout, limit, }: SnackbarProviderProps): import('react').JSX.Element;
+declare function SnackbarProvider({ children, timeout, limit, }: SnackbarProviderProps): import("react/jsx-runtime").JSX.Element;
 /**
  * Snackbar の表示領域。
  * デスクトップでは画面右上、スマホでは画面下中央に配置される。
  */
-declare function SnackbarViewport(): import('react').JSX.Element;
+declare function SnackbarViewport(): import("react/jsx-runtime").JSX.Element;
 export declare const Snackbar: {
     Provider: typeof SnackbarProvider;
     Viewport: typeof SnackbarViewport;

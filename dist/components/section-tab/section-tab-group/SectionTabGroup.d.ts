@@ -31,9 +31,9 @@ export interface SectionTabPanelProps {
      */
     keepMounted?: boolean;
 }
-declare function SectionTabGroupRoot({ value, defaultValue, onValueChange, children, }: SectionTabGroupRootProps): import('react').JSX.Element;
-declare function SectionTabList({ children, 'aria-label': ariaLabel, }: SectionTabListProps): import('react').JSX.Element;
-declare function SectionTabPanel({ value, children, keepMounted, }: SectionTabPanelProps): import('react').JSX.Element;
+declare function SectionTabGroupRoot({ value, defaultValue, onValueChange, children, }: SectionTabGroupRootProps): import("react/jsx-runtime").JSX.Element;
+declare function SectionTabList({ children, 'aria-label': ariaLabel, }: SectionTabListProps): import("react/jsx-runtime").JSX.Element;
+declare function SectionTabPanel({ value, children, keepMounted, }: SectionTabPanelProps): import("react/jsx-runtime").JSX.Element;
 /**
  * SectionTabGroup
  *

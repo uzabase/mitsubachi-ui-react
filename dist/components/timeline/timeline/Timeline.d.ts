@@ -16,7 +16,7 @@ export interface TimelineProps {
  * 出来事や状態の変化を時系列に沿って表示するコンテナ。
  * Timeline.Item を子要素として配置して使用する。
  */
-declare function TimelineRoot({ itemSpacing, children }: TimelineProps): import('react').JSX.Element;
+declare function TimelineRoot({ itemSpacing, children }: TimelineProps): import("react/jsx-runtime").JSX.Element;
 export declare const Timeline: typeof TimelineRoot & {
     Item: typeof TimelineItem;
 };

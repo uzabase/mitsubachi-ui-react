@@ -8,5 +8,5 @@ export interface TextAreaUnitProps extends TextAreaProps {
 /**
  * LabelUnit + TextArea を組み合わせたフォームフィールドコンポーネントです。
  */
-export declare const TextAreaUnit: ({ label, supportText, id, ...textAreaProps }: TextAreaUnitProps) => import('react').JSX.Element;
+export declare const TextAreaUnit: ({ label, supportText, id, ...textAreaProps }: TextAreaUnitProps) => import("react/jsx-runtime").JSX.Element;
 //# sourceMappingURL=TextAreaUnit.d.ts.map

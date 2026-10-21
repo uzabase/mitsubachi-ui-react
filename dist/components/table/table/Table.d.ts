@@ -1,4 +1,4 @@
-import { default as React, ReactNode } from 'react';
+import { ReactNode } from 'react';
 import { TableView } from '../shared';
 export interface TableProps {
     /** テーブルのビューモード */
@@ -16,5 +16,5 @@ export interface TableProps {
  *
  * `TableCol` を直接の子として配置すると、自動的に `<colgroup>` にまとめてレンダリングする。
  */
-export declare function Table({ view, children, 'aria-label': ariaLabel }: TableProps): React.JSX.Element;
+export declare function Table({ view, children, 'aria-label': ariaLabel }: TableProps): import("react/jsx-runtime").JSX.Element;
 //# sourceMappingURL=Table.d.ts.map

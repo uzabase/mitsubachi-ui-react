@@ -35,5 +35,5 @@ export interface ReadOnlyTagProps {
  * ユーザー操作はできず、ラベルとして情報を補足・整理する目的で使用されます。
  *
  */
-export declare const ReadOnlyTag: ({ text, showIcon, icon, pattern, "aria-label": ariaLabel, }: ReadOnlyTagProps) => React.JSX.Element;
+export declare const ReadOnlyTag: ({ text, showIcon, icon, pattern, "aria-label": ariaLabel, }: ReadOnlyTagProps) => import("react/jsx-runtime").JSX.Element;
 //# sourceMappingURL=ReadOnlyTag.d.ts.map

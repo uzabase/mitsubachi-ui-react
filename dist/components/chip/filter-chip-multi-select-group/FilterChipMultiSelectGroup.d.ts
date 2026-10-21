@@ -17,5 +17,5 @@ export interface FilterChipMultiSelectGroupProps {
  * FilterChipを横並び・折り返しでレイアウトするWrapperコンポーネントです。
  * 複数選択を担います。
  */
-export declare const FilterChipMultiSelectGroup: ({ options, value, defaultValue, onChange, disabled, "aria-label": ariaLabel, }: FilterChipMultiSelectGroupProps) => import('react').JSX.Element;
+export declare const FilterChipMultiSelectGroup: ({ options, value, defaultValue, onChange, disabled, "aria-label": ariaLabel, }: FilterChipMultiSelectGroupProps) => import("react/jsx-runtime").JSX.Element;
 //# sourceMappingURL=FilterChipMultiSelectGroup.d.ts.map

@@ -16,5 +16,5 @@ export interface SuggestionProps {
  * 入力中の文字列に基づいて候補を提示し、選択による入力の補助や、
  * キーワードの補完（autocomplete）を通じて、入力の手間を減らし操作効率を高めます。
  */
-export declare const Suggestion: ({ emptyMessage, children, "aria-label": ariaLabel, id, }: SuggestionProps) => React.JSX.Element;
+export declare const Suggestion: ({ emptyMessage, children, "aria-label": ariaLabel, id, }: SuggestionProps) => import("react/jsx-runtime").JSX.Element;
 //# sourceMappingURL=Suggestion.d.ts.map

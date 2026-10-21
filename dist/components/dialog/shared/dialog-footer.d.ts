@@ -12,5 +12,5 @@ export interface DialogFooterProps {
  * Dialog のフッター。キャンセルとアクションの 2 種類のボタンを持つ。
  * キャンセルなしのパターンは cancelLabel を省略する。
  */
-export declare function DialogFooter({ cancelLabel, onCancel, actionLabel, onAction, }: DialogFooterProps): import('react').JSX.Element;
+export declare function DialogFooter({ cancelLabel, onCancel, actionLabel, onAction, }: DialogFooterProps): import("react/jsx-runtime").JSX.Element;
 //# sourceMappingURL=dialog-footer.d.ts.map

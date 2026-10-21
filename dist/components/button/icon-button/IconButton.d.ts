@@ -50,7 +50,7 @@ export interface IconButtonProps {
  * ```
  */
 export declare const IconButton: {
-    ({ variant, size, selected, loading, disabled, children, onClick, "aria-label": ariaLabel, type, tooltip, ref, ...rest }: IconButtonProps): import('react').JSX.Element;
+    ({ variant, size, selected, loading, disabled, children, onClick, "aria-label": ariaLabel, type, tooltip, ref, ...rest }: IconButtonProps): import("react/jsx-runtime").JSX.Element;
     displayName: string;
 };
 //# sourceMappingURL=IconButton.d.ts.map

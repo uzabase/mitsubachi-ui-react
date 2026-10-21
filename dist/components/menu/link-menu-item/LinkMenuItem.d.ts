@@ -30,5 +30,5 @@ export interface LinkMenuItemProps {
  * <LinkMenuItem href="https://example.com" newWindow>外部リンク</LinkMenuItem>
  * ```
  */
-export declare const LinkMenuItem: ({ href, newWindow, icon, supportText, children, }: LinkMenuItemProps) => React.JSX.Element;
+export declare const LinkMenuItem: ({ href, newWindow, icon, supportText, children, }: LinkMenuItemProps) => import("react/jsx-runtime").JSX.Element;
 //# sourceMappingURL=LinkMenuItem.d.ts.map

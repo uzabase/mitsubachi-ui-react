@@ -17,5 +17,5 @@ export interface FilterChipSingleSelectGroupProps {
  * FilterChipを横並び・折り返しでレイアウトするWrapperコンポーネントです。
  * 単一選択の排他制御を担います。
  */
-export declare const FilterChipSingleSelectGroup: ({ options, value, defaultValue, onChange, disabled, "aria-label": ariaLabel, }: FilterChipSingleSelectGroupProps) => import('react').JSX.Element;
+export declare const FilterChipSingleSelectGroup: ({ options, value, defaultValue, onChange, disabled, "aria-label": ariaLabel, }: FilterChipSingleSelectGroupProps) => import("react/jsx-runtime").JSX.Element;
 //# sourceMappingURL=FilterChipSingleSelectGroup.d.ts.map

@@ -26,5 +26,5 @@ export interface SectionTabProps {
  * Base UI の Tabs.Tab をベースに実装。
  * @see https://base-ui.com/react/components/tabs
  */
-export declare function SectionTab({ value, children, flag, disabled, }: SectionTabProps): import('react').JSX.Element;
+export declare function SectionTab({ value, children, flag, disabled, }: SectionTabProps): import("react/jsx-runtime").JSX.Element;
 //# sourceMappingURL=SectionTab.d.ts.map

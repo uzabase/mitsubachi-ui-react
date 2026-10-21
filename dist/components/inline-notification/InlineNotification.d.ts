@@ -21,5 +21,5 @@ export interface InlineNotificationProps {
  * - UIの一部として常に表示されるため、ユーザーが見逃すことがない
  * - 成功時の短いフィードバックには Snackbar を使用すること
  */
-export declare const InlineNotification: (props: InlineNotificationProps) => React.JSX.Element;
+export declare const InlineNotification: (props: InlineNotificationProps) => import("react/jsx-runtime").JSX.Element;
 //# sourceMappingURL=InlineNotification.d.ts.map

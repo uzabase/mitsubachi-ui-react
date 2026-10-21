@@ -59,6 +59,6 @@ export type LinkTagProps = LinkTagAsLinkProps | LinkTagAsButtonProps;
  * // ボタンとして使用
  * <LinkTag text="タグ" onClick={() => console.log('clicked')} />
  */
-export declare const LinkTag: ({ text, size, className, ...props }: LinkTagProps) => React.JSX.Element;
+export declare const LinkTag: ({ text, size, className, ...props }: LinkTagProps) => import("react/jsx-runtime").JSX.Element;
 export {};
 //# sourceMappingURL=LinkTag.d.ts.map

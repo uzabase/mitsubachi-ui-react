@@ -10,5 +10,5 @@ export interface AiChatSegmentedControlProps {
     /** 無効化状態 @default false */
     disabled?: boolean;
 }
-export declare const AiChatSegmentedControl: ({ value: valueProp, defaultValue, onValueChange, disabled, }: AiChatSegmentedControlProps) => import('react').JSX.Element;
+export declare const AiChatSegmentedControl: ({ value: valueProp, defaultValue, onValueChange, disabled, }: AiChatSegmentedControlProps) => import("react/jsx-runtime").JSX.Element;
 //# sourceMappingURL=AiChatSegmentedControl.d.ts.map

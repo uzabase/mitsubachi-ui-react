@@ -42,5 +42,5 @@ export interface SubMenuItemProps {
  * </Menu.SubmenuRoot>
  * ```
  */
-export declare const SubMenuItem: ({ disabled, icon, children, }: SubMenuItemProps) => React.JSX.Element;
+export declare const SubMenuItem: ({ disabled, icon, children, }: SubMenuItemProps) => import("react/jsx-runtime").JSX.Element;
 //# sourceMappingURL=SubMenuItem.d.ts.map

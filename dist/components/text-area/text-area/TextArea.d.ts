@@ -21,5 +21,5 @@ export interface TextAreaProps extends Omit<React.TextareaHTMLAttributes<HTMLTex
  * 複数行のテキストを入力・編集するためのコンポーネントです。
  * 1行の場合は、TextFieldを使用してください。
  */
-export declare const TextArea: ({ size, viewport, error, errorMessages, showCount, maxCount, className, value, defaultValue, onChange, onScroll, disabled, ...props }: TextAreaProps) => React.JSX.Element;
+export declare const TextArea: ({ size, viewport, error, errorMessages, showCount, maxCount, className, value, defaultValue, onChange, onScroll, disabled, ...props }: TextAreaProps) => import("react/jsx-runtime").JSX.Element;
 //# sourceMappingURL=TextArea.d.ts.map

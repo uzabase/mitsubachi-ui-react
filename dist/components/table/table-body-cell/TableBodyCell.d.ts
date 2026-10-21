@@ -37,5 +37,5 @@ export interface TableBodyCellProps {
  * セル中央にダッシュ（`–`）を自動表示する。
  * `0` は有効な値として通常表示される。
  */
-export declare function TableBodyCell({ contentType, icon, children, }: TableBodyCellProps): import('react').JSX.Element;
+export declare function TableBodyCell({ contentType, icon, children, }: TableBodyCellProps): import("react/jsx-runtime").JSX.Element;
 //# sourceMappingURL=TableBodyCell.d.ts.map

@@ -16,5 +16,5 @@ export interface TimelineItemProps {
  * 時系列の個別アイテム。Timeline 内に配置して使用する。
  * 自動的にラインで接続される。
  */
-export declare function TimelineItem({ emphasized, children, }: TimelineItemProps): import('react').JSX.Element;
+export declare function TimelineItem({ emphasized, children, }: TimelineItemProps): import("react/jsx-runtime").JSX.Element;
 //# sourceMappingURL=TimelineItem.d.ts.map

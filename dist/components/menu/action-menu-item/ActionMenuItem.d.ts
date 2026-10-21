@@ -34,5 +34,5 @@ export interface ActionMenuItemProps {
  * <ActionMenuItem variant="danger" onClick={handleDelete}>削除</ActionMenuItem>
  * ```
  */
-export declare const ActionMenuItem: ({ variant, disabled, icon, supportText, onClick, children, }: ActionMenuItemProps) => React.JSX.Element;
+export declare const ActionMenuItem: ({ variant, disabled, icon, supportText, onClick, children, }: ActionMenuItemProps) => import("react/jsx-runtime").JSX.Element;
 //# sourceMappingURL=ActionMenuItem.d.ts.map

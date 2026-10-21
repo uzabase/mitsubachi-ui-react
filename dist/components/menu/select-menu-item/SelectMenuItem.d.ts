@@ -49,5 +49,5 @@ export interface SelectMenuItemProps {
  * </Menu.RadioGroup>
  * ```
  */
-export declare const SelectMenuItem: ({ value, disabled, icon, supportText, children, }: SelectMenuItemProps) => React.JSX.Element;
+export declare const SelectMenuItem: ({ value, disabled, icon, supportText, children, }: SelectMenuItemProps) => import("react/jsx-runtime").JSX.Element;
 //# sourceMappingURL=SelectMenuItem.d.ts.map
