@@ -70,7 +70,7 @@ export function SegmentedControl({
       value={groupValue}
       defaultValue={groupDefaultValue}
       onValueChange={handleValueChange}
-      multiple={false}
+      toggleMultiple={false}
       disabled={disabled}
       className={styles.container}
       aria-label={ariaLabel}

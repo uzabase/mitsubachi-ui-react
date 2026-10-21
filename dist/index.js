@@ -787,7 +787,7 @@ var k = {
 			disabled: r,
 			children: [/* @__PURE__ */ d("span", {
 				className: N.icon,
-				children: d(e === "flash" ? Oe : T, {})
+				children: d(e === "flash" ? Oe : T, { size: 18 })
 			}), /* @__PURE__ */ d("span", {
 				className: N.label,
 				children: e === "flash" ? "Flash Research" : "Deep Research"
@@ -1531,7 +1531,7 @@ function nn({ value: e, defaultValue: t, onValueChange: n, disabled: r = !1, chi
 		onValueChange: (e) => {
 			n && e.length > 0 && n(e[0]);
 		},
-		multiple: !1,
+		toggleMultiple: !1,
 		disabled: r,
 		className: tn.container,
 		"aria-label": a,
