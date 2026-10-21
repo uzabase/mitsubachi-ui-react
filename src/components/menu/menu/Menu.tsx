@@ -1,4 +1,5 @@
 import type React from 'react';
+import { useEffect, useState } from 'react';
 import { Menu as BaseMenu } from '@base-ui/react/menu';
 import type { MenuRootProps as BaseMenuRootProps } from '@base-ui/react/menu';
 import styles from './menu.module.css';
@@ -134,7 +135,7 @@ const DropdownBase = ({
   align,
   sideOffset,
   width,
-  container,
+  container: containerRef,
   unstyled = false,
   positionStatic = false,
   children,
@@ -149,16 +150,27 @@ const DropdownBase = ({
   children: React.ReactNode;
 }) => {
   const inlineSize = width === 'auto' ? 'fit-content' : `${width}px`;
+  const [portalContainer, setPortalContainer] = useState<HTMLElement | null>(
+    null
+  );
+
+  useEffect(() => {
+    // 親のrefが設定されてからPortalの描画先を渡す。
+    if (containerRef) {
+      setPortalContainer(containerRef.current);
+    }
+  }, [containerRef]);
 
   return (
-    <BaseMenu.Portal container={container}>
+    <BaseMenu.Portal container={containerRef ? portalContainer : undefined}>
       <BaseMenu.Positioner
         className={unstyled ? undefined : styles.positioner}
         side={side}
         align={align}
         sideOffset={sideOffset}
         collisionPadding={16}
-        style={positionStatic ? { position: 'static' } : undefined}
+        // 静的表示ではアンカー位置が確定しないため、初期透明化を解除する。
+        style={positionStatic ? { position: 'static', opacity: 1 } : undefined}
       >
         <BaseMenu.Popup
           className={unstyled ? undefined : styles.popup}

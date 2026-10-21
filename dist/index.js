@@ -547,24 +547,29 @@ var k = {
 	onOpenChange: n,
 	modal: r,
 	children: i
-}), Re = ({ children: e }) => /* @__PURE__ */ d(g.Trigger, { render: e }), ze = ({ side: e, align: t, sideOffset: n, width: r, container: i, unstyled: a = !1, positionStatic: o = !1, children: s }) => {
-	let c = r === "auto" ? "fit-content" : `${r}px`;
-	return /* @__PURE__ */ d(g.Portal, {
-		container: i,
+}), Re = ({ children: e }) => /* @__PURE__ */ d(g.Trigger, { render: e }), ze = ({ side: e, align: t, sideOffset: n, width: r, container: a, unstyled: o = !1, positionStatic: s = !1, children: l }) => {
+	let u = r === "auto" ? "fit-content" : `${r}px`, [f, p] = c(null);
+	return i(() => {
+		a && p(a.current);
+	}, [a]), /* @__PURE__ */ d(g.Portal, {
+		container: a ? f : void 0,
 		children: /* @__PURE__ */ d(g.Positioner, {
-			className: a ? void 0 : k.positioner,
+			className: o ? void 0 : k.positioner,
 			side: e,
 			align: t,
 			sideOffset: n,
 			collisionPadding: 16,
-			style: o ? { position: "static" } : void 0,
+			style: s ? {
+				position: "static",
+				opacity: 1
+			} : void 0,
 			children: /* @__PURE__ */ d(g.Popup, {
-				className: a ? void 0 : k.popup,
-				style: a ? {
+				className: o ? void 0 : k.popup,
+				style: o ? {
 					outline: "none",
-					inlineSize: c
-				} : { inlineSize: c },
-				children: s
+					inlineSize: u
+				} : { inlineSize: u },
+				children: l
 			})
 		})
 	});
