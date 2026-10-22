@@ -34,6 +34,14 @@ function MyComponent() {
 
 詳細は [Base UI公式ドキュメント](https://base-ui.com/) を参照してください。
 
+## Gitフックの設定
+
+このリポジトリを開発する場合は、依存関係のインストール後に一度実行してください。
+
+```bash
+npm run setup:hooks
+```
+
 ## 開発コマンド
 
 ```bash
