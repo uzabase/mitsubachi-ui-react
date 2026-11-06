@@ -1,5 +1,5 @@
 {
-  "name": "mitsubachi-ui-react",
+  "name": "@uzabase/mitsubachi-ui-react",
   "version": "1.0.0",
   "description": "",
   "main": "./dist/index.js",
@@ -26,7 +26,8 @@
     "format:check": "prettier --check .",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "setup:hooks": "husky"
+    "setup:hooks": "husky",
+    "prepublishOnly": "npm run build"
   },
   "repository": {
     "type": "git",
@@ -91,5 +92,9 @@
     "*.{js,json,css,md}": [
       "prettier --write"
     ]
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org"
   }
 }

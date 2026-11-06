@@ -16,6 +16,7 @@ export default defineConfig({
       entry: resolve(__dirname, 'src/index.ts'),
       formats: ['es'],
       fileName: 'index',
+      cssFileName: 'index',
     },
     rollupOptions: {
       external: [
